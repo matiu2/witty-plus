@@ -1,0 +1,7 @@
+#control-panel {
+  padding: 2px;
+}
+
+#control-panel button {
+  float: right;
+}

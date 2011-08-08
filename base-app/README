@@ -1,0 +1,7 @@
+This is a base for all witty apps based on yahoo grids.
+
+Basically **main.cpp** pulls in the App that pulls in the MainWindow.
+
+Use the yui grids cheatsheet for laying things out: http://developer.yahoo.com/yui/grids/
+
+The template for the main window is loaded from messages/MainWindow.xml
