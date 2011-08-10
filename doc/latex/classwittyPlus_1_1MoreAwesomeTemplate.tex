@@ -1,0 +1,99 @@
+\hypertarget{classwittyPlus_1_1MoreAwesomeTemplate}{
+\section{wittyPlus::MoreAwesomeTemplate Class Reference}
+\label{classwittyPlus_1_1MoreAwesomeTemplate}\index{wittyPlus::MoreAwesomeTemplate@{wittyPlus::MoreAwesomeTemplate}}
+}
+Inheritance diagram for wittyPlus::MoreAwesomeTemplate:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.786284cm]{classwittyPlus_1_1MoreAwesomeTemplate}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classwittyPlus_1_1MoreAwesomeTemplate_a5e9b42e5ed9fdb7e60274524f66bbc5f}{
+{\bfseries MoreAwesomeTemplate} (WContainerWidget $\ast$parent=0)}
+\label{classwittyPlus_1_1MoreAwesomeTemplate_a5e9b42e5ed9fdb7e60274524f66bbc5f}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class T $>$ }\\void \hyperlink{classwittyPlus_1_1MoreAwesomeTemplate_a910a90126797fcfcbcb48a081fbac476}{bindAndCreateWidget} (T $\ast$\&pointer, const std::string \&name, const WString \&labelName=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Replace a template placeholder 'name' with a widget (pointed to by pointer). \item\end{DoxyCompactList}\item 
+{\footnotesize template$<$class T $>$ }\\void \hyperlink{classwittyPlus_1_1MoreAwesomeTemplate_ad083d6afd50d479d70682f048e065d47}{bindAndCreateField} (WLabel $\ast$\&label, T $\ast$\&widget, const std::string prefix)
+\begin{DoxyCompactList}\small\item\em creates a Widget and it's field and binds it into the template. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classwittyPlus_1_1MoreAwesomeTemplate_ad083d6afd50d479d70682f048e065d47}{
+\index{wittyPlus::MoreAwesomeTemplate@{wittyPlus::MoreAwesomeTemplate}!bindAndCreateField@{bindAndCreateField}}
+\index{bindAndCreateField@{bindAndCreateField}!wittyPlus::MoreAwesomeTemplate@{wittyPlus::MoreAwesomeTemplate}}
+\subsubsection[{bindAndCreateField}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ void wittyPlus::MoreAwesomeTemplate::bindAndCreateField (
+\begin{DoxyParamCaption}
+\item[{WLabel $\ast$\&}]{label, }
+\item[{T $\ast$\&}]{widget, }
+\item[{const std::string}]{prefix}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline, protected\mbox{]}}}}
+\label{classwittyPlus_1_1MoreAwesomeTemplate_ad083d6afd50d479d70682f048e065d47}
+
+
+creates a Widget and it's field and binds it into the template. 
+
+The template must be of the format:
+
+$<$message id=\char`\"{}some-\/template\char`\"{}$>$  \$\{name-\/label\} \$\{name-\/field\}  $<$/message$>$ $<$message id=\char`\"{}name-\/label\char`\"{}$>$Name$<$/message$>$ $<$message id=\char`\"{}Name\char`\"{}$>$Name$<$/message$>$
+
+In this case 'name' would be the prefix. The label would be labeled: tr(\char`\"{}name-\/label\char`\"{}) If no tr(\char`\"{}name-\/label\char`\"{}) is found .. it'll use tr(\char`\"{}Name\char`\"{}) (with an uppercase first letter)
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of the widget eg Wt::WLineEdit \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em label} & A pointer to hold the label. \\
+\hline
+{\em widget} & A pointer to hold the widget \\
+\hline
+{\em prefix} & The prefix to do all the naming stuff. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classwittyPlus_1_1MoreAwesomeTemplate_a910a90126797fcfcbcb48a081fbac476}{
+\index{wittyPlus::MoreAwesomeTemplate@{wittyPlus::MoreAwesomeTemplate}!bindAndCreateWidget@{bindAndCreateWidget}}
+\index{bindAndCreateWidget@{bindAndCreateWidget}!wittyPlus::MoreAwesomeTemplate@{wittyPlus::MoreAwesomeTemplate}}
+\subsubsection[{bindAndCreateWidget}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ void wittyPlus::MoreAwesomeTemplate::bindAndCreateWidget (
+\begin{DoxyParamCaption}
+\item[{T $\ast$\&}]{pointer, }
+\item[{const std::string \&}]{name, }
+\item[{const WString \&}]{labelName = {\ttfamily \char`\"{}\char`\"{}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline, protected\mbox{]}}}}
+\label{classwittyPlus_1_1MoreAwesomeTemplate_a910a90126797fcfcbcb48a081fbac476}
+
+
+Replace a template placeholder 'name' with a widget (pointed to by pointer). 
+
+Used in implementation of WTemplateWidget.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of widget to create \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em pointer} & The pointer to the newly created Widget \\
+\hline
+{\em name} & of the place in the template we're replacing \\
+\hline
+{\em labelName} & The name to give a label or button, etc. optional \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+base-\/app/lib/MoreAwesomeTemplate.hpp\end{DoxyCompactItemize}

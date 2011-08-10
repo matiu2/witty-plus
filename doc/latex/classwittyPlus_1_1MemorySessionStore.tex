@@ -1,0 +1,195 @@
+\hypertarget{classwittyPlus_1_1MemorySessionStore}{
+\section{wittyPlus::MemorySessionStore Class Reference}
+\label{classwittyPlus_1_1MemorySessionStore}\index{wittyPlus::MemorySessionStore@{wittyPlus::MemorySessionStore}}
+}
+
+
+Handles logged in users.  
+
+
+
+
+{\ttfamily \#include $<$MemorySessionStore.hpp$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classwittyPlus_1_1MemorySessionStore_a1bd55c95da4992108bab31b376969d33}{
+typedef map$<$ string, \hyperlink{classwittyPlus_1_1Session}{Session} $>$ {\bfseries SessionMap}}
+\label{classwittyPlus_1_1MemorySessionStore_a1bd55c95da4992108bab31b376969d33}
+
+\item 
+\hypertarget{classwittyPlus_1_1MemorySessionStore_afd1fc3f2da74abcccc9fdf47982cb16b}{
+typedef std::pair$<$ string, \hyperlink{classwittyPlus_1_1Session}{Session} $>$ {\bfseries SessionPair}}
+\label{classwittyPlus_1_1MemorySessionStore_afd1fc3f2da74abcccc9fdf47982cb16b}
+
+\item 
+\hypertarget{classwittyPlus_1_1MemorySessionStore_acafdc27ad99d681c9285fe5d6b5e01a5}{
+typedef SessionMap::iterator {\bfseries PSession}}
+\label{classwittyPlus_1_1MemorySessionStore_acafdc27ad99d681c9285fe5d6b5e01a5}
+
+\item 
+\hypertarget{classwittyPlus_1_1MemorySessionStore_aeb970d29986fa7c3715383fa05b91630}{
+typedef shared\_\-mutex {\bfseries StoreMutex}}
+\label{classwittyPlus_1_1MemorySessionStore_aeb970d29986fa7c3715383fa05b91630}
+
+\item 
+\hypertarget{classwittyPlus_1_1MemorySessionStore_a5d3bad88d243a293a6afeb06461f79c4}{
+typedef shared\_\-lock$<$ StoreMutex $>$ {\bfseries ReadOnlyLock}}
+\label{classwittyPlus_1_1MemorySessionStore_a5d3bad88d243a293a6afeb06461f79c4}
+
+\item 
+\hypertarget{classwittyPlus_1_1MemorySessionStore_a18e385d0d6b6d0ba9c081683078885c4}{
+typedef lock\_\-guard$<$ StoreMutex $>$ {\bfseries FullLock}}
+\label{classwittyPlus_1_1MemorySessionStore_a18e385d0d6b6d0ba9c081683078885c4}
+
+\item 
+\hypertarget{classwittyPlus_1_1MemorySessionStore_a1449c32e3baa3600755341d6a4385085}{
+typedef upgrade\_\-lock$<$ StoreMutex $>$ {\bfseries ReadWriteLock}}
+\label{classwittyPlus_1_1MemorySessionStore_a1449c32e3baa3600755341d6a4385085}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classwittyPlus_1_1MemorySessionStore_a6fc2504b7924805fac37fa247f6b1dbd}{
+unsigned int {\bfseries getTimeout} ()}
+\label{classwittyPlus_1_1MemorySessionStore_a6fc2504b7924805fac37fa247f6b1dbd}
+
+\item 
+\hypertarget{classwittyPlus_1_1MemorySessionStore_a1dc4e8ef5c7e22f7680030e06679692a}{
+void \hyperlink{classwittyPlus_1_1MemorySessionStore_a1dc4e8ef5c7e22f7680030e06679692a}{setTimeout} (unsigned int newTimeout)}
+\label{classwittyPlus_1_1MemorySessionStore_a1dc4e8ef5c7e22f7680030e06679692a}
+
+\begin{DoxyCompactList}\small\item\em timeout in secs .. default is 5 mins .. hopefully this is atomic \item\end{DoxyCompactList}\item 
+void \hyperlink{classwittyPlus_1_1MemorySessionStore_a4a1fe8b843bc8adb5509e46eca4ff120}{login} (const string \&username, const string \&cookie)
+\begin{DoxyCompactList}\small\item\em Records that a user has logged in and a new session is started. \item\end{DoxyCompactList}\item 
+void \hyperlink{classwittyPlus_1_1MemorySessionStore_aaf13cd412f361dd9a0f885b0d20233db}{logout} (const string \&cookie)
+\begin{DoxyCompactList}\small\item\em Records that a user has logged in and a new session is started. \item\end{DoxyCompactList}\item 
+string \hyperlink{classwittyPlus_1_1MemorySessionStore_a830959fdfbc95c6b61c13f7597857a15}{username} (const string \&cookie, bool touch=true)
+\begin{DoxyCompactList}\small\item\em Logs a user out. \item\end{DoxyCompactList}\item 
+void \hyperlink{classwittyPlus_1_1MemorySessionStore_a2015628d4b24583ef148ce153cd431fc}{touch} (const string \&cookie)
+\begin{DoxyCompactList}\small\item\em Returns the currently logged in username or an empty string if no-\/one was logged in. \item\end{DoxyCompactList}\item 
+void \hyperlink{classwittyPlus_1_1MemorySessionStore_aea2b4645a9d06add5c79b33b9ac8f21c}{purgeOldSessions} ()
+\begin{DoxyCompactList}\small\item\em Let us know that a lesson hasn't timed out. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classwittyPlus_1_1MemorySessionStore_a1de5bb994db6c612c67f6bb1c5ba7134}{
+static \hyperlink{classwittyPlus_1_1MemorySessionStore}{MemorySessionStore} \& {\bfseries getInstance} ()}
+\label{classwittyPlus_1_1MemorySessionStore_a1de5bb994db6c612c67f6bb1c5ba7134}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classwittyPlus_1_1MemorySessionStore_a7114bae2f81a7c3f3d972cc10b8fb84b}{
+static const unsigned int {\bfseries defaultTimeout} = 1800}
+\label{classwittyPlus_1_1MemorySessionStore_a7114bae2f81a7c3f3d972cc10b8fb84b}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Handles logged in users. All this class provides is a thread safe 'cookie to user' map. It handles timeouts on the server side .. so you prolly wanna make your browser cookies quite long lived. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classwittyPlus_1_1MemorySessionStore_a4a1fe8b843bc8adb5509e46eca4ff120}{
+\index{wittyPlus::MemorySessionStore@{wittyPlus::MemorySessionStore}!login@{login}}
+\index{login@{login}!wittyPlus::MemorySessionStore@{wittyPlus::MemorySessionStore}}
+\subsubsection[{login}]{\setlength{\rightskip}{0pt plus 5cm}void wittyPlus::MemorySessionStore::login (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{username, }
+\item[{const string \&}]{cookie}
+\end{DoxyParamCaption}
+)}}
+\label{classwittyPlus_1_1MemorySessionStore_a4a1fe8b843bc8adb5509e46eca4ff120}
+
+
+Records that a user has logged in and a new session is started. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & the login of the user \\
+\hline
+{\em cookie} & the cookie that we stored on their machine \\
+\hline
+\end{DoxyParams}
+\hypertarget{classwittyPlus_1_1MemorySessionStore_aaf13cd412f361dd9a0f885b0d20233db}{
+\index{wittyPlus::MemorySessionStore@{wittyPlus::MemorySessionStore}!logout@{logout}}
+\index{logout@{logout}!wittyPlus::MemorySessionStore@{wittyPlus::MemorySessionStore}}
+\subsubsection[{logout}]{\setlength{\rightskip}{0pt plus 5cm}void wittyPlus::MemorySessionStore::logout (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{cookie}
+\end{DoxyParamCaption}
+)}}
+\label{classwittyPlus_1_1MemorySessionStore_aaf13cd412f361dd9a0f885b0d20233db}
+
+
+Records that a user has logged in and a new session is started. 
+
+Logs a user out.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cookie} & of the logged in user \\
+\hline
+\end{DoxyParams}
+\hypertarget{classwittyPlus_1_1MemorySessionStore_aea2b4645a9d06add5c79b33b9ac8f21c}{
+\index{wittyPlus::MemorySessionStore@{wittyPlus::MemorySessionStore}!purgeOldSessions@{purgeOldSessions}}
+\index{purgeOldSessions@{purgeOldSessions}!wittyPlus::MemorySessionStore@{wittyPlus::MemorySessionStore}}
+\subsubsection[{purgeOldSessions}]{\setlength{\rightskip}{0pt plus 5cm}void wittyPlus::MemorySessionStore::purgeOldSessions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classwittyPlus_1_1MemorySessionStore_aea2b4645a9d06add5c79b33b9ac8f21c}
+
+
+Let us know that a lesson hasn't timed out. 
+
+Gets the write lock and purges all the old sessions. \hypertarget{classwittyPlus_1_1MemorySessionStore_a2015628d4b24583ef148ce153cd431fc}{
+\index{wittyPlus::MemorySessionStore@{wittyPlus::MemorySessionStore}!touch@{touch}}
+\index{touch@{touch}!wittyPlus::MemorySessionStore@{wittyPlus::MemorySessionStore}}
+\subsubsection[{touch}]{\setlength{\rightskip}{0pt plus 5cm}void wittyPlus::MemorySessionStore::touch (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{cookie}
+\end{DoxyParamCaption}
+)}}
+\label{classwittyPlus_1_1MemorySessionStore_a2015628d4b24583ef148ce153cd431fc}
+
+
+Returns the currently logged in username or an empty string if no-\/one was logged in. 
+
+Resets the server side timeout for this session. \hypertarget{classwittyPlus_1_1MemorySessionStore_a830959fdfbc95c6b61c13f7597857a15}{
+\index{wittyPlus::MemorySessionStore@{wittyPlus::MemorySessionStore}!username@{username}}
+\index{username@{username}!wittyPlus::MemorySessionStore@{wittyPlus::MemorySessionStore}}
+\subsubsection[{username}]{\setlength{\rightskip}{0pt plus 5cm}string wittyPlus::MemorySessionStore::username (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{cookie, }
+\item[{bool}]{touch = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}}
+\label{classwittyPlus_1_1MemorySessionStore_a830959fdfbc95c6b61c13f7597857a15}
+
+
+Logs a user out. 
+
+Returns the username of the currently logged in user or \char`\"{}\char`\"{} if none.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cookie} & the cookie that the client browser gave us \\
+\hline
+{\em touch} & If true, updates the session time out\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Username of the currently logged in user or an empty 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+base-\/app/lib/MemorySessionStore.hpp\item 
+base-\/app/lib/MemorySessionStore.cpp\end{DoxyCompactItemize}

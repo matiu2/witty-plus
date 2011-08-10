@@ -1,0 +1,66 @@
+\hypertarget{classwittyPlus_1_1BaseSessionHandle}{
+\section{wittyPlus::BaseSessionHandle Class Reference}
+\label{classwittyPlus_1_1BaseSessionHandle}\index{wittyPlus::BaseSessionHandle@{wittyPlus::BaseSessionHandle}}
+}
+
+
+Inherits Wt::WObject.
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classwittyPlus_1_1BaseSessionHandle_a6312b94455e0d98fdc4567a2805d73f1}{
+\hyperlink{classwittyPlus_1_1BaseSessionHandle_a6312b94455e0d98fdc4567a2805d73f1}{SessionHandle} (WObject $\ast$parent, dbo::Session \&dbSession, const string \&cookieName)}
+\label{classwittyPlus_1_1BaseSessionHandle_a6312b94455e0d98fdc4567a2805d73f1}
+
+\begin{DoxyCompactList}\small\item\em The name of the cookie we're after .. this is global across the whole application and all threads. \item\end{DoxyCompactList}\item 
+bool \hyperlink{classwittyPlus_1_1BaseSessionHandle_a4311045e6b860faf12792e1ebc4e7aeb}{tryLogin} (const string \&username, const string \&password)
+\begin{DoxyCompactList}\small\item\em Tries to log the user in, creates the session, and sets the session cookie. \item\end{DoxyCompactList}\item 
+\hypertarget{classwittyPlus_1_1BaseSessionHandle_ae55fed00e54fd69d40d492937fd670de}{
+void \hyperlink{classwittyPlus_1_1BaseSessionHandle_ae55fed00e54fd69d40d492937fd670de}{logout} ()}
+\label{classwittyPlus_1_1BaseSessionHandle_ae55fed00e54fd69d40d492937fd670de}
+
+\begin{DoxyCompactList}\small\item\em Logs them out of all sessions. \item\end{DoxyCompactList}\item 
+\hypertarget{classwittyPlus_1_1BaseSessionHandle_af615709773f63fcefb1e724331ed9b03}{
+void \hyperlink{classwittyPlus_1_1BaseSessionHandle_af615709773f63fcefb1e724331ed9b03}{touchSession} ()}
+\label{classwittyPlus_1_1BaseSessionHandle_af615709773f63fcefb1e724331ed9b03}
+
+\begin{DoxyCompactList}\small\item\em Log this user out. \item\end{DoxyCompactList}\item 
+\hypertarget{classwittyPlus_1_1BaseSessionHandle_aa3a64a15d2fbb6c784089536a5177649}{
+bool \hyperlink{classwittyPlus_1_1BaseSessionHandle_aa3a64a15d2fbb6c784089536a5177649}{isLoggedIn} ()}
+\label{classwittyPlus_1_1BaseSessionHandle_aa3a64a15d2fbb6c784089536a5177649}
+
+\begin{DoxyCompactList}\small\item\em Let us know that the user is still here. a session, (doesn't cost much .. just starts the timer if it's not already started) \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classwittyPlus_1_1BaseSessionHandle_a4311045e6b860faf12792e1ebc4e7aeb}{
+\index{wittyPlus::BaseSessionHandle@{wittyPlus::BaseSessionHandle}!tryLogin@{tryLogin}}
+\index{tryLogin@{tryLogin}!wittyPlus::BaseSessionHandle@{wittyPlus::BaseSessionHandle}}
+\subsubsection[{tryLogin}]{\setlength{\rightskip}{0pt plus 5cm}bool wittyPlus::BaseSessionHandle::tryLogin (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{username, }
+\item[{const string \&}]{password}
+\end{DoxyParamCaption}
+)}}
+\label{classwittyPlus_1_1BaseSessionHandle_a4311045e6b860faf12792e1ebc4e7aeb}
+
+
+Tries to log the user in, creates the session, and sets the session cookie. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & \\
+\hline
+{\em password} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if login was successful 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+base-\/app/lib/BaseSessionHandle.hpp\item 
+base-\/app/lib/BaseSessionHandle.cpp\end{DoxyCompactItemize}

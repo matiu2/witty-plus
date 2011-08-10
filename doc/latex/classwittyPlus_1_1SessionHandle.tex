@@ -1,0 +1,142 @@
+\hypertarget{classwittyPlus_1_1SessionHandle}{
+\section{wittyPlus::SessionHandle$<$ SessionStore, User $>$ Class Template Reference}
+\label{classwittyPlus_1_1SessionHandle}\index{wittyPlus::SessionHandle@{wittyPlus::SessionHandle}}
+}
+
+
+A handle to the session of the currently logged in user. This is what you use in your app.  
+
+
+
+
+{\ttfamily \#include $<$SessionHandle.hpp$>$}
+
+
+
+Inherits Wt::WObject.
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classwittyPlus_1_1SessionHandle_aeee5808fe99d7814d08e7becf8df483b}{
+{\bfseries SessionHandle} (WObject $\ast$parent, dbo::Session \&dbSession, const string \&cookieName)}
+\label{classwittyPlus_1_1SessionHandle_aeee5808fe99d7814d08e7becf8df483b}
+
+\item 
+bool \hyperlink{classwittyPlus_1_1SessionHandle_a76faab031151971ad6147b92c97bae3b}{tryLogin} (const string \&username, const string \&password)
+\begin{DoxyCompactList}\small\item\em Tries to log the user in, creates the session, and sets the session cookie. \item\end{DoxyCompactList}\item 
+void \hyperlink{classwittyPlus_1_1SessionHandle_aa007acd765744388e75349b2dcdd3f5d}{logout} ()
+\begin{DoxyCompactList}\small\item\em Logs the user out of all sessions eventually; this session immediately. \item\end{DoxyCompactList}\item 
+void \hyperlink{classwittyPlus_1_1SessionHandle_a3bd4c9d89606f2abf4a5048e876d0c18}{touchSession} ()
+\begin{DoxyCompactList}\small\item\em Let us know that the user is still here. a session, (doesn't cost much .. just starts the timer if it's not already started) \item\end{DoxyCompactList}\item 
+dbo::ptr$<$ User $>$ \hyperlink{classwittyPlus_1_1SessionHandle_a383c9e4f8ed9ec9d6ffcd1613a882938}{user} (bool touchSession)
+\begin{DoxyCompactList}\small\item\em Returns a dbo::ptr to the currently logged in user $\ast$. \item\end{DoxyCompactList}\item 
+\hypertarget{classwittyPlus_1_1SessionHandle_a84695936a436dd197b9674191da956f4}{
+bool {\bfseries isLoggedIn} ()}
+\label{classwittyPlus_1_1SessionHandle_a84695936a436dd197b9674191da956f4}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class SessionStore, class User$>$ class wittyPlus::SessionHandle$<$ SessionStore, User $>$}
+
+A handle to the session of the currently logged in user. This is what you use in your app. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classwittyPlus_1_1SessionHandle_aa007acd765744388e75349b2dcdd3f5d}{
+\index{wittyPlus::SessionHandle@{wittyPlus::SessionHandle}!logout@{logout}}
+\index{logout@{logout}!wittyPlus::SessionHandle@{wittyPlus::SessionHandle}}
+\subsubsection[{logout}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class SessionStore , class User $>$ void {\bf wittyPlus::SessionHandle}$<$ SessionStore, User $>$::logout (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classwittyPlus_1_1SessionHandle_aa007acd765744388e75349b2dcdd3f5d}
+
+
+Logs the user out of all sessions eventually; this session immediately. 
+
+Logs them out of all sessions. \hypertarget{classwittyPlus_1_1SessionHandle_a3bd4c9d89606f2abf4a5048e876d0c18}{
+\index{wittyPlus::SessionHandle@{wittyPlus::SessionHandle}!touchSession@{touchSession}}
+\index{touchSession@{touchSession}!wittyPlus::SessionHandle@{wittyPlus::SessionHandle}}
+\subsubsection[{touchSession}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class SessionStore , class User $>$ void {\bf wittyPlus::SessionHandle}$<$ SessionStore, User $>$::touchSession (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classwittyPlus_1_1SessionHandle_a3bd4c9d89606f2abf4a5048e876d0c18}
+
+
+Let us know that the user is still here. a session, (doesn't cost much .. just starts the timer if it's not already started) 
+
+Call to let us know that the user is still logged in. Doesn't cost much. \hypertarget{classwittyPlus_1_1SessionHandle_a76faab031151971ad6147b92c97bae3b}{
+\index{wittyPlus::SessionHandle@{wittyPlus::SessionHandle}!tryLogin@{tryLogin}}
+\index{tryLogin@{tryLogin}!wittyPlus::SessionHandle@{wittyPlus::SessionHandle}}
+\subsubsection[{tryLogin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class SessionStore , class User $>$ bool {\bf wittyPlus::SessionHandle}$<$ SessionStore, User $>$::tryLogin (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{username, }
+\item[{const string \&}]{password}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classwittyPlus_1_1SessionHandle_a76faab031151971ad6147b92c97bae3b}
+
+
+Tries to log the user in, creates the session, and sets the session cookie. 
+
+\begin{DoxyReturn}{Returns}
+true if login was succesful
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em user} & \\
+\hline
+{\em password} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if login was successful
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em username} & \\
+\hline
+{\em password} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if login was successful 
+\end{DoxyReturn}
+\hypertarget{classwittyPlus_1_1SessionHandle_a383c9e4f8ed9ec9d6ffcd1613a882938}{
+\index{wittyPlus::SessionHandle@{wittyPlus::SessionHandle}!user@{user}}
+\index{user@{user}!wittyPlus::SessionHandle@{wittyPlus::SessionHandle}}
+\subsubsection[{user}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class SessionStore , class User $>$ dbo::ptr$<$ User $>$ {\bf wittyPlus::SessionHandle}$<$ SessionStore, User $>$::user (
+\begin{DoxyParamCaption}
+\item[{bool}]{touchSession}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classwittyPlus_1_1SessionHandle_a383c9e4f8ed9ec9d6ffcd1613a882938}
+
+
+Returns a dbo::ptr to the currently logged in user $\ast$. 
+
+Returns a dbo::ptr to the currently logged in user.
+
+Returns the username of the logged in user, or empty string if no-\/one is logged in.
+
+
+\begin{DoxyParams}{Parameters}
+{\em touchSession} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+base-\/app/lib/SessionHandle.hpp\item 
+base-\/app/lib/BaseSessionHandle.cpp\item 
+base-\/app/lib/SesionHandle.cpp\item 
+base-\/app/lib/SessionHandle.cpp\end{DoxyCompactItemize}
