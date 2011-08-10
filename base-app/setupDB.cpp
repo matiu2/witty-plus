@@ -28,16 +28,14 @@ using namespace my_app;
 using std::cout;
 using std::endl;
 
-// The below string is defined in cmake and the make system
-#define FINAL_CONNECT_STRING " ## DB_CONNECTION_STRING ## "
-
 int main(int , char** ) {
-    dbo::backend::Postgres postgres(FINAL_CONNECT_STRING);
+    dbo::backend::Postgres postgres(CMAKE_DB_CONNECTION_STRING); // CMAKE_DB_CONNECTION_STRING is configured in ccmake
     dbo::Session session;
     session.setConnection(postgres);
     dbo::Transaction transaction(session);
     // Create the schema
     mapModels(session);
+    session.createTables();
     // Fill some nice data
     wittyPlus::UserManager<model::User> users(session);
     users.addUser("admin", "admin");

@@ -112,6 +112,7 @@ public:
     * @return A pointer to the user we found
     */
     dbo::ptr<User> userFromName(const string& username) {
+        dbo::Transaction transaction(_session);
         return _session.find<User>().where("name = ?").bind(username);
     }
 };

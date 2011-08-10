@@ -1,4 +1,14 @@
+body {
+  font-family: times, Times New Roman, times-roman, georgia, serif;
+  font-size: 108%; /* 14pt */
+  letter-spacing: -1px;
+  color: #444;
+}
+
 h1 {
-  font-size: 146.5%;
+  font-family:  'Hoefler Text', Georgia, 'Times New Roman', serif;
+  font-size: 146.5%; /* 19 pt */
+  line-height: 167%; /* 22 pt */
   font-weight: bold;
+  font-variant: small-caps;
 }

@@ -35,21 +35,23 @@ namespace my_app {
 
 const string my_appCookieName = "my_app_cookie";
 
-typedef wittyPlus::BaseApp<model::User, MainWindow> BaseApp;
+typedef wittyPlus::BaseApp<model::User> BaseApp;
 
 class App : public BaseApp {
 public:
     typedef Signal<App*> UserChangedSignal;
     typedef Signal<WString> MessageSignal;
 protected:
-    virtual const string& cookieName() { return my_appCookieName; }
     // Signals
     UserChangedSignal* _userChanged;
     MessageSignal* _statusTextChanged;
+    // Windows
+    MainWindow* _mainWindow;
 public:
     App(const WEnvironment& environment);
     UserChangedSignal* userChanged() { return _userChanged; } /// An event triggered when a user logs in or logs out
     MessageSignal* statusTextChanged() { return _statusTextChanged; } /// An event triggered when the status text (shown on the front page) changes
+    MainWindow* mainWindow() { return _mainWindow; }
 };
 
 WApplication *createApplication(const WEnvironment& env);

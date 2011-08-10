@@ -24,6 +24,7 @@ FILE(COPY messages static-content DESTINATION .)
 option(WTDebug "Use the witty debug libraries ? (wtd.so etc.)" off)
 # Options that we're gonna add
 option(DBO "Use witty DBO" on)
+set(DB_CONNECTION_STRING "host=localhost user=my_app dbname=my_app password=my_app")
 define_property(VARIABLE
                 PROPERTY DB_CONNECTION_STRING
                 BRIEF_DOCS The database connection string to use
@@ -68,5 +69,4 @@ TARGET_LINK_LIBRARIES(${PROJECT_NAME}
 # Just to get started, this program will set up the DB with some basic users
 ADD_EXECUTABLE(setupDB setupDB.cpp lib/UserManager.cpp)
 TARGET_LINK_LIBRARIES(setupDB ${Boost_SYSTEM_LIBRARY} ssl wt wtdbo wtdbopostgres)
-set_property(TARGET setupDB 
-             PROPERTY DEFINE_SYMBOL DB_CONNECTIOON_STRING ${DB_CONNECTION_STRING} )
+set_target_properties(setupDB PROPERTIES COMPILE_DEFINITIONS CMAKE_DB_CONNECTION_STRING="${DB_CONNECTION_STRING}" )

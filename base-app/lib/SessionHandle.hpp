@@ -73,8 +73,15 @@ public:
         WObject(parent), userManager(dbSession), sessions(SessionStore::getInstance()), _cookieName(cookieName) 
     {
         // Check if we're already logged in
-        string username = sessions.username(getCookie(), true); // Touch the session as new app/view is openning for it
-        userCache = userManager.userFromName(username);
+        const string& cookie =  getCookie();
+        if (!cookie.empty()) {
+            string username = sessions.username(getCookie(), true); // Touch the session as new app/view is openning for it
+            if (username.empty())
+                userCache.reset();
+            else
+                userCache = userManager.userFromName(username);
+        }
+
     }
     /// Tries to log the user in, creates the session, and sets the session cookie. @return true if login was succesful
     bool tryLogin(const string& username, const string& password) {

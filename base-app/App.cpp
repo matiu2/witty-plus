@@ -30,7 +30,7 @@ using std::string;
 
 namespace my_app {
 
-App::App(const WEnvironment& environment) : BaseApp(environment, cookieName()) {
+App::App(const WEnvironment& environment) : BaseApp(environment, my_appCookieName) {
     // Load the message bundles
     messageResourceBundle().use(appRoot() + "messages/MainWindow");
     messageResourceBundle().use(appRoot() + "messages/LoginWindow");
@@ -38,6 +38,9 @@ App::App(const WEnvironment& environment) : BaseApp(environment, cookieName()) {
     _userChanged = new UserChangedSignal(this);
     _statusTextChanged = new MessageSignal(this);
     // Set up the UI
+    useStyleSheet(resourcesUrl() + "/themes/" + cssTheme() + "/forms.css");
+    useStyleSheet(resourcesUrl() + "/themes/" + cssTheme() + "/fonts.css");
+    useStyleSheet(resourcesUrl() + "/themes/" + cssTheme() + "/controlPanel.css");
     setTitle(WString::tr("main-title"));
     _mainWindow = new MainWindow(root());
     setBodyClass("yui-skin-sam");

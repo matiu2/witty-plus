@@ -4,7 +4,7 @@
   <message id="main-template">
     <div id="doc2" class="yui-t6">
       <div id="hd">
-        <h1>VidaNueva</h1>
+        <h1>my_app</h1>
         ${status-text}
       </div>
       <div id="bd">
@@ -23,5 +23,5 @@
       <p>Footer</p>
     </div>
   </message>
-  <message id="main-title">Welcome to VidaNueva</message>
+  <message id="main-title">Welcome to my_app</message>
 </messages>
