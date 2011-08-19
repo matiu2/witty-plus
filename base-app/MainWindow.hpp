@@ -20,22 +20,41 @@
 #define MAINWINDOW_HPP
 
 #include "lib/MoreAwesomeTemplate.hpp"
+#include "model/User.hpp"
+#include "LoginWindow.hpp"
+#include "App.hpp"
 
 namespace Wt {
     class WContainerWidget;
     class WString;
+    class WWidget;
+    class WAnchor;
 }
 
 using Wt::WTemplate;
 using Wt::WContainerWidget;
 using Wt::WString;
+using Wt::WWidget;
+using Wt::WAnchor;
+using my_app::model::User;
 
 namespace my_app {
 
 class MainWindow : public wittyPlus::MoreAwesomeTemplate {
+protected:
+    // Fields
+    WAnchor* _loginLink;
+    // Signal handlers
+    void handleUserChanged(dbo::ptr<User> oldUser,  dbo::ptr<User> newUser);
+    // URL Handlers
+    void home() { bindString("content", "PUT YOUR DEFAULT BODY TEXT OR WIDDGETS HERE"); }
+    void logout(); /// Called when user navigates to /logout
+    void login() { bindWidget("content", new LoginWindow()); }
 public:
     MainWindow(WContainerWidget* parent=0);
     void setStatusText(const WString& newMessage) { bindString("status-text", newMessage); }
+    void setBody(const WString& text="") { bindString("content", text); }
+    void setBody(WWidget* widget) { bindWidget("content", widget); }
 };
 
 } // namespace my_app

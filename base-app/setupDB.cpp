@@ -18,8 +18,8 @@
 
 #include <Wt/Dbo/Dbo>
 #include <Wt/Dbo/backend/Postgres>
+#include "lib/sha.hpp"
 #include "model/User.hpp"
-#include "lib/UserManager.hpp"
 #include "db.hpp"
 #include <iostream>
 
@@ -27,6 +27,10 @@ namespace dbo = Wt::Dbo;
 using namespace my_app;
 using std::cout;
 using std::endl;
+using my_app::model::User;
+
+const std::string ADMIN_USERNAME = "admin";
+const std::string ADMIN_PASSWORD = "admin";
 
 int main(int , char** ) {
     dbo::backend::Postgres postgres(CMAKE_DB_CONNECTION_STRING); // CMAKE_DB_CONNECTION_STRING is configured in ccmake
@@ -37,7 +41,15 @@ int main(int , char** ) {
     mapModels(session);
     session.createTables();
     // Fill some nice data
-    wittyPlus::UserManager<model::User> users(session);
-    users.addUser("admin", "admin");
+    // Add a user
+    // Make an SHA hash of the password we are saving to the DB
+    dbo::ptr<User> pUser = session.find<User>().where("name = ?").bind(ADMIN_USERNAME);
+    bool isNew = !pUser;
+    if (isNew)
+        pUser = new User();
+    pUser.modify()->setName(ADMIN_USERNAME);
+    pUser.modify()->setPasswordHash(wittyPlus::sha1(ADMIN_PASSWORD));
+    if (isNew)
+        session.add(pUser);
     transaction.commit();
 }

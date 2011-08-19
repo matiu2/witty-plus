@@ -21,9 +21,11 @@
 
 #include <Wt/Dbo/Dbo>
 #include <string>
+#include "../lib/sha.hpp"
 
 namespace dbo = Wt::Dbo;
 using std::string;
+using wittyPlus::StdSHAValue;
 
 namespace my_app {
 namespace model {
@@ -32,15 +34,16 @@ class User {
 private:
     // Fields
     string _name;
-    string _passwordHash;
+    StdSHAValue _passwordHash;
 public:
     // Structors
-    User(const string& name="", const string& passwordHash="") : _name(name), _passwordHash(passwordHash) {};
+    User(const string& name="") : _name(name), _passwordHash(20, 0) {};
+    User(const string& name, const StdSHAValue& passwordHash) : _name(name), _passwordHash(passwordHash) {};
     // Accessors
     const string& name() const { return _name; }
     void setName(const string& newName) { _name = newName; }
-    const string& passwordHash() const { return _passwordHash; }
-    void setPasswordHash(const string& newHash) { _passwordHash = newHash; }
+    const StdSHAValue& passwordHash() const { return _passwordHash; }
+    void setPasswordHash(const StdSHAValue& newHash) { _passwordHash = newHash; }
     // DBO Support
     template<class Action>
     void persist(Action& a) {

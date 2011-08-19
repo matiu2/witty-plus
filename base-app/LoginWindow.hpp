@@ -52,7 +52,7 @@ protected:
     void handleOKHit();
     void handleCancelHit();
 public:
-    LoginWindow(WContainerWidget* parent);
+    LoginWindow(WContainerWidget* parent=0);
     void setFocus() { _usernameEdit->setFocus(); }
 };
 

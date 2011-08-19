@@ -23,6 +23,13 @@
 #include "SessionHandle.hpp"
 #include "MemorySessionStore.hpp"
 
+namespace Wt {
+    class WString;
+} // namespace Wt
+
+using Wt::WString;
+
+
 namespace wittyPlus {
 
 template <class User>

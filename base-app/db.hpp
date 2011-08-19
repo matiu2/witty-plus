@@ -32,7 +32,7 @@ namespace my_app {
 * @param session the already connected session that'll do the mapping
 */
 void mapModels(dbo::Session& session) {
-    session.mapClass<model::User>("user");
+    session.mapClass<model::User>("users");
 }
 
 } // namespace my_app {

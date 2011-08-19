@@ -24,4 +24,9 @@
     </div>
   </message>
   <message id="main-title">Welcome to my_app</message>
+  <message id="you-are-logged-out">You are logged out</message>
+  <message id="you-are-logged-in">You are logged in</message>
+  <message id="dude-you-cant-just-">Dude, you can't just type /logged-in in the browser bar and magically log in.</message>
+  <message id="welcome-1">Welcome {1}</message>
+  <message id="goodbye">Goodbye</message>
 </messages>

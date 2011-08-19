@@ -16,5 +16,6 @@
   <message id="password-label">Password:</message>
   <message id="Login">Login</message>
   <message id="Login Cancelled">Login Cancelled</message>
+  <message id="Cancel">Cancel</message>
 </messages>
 

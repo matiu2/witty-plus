@@ -25,11 +25,15 @@
 #include <Wt/WLogger>
 #include <Wt/WPushButton>
 #include <Wt/WContainerWidget>
+#include <Wt/Dbo/ptr>
 #include <string>
 #include "App.hpp"
+#include "model/User.hpp"
 
 using Wt::WString;
 using std::string;
+namespace dbo = Wt::Dbo;
+using my_app::model::User;
 
 namespace my_app {
 
@@ -57,23 +61,26 @@ LoginWindow::LoginWindow(WContainerWidget* parent) : MoreAwesomeTemplate(parent)
 * @brief Called when the user hits OK to login
 */
 void LoginWindow::handleOKHit() {
-    App* app = getApp();
+    App* app = my_app::app();
     // See if we can log them in
     string username = _usernameEdit->text().toUTF8();
     string password = _passwordEdit->text().toUTF8();
+    dbo::ptr<User> oldUser = app->userSession()->user();
+    dbo::ptr<User> newUser;
     if (app->userSession()->tryLogin(username, password)) {
         // Let the application know
         app->log("SECURITY") << username << " logged in";
-        app->userChanged()->emit(app);
+        newUser = app->userSession()->user();
     } else {
-        app->statusTextChanged()->emit(tr("Wrong username or password"));
         app->log("SECURITY") << username << " failed log in";
+        app->statusTextChanged()->emit(tr("Wrong username or password"));
     }
+    if (oldUser != newUser)
+        app->userChanged()->emit(oldUser, newUser);
 }
 
 void LoginWindow::handleCancelHit() {
-    App* app = getApp();
-    app->mainWindow()->setStatusText(tr("Login Cancelled"));
+    app()->statusTextChanged()->emit(tr("Login Cancelled"));
 }
 
 
