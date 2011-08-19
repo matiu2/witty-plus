@@ -1,9 +1,9 @@
 /*
  * =====================================================================================
  *
- *       Filename:  urls.hpp
+ *       Filename:  URLs.hpp
  *
- *    Description:  A nice place too keep all the urls
+ *    Description:  A map between a url and a signal to run when it's navigated to
  *
  *        Version:  1.0
  *        Created:  10/08/11 22:10:08
