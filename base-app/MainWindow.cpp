@@ -70,5 +70,12 @@ void MainWindow::handleUserChanged(dbo::ptr<User>, dbo::ptr<User> newUser) {
         app()->statusTextChanged()->emit(tr("goodbye"));
     }
 }
+    
+void MainWindow::toggleLoginLink(const string &url) {
+    if (url == "/login")
+        _loginLink->hide();
+    else
+        _loginLink->show();
+}
 
 } // namespace my_app
