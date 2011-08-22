@@ -74,7 +74,7 @@ void LoginWindow::handleOKHit() {
         newUser = app->userSession()->user();
     } else {
         app->log("SECURITY") << username << " failed log in";
-        app->statusTextChanged()->emit(tr("Wrong username or password"));
+        app->statusTextChanged()->emit(tr("invalid-login"));
     }
     if (oldUser != newUser)
         app->userChanged()->emit(oldUser, newUser);
