@@ -46,6 +46,7 @@ protected:
     WAnchor* _loginLink;
     // Signal handlers
     void handleUserChanged(dbo::ptr<User> oldUser,  dbo::ptr<User> newUser);
+    void toggleLoginLink(const string& url);
     // URL Handlers
     void home() { bindString("content", "PUT YOUR DEFAULT BODY TEXT OR WIDDGETS HERE"); }
     void logout(); /// Called when user navigates to /logout

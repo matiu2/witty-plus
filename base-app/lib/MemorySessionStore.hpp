@@ -71,7 +71,7 @@ public:
     static const unsigned int defaultTimeout;
     typedef map<string, Session > SessionMap;
     typedef std::pair<string, Session > SessionPair;
-    typedef typename SessionMap::iterator PSession;
+    typedef SessionMap::iterator PSession;
     typedef shared_mutex StoreMutex;
     typedef shared_lock<StoreMutex> ReadOnlyLock;
     typedef lock_guard<StoreMutex> FullLock;

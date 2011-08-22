@@ -15,11 +15,9 @@ SET(EXE_NAME ${PROJECT_NAME})
 option(WTDebug "Use the witty debug libraries ? (wtd.so etc.)" off)
 # Options that we're gonna add
 option(DBO "Use witty DBO" on)
-set(DB_CONNECTION_STRING "host=localhost user=my_app dbname=my_app password=my_app")
-define_property(VARIABLE
-                PROPERTY DB_CONNECTION_STRING
-                BRIEF_DOCS The database connection string to use
-                FULL_DOCS For postgres check out http://www.postgresql.org/docs/8.1/static/libpq.html)
+#set(DB_CONNECTION_STRING host=localhost user=my_app dbname=my_app password=my_app cache string "http://www.postgresql.org/docs/8.1/static/libpq.html")
+set( DB_CONNECTION_STRING "host=localhost user=my_app dbname=my_app password=my_app" CACHE string "DB Connection string")
+message("DB Connection string is: ${DB_CONNECTION_STRING}")
 option(UserSessions "Use long term user logon sessions, (requires dbo)" on)
 
 # Configuration and script files
@@ -44,14 +42,17 @@ else()
     find_library(wtdbopostgres wtdbopostgres)
 endif()
 
-find_library(ssl ssl) # open ssl for the sha1 for the passwords
+set(CMAKE_INCLUDE_DIRECTORIES_BEFORE on)
+
+find_package(OpenSSL 1.0.0 REQUIRED)
+include_directories(BEFORE ${OPENSSL_INCLUDE_DIR})
 
 # Boost
 set(Boost_USE_STATIC_LIBS OFF)
 set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME OFF)
-find_package(Boost 1.42.0 REQUIRED COMPONENTS system program_options signals date_time filesystem regex)
-include_directories(BEFORE ${Boost_INCLUDE_DIRS})
+find_package(Boost 1.42.0 REQUIRED COMPONENTS system program_options signals date_time filesystem regex thread)
+include_directories(BEFORE SYSTEM ${Boost_INCLUDE_DIR})
 
 set(mainFiles main.cpp  lib/MemorySessionStore.cpp  lib/BaseSessionHandle.cpp App.cpp MainWindow.cpp LoginWindow.cpp)
 
@@ -61,11 +62,12 @@ add_subdirectory(lib)
 ADD_EXECUTABLE(${PROJECT_NAME} ${mainFiles})
 
 TARGET_LINK_LIBRARIES(${PROJECT_NAME}
+    ${Boost_THREAD_LIBRARY} 
     ${Boost_SYSTEM_LIBRARY} ${Boost_PROGRAM_OPTIONS_LIBRARY} ${Boost_SIGNALS_LIBRARY}
     ${Boost_DATE_TIME_LIBRARY} ${Boost_FILESYSTEM_LIBRARY} ${Boost_REGEX_LIBRARY}
-    ssl wt wtdbo wtdbopostgres ${wthttp} )
+    ${OPENSSL_LIBRARIES} ${wt} ${wtdbo} ${wtdbopostgres} ${wthttp} )
 
 # Just to get started, this program will set up the DB with some basic users
 ADD_EXECUTABLE(setupDB setupDB.cpp)
-TARGET_LINK_LIBRARIES(setupDB ${Boost_SYSTEM_LIBRARY} ssl wt wtdbo wtdbopostgres)
+TARGET_LINK_LIBRARIES(setupDB ${Boost_SYSTEM_LIBRARY} ${OPENSSL_LIBRARIES} ${wt} ${wtdbo} ${wtdbopostgres})
 set_target_properties(setupDB PROPERTIES COMPILE_DEFINITIONS CMAKE_DB_CONNECTION_STRING="${DB_CONNECTION_STRING}" )

@@ -41,7 +41,7 @@ public:
         return result;
     }
     void run(const string& url) {
-        typename URLMap::iterator found = urlMap.find(url);
+        URLMap::iterator found = urlMap.find(url);
         if (found != urlMap.end())
             found->second->emit();
     }
