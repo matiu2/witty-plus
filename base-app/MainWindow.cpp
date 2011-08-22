@@ -43,6 +43,7 @@ MainWindow::MainWindow(WContainerWidget* parent) : wittyPlus::MoreAwesomeTemplat
     // Look out for people logging in and out
     app->userChanged()->connect(this, &MainWindow::handleUserChanged);
     // Fire one off as user may have navigated straight here
+    app->internalPathChanged().connect(this, &MainWindow::toggleLoginLink); 
     app->internalPathChanged().emit(app->internalPath());
 }
 
