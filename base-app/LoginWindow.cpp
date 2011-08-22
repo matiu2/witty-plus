@@ -42,6 +42,7 @@ LoginWindow::LoginWindow(WContainerWidget* parent) : MoreAwesomeTemplate(parent)
     addStyleClass("yui-gd dialog form"); // 1/3 + 2/3 style
     // User Field
     bindAndCreateField(_usernameLabel, _usernameEdit, "username");
+    _usernameEdit->setFocus();
     // Password Field
     bindAndCreateField(_passwordLabel, _passwordEdit, "password");
     _passwordEdit->setEchoMode(WLineEdit::Password);
