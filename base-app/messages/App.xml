@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<messages>
+  <!-- Main Window Messages -->
+  <message id="access-denied">Access denied</message>
+</messages>
+

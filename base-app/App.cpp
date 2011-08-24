@@ -20,6 +20,7 @@
 #include "MainWindow.hpp"
 #include "model/User.hpp"
 #include "db.hpp"
+#include "url2action.hpp"
 
 #include <Wt/WString>
 
@@ -28,6 +29,7 @@ namespace Wt {
 }
 
 using Wt::WEnvironment;
+using Wt::WString;
 using std::string;
 
 namespace my_app {
@@ -47,8 +49,9 @@ App::App(const WEnvironment& environment) : BaseApp(environment, my_appCookieNam
     _userChanged = new UserChangedSignal(this);
     _statusTextChanged = new MessageSignal(this);
     // Set up the general URL handling
-    //internalPathChanged().connect(&_urls, &URLs::run);
-    internalPathChanged().connect(this, &App::urlChanged);
+    _url2ActionMapper = new URL2Action(this);
+    internalPathChanged().connect(&_urls, &URLs::run);
+    _urls[urls::adminUsers]->connect(this, &App::adminUsers);
     // Set up the UI
     useStyleSheet(resourcesUrl() + "/themes/" + cssTheme() + "/forms.css");
     useStyleSheet(resourcesUrl() + "/themes/" + cssTheme() + "/fonts.css");
@@ -57,9 +60,19 @@ App::App(const WEnvironment& environment) : BaseApp(environment, my_appCookieNam
     _mainWindow = new MainWindow(root());
     _statusTextChanged->connect(_mainWindow, &MainWindow::setStatusText);
     setBodyClass("yui-skin-sam");
-    // Trigger any path sensetive stuff
-    setInternalPath(internalPath(), true);
+    // Fire one off as user may have navigated straight here
+    app()->internalPathChanged().emit(app()->internalPath());
 }
+
+/// Called when we want to administrate our list of users
+void App::adminUsers() {
+    // Check if we have the rights
+    dbo::ptr<User> user = userSession()->user();
+    if (!user) {
+        go(urls::home);
+        statusTextChanged()->emit(WString::tr("access-denied"));
+    }
+};
 
 WApplication *createApplication(const WEnvironment& env) { return new App(env); }
 

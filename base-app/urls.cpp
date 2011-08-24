@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  urls.hpp
+ *       Filename:  urls.cpp
  *
- *    Description:  A nice place too keep all the urls
+ *    Description:  Stores the value of the url constants
  *
  *        Version:  1.0
- *        Created:  10/08/11 22:10:08
+ *        Created:  08/23/2011 18:04:50
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -16,19 +16,16 @@
  * =====================================================================================
  */
 
-#ifndef URLS_HPP
-#define URLS_HPP
+#include "urls.hpp"
 
 namespace my_app {
 
 /// Consts so we don't accidentally change a url somewhere
 namespace urls {
-    extern const char* home;
-    extern const char* login;
-    extern const char* logout;
-    extern const char* adminUsers;
+    const char* home = "/";
+    const char* login = "login";
+    const char* logout = "logout";
+    const char* adminUsers = "admin/users";
 } // namespace urls
 
 } // namespace my_app
-
-#endif //  URLS_HPP

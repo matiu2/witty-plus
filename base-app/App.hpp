@@ -21,8 +21,6 @@
 
 #include <iostream>
 #include <Wt/WApplication>
-#include <Wt/WSignal>
-#include <Wt/Dbo/Dbo>
 #include <Wt/Dbo/backend/Postgres>
 #include "lib/SessionHandle.hpp"
 #include "lib/MemorySessionStore.hpp"
@@ -39,6 +37,7 @@ namespace dbo = Wt::Dbo;
 namespace my_app {
 
 class MainWindow;
+class URL2Action;
 
 const string my_appCookieName = "my_app_cookie";
 
@@ -50,23 +49,25 @@ public:
     typedef Signal<> URLChangedSignal;
     typedef Signal<WString> MessageSignal;
 protected:
-    URLs _urls; /// A map of a url to an action to perform
+    URLs _urls; /// Allows us to connect urls to actions
+    URL2Action* _url2ActionMapper; /// Handles turning urls into actions
     dbo::backend::Postgres postgres;
     // Signals
     UserChangedSignal* _userChanged;
     MessageSignal* _statusTextChanged;
     // Windows
     MainWindow* _mainWindow;
+    // Methods
+    void adminUsers();
 public:
     App(const WEnvironment& environment);
     UserChangedSignal* userChanged() { return _userChanged; } /// An event triggered when a user logs in or logs out
     MessageSignal* statusTextChanged() { return _statusTextChanged; } /// An event triggered when the status text (shown on the front page) changes
     MainWindow* mainWindow() { return _mainWindow; }
+    /// Use to be alerted when a certain url is hit. eg. url("login")->connect(handleLogin);
     URLChangedSignal* url(const string& url) { return _urls[url]; }
-    void urlChanged(const string& newUrl) {
-        std::cout << newUrl << std::endl;
-        _urls.run(newUrl);
-    }
+    /// Use to send the user somewhere inside the app
+    void go(const string& newUrl) { internalPathChanged().emit(newUrl); }
 };
 
 WApplication *createApplication(const WEnvironment& env);

@@ -48,12 +48,20 @@ protected:
     * @param name of the place in the template we're replacing
     * @param labelName The name to give a label or button, etc. optional
     */
-    template <class T> void bindAndCreateWidget(T*& pointer, const std::string& name, const WString& labelName="") {
-        if (labelName.empty()) {
-            bindWidget(name,  pointer = new T());
-        } else {
-            bindWidget(name,  pointer = new T(labelName));
-        }
+    template <class T> void bindAndCreateWidget(T*& pointer, const std::string& name, const WString& labelName) {
+        bindWidget(name,  pointer = new T(labelName));
+    }
+    /**
+    * @brief Replace a template placeholder 'name' with a widget (pointed to by pointer).
+    *
+    * Used in implementation of WTemplateWidget.
+    *
+    * @tparam T The type of widget to create
+    * @param pointer The pointer to the newly created Widget
+    * @param name of the place in the template we're replacing
+    */
+    template <class T> void bindAndCreateWidget(T*& pointer, const std::string& name) {
+        bindWidget(name,  pointer = new T());
     }
 
     /**

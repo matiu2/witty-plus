@@ -47,10 +47,6 @@ protected:
     // Signal handlers
     void handleUserChanged(dbo::ptr<User> oldUser,  dbo::ptr<User> newUser);
     void toggleLoginLink(const string& url);
-    // URL Handlers
-    void home() { bindString("content", "PUT YOUR DEFAULT BODY TEXT OR WIDDGETS HERE"); }
-    void logout(); /// Called when user navigates to /logout
-    void login() { bindWidget("content", new LoginWindow()); }
 public:
     MainWindow(WContainerWidget* parent=0);
     void setStatusText(const WString& newMessage) { bindString("status-text", newMessage); }

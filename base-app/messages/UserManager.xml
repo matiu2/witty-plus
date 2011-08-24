@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<messages>
+  <!-- User Manager Interface -->
+  <message id="user-manager-template">
+      <div class="yui-u first">
+          ${listUsers}
+      </div>
+      <div class="yui-u yui-g">
+        <div class="yui-u first">${name-label}</div>
+        <div class="yui-u">${name-field}</div>
+        <div class="yui-u first">${new-password-label}</div>
+        <div class="yui-u">${new-password-field}</div>
+        <div class="yui-u first">${new-password2-label}</div>
+        <div class="yui-u">${new-password2-field}</div>
+        <div>${btn-bar}</div>
+      </div>
+  </message>
+  <message id="listUsers-label">Users:</message>
+  <message id="name-label">Name:</message>
+  <message id="new-password-label">New Password:</message>
+  <message id="new-password2-label">Repeat Password:</message>
+</messages>
+

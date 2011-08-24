@@ -35,27 +35,9 @@ MainWindow::MainWindow(WContainerWidget* parent) : wittyPlus::MoreAwesomeTemplat
         _loginLink = new WAnchor(urls::login, tr("Login"));
     }
     bindWidget("controls", _loginLink); // Put more controls in a div if you like
-    // Hook up all the urls
-    App* app = my_app::app();
-    app->url("")->connect(this, &MainWindow::home);
-    app->url(urls::login)->connect(this, &MainWindow::login);
-    app->url(urls::logout)->connect(this, &MainWindow::logout);
     // Look out for people logging in and out
-    app->userChanged()->connect(this, &MainWindow::handleUserChanged);
-    // Fire one off as user may have navigated straight here
-    app->internalPathChanged().connect(this, &MainWindow::toggleLoginLink); 
-    app->internalPathChanged().emit(app->internalPath());
-}
-
-void MainWindow::logout() {
-    App* app = my_app::app();
-    dbo::ptr<User> oldUser = app->userSession()->user();
-    app->userSession()->logout();
-    dbo::ptr<User> newUser = app->userSession()->user();
-    if (oldUser != newUser)
-        app->userChanged()->emit(oldUser, newUser);
-    app->redirect("/");
-    app->statusTextChanged()->emit(tr("you-are-logged-out"));
+    app()->userChanged()->connect(this, &MainWindow::handleUserChanged);
+    app()->internalPathChanged().connect(this, &MainWindow::toggleLoginLink); 
 }
 
 void MainWindow::handleUserChanged(dbo::ptr<User>, dbo::ptr<User> newUser) {
