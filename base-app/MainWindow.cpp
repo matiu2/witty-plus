@@ -17,9 +17,9 @@
  */
 
 #include "MainWindow.hpp"
-#include "urls.hpp"
 #include "LoginWindow.hpp"
 #include "App.hpp"
+#include "urls.hpp"
 #include <Wt/WAnchor>
 
 namespace my_app {

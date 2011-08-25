@@ -50,8 +50,6 @@ App::App(const WEnvironment& environment) : BaseApp(environment, my_appCookieNam
     _statusTextChanged = new MessageSignal(this);
     // Set up the general URL handling
     _url2ActionMapper = new URL2Action(this);
-    internalPathChanged().connect(&_urls, &URLs::run);
-    _urls[urls::adminUsers]->connect(this, &App::adminUsers);
     // Set up the UI
     useStyleSheet(resourcesUrl() + "/themes/" + cssTheme() + "/forms.css");
     useStyleSheet(resourcesUrl() + "/themes/" + cssTheme() + "/fonts.css");

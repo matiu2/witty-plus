@@ -22,14 +22,17 @@
 #include "urls.hpp"
 #include "App.hpp"
 #include "UserManager.hpp"
+#include "lib/URLs.hpp"
 #include "Wt/WString"
 
 using Wt::WString;
+using wittyPlus::URLs;
 
 namespace my_app {
 
 class URL2Action : public WObject {
 protected:
+    URLs _urls; /// Allows us to connect urls to actions
     App* app;
     // Utility methods
     bool isLoggedIn() { return app->userSession()->user(); }
@@ -42,11 +45,12 @@ protected:
     }
 public:
     URL2Action(App* app) : WObject(app), app(app) {
+        app->internalPathChanged().connect(&_urls, &URLs::run);
         // Hook up all the urls
-        app->url("")->connect(this, &URL2Action::home);
-        app->url(urls::login)->connect(this, &URL2Action::login);
-        app->url(urls::logout)->connect(this, &URL2Action::logout);
-        app->url(urls::adminUsers)->connect(this, &URL2Action::adminUsers);
+        _urls[""].connect(this, &URL2Action::home);
+        _urls[urls::login].connect(this, &URL2Action::login);
+        _urls[urls::logout].connect(this, &URL2Action::logout);
+        _urls[urls::adminUsers].connect(this, &URL2Action::adminUsers);
     }
     // URL Handlers
     void home() { app->mainWindow()->bindString("content", "PUT YOUR DEFAULT BODY TEXT OR WIDDGETS HERE"); }

@@ -33,12 +33,12 @@ private:
     URLMap urlMap;
 public:
     URLs(WObject* parent=0) : WObject(parent) {}
-    URLSignal* operator[](const string& url) { 
+    URLSignal& operator[](const string& url) { 
         URLSignal*& result = urlMap["/" + url];
         if (result == 0) {
             result = new URLSignal(this);
         }
-        return result;
+        return *result;
     }
     void run(const string& url) {
         URLMap::iterator found = urlMap.find(url);
