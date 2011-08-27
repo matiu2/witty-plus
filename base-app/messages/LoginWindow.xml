@@ -15,7 +15,7 @@
   <message id="username-label">Username:</message>
   <message id="password-label">Password:</message>
   <message id="Login">Login</message>
-  <message id="Logout">Login</message>
+  <message id="Logout">Logout</message>
   <message id="invalid-login">Wrong username or password</message>
   <message id="Login Cancelled">Login Cancelled</message>
   <message id="Cancel">Cancel</message>

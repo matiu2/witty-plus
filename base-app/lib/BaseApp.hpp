@@ -42,17 +42,23 @@ protected:
     dbo::Session _dbSession;
     const string& _cookieName;
 public:
-    BaseApp(const Wt::WEnvironment& environment, const string& cookieName) : Wt::WApplication(environment), _cookieName(cookieName) {
+    BaseApp(const Wt::WEnvironment& environment, const string& cookieName) :
+        Wt::WApplication(environment), _userSession(0), _dbSession(), _cookieName(cookieName) {
         // Load the message bundles
         messageResourceBundle().use(appRoot() + "messages/LoginWindow");
         // Set up the UI
         setTitle(WString::tr("main-title"));
-        _userSession = new UserSession(this, dbSession(), cookieName);
         setBodyClass("yui-skin-sam");
     }
     dbo::Session& dbSession() { return _dbSession; }
     const string& cookieName() { return _cookieName; }
-    UserSession* userSession() { return _userSession; }
+    UserSession* userSession() {
+        // Create on access .. needs to be created after User model class is mapped, which 
+        // usually happens after BaseApp constructor
+        if (_userSession == 0)
+            _userSession = new UserSession(this, dbSession(), cookieName());
+        return _userSession;
+    }
 };
 
 

@@ -22,7 +22,9 @@
 #include "db.hpp"
 #include "url2action.hpp"
 
+#include <stdexcept>
 #include <Wt/WString>
+#include <Wt/WLogger>
 
 namespace Wt {
     class WEnvironment;
@@ -40,8 +42,10 @@ App::App(const WEnvironment& environment) : BaseApp(environment, my_appCookieNam
     readConfigurationProperty("DB", postgresConnectionString);
     postgres.connect(postgresConnectionString);
     dbSession().setConnection(postgres);
+    log("notice") << "Mapping classes";
     mapModels(dbSession());
     // Load the message bundles
+    messageResourceBundle().use(appRoot() + "messages/App");
     messageResourceBundle().use(appRoot() + "messages/MainWindow");
     messageResourceBundle().use(appRoot() + "messages/LoginWindow");
     messageResourceBundle().use(appRoot() + "messages/ButtonBar");
@@ -59,7 +63,7 @@ App::App(const WEnvironment& environment) : BaseApp(environment, my_appCookieNam
     _statusTextChanged->connect(_mainWindow, &MainWindow::setStatusText);
     setBodyClass("yui-skin-sam");
     // Fire one off as user may have navigated straight here
-    app()->internalPathChanged().emit(app()->internalPath());
+    internalPathChanged().emit(app()->internalPath());
 }
 
 /// Called when we want to administrate our list of users
@@ -70,7 +74,19 @@ void App::adminUsers() {
         go(urls::home);
         statusTextChanged()->emit(WString::tr("access-denied"));
     }
-};
+}
+
+void App::notify(const WEvent& event) {
+    // Grab resources for during request handling
+    try {
+        WApplication::notify(event);
+    } catch (std::logic_error& e) {
+        // handle this exception in a central place
+        log("error") << "Uncaught Exception: " << e.what();
+        throw (e);
+    }
+ }
+
 
 WApplication *createApplication(const WEnvironment& env) { return new App(env); }
 

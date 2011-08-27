@@ -27,9 +27,14 @@
 #include "model/User.hpp"
 #include "lib/BaseApp.hpp"
 
+namespace Wt {
+    class WEvent;
+}
+
 using Wt::WApplication;
 using Wt::WEnvironment;
 using Wt::Signal;
+using Wt::WEvent;
 namespace dbo = Wt::Dbo;
 
 namespace my_app {
@@ -56,13 +61,15 @@ protected:
     MainWindow* _mainWindow;
     // Methods
     void adminUsers();
+    void notify(const WEvent& event);
 public:
     App(const WEnvironment& environment);
     UserChangedSignal* userChanged() { return _userChanged; } /// An event triggered when a user logs in or logs out
     MessageSignal* statusTextChanged() { return _statusTextChanged; } /// An event triggered when the status text (shown on the front page) changes
     MainWindow* mainWindow() { return _mainWindow; }
     /// Use to send the user somewhere inside the app
-    void go(const string& newUrl) { internalPathChanged().emit(newUrl); }
+    void go(const string& newUrl) { setInternalPath(newUrl, true); }
+    void goBack() { doJavaScript("history.go(-1)"); } // TODO: need to test if this fires the internalPathChanged event
 };
 
 WApplication *createApplication(const WEnvironment& env);

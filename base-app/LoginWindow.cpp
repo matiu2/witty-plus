@@ -56,6 +56,8 @@ LoginWindow::LoginWindow(WContainerWidget* parent) : MoreAwesomeTemplate(parent)
     // These do reject
     _usernameEdit->escapePressed().connect(this, &LoginWindow::handleCancelHit);
     _passwordEdit->escapePressed().connect(this, &LoginWindow::handleCancelHit);
+    // Delete ourselves later
+    app()->internalPathChanged().connect(this, &LoginWindow::deleteSelf);
 }
 
 /**
@@ -76,13 +78,15 @@ void LoginWindow::handleOKHit() {
         app->log("SECURITY") << username << " failed log in";
         app->statusTextChanged()->emit(tr("invalid-login"));
     }
-    if (oldUser != newUser)
+    if (oldUser != newUser) {
         app->userChanged()->emit(oldUser, newUser);
+        app->goBack(); // Go back to what we were doing (but now with different set of powerz)
+    }
 }
 
 void LoginWindow::handleCancelHit() {
     app()->statusTextChanged()->emit(tr("Login Cancelled"));
+    app()->goBack();
 }
-
 
 } // namespace my_app

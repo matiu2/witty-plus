@@ -98,8 +98,11 @@ public:
             string username = _userSessionStore.username(getCookie(), true); // Touch the session as new app/view is openning for it
             if (username.empty())
                 _userCache.reset();
-            else
+            else {
+                dbo::Transaction transaction(_dbSession);
                 _userCache = _dbSession.find<User>().where("name = ?").bind(username);
+                transaction.commit();
+            }
         }
     }
     /// Tries to log the user in, creates the session, and sets the session cookie. @return true if login was succesful
@@ -139,8 +142,10 @@ public:
             } else {
                 touchSession();
                 // Cache and return the result
+                dbo::Transaction t(_dbSession);
                 _userCache = _dbSession.find<User>().where("name = ?").bind(username);
                 _cacheTime = time(NULL);
+                t.commit();
                 return _userCache;
             }
         } else {
