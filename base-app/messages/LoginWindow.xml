@@ -18,6 +18,7 @@
   <message id="Logout">Logout</message>
   <message id="invalid-login">Wrong username or password</message>
   <message id="Login Cancelled">Login Cancelled</message>
+  <message id="OK">OK</message>
   <message id="Cancel">Cancel</message>
 </messages>
 

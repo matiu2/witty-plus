@@ -16,7 +16,7 @@
         <div>${btn-bar}</div>
       </div>
   </message>
-  <message id="listUsers-label">Users:</message>
+  <message id="userList-label">Users:</message>
   <message id="name-label">Name:</message>
   <message id="new-password-label">New Password:</message>
   <message id="new-password2-label">Repeat Password:</message>
