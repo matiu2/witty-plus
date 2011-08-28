@@ -18,47 +18,57 @@
 
 #include "MainWindow.hpp"
 #include "LoginWindow.hpp"
+#include "AdminIndex.hpp"
 #include "App.hpp"
 #include "urls.hpp"
 #include <Wt/WAnchor>
 
 namespace my_app {
 
-MainWindow::MainWindow(WContainerWidget* parent) : wittyPlus::MoreAwesomeTemplate(parent) {
+MainWindow::MainWindow(WContainerWidget* parent) : wittyPlus::MoreAwesomeTemplate(parent), _loginLink(0) {
     setTemplateText(tr("main-template"));
     setStatusText("");
     // Set up any widets you have like the navigation tree
     bindString("nav", "Bind Nav box widget here");
     if (app()->userSession()->isLoggedIn()) {
-        _loginLink = new WAnchor(urls::logout, tr("Logout"));
+        if (_loginLink != 0) {
+            delete _loginLink;
+            _loginLink = 0;
+        }
+        bindAndCreateWidget(_controlPanel, "controls");
     } else {
         _loginLink = new WAnchor(urls::login, tr("Login"));
+        bindWidget("controls", _loginLink);
     }
-    bindWidget("controls", _loginLink); // Put more controls in a div if you like
     // Look out for people logging in and out
     app()->userChanged()->connect(this, &MainWindow::handleUserChanged);
-    app()->internalPathChanged().connect(this, &MainWindow::toggleLoginLink); 
+    // Don't show 'login' when on the 'login page'
+    app()->internalPathChanged().connect(this, &MainWindow::checkLoginLink); 
 }
 
 void MainWindow::handleUserChanged(dbo::ptr<User>, dbo::ptr<User> newUser) {
     // If they just logged in
     if (newUser) {
-        // Set the link to say logout
-        _loginLink->setRefInternalPath(urls::logout);
-        _loginLink->setText(tr("Logout"));
+        // We'll be using the admin control panel, instead of a login link
+        bindAndCreateWidget(_controlPanel, "controls");
         // Say hello
         app()->statusTextChanged()->emit(tr("welcome-1").arg(newUser->name()));
     } else {
-        // I'm assuming someone's logging out
+        // Someone's logging out
         app()->statusTextChanged()->emit(tr("goodbye"));
+        bindAndCreateWidget(_loginLink, "controls");
+        _loginLink->setRefInternalPath(urls::login);
+        _loginLink->setText(tr("Login"));
     }
 }
     
-void MainWindow::toggleLoginLink(const string &url) {
-    if (url == "/login")
-        _loginLink->hide();
-    else
-        _loginLink->show();
+void MainWindow::checkLoginLink(const string &url) {
+    if (_loginLink != 0) {
+        if (url == "/login")
+            _loginLink->hide();
+        else
+            _loginLink->show();
+    }
 }
 
 } // namespace my_app

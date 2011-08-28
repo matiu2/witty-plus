@@ -49,6 +49,8 @@ App::App(const WEnvironment& environment) : BaseApp(environment, my_appCookieNam
     messageResourceBundle().use(appRoot() + "messages/MainWindow");
     messageResourceBundle().use(appRoot() + "messages/LoginWindow");
     messageResourceBundle().use(appRoot() + "messages/ButtonBar");
+    messageResourceBundle().use(appRoot() + "messages/AdminIndex");
+    messageResourceBundle().use(appRoot() + "messages/UserManager");
     // Set up our signals
     _userChanged = new UserChangedSignal(this);
     _statusTextChanged = new MessageSignal(this);

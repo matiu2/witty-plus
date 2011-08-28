@@ -9,9 +9,11 @@
 #ifndef my_app_UserList_hpp
 #define my_app_UserList_hpp
 
-#include <Wt/WItemSelectionModel>
+#include <Wt/WString>
+#include <Wt/Dbo/QueryModel>
 #include "lib/MoreAwesomeTemplate.hpp"
 #include "lib/ButtonBar.hpp"
+#include "model/User.hpp"
 
 namespace Wt {
     class WLabel;
@@ -23,12 +25,17 @@ using Wt::WLabel;
 using Wt::WSelectionBox;
 using Wt::WLineEdit;
 using wittyPlus::ButtonBar;
+using my_app::model::User;
+
+namespace dbo = Wt::Dbo;
 
 namespace my_app {
     
 /// GUI to manage users
 class UserManager : public wittyPlus::MoreAwesomeTemplate {
 private:
+    // data related
+    dbo::QueryModel< dbo::ptr<User> > usersModel; 
     // Fields
     WLabel*        lblList;
     WSelectionBox* lstUsers;
@@ -39,6 +46,8 @@ private:
     WLabel*    lblPass2;
     WLineEdit* edtPass2;
     ButtonBar* btnBar;
+protected:
+    void fillUserList();
 public:
     UserManager(WContainerWidget* parent=0);    
 };

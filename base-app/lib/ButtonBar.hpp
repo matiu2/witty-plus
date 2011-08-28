@@ -42,11 +42,13 @@ public:
     *
     * @param parent Parent Widget
     */
-    ButtonBar(const WString& button1Text, const WString& button2Text, WContainerWidget* parent=0) : MoreAwesomeTemplate(parent) {
+    ButtonBar(const WString& button1Text="", const WString& button2Text="", WContainerWidget* parent=0) : MoreAwesomeTemplate(parent) {
+        WString btn1Text = button1Text.empty() ? WString::tr("OK") : button1Text;
+        WString btn2Text = button2Text.empty() ? WString::tr("Cancel") : button2Text;
         setTemplateText(tr("button-bar"));
         setStyleClass("yui-gb button-bar");
-        bindAndCreateWidget(_btn1, "btn-1", button1Text);
-        bindAndCreateWidget(_btn2, "btn-2", button2Text);
+        bindAndCreateWidget(_btn1, "btn-1", btn1Text);
+        bindAndCreateWidget(_btn2, "btn-2", btn2Text);
     }
     WPushButton* btn1() { return _btn1; }
     WPushButton* btn2() { return _btn2; }

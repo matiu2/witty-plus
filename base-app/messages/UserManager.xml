@@ -3,7 +3,8 @@
   <!-- User Manager Interface -->
   <message id="user-manager-template">
       <div class="yui-u first">
-          ${listUsers}
+          ${userList-label}
+          ${userList-field}
       </div>
       <div class="yui-u yui-g">
         <div class="yui-u first">${name-label}</div>

@@ -41,7 +41,7 @@ protected:
         if (isLoggedIn())
             setBody<Widget>();
         else
-            app->statusTextChanged()->emit(WString::tr("permission-denied"));
+            app->statusTextChanged()->emit(WString::tr("access-denied"));
     }
 public:
     URL2Action(App* app) : WObject(app), app(app) {

@@ -40,13 +40,16 @@ using my_app::model::User;
 
 namespace my_app {
 
+class AdminIndex;
+
 class MainWindow : public wittyPlus::MoreAwesomeTemplate {
 protected:
     // Fields
     WAnchor* _loginLink;
+    AdminIndex* _controlPanel; // Lets logged in users do stuff
     // Signal handlers
     void handleUserChanged(dbo::ptr<User> oldUser,  dbo::ptr<User> newUser);
-    void toggleLoginLink(const string& url);
+    void checkLoginLink(const string& url);
 public:
     MainWindow(WContainerWidget* parent=0);
     void setStatusText(const WString& newMessage) { bindString("status-text", newMessage); }
