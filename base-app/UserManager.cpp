@@ -23,7 +23,7 @@ using Wt::WString;
 namespace my_app {
     
 UserManager::UserManager(WContainerWidget* parent) : wittyPlus::MoreAwesomeTemplate(parent) {
-    setStyleClass("yui-g");
+    setStyleClass("yui-gd");
     setTemplateText(tr("user-manager-template"));
     // Set up the widgets
     bindAndCreateField(lblList, lstUsers, "userList");
