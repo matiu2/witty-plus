@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<messages>
+  <!-- Main Window Messages -->
+  <message id="admin-index-template">
+      <div class="strong">Admin menu</div>
+      <ul>
+          <li>${link-users}</li>
+          <li>${link-logout}</li>
+      </ul>
+  </message>
+  <message id="Users">Users</message>
+</messages>
