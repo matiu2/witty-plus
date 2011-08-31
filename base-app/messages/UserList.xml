@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<messages>
+  <!-- User Listing Interface -->
+  <message id="user-list-template">
+          ${btnNew}
+          ${btnEdit}
+          ${btnDelete}
+      ${contents}
+  </message>
+  <message id="userList-label">Users:</message>
+  <message id="Back to User List">Back to User List</message>
+  <message id="confirm-delete?">Confirm deletion</message>
+  <message id="confirm-delete-user-x">Confirm deletion of User {1}</message>
+  <message id="New">New</message>
+  <message id="Edit">Edit</message>
+  <message id="Delete">Delete</message>
+  <message id="cant-delete-self">Can't delete current User</message>
+  <message id="you-cant-delete-yourself">You can't delete the currently logged on user</message>
+</messages>
+

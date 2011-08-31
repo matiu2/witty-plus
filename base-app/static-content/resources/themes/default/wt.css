@@ -983,3 +983,12 @@ body.Wt-rtl .Wt-treeview .Wt-tv-node .Wt-tv-row .Wt-tv-c {
 table.x-grid3-row-table {
     table-layout: fixed;
 }
+
+.centered {
+    display: table;
+    margin: 10px auto;
+}
+
+.width1 { width: 12em; }
+.yui-b { min-height: 240px; }
+

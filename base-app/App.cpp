@@ -49,8 +49,9 @@ App::App(const WEnvironment& environment) : BaseApp(environment, my_appCookieNam
     messageResourceBundle().use(appRoot() + "messages/MainWindow");
     messageResourceBundle().use(appRoot() + "messages/LoginWindow");
     messageResourceBundle().use(appRoot() + "messages/ButtonBar");
-    messageResourceBundle().use(appRoot() + "messages/AdminIndex");
-    messageResourceBundle().use(appRoot() + "messages/UserManager");
+    messageResourceBundle().use(appRoot() + "messages/AdminIndex", false);
+    messageResourceBundle().use(appRoot() + "messages/UserList", false);
+    messageResourceBundle().use(appRoot() + "messages/UserEdit", false);
     // Set up our signals
     _userChanged = new UserChangedSignal(this);
     _statusTextChanged = new MessageSignal(this);
@@ -64,6 +65,8 @@ App::App(const WEnvironment& environment) : BaseApp(environment, my_appCookieNam
     _mainWindow = new MainWindow(root());
     _statusTextChanged->connect(_mainWindow, &MainWindow::setStatusText);
     setBodyClass("yui-skin-sam");
+    // TODO! Remove this debuggy code
+    userSession()->tryLogin("admin", "admin");
     // Fire one off as user may have navigated straight here
     internalPathChanged().emit(app()->internalPath());
 }

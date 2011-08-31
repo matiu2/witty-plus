@@ -9,47 +9,41 @@
 #ifndef my_app_UserList_hpp
 #define my_app_UserList_hpp
 
-#include <Wt/WString>
-#include <Wt/Dbo/QueryModel>
-#include "lib/MoreAwesomeTemplate.hpp"
-#include "lib/ButtonBar.hpp"
+#include <Wt/WStackedWidget>
+#include "UserList.hpp"
+#include "UserEdit.hpp"
 #include "model/User.hpp"
+#include <Wt/WAnimation>
 
-namespace Wt {
-    class WLabel;
-    class WSelectionBox;
-    class WLineEdit;
-};
-
-using Wt::WLabel;
-using Wt::WSelectionBox;
-using Wt::WLineEdit;
-using wittyPlus::ButtonBar;
+using Wt::WStackedWidget;
 using my_app::model::User;
 
 namespace dbo = Wt::Dbo;
 
 namespace my_app {
     
+
 /// GUI to manage users
-class UserManager : public wittyPlus::MoreAwesomeTemplate {
+class UserManager : public WStackedWidget {
 private:
-    // data related
-    dbo::QueryModel< dbo::ptr<User> > usersModel; 
     // Fields
-    WLabel*        lblList;
-    WSelectionBox* lstUsers;
-    WLabel*    lblName;
-    WLineEdit* edtName;
-    WLabel*    lblPass1;
-    WLineEdit* edtPass1;
-    WLabel*    lblPass2;
-    WLineEdit* edtPass2;
-    ButtonBar* btnBar;
-protected:
-    void fillUserList();
+    UserList* userList;
+    UserEdit* userEdit;
+    // Helper funcs
+    template <class Widget>
+    void createAndAddWidget(Widget*& widget) { addWidget(widget = new Widget()); }
+    // Event handlers
+    void userChosen(dbo::ptr<User> user) {
+        //userList->animateHide(Wt::WAnimation(Wt::WAnimation::Fade));
+        setCurrentWidget(userEdit);
+        userEdit->setUser(user);
+    }
 public:
-    UserManager(WContainerWidget* parent=0);    
+    UserManager(WContainerWidget* parent=0) : WStackedWidget(parent) {
+        createAndAddWidget(userList);
+        userList->userChosen().connect(this, &UserManager::userChosen);
+        createAndAddWidget(userEdit);
+    }
 };
     
 } // namespace my_app

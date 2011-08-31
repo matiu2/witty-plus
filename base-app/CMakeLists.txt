@@ -54,7 +54,7 @@ set(Boost_USE_STATIC_RUNTIME OFF)
 find_package(Boost 1.42.0 REQUIRED COMPONENTS system program_options signals date_time filesystem regex thread)
 include_directories(BEFORE SYSTEM ${Boost_INCLUDE_DIR})
 
-set(mainFiles main.cpp urls.cpp UserManager.cpp lib/MemorySessionStore.cpp  lib/BaseSessionHandle.cpp App.cpp MainWindow.cpp LoginWindow.cpp)
+set(mainFiles main.cpp urls.cpp UserList.cpp UserEdit.cpp lib/MemorySessionStore.cpp  lib/BaseSessionHandle.cpp App.cpp MainWindow.cpp LoginWindow.cpp)
 
 add_subdirectory(lib)
 
