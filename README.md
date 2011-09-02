@@ -2,7 +2,7 @@ Installation on ubuntu Natty:
 
 # Install packages
 sudo apt-get update
-sudo apt-get install libwt-dev libwtdbopostgres-dev postgresql cmake build-essential cmake-curses-gui
+sudo apt-get install postgresql libwt-dev libwtdbopostgres-dev cmake build-essential cmake-curses-gui
 sudo apt-get build-dep libwt-dev libwtdbopostgres-dev
 
 # Get wt trunk
@@ -10,23 +10,28 @@ cd
 mkdir projects
 cd projects
 git clone http://www.webtoolkit.eu/git/wt.git
-cd wt
-mkdir build
-cd build
-cmake ..
-# optional configure with: ccmake ..
-make -j 4
 
-
-# Get the source
+# Get witty-plus trunk
 git clone git://github.com/matiu2/witty-plus.git
 
-# Build it
-cd witty-plus/base-app
+# Patch witty
+cd wt
+patch -p1 < ../witty-plus/wt.patch
+
+# Build witty
 mkdir build
 cd build
 cmake ..
-# optional configure with: ccmake ..
+# optionaly configure with: ccmake ..
+make
+sudo make install
+
+# Build witty-plus
+cd ../../witty-plus/base-app
+mkdir build
+cd build
+cmake ..
+# optionaly configure with: ccmake ..
 make -j 2
 
 # set up the DB
