@@ -78,10 +78,9 @@ void LoginWindow::handleOKHit() {
         app->log("SECURITY") << username << " failed log in";
         app->statusTextChanged()->emit(tr("invalid-login"));
     }
-    if (oldUser != newUser) {
+    if (oldUser != newUser)
         app->userChanged()->emit(oldUser, newUser);
-        app->goBack(); // Go back to what we were doing (but now with different set of powerz)
-    }
+    app->goBack(); // Go back to what we were doing (but now with different set of powerz)
 }
 
 void LoginWindow::handleCancelHit() {
