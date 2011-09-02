@@ -23,6 +23,7 @@
 #include "model/User.hpp"
 #include "lib/ButtonBar.hpp"
 #include <Wt/WLineEdit>
+#include <Wt/WSignal>
 
 namespace dbo = Wt::Dbo;
 
@@ -36,13 +37,20 @@ using wittyPlus::MoreAwesomeTemplate;
 using my_app::model::User;
 using Wt::WLabel;
 using Wt::WLineEdit;
+using Wt::Signal;
 using wittyPlus::ButtonBar;
 
 namespace my_app {
 
 class UserEdit : public MoreAwesomeTemplate {
+public:
+    typedef Signal< dbo::ptr<User> > UserSignal;
 private:
+    // Helpers
     dbo::ptr<User> _user;
+    UserSignal _done;
+    Signal<> _cancelled;
+    // Fields and labels
     WLabel*    lblName;
     WLineEdit* edtName;
     WLabel*    lblPass1;
@@ -50,8 +58,12 @@ private:
     WLabel*    lblPass2;
     WLineEdit* edtPass2;
     ButtonBar* btnBar;
+    // Event handlers
+    void OKHit();
+    void CancelHit();
 public:
     UserEdit(WContainerWidget* parent=0);
+    // Properties
     void setUser(dbo::ptr<User> user) {
         _user = user;
         edtName->setText(user->name());
@@ -59,6 +71,9 @@ public:
         edtPass2->setText("");
     }
     dbo::ptr<User> getUser() { return _user; }
+    // Signals
+    UserSignal& done() { return _done; }
+    Signal<>& cancelled() { return _cancelled; }
 };
 
 } // namespace my_app

@@ -65,8 +65,6 @@ App::App(const WEnvironment& environment) : BaseApp(environment, my_appCookieNam
     _mainWindow = new MainWindow(root());
     _statusTextChanged->connect(_mainWindow, &MainWindow::setStatusText);
     setBodyClass("yui-skin-sam");
-    // TODO! Remove this debuggy code
-    userSession()->tryLogin("admin", "admin");
     // Fire one off as user may have navigated straight here
     internalPathChanged().emit(app()->internalPath());
 }

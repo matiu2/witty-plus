@@ -55,7 +55,6 @@ private:
     dbo::ptr<User> currentUser();
     // Methods
     void createUserList();
-    void refillUserList();
     void onUserSelected();
     void backToUserList();
     // Button event handlers
@@ -65,6 +64,7 @@ private:
 public:
     UserList(WContainerWidget* parent=0);
     UserSignal& userChosen() { return _userChosen; }
+    void refillUserList();
 };
 
 } // namespace my_app {
