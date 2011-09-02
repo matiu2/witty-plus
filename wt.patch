@@ -1,0 +1,167 @@
+diff --git a/Changelog b/Changelog
+index 775e7b3..84d1e94 100644
+--- a/Changelog
++++ b/Changelog
+@@ -66,6 +66,12 @@
+ 
+ 	* WMenu, WMenuItem, WSubMenuItem: simplifiy internal path handling with submenus
+ 
++17-07-2011:
++	* WApplication, WWebSession: Cookies now support 'secure' and
++	'httpOnly' flags. 'httpOnly' now defaults to true; this may
++	affect some apps that relied on Javascript reading cookie
++	values.
++
+ 15-07-2011:
+ 	* examples/feature/broadcast: add an example that illustrates
+ 	server push, WServer::post() and synchronizing a shared resource
+diff --git a/src/Wt/WApplication b/src/Wt/WApplication
+index 651bb4a..30e5082 100644
+--- a/src/Wt/WApplication
++++ b/src/Wt/WApplication
+@@ -1431,6 +1431,15 @@ public:
+    * By default the cookie only applies to the current path on the
+    * current domain. To set a proper value for domain, see also RFC2109.
+    *
++   * The httpOnly flag, which now defaults to true prevents the cookie from
++   * being read on the client side by Javscript. This protects it from XSS
++   * attacks.
++   *
++   * If you know you're on a https connection and the cookie is to do with
++   * security, you should set 'secure' to true. When 'secure' is set, most 
++   * browsers will only send the cookie when connected via https. This can
++   * help defend against certain hack attempts.
++   *
+    * \if cpp
+    * \note %Wt provides session tracking automatically, and may be configured
+    *       to use a cookie for this. You only need to use cookies yourself
+@@ -1441,7 +1450,8 @@ public:
+    */
+   void setCookie(const std::string& name, const std::string& value,
+ 		 int maxAge, const std::string& domain = "",
+-		 const std::string& path = "");
++		 const std::string& path = "",
++		 bool httpOnly=true, bool secure=false);
+ 
+   /*! \brief Adds an HTML meta header.
+    *
+diff --git a/src/Wt/WApplication.C b/src/Wt/WApplication.C
+index 23516b8..f7684ae 100644
+--- a/src/Wt/WApplication.C
++++ b/src/Wt/WApplication.C
+@@ -924,9 +924,9 @@ void WApplication::setTwoPhaseRenderingThreshold(int bytes)
+ 
+ void WApplication::setCookie(const std::string& name, const std::string& value,
+ 			     int maxAge, const std::string& domain,
+-			     const std::string& path)
++			     const std::string& path, bool httpOnly, bool secure)
+ {
+-  session_->renderer().setCookie(name, value, maxAge, domain, path);
++  session_->renderer().setCookie(name, value, maxAge, domain, path, httpOnly, secure);
+ }
+ 
+ void WApplication::addMetaHeader(const std::string& name,
+diff --git a/src/web/WebRenderer.C b/src/web/WebRenderer.C
+index af8934e..a8b6665 100644
+--- a/src/web/WebRenderer.C
++++ b/src/web/WebRenderer.C
+@@ -399,9 +399,10 @@ void WebRenderer::serveError(WebResponse& response, const std::string& message)
+ 
+ void WebRenderer::setCookie(const std::string name, const std::string value,
+ 			    int maxAge, const std::string domain,
+-			    const std::string path)
++			    const std::string path,
++				bool httpOnly, bool secure)
+ {
+-  cookiesToSet_.push_back(Cookie(name, value, path, domain, maxAge));
++  cookiesToSet_.push_back(Cookie(name, value, path, domain, maxAge, httpOnly, secure));
+ }
+ 
+ void WebRenderer::setCaching(WebResponse& response, bool allowCache)
+@@ -418,21 +419,35 @@ void WebRenderer::setCaching(WebResponse& response, bool allowCache)
+ void WebRenderer::setHeaders(WebResponse& response, const std::string mimeType)
+ {
+   for (unsigned i = 0; i < cookiesToSet_.size(); ++i) {
+-    std::string cookies;
++    //std::string cookies;
++    std::stringstream cookieStream;
+     std::string value = cookiesToSet_[i].value;
+ 
+-    cookies += Utils::urlEncode(cookiesToSet_[i].name)
+-      + "=" + Utils::urlEncode(value) + "; Version=1;";
+-    if (cookiesToSet_[i].maxAge != -1)
+-      cookies += " Max-Age="
+-	+ boost::lexical_cast<std::string>(cookiesToSet_[i].maxAge) + ";";
++    cookieStream << Utils::urlEncode(cookiesToSet_[i].name)
++      << "=" << Utils::urlEncode(value) << "; Version=1;";
++    if (cookiesToSet_[i].maxAge != -1) {
++          cookieStream << " Max-Age="
++        << cookiesToSet_[i].maxAge << ";";
++        // Set the expires header calculated from the MaxAge
++        std::time_t expiresVal = std::time(NULL) + cookiesToSet_[i].maxAge;
++        std::tm* expires = std::gmtime(&expiresVal);
++        char buffer[23]; 
++        std::strftime(buffer, 23, "%a, %d-%b-%y %H:%M:%S", expires);
++        cookieStream <<  " Expires=" << buffer << "GMT;";
++    }
+     if (!cookiesToSet_[i].domain.empty())
+-      cookies += " Domain=" + cookiesToSet_[i].domain + ";";
++      cookieStream << " Domain=" << cookiesToSet_[i].domain << ";";
+     if (!cookiesToSet_[i].path.empty())
+-      cookies += " Path=" + cookiesToSet_[i].path + ";";
++      cookieStream << " Path=" << cookiesToSet_[i].path << ";";
++    if (cookiesToSet_[i].httpOnly)
++      cookieStream << " HttpOnly;";
++    if (cookiesToSet_[i].secure)
++      cookieStream << " Secure;";
++
++    std::string cookieString = cookieStream.str();
+ 
+-    if (!cookies.empty())
+-      response.addHeader("Set-Cookie", cookies);
++    if (!cookieString.empty())
++      response.addHeader("Set-Cookie", cookieString);
+   }
+   cookiesToSet_.clear();
+ 
+diff --git a/src/web/WebRenderer.h b/src/web/WebRenderer.h
+index 1f48335..bf9c44a 100644
+--- a/src/web/WebRenderer.h
++++ b/src/web/WebRenderer.h
+@@ -66,7 +66,8 @@ public:
+ 
+   void setCookie(const std::string name, const std::string value,
+ 		 int maxAge, const std::string domain,
+-		 const std::string path);
++		 const std::string path,
++         bool httpOnly, bool secure);
+ 
+   bool preLearning() const { return learning_; }
+   void learningIncomplete();
+@@ -82,9 +83,11 @@ private:
+     std::string path;
+     std::string domain;
+     int maxAge;
++    bool httpOnly;
++    bool secure;
+ 
+-    Cookie(std::string n, std::string v, std::string p, std::string d, int m)
+-      : name(n), value(v), path(p), domain(d), maxAge(m) { }
++    Cookie(std::string n, std::string v, std::string p, std::string d, int m, bool h, bool s)
++      : name(n), value(v), path(p), domain(d), maxAge(m), httpOnly(h), secure(s) { }
+   };
+ 
+   WebSession& session_;
+diff --git a/src/web/WebSession.C b/src/web/WebSession.C
+index 6fd2ec4..ed64c09 100644
+--- a/src/web/WebSession.C
++++ b/src/web/WebSession.C
+@@ -2161,7 +2161,7 @@ void WebSession::generateNewSessionId()
+   if (controller_->configuration().sessionTracking()
+       == Configuration::CookiesURL) {
+     std::string cookieName = env_->deploymentPath();
+-    renderer().setCookie(cookieName, sessionId_, -1, "", "");
++    renderer().setCookie(cookieName, sessionId_, -1, "", "", true, false); // TODO: pass true at end to use secure cookies
+   }
+ }
+ #endif // WT_TARGET_JAVA
