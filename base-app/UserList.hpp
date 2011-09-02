@@ -18,9 +18,9 @@
 #define USER_LIST_HPP
 
 #include "lib/MoreAwesomeTemplate.hpp"
-#include "model/user.hpp"
+#include "model/User.hpp"
 #include <Wt/Dbo/QueryModel>
-#include <Wt/Dbo/Ptr>
+#include <Wt/Dbo/ptr>
 #include <Wt/WSignal>
 
 namespace Wt {
