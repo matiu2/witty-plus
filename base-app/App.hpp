@@ -69,7 +69,7 @@ public:
     MainWindow* mainWindow() { return _mainWindow; }
     /// Use to send the user somewhere inside the app
     void go(const string& newUrl) { setInternalPath(newUrl, true); }
-    void goBack() { doJavaScript("history.go(-1)"); } // TODO: need to test if this fires the internalPathChanged event
+    void goBack() { doJavaScript("history.go(-1)"); } // TODO: Change this so it just reads the history[-1] then sets internalPAth
 };
 
 WApplication *createApplication(const WEnvironment& env);
