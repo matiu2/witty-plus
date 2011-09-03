@@ -18,7 +18,7 @@ Installation on ubuntu Natty:
 -----------------
 
     sudo apt-get update
-    sudo apt-get install postgresql libwt-dev libwtdbopostgres-dev cmake build-essential cmake-curses-gui
+    sudo apt-get install postgresql libwt-dev libwtdbopostgres-dev cmake build-essential cmake-curses-gui git
     sudo apt-get build-dep libwt-dev libwtdbopostgres-dev
 
 # Get wt trunk
