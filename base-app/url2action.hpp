@@ -47,7 +47,7 @@ public:
     URL2Action(App* app) : WObject(app), app(app) {
         app->internalPathChanged().connect(&_urls, &URLs::run);
         // Hook up all the urls
-        _urls[""].connect(this, &URL2Action::home);
+        _urls[urls::home].connect(this, &URL2Action::home);
         _urls[urls::login].connect(this, &URL2Action::login);
         _urls[urls::logout].connect(this, &URL2Action::logout);
         _urls[urls::adminUsers].connect(this, &URL2Action::adminUsers);
