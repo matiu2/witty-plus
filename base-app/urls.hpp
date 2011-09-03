@@ -19,14 +19,24 @@
 #ifndef URLS_HPP
 #define URLS_HPP
 
+#include <Wt/WString>
+#include <Wt/WAnchor>
+#include <Wt/WLink>
+
+using Wt::WString;
+using Wt::WAnchor;
+using Wt::WLink;
+
 namespace my_app {
 
 /// Consts so we don't accidentally change a url somewhere
 namespace urls {
-    extern const char* home;
-    extern const char* login;
-    extern const char* logout;
-    extern const char* adminUsers;
+    typedef const char* URL;
+    extern URL home;
+    extern URL login;
+    extern URL logout;
+    extern URL adminUsers;
+    inline WAnchor* newInternalLink(URL url, const WString& text) { return new WAnchor(WLink(WLink::InternalPath, url), text); }
 } // namespace urls
 
 } // namespace my_app

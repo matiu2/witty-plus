@@ -30,8 +30,8 @@ class AdminIndex : public MoreAwesomeTemplate {
 public:
     AdminIndex (WContainerWidget* parent=0) : MoreAwesomeTemplate(parent) {
         setTemplateText(tr("admin-index-template"));
-        bindWidget("link-users", new WAnchor(urls::adminUsers, tr("Users")));
-        bindWidget("link-logout", new WAnchor(urls::logout, tr("Logout")));
+        bindWidget("link-users", urls::newInternalLink(urls::adminUsers, tr("Users")));
+        bindWidget("link-logout", urls::newInternalLink(urls::logout, tr("Logout")));
     }
 };
 

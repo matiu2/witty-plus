@@ -37,7 +37,7 @@ MainWindow::MainWindow(WContainerWidget* parent) : wittyPlus::MoreAwesomeTemplat
         }
         bindAndCreateWidget(_controlPanel, "controls");
     } else {
-        _loginLink = new WAnchor(urls::login, tr("Login"));
+        _loginLink = urls::newInternalLink(urls::login, tr("Login"));
         bindWidget("controls", _loginLink);
     }
     // Look out for people logging in and out
@@ -64,7 +64,7 @@ void MainWindow::handleUserChanged(dbo::ptr<User>, dbo::ptr<User> newUser) {
     
 void MainWindow::checkLoginLink(const string &url) {
     if (_loginLink != 0) {
-        if (url == "/login")
+        if (url == urls::login)
             _loginLink->hide();
         else
             _loginLink->show();

@@ -22,10 +22,12 @@ namespace my_app {
 
 /// Consts so we don't accidentally change a url somewhere
 namespace urls {
-    const char* home = "/";
-    const char* login = "login";
-    const char* logout = "logout";
-    const char* adminUsers = "admin/users";
+
+    URL home = "/";
+    URL login = "/login";
+    URL logout = "/logout";
+    URL adminUsers = "/admin/users";
+
 } // namespace urls
 
 } // namespace my_app
