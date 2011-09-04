@@ -42,10 +42,12 @@ private:
     }
     void userEdited(dbo::ptr<User>) {
         setCurrentIndex(0, slide, true);
-        // TODO: See if this needs calling .. it might automagically update ?
-        // userList->refillUserList();
+        userList->refillUserList();
     }
-    void userEditCancelled() { setCurrentIndex(0, slide, true); }
+    void userEditCancelled() { 
+        setCurrentIndex(0, slide, true);
+        userList->refillUserList();
+    }
 public:
     UserManager(WContainerWidget* parent=0) :
         WStackedWidget(parent), slide(WAnimation::SlideInFromBottom) 
