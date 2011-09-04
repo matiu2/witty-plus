@@ -58,13 +58,5 @@ void BaseSessionHandle::touchSession() {
     }
 }
 
-/**
-* @brief Called when the timer runs out. Touches the session to let the store know it's still alive.
-*/
-void BaseSessionHandle::onTouchSessionsActivate() {
-    doTouchSession();
-    delete touchSessionsTimer;
-    touchSessionsTimer = 0;
-}
 
 } // namespace wittyPlus
