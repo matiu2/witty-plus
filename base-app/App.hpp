@@ -62,7 +62,6 @@ protected:
     // Methods
     void adminUsers();
     void notify(const WEvent& event);
-    void removeStatusText() { statusTextChanged()->emit(""); }
 public:
     App(const WEnvironment& environment);
     UserChangedSignal* userChanged() { return _userChanged; } /// An event triggered when a user logs in or logs out
