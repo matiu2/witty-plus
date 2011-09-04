@@ -21,5 +21,6 @@
   <message id="cant-save">Can't save changes</message>
   <message id="password-is-empty">No password provdided</message>
   <message id="passwords-dont-match">Passwords provided don't match</message>
+  <message id="Adding a new user">Adding a new user</message>
 </messages>
 

@@ -22,6 +22,7 @@
 #include "lib/MoreAwesomeTemplate.hpp"
 #include "model/User.hpp"
 #include "lib/ButtonBar.hpp"
+#include "App.hpp"
 #include <Wt/WLineEdit>
 #include <Wt/WSignal>
 
@@ -66,7 +67,12 @@ public:
     // Properties
     void setUser(dbo::ptr<User> user) {
         _user = user;
-        edtName->setText(user->name());
+        if (user) {
+            edtName->setText(user->name());
+        } else {
+            edtName->setText("");
+            app()->statusTextChanged()->emit(tr("Adding a new user"));
+        }
         edtPass1->setText("");
         edtPass2->setText("");
     }
