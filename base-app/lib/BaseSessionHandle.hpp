@@ -35,7 +35,7 @@ protected:
     WTimer* touchSessionsTimer;     /// Used to not hit the user sessions store (provided by overrider) too much.
     const string& getCookie() const;
     /// Record that we haven't touched the session in a while
-    void onTouchSessionsActivate() { touchSesssionsTimer = 0; }
+    void onTouchSessionsActivate() { touchSessionsTimer = 0; }
     const string& _cookieName;      /// The name of the cookie we're after .. this is global across the whole application and all threads.
     virtual unsigned long getStoreTimeout() = 0; /// Override this to let us know how often we should hit the user session store
     virtual void doTouchSession() = 0; /// Called by onTouchSessionsActivate
