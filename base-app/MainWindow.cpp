@@ -51,6 +51,7 @@ void MainWindow::handleUserChanged(dbo::ptr<User>, dbo::ptr<User> newUser) {
     if (newUser) {
         // We'll be using the admin control panel, instead of a login link
         bindAndCreateWidget(_controlPanel, "controls");
+        _loginLink = 0; // Needs to be zeroed so we can know whether to hide it or not later
         // Say hello
         app()->statusTextChanged()->emit(tr("welcome-1").arg(newUser->name()));
     } else {
