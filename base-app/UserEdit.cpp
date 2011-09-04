@@ -66,6 +66,7 @@ void UserEdit::OKHit() {
             Wt::Ok,
             WAnimation(WAnimation::SlideInFromRight, WAnimation::Ease)
         );
+        edtPass1->setFocus();
         return;
     }
     Wt::StandardButton result = Wt::Yes;
