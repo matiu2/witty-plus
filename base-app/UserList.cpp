@@ -82,7 +82,7 @@ void UserList::editClicked() {
     if (user)
         userChosen().emit(user); // Let the world know
     else
-        app()->statusTextChanged()->emit("You didn't select a user");
+        app()->statusTextChanged()->emit(tr("You didn't select a user"));
     // TODO: Possibly let the user know if they don't pick a user
 }
 

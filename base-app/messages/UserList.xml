@@ -16,5 +16,6 @@
   <message id="Delete">Delete</message>
   <message id="cant-delete-self">Can't delete current User</message>
   <message id="you-cant-delete-yourself">You can't delete the currently logged on user</message>
+  <message id="You didn't select a user">You didn't select a user</message>
 </messages>
 
