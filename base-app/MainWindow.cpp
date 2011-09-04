@@ -52,10 +52,10 @@ void MainWindow::handleUserChanged(dbo::ptr<User>, dbo::ptr<User> newUser) {
         bindAndCreateWidget(_controlPanel, "controls");
         _loginLink = 0; // Needs to be zeroed so we can know whether to hide it or not later
         // Say hello
-        app()->statusTextChanged()->emit(tr("welcome-1").arg(newUser->name()));
+        app()->setStatusText(tr("welcome-1").arg(newUser->name()));
     } else {
         // Someone's logging out
-        app()->statusTextChanged()->emit(tr("goodbye"));
+        app()->setStatusText(tr("goodbye"));
         _loginLink = new InternalLink(urls::login, tr("Login"));
         bindWidget("controls", _loginLink);
         _loginLink->setRefInternalPath(urls::login);

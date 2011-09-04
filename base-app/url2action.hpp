@@ -42,7 +42,7 @@ protected:
         if (isLoggedIn())
             setBody<Widget>();
         else
-            app->statusTextChanged()->emit(WString::tr("access-denied"));
+            app->setStatusText(WString::tr("access-denied"));
     }
 public:
     URL2Action(App* app) : WObject(app), app(app) {
@@ -63,7 +63,7 @@ public:
         if (oldUser != newUser)
             app->userChanged()->emit(oldUser, newUser);
         app->redirect("/");
-        app->statusTextChanged()->emit(WString::tr("you-are-logged-out"));
+        app->setStatusText(WString::tr("you-are-logged-out"));
     }
     /// Shows the login form
     void login() { setBody<LoginWindow>(); }

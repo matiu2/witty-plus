@@ -71,7 +71,7 @@ public:
             edtName->setText(user->name());
         } else {
             edtName->setText("");
-            app()->statusTextChanged()->emit(tr("Adding a new user"));
+            app()->setStatusText(tr("Adding a new user"));
         }
         edtPass1->setText("");
         edtPass2->setText("");

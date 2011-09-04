@@ -74,7 +74,7 @@ void LoginWindow::handleOKHit() {
         newUser = app->userSession()->user();
     } else {
         app->log("SECURITY") << username << " failed log in";
-        app->statusTextChanged()->emit(tr("invalid-login"));
+        app->setStatusText(tr("invalid-login"));
     }
     if (oldUser != newUser)
         app->userChanged()->emit(oldUser, newUser);
@@ -82,7 +82,7 @@ void LoginWindow::handleOKHit() {
 }
 
 void LoginWindow::handleCancelHit() {
-    app()->statusTextChanged()->emit(tr("Login Cancelled"));
+    app()->setStatusText(tr("Login Cancelled"));
     app()->goBack();
 }
 

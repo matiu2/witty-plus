@@ -36,7 +36,8 @@ using std::string;
 
 namespace my_app {
 
-App::App(const WEnvironment& environment) : BaseApp(environment, my_appCookieName) {
+App::App(const WEnvironment& environment) :
+    BaseApp(environment, my_appCookieName), _statusTextTimer(0) {
     // Set up the db
     string postgresConnectionString;
     readConfigurationProperty("DB", postgresConnectionString);
@@ -65,7 +66,7 @@ App::App(const WEnvironment& environment) : BaseApp(environment, my_appCookieNam
     _mainWindow = new MainWindow(root());
     _statusTextChanged->connect(_mainWindow, &MainWindow::setStatusText);
     setBodyClass("yui-skin-sam");
-    // Fire one off as user may have navigated straight here
+    // Fire an internal path changed event off as user may have navigated straight here
     internalPathChanged().emit(app()->internalPath());
 }
 
@@ -75,7 +76,7 @@ void App::adminUsers() {
     dbo::ptr<User> user = userSession()->user();
     if (!user) {
         go(urls::home);
-        statusTextChanged()->emit(WString::tr("access-denied"));
+        setStatusText(WString::tr("access-denied"));
     }
 }
 
@@ -90,6 +91,17 @@ void App::notify(const WEvent& event) {
     }
  }
 
+void App::setStatusText(const WString& newStatusText, unsigned long msecs) {
+    if (_statusTextTimer != 0) {
+        delete _statusTextTimer;
+    }
+    statusTextChanged()->emit(newStatusText);
+    _statusTextTimer = new WTimer();
+    _statusTextTimer->setSingleShot(true);
+    _statusTextTimer->setInterval(msecs);
+    _statusTextTimer->timeout().connect(this, &App::statusTextTimeout);
+    _statusTextTimer->start();
+}
 
 WApplication *createApplication(const WEnvironment& env) { return new App(env); }
 

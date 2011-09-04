@@ -57,15 +57,21 @@ protected:
     // Signals
     UserChangedSignal* _userChanged;
     MessageSignal* _statusTextChanged;
+    WTimer* _statusTextTimer;
     // Windows
     MainWindow* _mainWindow;
     // Methods
     void adminUsers();
     void notify(const WEvent& event);
+    void statusTextTimeout() {
+        _statusTextTimer = 0;
+        statusTextChanged()->emit("");
+    }
 public:
     App(const WEnvironment& environment);
     UserChangedSignal* userChanged() { return _userChanged; } /// An event triggered when a user logs in or logs out
     MessageSignal* statusTextChanged() { return _statusTextChanged; } /// An event triggered when the status text (shown on the front page) changes
+    void setStatusText(const WString& newStatusText, unsigned long msecs=8000); /// Shows a status message for a period of time
     MainWindow* mainWindow() { return _mainWindow; }
     /// Use to send the user somewhere inside the app
     void go(const string& newUrl) { setInternalPath(newUrl, true); }
