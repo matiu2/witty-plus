@@ -51,6 +51,9 @@ const string& BaseSessionHandle::getCookie() const {
 */
 void BaseSessionHandle::touchSession() {
     if (touchSessionsTimer == 0) {
+        // If the timer's zero, that means nobody has tried to touch the session in a while,
+        // so hit it now then hit it again before it times out
+        doTouchSession();
         touchSessionsTimer = new WTimer(this);
         touchSessionsTimer->timeout().connect(this, &BaseSessionHandle::onTouchSessionsActivate);
         touchSessionsTimer->setSingleShot(true);
