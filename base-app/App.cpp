@@ -66,6 +66,7 @@ App::App(const WEnvironment& environment) : BaseApp(environment, my_appCookieNam
     _statusTextChanged->connect(_mainWindow, &MainWindow::setStatusText);
     setBodyClass("yui-skin-sam");
     // Fire one off as user may have navigated straight here
+    internalPathChanged().connect(this, &App::removeStatusText);
     internalPathChanged().emit(app()->internalPath());
 }
 
