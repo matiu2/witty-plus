@@ -54,7 +54,7 @@ void BaseSessionHandle::touchSession() {
         // If the timer's zero, that means nobody has tried to touch the session in a while,
         // so hit it now then hit it again before it times out
         doTouchSession();
-        touchSessionsTimer = new WTimer(this);
+        touchSessionsTimer = new WTimer();
         touchSessionsTimer->timeout().connect(this, &BaseSessionHandle::onTouchSessionsActivate);
         touchSessionsTimer->setSingleShot(true);
         touchSessionsTimer->setInterval(getStoreTimeout());
