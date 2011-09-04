@@ -23,6 +23,7 @@ option(UserSessions "Use long term user logon sessions, (requires dbo)" on)
 # Configuration and script files
 CONFIGURE_FILE(wt-config.xml wt-config.xml)
 CONFIGURE_FILE(gdb-run.sh gdb-run.sh)
+CONFIGURE_FILE(memcheck-run.sh memcheck-run.sh)
 CONFIGURE_FILE(run.sh run.sh)
 
 # Copy static files and directories
