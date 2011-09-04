@@ -52,10 +52,11 @@ void UserEdit::OKHit() {
     if (edtPass1->text().empty() && (_user->name() == edtName->text())) {
         Wt::WMessageBox::show(
             tr("cant-save"),
-            tr("password-is-empty"),
+            tr("you-didnt-change-anything"),
             Wt::Ok,
             WAnimation(WAnimation::SlideInFromRight, WAnimation::Ease)
         );
+        edtName->setFocus();
         return;
     }
     // Passwords must match
@@ -85,7 +86,9 @@ void UserEdit::OKHit() {
         dbo::Transaction t(s);
         model::User* u = _user.modify();
         u->setName(edtName->text());
-        u->setPassword(edtPass1->text());
+        const WString& password = edtPass1->text();
+        if (!password.empty())
+            u->setPassword(password);
         if (isNewUser)
            s.add(_user);
         t.commit();

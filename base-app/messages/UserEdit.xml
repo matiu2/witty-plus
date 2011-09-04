@@ -19,7 +19,7 @@
   <message id="save-changes?">Save changes?</message>
   <message id="save-new-password-user-x">Save the new password for user {1} ?</message>
   <message id="cant-save">Can't save changes</message>
-  <message id="password-is-empty">No password provdided</message>
+  <message id="you-didnt-change-anything">You didn't change anything</message>
   <message id="passwords-dont-match">Passwords provided don't match</message>
   <message id="Adding a new user">Adding a new user</message>
 </messages>
