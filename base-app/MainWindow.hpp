@@ -21,7 +21,6 @@
 
 #include "lib/MoreAwesomeTemplate.hpp"
 #include "model/User.hpp"
-#include "LoginWindow.hpp"
 #include "App.hpp"
 
 namespace Wt {

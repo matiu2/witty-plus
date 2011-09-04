@@ -17,7 +17,6 @@
  */
 
 #include "MainWindow.hpp"
-#include "LoginWindow.hpp"
 #include "AdminIndex.hpp"
 #include "App.hpp"
 #include "urls.hpp"

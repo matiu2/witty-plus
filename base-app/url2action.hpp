@@ -22,6 +22,7 @@
 #include "urls.hpp"
 #include "App.hpp"
 #include "UserManager.hpp"
+#include "LoginWindow.hpp"
 #include "lib/URLs.hpp"
 #include "Wt/WString"
 
