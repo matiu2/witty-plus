@@ -19,9 +19,10 @@
 #include "UserList.hpp"
 #include "App.hpp"
 #include "model/User.hpp"
+#include <set>
 #include <Wt/Dbo/QueryModel>
 #include <Wt/WPushButton>
-#include <Wt/WTableView>
+#include <Wt/WSelectionBox>
 #include <Wt/WLogger>
 #include <Wt/WMessageBox>
 #include <Wt/WAnimation>
@@ -46,9 +47,10 @@ UserList::UserList(WContainerWidget* parent) : MoreAwesomeTemplate(parent) {
 */
 inline void UserList::createUserList() {
     bindAndCreateWidget(lstUsers, "contents");
+    lstUsers->setInline(false);
     lstUsers->setSelectionMode(Wt::SingleSelection);
-    // Double click is same as edit
-    lstUsers->doubleClicked().connect(this, &UserList::editClicked); 
+    lstUsers->doubleClicked().connect(this, &UserList::editClicked); // Double click is same as edit
+    lstUsers->enterPressed().connect(this, &UserList::editClicked);  // Enter is same as edit
     // Fill it with data
     refillUserList();
 }
@@ -60,6 +62,8 @@ inline void UserList::refillUserList() {
     usersModel.setQuery(db.find<User>()); // Get all users
     usersModel.addColumn("name");
     lstUsers->setModel(&usersModel);
+    lstUsers->setCurrentIndex(1);
+    lstUsers->setFocus();
     t.commit();
 }
 
@@ -77,6 +81,8 @@ void UserList::editClicked() {
     dbo::ptr<User> user = currentUser();
     if (user)
         userChosen().emit(user); // Let the world know
+    else
+        app()->statusTextChanged()->emit("You didn't select a user");
     // TODO: Possibly let the user know if they don't pick a user
 }
 
@@ -127,15 +133,12 @@ inline void UserList::bindAndCreateButton(
     btn->clicked().connect(this, onCalled);
 }
 
+/// returns the user info for the user that was selected
 inline dbo::ptr<User> UserList::currentUser() {
     dbo::ptr<User> result;
-    // Get the User that was selected
-    Wt::WModelIndexSet selection = lstUsers->selectedIndexes();
-    if (selection.begin() != selection.end()) {
-        // Take the first of the selections only 
-        // (there should only be one anyway)
-        result = usersModel.resultRow(selection.begin()->row());
-    }
+    int currentIndex = lstUsers->currentIndex();
+    if (currentIndex >= 0)
+        result = usersModel.resultRow(currentIndex);
     return result;
 }
 
