@@ -53,10 +53,6 @@ private:
 protected:
     void handleOKHit();
     void handleCancelHit();
-    void deleteSelf() {
-        app()->log("debug") << "Deleting login window: " << (long)this;
-        delete this;
-    } // Called after user navigates somewhere else to save memory
 public:
     LoginWindow(WContainerWidget* parent=0);
     void setFocus() { _usernameEdit->setFocus(); }

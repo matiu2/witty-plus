@@ -56,8 +56,6 @@ LoginWindow::LoginWindow(WContainerWidget* parent) : MoreAwesomeTemplate(parent)
     // These do reject
     _usernameEdit->escapePressed().connect(this, &LoginWindow::handleCancelHit);
     _passwordEdit->escapePressed().connect(this, &LoginWindow::handleCancelHit);
-    // Delete ourselves later
-    app()->internalPathChanged().connect(this, &LoginWindow::deleteSelf);
 }
 
 /**
