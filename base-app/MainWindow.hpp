@@ -21,21 +21,23 @@
 
 #include "lib/MoreAwesomeTemplate.hpp"
 #include "model/User.hpp"
-#include "LoginWindow.hpp"
 #include "App.hpp"
 
 namespace Wt {
     class WContainerWidget;
     class WString;
     class WWidget;
-    class WAnchor;
+}
+
+namespace wittyPlus {
+    class InternalLink;
 }
 
 using Wt::WTemplate;
 using Wt::WContainerWidget;
 using Wt::WString;
 using Wt::WWidget;
-using Wt::WAnchor;
+using wittyPlus::InternalLink;
 using my_app::model::User;
 
 namespace my_app {
@@ -45,7 +47,7 @@ class AdminIndex;
 class MainWindow : public wittyPlus::MoreAwesomeTemplate {
 protected:
     // Fields
-    WAnchor* _loginLink;
+    InternalLink* _loginLink;
     AdminIndex* _controlPanel; // Lets logged in users do stuff
     // Signal handlers
     void handleUserChanged(dbo::ptr<User> oldUser,  dbo::ptr<User> newUser);

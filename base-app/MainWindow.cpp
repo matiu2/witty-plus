@@ -17,11 +17,10 @@
  */
 
 #include "MainWindow.hpp"
-#include "LoginWindow.hpp"
+#include "lib/InternalLink.hpp"
 #include "AdminIndex.hpp"
 #include "App.hpp"
 #include "urls.hpp"
-#include <Wt/WAnchor>
 
 namespace my_app {
 
@@ -37,7 +36,7 @@ MainWindow::MainWindow(WContainerWidget* parent) : wittyPlus::MoreAwesomeTemplat
         }
         bindAndCreateWidget(_controlPanel, "controls");
     } else {
-        _loginLink = urls::newInternalLink(urls::login, tr("Login"));
+        _loginLink = new InternalLink(urls::login, tr("Login"));
         bindWidget("controls", _loginLink);
     }
     // Look out for people logging in and out
@@ -57,7 +56,8 @@ void MainWindow::handleUserChanged(dbo::ptr<User>, dbo::ptr<User> newUser) {
     } else {
         // Someone's logging out
         app()->statusTextChanged()->emit(tr("goodbye"));
-        bindAndCreateWidget(_loginLink, "controls");
+        _loginLink = new InternalLink(urls::login, tr("Login"));
+        bindWidget("controls", _loginLink);
         _loginLink->setRefInternalPath(urls::login);
         _loginLink->setText(tr("Login"));
     }

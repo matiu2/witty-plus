@@ -17,12 +17,11 @@
  */
 
 #include "lib/MoreAwesomeTemplate.hpp"
-#include <Wt/WAnchor>
 #include "urls.hpp"
+#include "lib/InternalLink.hpp"
 
-
-using Wt::WAnchor;
 using wittyPlus::MoreAwesomeTemplate;
+using wittyPlus::InternalLink;
 
 namespace my_app {
 
@@ -30,8 +29,8 @@ class AdminIndex : public MoreAwesomeTemplate {
 public:
     AdminIndex (WContainerWidget* parent=0) : MoreAwesomeTemplate(parent) {
         setTemplateText(tr("admin-index-template"));
-        bindWidget("link-users", urls::newInternalLink(urls::adminUsers, tr("Users")));
-        bindWidget("link-logout", urls::newInternalLink(urls::logout, tr("Logout")));
+        bindWidget("link-users", new InternalLink(urls::adminUsers, tr("Users")));
+        bindWidget("link-logout", new InternalLink(urls::logout, tr("Logout")));
     }
 };
 
