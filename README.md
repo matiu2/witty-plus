@@ -3,6 +3,8 @@ About
 
 witty-plus lets you build c++ web apps.
 
+Demo: http://barcamp.supa.ws - username: admin password: admin
+
 It builds on top of http://webtoolkit.eu to provide you with user management and authentication.
 
 It provides a library and a base app, that you can just search and replace 'my_app' with 'whatever your app is called'.
