@@ -75,6 +75,7 @@ public:
         }
         edtPass1->setText("");
         edtPass2->setText("");
+        edtName->setFocus();
     }
     dbo::ptr<User> getUser() { return _user; }
     // Signals

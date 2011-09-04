@@ -30,6 +30,7 @@ UserEdit::UserEdit(WContainerWidget* parent) : wittyPlus::MoreAwesomeTemplate(pa
     setTemplateText(tr("user-edit-template"));
     // Set up the widgets
     bindAndCreateField(lblName, edtName, "name");
+    edtName->setFocus();
     bindAndCreateField(lblPass1, edtPass1, "new-password");
     edtPass1->setEchoMode(WLineEdit::Password);
     bindAndCreateField(lblPass2, edtPass2, "new-password2");    
@@ -37,6 +38,10 @@ UserEdit::UserEdit(WContainerWidget* parent) : wittyPlus::MoreAwesomeTemplate(pa
     bindAndCreateWidget(btnBar, "btn-bar");
     btnBar->btn1()->clicked().connect(this, &UserEdit::OKHit);
     btnBar->btn2()->clicked().connect(this, &UserEdit::CancelHit);
+    // Enter handling and tab indexy stuff
+    edtName->enterPressed().connect(edtPass1, &WLineEdit::setFocus);
+    edtPass1->enterPressed().connect(edtPass2, &WLineEdit::setFocus);
+    edtPass2->enterPressed().connect(this, &UserEdit::OKHit);
 }
 
 /// Validates and saves the user
