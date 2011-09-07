@@ -37,12 +37,13 @@ protected:
     App* app;
     // Utility methods
     bool isLoggedIn() { return app->userSession()->user(); }
-    template<class Widget> void setBody() { app->mainWindow()->bindWidget("content", new Widget()); }
+    template<class Widget> void setBody() { app->mainWindow()->setBody(new Widget()); }
     template<class Widget> void setBodyIfLoggedIn() {
-        if (isLoggedIn())
+        if (isLoggedIn()) {
             setBody<Widget>();
-        else
-            app->setStatusText(WString::tr("access-denied"));
+        } else {
+            app->mainWindow()->setBody(WString::tr("access-denied"));
+        }
     }
 public:
     URL2Action(App* app) : WObject(app), app(app) {
