@@ -1,5 +1,5 @@
 //
-//  UserList.hpp
+//  UserManager.hpp
 //  my_app
 //
 //  Created by Matthew Sherborne on 22/08/11.
