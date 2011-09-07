@@ -80,7 +80,9 @@ void LoginWindow::handleOKHit() {
     }
     if (oldUser != newUser)
         app->userChanged()->emit(oldUser, newUser);
-    app->goBack(); // Go back to what we were doing (but now with different set of powerz)
+    // Go back to what we were doing (but now with different set of powerz)
+    if (!app->goBack())
+        app->go(urls::home);
 }
 
 void LoginWindow::handleCancelHit() {

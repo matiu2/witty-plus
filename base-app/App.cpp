@@ -37,7 +37,8 @@ using std::string;
 namespace my_app {
 
 App::App(const WEnvironment& environment) :
-    BaseApp(environment, my_appCookieName), _statusTextTimer(0) {
+    BaseApp(environment, my_appCookieName),
+    _statusTextTimer(0) {
     // Set up the db
     string postgresConnectionString;
     readConfigurationProperty("DB", postgresConnectionString);
@@ -56,6 +57,7 @@ App::App(const WEnvironment& environment) :
     // Set up our signals
     _userChanged = new UserChangedSignal(this);
     _statusTextChanged = new MessageSignal(this);
+    internalPathChanged().connect(this, &App::rememberHistory);
     // Set up the general URL handling
     _url2ActionMapper = new URL2Action(this);
     // Set up the UI
@@ -101,6 +103,21 @@ void App::setStatusText(const WString& newStatusText, unsigned long msecs) {
     _statusTextTimer->setInterval(msecs);
     _statusTextTimer->timeout().connect(this, &App::statusTextTimeout);
     _statusTextTimer->start();
+}
+
+bool App::goBack() {
+    if (urlHistory.size() >= 2) {
+        // last is one past the current url
+        // last-1 is where we are now
+        // last-2 is where we want to go
+        HistoryIndex last=urlHistory.end()-2;
+        const string& result = *last;
+        urlHistory.pop_back(); // pop the current url we just navigated to from the stack
+        go(result);  // rememberHistory will realize we're going back and pop the url from the history
+        return true;
+    } else {
+      return false;
+    }
 }
 
 WApplication *createApplication(const WEnvironment& env) { return new App(env); }
