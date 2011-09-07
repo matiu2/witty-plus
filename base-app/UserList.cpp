@@ -49,6 +49,10 @@ inline void UserList::createUserList() {
     lstUsers->setSelectionMode(Wt::SingleSelection);
     lstUsers->doubleClicked().connect(this, &UserList::editClicked); // Double click is same as edit
     lstUsers->enterPressed().connect(this, &UserList::editClicked);  // Enter is same as edit
+    dbo::Session& db = app()->dbSession();
+    usersModel.setQuery(db.find<User>()); // Get all users
+    usersModel.addColumn("name");
+    lstUsers->setModel(&usersModel);
     // Fill it with data
     refillUserList();
 }
@@ -57,9 +61,7 @@ inline void UserList::refillUserList() {
     // Fill it with data
     dbo::Session& db = app()->dbSession();
     dbo::Transaction t(db);
-    usersModel.setQuery(db.find<User>()); // Get all users
-    usersModel.addColumn("name");
-    lstUsers->setModel(&usersModel);
+    usersModel.reload();
     lstUsers->setCurrentIndex(1);
     lstUsers->setFocus();
     t.commit();
