@@ -41,7 +41,7 @@ const string& BaseSessionHandle::getCookie() const {
     // Fall back to cached version
     // If the browser doesn't have a cookie, we might have just set it and no requests have happened yet
     // Even if this server side cache is old (and the user has logged out, and the client side cookie deleted)
-    // It shouldn't matter because the session store still won't return a username for it.
+    // It shouldn't matter because the session store still won't return a user ID for it.
     // But still if there is a browser side cookie, that takes precedence
     return cookieCache;
 }

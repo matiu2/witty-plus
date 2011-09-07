@@ -18,8 +18,6 @@
 
 #include "UserList.hpp"
 #include "App.hpp"
-#include "model/User.hpp"
-#include <set>
 #include <Wt/Dbo/QueryModel>
 #include <Wt/WPushButton>
 #include <Wt/WSelectionBox>

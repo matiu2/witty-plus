@@ -17,7 +17,6 @@
  */
 
 #include "UserEdit.hpp"
-#include "App.hpp"
 #include <Wt/WLineEdit>
 #include <Wt/WMessageBox>
 #include <Wt/WAnimation>

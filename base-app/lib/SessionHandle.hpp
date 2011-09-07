@@ -20,6 +20,7 @@
 #define SESSION_HANDLE_HPP
 
 #include <string>
+#include <stdexcept>
 #include <Wt/WObject>
 #include <Wt/WApplication>
 #include <Wt/WEnvironment>
@@ -31,6 +32,7 @@
 #include "sha.hpp"
 
 using std::string;
+using std::invalid_argument;
 using Wt::WObject;
 using Wt::WRandom;
 using Wt::WTimer;
@@ -60,9 +62,9 @@ private:
     * @param username the username being used to log in
     * @param password the password being used to log in
     *
-    * @return True if db has a match
+    * @return the user object if successful .. or an empty object if failed login
     */
-    bool _doTryLogin(const string& username, const string& password) {
+    dbo::ptr<User> _doTryLogin(const string& username, const string& password) {
         dbo::Transaction transaction(_dbSession);
         dbo::ptr<User> userFromDB = _dbSession.find<User>().where("name = ?").bind(username);
         // (even if they enter a hash of all zeros if user is not found they still won't be able to log in .. check 'result' below \/
@@ -82,7 +84,9 @@ private:
         }
         _userCache = userFromDB; // Store the logged in user
         transaction.commit();
-        return result;
+        if (!result)
+            userFromDB = dbo::ptr<User>();
+        return userFromDB;
     }
 protected:
     unsigned long getStoreTimeout() { return _userSessionStore.getTimeout(); }
@@ -95,23 +99,28 @@ public:
         // Check if we're already logged in
         const string& cookie = getCookie();
         if (!cookie.empty()) {
-            string username = _userSessionStore.username(getCookie(), true); // Touch the session as new app/view is openning for it
-            if (username.empty())
+            int userId;
+            try {
+                userId = _userSessionStore.userId(getCookie(), true); // Touch the session as new app/view is openning for it
+            } catch (invalid_argument e) {
+                // Nobody's logged in right now
                 _userCache.reset();
-            else {
-                dbo::Transaction transaction(_dbSession);
-                _userCache = _dbSession.find<User>().where("name = ?").bind(username);
-                transaction.commit();
+                return;
             }
+            // Remember our user object
+            dbo::Transaction transaction(_dbSession);
+            _userCache = _dbSession.find<User>().where("id = ?").bind((int)userId);
+            transaction.commit();
         }
     }
     /// Tries to log the user in, creates the session, and sets the session cookie. @return true if login was succesful
     bool tryLogin(const string& username, const string& password) {
-        if (_doTryLogin(username, password)) {
+        dbo::ptr<User> user = _doTryLogin(username, password);
+        if (user) {
             cookieCache = WRandom::generateId();
             WApplication* app = WApplication::instance();
             app->setCookie(_cookieName, cookieCache, 60*60*24*365, "", "/", true); // TODO: set secure based on settings
-            _userSessionStore.login(username, cookieCache);  // Record that they're logged in for other SessionHandles to find
+            _userSessionStore.login(user.id(), cookieCache);  // Record that they're logged in for other SessionHandles to find
             return true;
         }
         return false;
@@ -133,21 +142,22 @@ public:
         // but on the plus side it means if one thread los out .. all threads log out
         string cookie = getCookie();
         if (!cookie.empty()) {
-            string username = _userSessionStore.username(cookie);
-            if (username.empty()) {
+            unsigned int userId;
+            try {
+                userId = _userSessionStore.userId(cookie);
+            } catch (invalid_argument e) {
                 // If they have an old session cookie, but they're not logged in now .. delete the old cookie
                 WApplication::instance()->setCookie(_cookieName, cookie, 0, "", "/", true);
                 cookieCache = "";
                 return dbo::ptr<User>(); // Empty pointer
-            } else {
-                touchSession();
-                // Cache and return the result
-                dbo::Transaction t(_dbSession);
-                _userCache = _dbSession.find<User>().where("name = ?").bind(username);
-                _cacheTime = time(NULL);
-                t.commit();
-                return _userCache;
             }
+            touchSession();
+            // Cache and return the result
+            dbo::Transaction t(_dbSession);
+            _userCache = _dbSession.find<User>().where("id = ?").bind((int)userId);
+            _cacheTime = time(NULL); // (now)
+            t.commit();
+            return _userCache;
         } else {
             return dbo::ptr<User>(); // Empty pointer
         }
