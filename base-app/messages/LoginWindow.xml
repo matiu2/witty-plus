@@ -13,7 +13,9 @@
       ${btn-bar}
   </message>
   <message id="username-label">Username:</message>
+  <message id="Username">Username</message>
   <message id="password-label">Password:</message>
+  <message id="Password">Password</message>
   <message id="Login">Login</message>
   <message id="Logout">Logout</message>
   <message id="invalid-login">Wrong username or password</message>

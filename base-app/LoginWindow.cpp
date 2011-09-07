@@ -43,9 +43,13 @@ LoginWindow::LoginWindow(WContainerWidget* parent) : MoreAwesomeTemplate(parent)
     // User Field
     bindAndCreateField(_usernameLabel, _usernameEdit, "username");
     _usernameEdit->setFocus();
+    _usernameEdit->setEmptyText(tr("Username"));
+    _usernameEdit->setId("username");
     // Password Field
     bindAndCreateField(_passwordLabel, _passwordEdit, "password");
     _passwordEdit->setEchoMode(WLineEdit::Password);
+    _passwordEdit->setId("password");
+    _passwordEdit->setEmptyText(tr("Password"));
     // Buttons
     bindWidget("btn-bar", _btnBar = new wittyPlus::ButtonBar(tr("Login"), tr("Cancel")));
     _btnBar->btn1()->clicked().connect(this, &LoginWindow::handleOKHit);
