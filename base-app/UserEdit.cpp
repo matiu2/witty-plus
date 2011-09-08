@@ -70,7 +70,7 @@ void UserEdit::OKHit() {
         return;
     }
     Wt::StandardButton result = Wt::Yes;
-    if (isNewUser) {
+    if (!isNewUser) {
         // If modifying an existing object, prompt to save changes
         result = Wt::WMessageBox::show(
             tr("save-changes?"),
