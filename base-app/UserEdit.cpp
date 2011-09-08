@@ -70,7 +70,7 @@ void UserEdit::OKHit() {
         return;
     }
     Wt::StandardButton result = Wt::Yes;
-    if (isNewUser) {
+    if (!isNewUser) {
         // If modifying an existing object, prompt to save changes
         result = Wt::WMessageBox::show(
             tr("save-changes?"),
@@ -83,13 +83,15 @@ void UserEdit::OKHit() {
     if (result == Wt::Yes) {
         dbo::Session& s = app()->dbSession();
         dbo::Transaction t(s);
-        model::User* u = _user.modify();
-        u->setName(edtName->text());
-        const WString& password = edtPass1->text();
-        if (!password.empty())
-            u->setPassword(password);
-        if (isNewUser)
-           s.add(_user);
+        if (isNewUser) {
+           _user = s.add(new User(edtName->text().toUTF8(), edtPass1->text().toUTF8()));
+        } else {
+            model::User* u = _user.modify();
+            u->setName(edtName->text());
+            const WString& password = edtPass1->text();
+            if (!password.empty())
+                u->setPassword(password);
+        }
         t.commit();
     }
     // Let the parent widget (or whoever) know that we're done
