@@ -37,7 +37,7 @@ private:
     void createAndAddWidget(Widget*& widget) { addWidget(widget = new Widget()); }
     // Event handlers
     void userChosen(dbo::ptr<User> user) {
-        setCurrentIndex(1, slide, true);
+        setCurrentIndex(1, slide, true); // Switch to edit view (with a nice slide effect)
         userEdit->setUser(user);
     }
     void userEdited(dbo::ptr<User>) {
