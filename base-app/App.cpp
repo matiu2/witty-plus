@@ -37,8 +37,7 @@ using std::string;
 namespace my_app {
 
 App::App(const WEnvironment& environment) :
-    BaseApp(environment, my_appCookieName),
-    _statusTextTimer(0) {
+    BaseApp(environment, my_appCookieName) {
     // Set up the db
     string postgresConnectionString;
     readConfigurationProperty("DB", postgresConnectionString);
@@ -94,15 +93,8 @@ void App::notify(const WEvent& event) {
  }
 
 void App::setStatusText(const WString& newStatusText, unsigned long msecs) {
-    if (_statusTextTimer != 0) {
-        delete _statusTextTimer;
-    }
     statusTextChanged()->emit(newStatusText);
-    _statusTextTimer = new WTimer();
-    _statusTextTimer->setSingleShot(true);
-    _statusTextTimer->setInterval(msecs);
-    _statusTextTimer->timeout().connect(this, &App::statusTextTimeout);
-    _statusTextTimer->start();
+    WTimer::singleShot(msecs, this, &App::statusTextTimeout);
 }
 
 bool App::goBack() {

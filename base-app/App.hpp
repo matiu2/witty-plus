@@ -65,16 +65,12 @@ protected:
     // Signals
     UserChangedSignal* _userChanged;
     MessageSignal* _statusTextChanged;
-    WTimer* _statusTextTimer;
     // Windows
     MainWindow* _mainWindow;
     // Methods
     void adminUsers();
     void notify(const WEvent& event);
-    void statusTextTimeout() {
-        _statusTextTimer = 0;
-        statusTextChanged()->emit("");
-    }
+    void statusTextTimeout() { statusTextChanged()->emit(""); }
     void rememberHistory(const string& url) {
         if ((urlHistory.size() >= 1) and (urlHistory.back() == url)) {
             // They probably hit 'back' in the browser.
