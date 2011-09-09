@@ -6,8 +6,8 @@
 //  Copyright 2011 Slicehost LLC. All rights reserved.
 //
 
-#ifndef my_app_UserList_hpp
-#define my_app_UserList_hpp
+#ifndef my_app_UserManager_hpp
+#define my_app_UserManager_hpp
 
 #include <Wt/WStackedWidget>
 #include "UserList.hpp"
@@ -63,4 +63,4 @@ public:
 } // namespace my_app
 
 
-#endif
+#endif // #define my_app_UserManager_hpp

@@ -57,7 +57,7 @@ inline void UserList::createUserList() {
     refillUserList();
 }
 
-inline void UserList::refillUserList() {
+void UserList::refillUserList() {
     // Fill it with data
     dbo::Session& db = app()->dbSession();
     dbo::Transaction t(db);
@@ -109,7 +109,14 @@ inline void UserList::deleteClicked() {
             WAnimation(WAnimation::SlideInFromRight, WAnimation::Ease)
         );
         if (result == Wt::Yes) {
-            // TODO: delete the user and update the list
+            dbo::ptr<User> user = currentUser();
+            if (user) {
+                dbo::Session& db = app()->dbSession();
+                dbo::Transaction t(db);
+                user.remove();
+                refillUserList();
+                t.commit();
+            }
         }
     }
 }
