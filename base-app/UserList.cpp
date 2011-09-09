@@ -57,7 +57,7 @@ inline void UserList::createUserList() {
     refillUserList();
 }
 
-inline void UserList::refillUserList() {
+void UserList::refillUserList() {
     // Fill it with data
     dbo::Session& db = app()->dbSession();
     dbo::Transaction t(db);
