@@ -26,7 +26,7 @@ namespace my_app {
 
 MainWindow::MainWindow(WContainerWidget* parent) : wittyPlus::MoreAwesomeTemplate(parent), _loginLink(0) {
     setTemplateText(tr("main-template"));
-    setStatusText("");
+    bindAndCreateWidget(_statusText, "status-text");
     // Set up any widets you have like the navigation tree
     bindString("nav", "Bind Nav box widget here");
     if (app()->userSession()->isLoggedIn()) {
