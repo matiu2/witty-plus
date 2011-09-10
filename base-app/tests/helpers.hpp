@@ -48,13 +48,18 @@ void click<wittyPlus::InternalLink>(InternalLink* il) {
 
 template<typename Widget>
 void keyPress(Widget* w, unsigned char keyCode) {
-    if (keyCode == 27) { // escape
-        w->escapePressed().emit();
-    } else {
-        Wt::JavaScriptEvent js;
-        js.keyCode = keyCode;
-        Wt::WKeyEvent press(js);
-        w->keyPressed().emit(press);
+    switch (keyCode) {
+        case 27: // escape
+            w->escapePressed().emit();
+            break;
+        case 13:
+            w->enterPressed().emit();
+            break;
+        default:
+            Wt::JavaScriptEvent js;
+            js.keyCode = keyCode;
+            Wt::WKeyEvent press(js);
+            w->keyPressed().emit(press);
     }
 }
 

@@ -28,10 +28,11 @@ namespace unittests {
 namespace fixtures {
 
 struct AppFixture {
-    AppFixture() : env(".", "wt-config.xml"), app(env) { app.initialize(); }
+    AppFixture() : env(".", "wt-config.xml"), app(env), main(app.mainWindow()) { app.initialize(); }
     ~AppFixture() { app.quit(); }
     Wt::Test::WTestEnvironment env;
     my_app::App app;
+    my_app::MainWindow* main;
 };
 
 } // namespace fixtures
