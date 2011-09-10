@@ -20,6 +20,13 @@
 #define MY_APP_UNITTESTS_HELPERS_HPP
 
 #include <Wt/WEvent>
+#include <Wt/WApplication>
+#include "../lib/InternalLink.hpp"
+#include <Wt/WLink>
+
+using Wt::WMouseEvent;
+using Wt::WApplication;
+using Wt::WLink;
 
 namespace my_app {
 namespace unittests {
@@ -27,16 +34,28 @@ namespace helpers {
 
 template<typename Widget>
 void click(Widget* w) {
-    Wt::WMouseEvent click;
+    WMouseEvent click;
     w->clicked().emit(click);
+}
+
+template<>
+void click<wittyPlus::InternalLink>(InternalLink* il) {
+    WLink& link = il->link_;
+    if (link.type_ == WLink::InternalPath) {
+        WApplication::instance()->setInternalPath(link.internalPath().toUTF8(), true);
+    }
 }
 
 template<typename Widget>
 void keyPress(Widget* w, unsigned char keyCode) {
-    Wt::JavaScriptEvent js;
-    js.keyCode = keyCode;
-    Wt::WKeyEvent press(js);
-    w->keyPressed().emit(press);
+    if (keyCode == 27) { // escape
+        w->escapePressed().emit();
+    } else {
+        Wt::JavaScriptEvent js;
+        js.keyCode = keyCode;
+        Wt::WKeyEvent press(js);
+        w->keyPressed().emit(press);
+    }
 }
 
 

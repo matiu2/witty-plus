@@ -62,20 +62,20 @@ add_subdirectory(lib)
 add_subdirectory(tests)
 
 # Build the library
-ADD_LIBRARY(mainApp SHARED ${mainFiles})
+ADD_LIBRARY(mainLib SHARED ${mainFiles})
 
 # Build the executable
 ADD_EXECUTABLE(${PROJECT_NAME} main.cpp)
 
-TARGET_LINK_LIBRARIES(mainApp
-    ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY} 
+TARGET_LINK_LIBRARIES(mainLib
     ${Boost_THREAD_LIBRARY} 
     ${Boost_SYSTEM_LIBRARY} ${Boost_PROGRAM_OPTIONS_LIBRARY} ${Boost_SIGNALS_LIBRARY}
     ${Boost_DATE_TIME_LIBRARY} ${Boost_FILESYSTEM_LIBRARY} ${Boost_REGEX_LIBRARY}
     ${OPENSSL_LIBRARIES} ${wt} ${wtdbo} ${wtdbopostgres} ${wthttp} 
 )
 
-TARGET_LINK_LIBRARIES(${PROJECT_NAME} mainApp)
+TARGET_LINK_LIBRARIES(${PROJECT_NAME} mainLib)
+add_dependencies(${PROJECT_NAME} mainLib)
 
 # Just to get started, this program will set up the DB with some basic users
 ADD_EXECUTABLE(setupDB setupDB.cpp)
