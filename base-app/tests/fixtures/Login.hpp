@@ -46,7 +46,7 @@ struct LoginFixture : public AppFixture {
         BOOST_CHECK_MESSAGE( main->_loginLink == 0, "Login link should have disappeared. Maybe admin+admin is not in DB ?" );
         // Make sure the control panel appears
         AdminIndex* cp = main->resolve<AdminIndex*>("controls");
-        BOOST_REQUIRE_MESSAGE( cp, "Looks like the control panel didn't appear" );
+        BOOST_CHECK_MESSAGE( cp, "Looks like the control panel didn't appear" );
         // Make sure the logout link is there
         BOOST_CHECK_MESSAGE( cp->resolve<wittyPlus::InternalLink*>("link-logout"),
                              "Looks like the logout link didn't appear" );
