@@ -23,10 +23,13 @@
 #include <Wt/WApplication>
 #include "../lib/InternalLink.hpp"
 #include <Wt/WLink>
+#include <Wt/WString>
+#include <string>
 
 using Wt::WMouseEvent;
 using Wt::WApplication;
 using Wt::WLink;
+using Wt::WString;
 
 namespace my_app {
 namespace unittests {
@@ -63,6 +66,24 @@ void keyPress(Widget* w, unsigned char keyCode) {
     }
 }
 
+void click(wittyPlus::ButtonBar* btns, const std::string label) {
+    WString translated = WString::tr(label);
+    WPushButton* btn1 = btns->btn1();
+    if (btn1->text() == translated) {
+        click(btn1);
+        return;
+    }
+    WPushButton* btn2 = btns->btn2();
+    if (btn2->text() == translated) {
+        click(btns->btn2());
+        return;
+    }
+    BOOST_ERROR("Couldn't find button with label: " + label + " that translates to " + translated +
+                "\nOptions are: " + btn1->text() + " and " + btn2->text());
+}
+
+void clickOk(wittyPlus::ButtonBar* btns) { click(btns, "OK"); }
+void clickCancel(wittyPlus::ButtonBar* btns) { click(btns, "Cancel"); }
 
 } // namespace helpers
 } // namespace unittests

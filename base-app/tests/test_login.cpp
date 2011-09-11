@@ -25,6 +25,7 @@
 #include "../LoginWindow.hpp"
 #include "../lib/ButtonBar.hpp"
 #include "../AdminIndex.hpp"
+#include <Wt/WPushButton>
 #include "fixtures/App.hpp"
 #include "helpers.hpp"
 
@@ -58,7 +59,21 @@ BOOST_AUTO_TEST_CASE( login_enter_test ) {
     login->_passwordEdit->setText("admin");
     h::keyPress(login->_passwordEdit, 13); // Hit Enter
     // Check that we're logged in
-    BOOST_CHECK_MESSAGE( main->_loginLink == 0, "Login link should have disappeared" );
+    BOOST_CHECK_MESSAGE( main->_loginLink == 0, "Login link should have disappeared. Maybe admin+admin is not in DB ?" );
+    AdminIndex* cp = main->resolve<AdminIndex*>("controls");
+    BOOST_REQUIRE_MESSAGE( cp, "Looks like the control panel didn't appear" );
+}
+
+BOOST_AUTO_TEST_CASE( login_ok_test ) {
+    LoginWindow* login = clickLogin(main);
+    // Fill in the form
+    login->_usernameEdit->setText("admin");
+    login->_passwordEdit->setText("admin");
+    // Click the OK button
+    h::click(login->_btnBar, "Login");
+    app.processEvents();
+    // Check that we're logged in
+    BOOST_CHECK_MESSAGE( main->_loginLink == 0, "Login link should have disappeared. Maybe admin+admin is not in DB ?" );
     AdminIndex* cp = main->resolve<AdminIndex*>("controls");
     BOOST_REQUIRE_MESSAGE( cp, "Looks like the control panel didn't appear" );
 }
