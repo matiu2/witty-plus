@@ -34,18 +34,41 @@ namespace unittests {
 
 namespace h = helpers;
 
-// Helper functions
-LoginWindow* clickLogin(MainWindow* main) {
-    h::click(main->_loginLink);
-    LoginWindow* result = main->resolve<LoginWindow*>("content");
-    BOOST_REQUIRE_MESSAGE( result, "Looks like the login window didn't appear" );
-    return result;
-}
+/// Our special login fixture for testing the login window
+namespace fixtures {
+struct LoginFixture : public AppFixture {
+    /// Clicks the login link
+    LoginWindow* clickLogin() {
+        h::click(main->_loginLink);
+        LoginWindow* result = main->resolve<LoginWindow*>("content");
+        BOOST_REQUIRE_MESSAGE( result, "Looks like the login window didn't appear" );
+        return result;
+    }
+    /// Makes sure we *are* logged in
+    void checkLoggedIn() {
+        // Make sure the login link died
+        BOOST_CHECK_MESSAGE( main->_loginLink == 0, "Login link should have disappeared. Maybe admin+admin is not in DB ?" );
+        // Make sure the control panel appears
+        AdminIndex* cp = main->resolve<AdminIndex*>("controls");
+        BOOST_CHECK_MESSAGE( cp, "Looks like the control panel didn't appear" );
+        // Make sure the logout link is there
+        BOOST_CHECK_MESSAGE( cp->resolve<wittyPlus::InternalLink*>("link-logout"),
+                             "Looks like the logout link didn't appear" );
+    }
+    /// Makes sure we're *not* logged in
+    void checkLoggedOut() {
+        BOOST_CHECK_EQUAL( app.internalPath(), "/" );
+        BOOST_CHECK_MESSAGE( main->_loginLink, "The login ling should still be there" );
+    }
+};
+} // namespace fixtures
 
-BOOST_FIXTURE_TEST_SUITE( login_suite , fixtures::AppFixture );
+// /////// Tests start here //////////////////////////////////////////////
+
+BOOST_FIXTURE_TEST_SUITE( login_suite , fixtures::LoginFixture );
 
 BOOST_AUTO_TEST_CASE( login_escape_test ) {
-    LoginWindow* login = clickLogin(main);
+    LoginWindow* login = clickLogin();
     // Hit escape
     h::keyPress(login->_passwordEdit, 27); // Hit Escape
     // Make sure we didn't log in
@@ -54,19 +77,17 @@ BOOST_AUTO_TEST_CASE( login_escape_test ) {
 }
 
 BOOST_AUTO_TEST_CASE( login_enter_test ) {
-    LoginWindow* login = clickLogin(main);
+    LoginWindow* login = clickLogin();
     // Fill in the form
     login->_usernameEdit->setText("admin");
     login->_passwordEdit->setText("admin");
     h::keyPress(login->_passwordEdit, 13); // Hit Enter
     // Check that we're logged in
-    BOOST_CHECK_MESSAGE( main->_loginLink == 0, "Login link should have disappeared. Maybe admin+admin is not in DB ?" );
-    AdminIndex* cp = main->resolve<AdminIndex*>("controls");
-    BOOST_REQUIRE_MESSAGE( cp, "Looks like the control panel didn't appear" );
+    checkLoggedIn();
 }
 
 BOOST_AUTO_TEST_CASE( login_ok_test ) {
-    LoginWindow* login = clickLogin(main);
+    LoginWindow* login = clickLogin();
     // Fill in the form
     login->_usernameEdit->setText("admin");
     login->_passwordEdit->setText("admin");
@@ -74,13 +95,11 @@ BOOST_AUTO_TEST_CASE( login_ok_test ) {
     h::click(login->_btnBar, "Login");
     app.processEvents();
     // Check that we're logged in
-    BOOST_CHECK_MESSAGE( main->_loginLink == 0, "Login link should have disappeared. Maybe admin+admin is not in DB ?" );
-    AdminIndex* cp = main->resolve<AdminIndex*>("controls");
-    BOOST_REQUIRE_MESSAGE( cp, "Looks like the control panel didn't appear" );
+    checkLoggedIn();
 }
 
 BOOST_AUTO_TEST_CASE( login_cancel_test ) {
-    LoginWindow* login = clickLogin(main);
+    LoginWindow* login = clickLogin();
     // Fill in the form
     login->_usernameEdit->setText("admin");
     login->_passwordEdit->setText("admin");
@@ -88,12 +107,11 @@ BOOST_AUTO_TEST_CASE( login_cancel_test ) {
     h::click(login->_btnBar, "Cancel");
     app.processEvents();
     // Make sure we didn't log in
-    BOOST_CHECK_EQUAL( app.internalPath(), "/" );
-    BOOST_CHECK_MESSAGE( main->_loginLink, "The login ling should still be there" );
+    checkLoggedOut();
 }
 
 BOOST_AUTO_TEST_CASE( login_fail_test ) {
-    LoginWindow* login = clickLogin(main);
+    LoginWindow* login = clickLogin();
     // Fill in the form
     login->_usernameEdit->setText("NOT a User");
     login->_passwordEdit->setText("Bad Pass");
@@ -101,8 +119,7 @@ BOOST_AUTO_TEST_CASE( login_fail_test ) {
     h::click(login->_btnBar, "Login");
     app.processEvents();
     // Make sure we didn't log in
-    BOOST_CHECK_EQUAL( app.internalPath(), "/" );
-    BOOST_CHECK_MESSAGE( main->_loginLink, "The login ling should still be there" );
+    checkLoggedOut();
 }
 
 BOOST_AUTO_TEST_SUITE_END() // login_suite
