@@ -56,8 +56,9 @@ struct LoginFixture : public AppFixture {
                              "Looks like the logout link didn't appear" );
     }
     /// Makes sure we're *not* logged in
-    void checkLoggedOut() {
-        BOOST_CHECK_EQUAL( app.internalPath(), "/" );
+    void checkLoggedOut(const std::string& path="/") {
+        if (!path.empty())
+            BOOST_CHECK_EQUAL( app.internalPath(), path );
         BOOST_CHECK_MESSAGE( main->_loginLink, "The login ling should still be there" );
     }
 };
@@ -120,6 +121,26 @@ BOOST_AUTO_TEST_CASE( login_fail ) {
     app.processEvents();
     // Make sure we didn't log in
     checkLoggedOut();
+}
+
+BOOST_AUTO_TEST_CASE( login_logout ) {
+    LoginWindow* login = clickLogin();
+    // Fill in the form
+    login->_usernameEdit->setText("admin");
+    login->_passwordEdit->setText("admin");
+    // Click the Login button
+    h::click(login->_btnBar, "Login");
+    app.processEvents();
+    // Check that we're logged in
+    checkLoggedIn();
+    // Click the logout link
+    AdminIndex* cp = main->resolve<AdminIndex*>("controls");
+    BOOST_REQUIRE( cp );
+    wittyPlus::InternalLink* logout = cp->resolve<wittyPlus::InternalLink*>("link-logout");
+    BOOST_REQUIRE( logout );
+    h::click(logout);
+    // Check it worked
+    checkLoggedOut("/logout");
 }
 
 BOOST_AUTO_TEST_SUITE_END() // login_suite
