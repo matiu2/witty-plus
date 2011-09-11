@@ -60,6 +60,7 @@ set(mainFiles urls.cpp UserEdit.cpp lib/MemorySessionStore.cpp  lib/BaseSessionH
 
 add_subdirectory(lib)
 add_subdirectory(tests)
+CONFIGURE_FILE(memcheck-test.sh memcheck-test.sh)
 
 # Build the library
 ADD_LIBRARY(mainLib SHARED ${mainFiles})

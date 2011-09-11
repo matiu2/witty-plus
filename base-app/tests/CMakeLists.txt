@@ -11,5 +11,7 @@ TARGET_LINK_LIBRARIES(tests ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY} ${wt} ${wthttp}
 
 TARGET_LINK_LIBRARIES(test_runner tests)
 
+set(TEST_EXE_NAME tests/test_runner PARENT_SCOPE)
+
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)
 
