@@ -16,6 +16,9 @@
  * =====================================================================================
  */
 
+#ifndef ADMIN_INDEX_HPP
+#define ADMIN_INDEX_HPP
+
 #include "lib/MoreAwesomeTemplate.hpp"
 #include "urls.hpp"
 #include "lib/InternalLink.hpp"
@@ -35,3 +38,5 @@ public:
 };
 
 } // namespace my_app
+
+#endif //  ADMIN_INDEX_HPP

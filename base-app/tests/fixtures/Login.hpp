@@ -21,13 +21,16 @@
 
 #include "App.hpp"
 #include "../helpers.hpp"
-
+#include "../../LoginWindow.hpp"
+#include "../../MainWindow.hpp"
+#include "../../AdminIndex.hpp"
 
 namespace my_app {
 namespace unittests {
 namespace fixtures {
 
 namespace h = helpers;
+
 /// Our special login fixture for testing the login window
 struct LoginFixture : public AppFixture {
     /// Clicks the login link

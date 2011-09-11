@@ -32,8 +32,6 @@ namespace unittests {
 
 namespace h = helpers;
 
-// /////// Tests start here //////////////////////////////////////////////
-
 BOOST_FIXTURE_TEST_SUITE( login_suite , fixtures::LoginFixture );
 
 BOOST_AUTO_TEST_CASE( login_escape ) {
