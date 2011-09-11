@@ -67,7 +67,7 @@ struct LoginFixture : public AppFixture {
 
 BOOST_FIXTURE_TEST_SUITE( login_suite , fixtures::LoginFixture );
 
-BOOST_AUTO_TEST_CASE( login_escape_test ) {
+BOOST_AUTO_TEST_CASE( login_escape ) {
     LoginWindow* login = clickLogin();
     // Hit escape
     h::keyPress(login->_passwordEdit, 27); // Hit Escape
@@ -76,7 +76,7 @@ BOOST_AUTO_TEST_CASE( login_escape_test ) {
     BOOST_CHECK_MESSAGE( main->_loginLink, "The login ling should still be there" );
 }
 
-BOOST_AUTO_TEST_CASE( login_enter_test ) {
+BOOST_AUTO_TEST_CASE( login_enter ) {
     LoginWindow* login = clickLogin();
     // Fill in the form
     login->_usernameEdit->setText("admin");
@@ -86,7 +86,7 @@ BOOST_AUTO_TEST_CASE( login_enter_test ) {
     checkLoggedIn();
 }
 
-BOOST_AUTO_TEST_CASE( login_ok_test ) {
+BOOST_AUTO_TEST_CASE( login_ok ) {
     LoginWindow* login = clickLogin();
     // Fill in the form
     login->_usernameEdit->setText("admin");
@@ -98,7 +98,7 @@ BOOST_AUTO_TEST_CASE( login_ok_test ) {
     checkLoggedIn();
 }
 
-BOOST_AUTO_TEST_CASE( login_cancel_test ) {
+BOOST_AUTO_TEST_CASE( login_cancel ) {
     LoginWindow* login = clickLogin();
     // Fill in the form
     login->_usernameEdit->setText("admin");
@@ -110,7 +110,7 @@ BOOST_AUTO_TEST_CASE( login_cancel_test ) {
     checkLoggedOut();
 }
 
-BOOST_AUTO_TEST_CASE( login_fail_test ) {
+BOOST_AUTO_TEST_CASE( login_fail ) {
     LoginWindow* login = clickLogin();
     // Fill in the form
     login->_usernameEdit->setText("NOT a User");
