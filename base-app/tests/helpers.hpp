@@ -22,9 +22,11 @@
 #include <Wt/WEvent>
 #include <Wt/WApplication>
 #include "../lib/InternalLink.hpp"
+#include "../lib/ButtonBar.hpp"
 #include <Wt/WLink>
 #include <Wt/WString>
 #include <string>
+#include <boost/test/test_tools.hpp>
 
 using Wt::WMouseEvent;
 using Wt::WApplication;
@@ -42,7 +44,7 @@ void click(Widget* w) {
 }
 
 template<>
-void click<wittyPlus::InternalLink>(InternalLink* il) {
+void click<wittyPlus::InternalLink>(wittyPlus::InternalLink* il) {
     WLink& link = il->link_;
     if (link.type_ == WLink::InternalPath) {
         WApplication::instance()->setInternalPath(link.internalPath().toUTF8(), true);
