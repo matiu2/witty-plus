@@ -68,7 +68,6 @@ void UserList::refillUserList() {
 }
 
 void UserList::newClicked() {
-    // TODO: Show the user edit form so it shows a new user
     userChosen().emit(dbo::ptr<User>()); // Let the world know
 }
 
@@ -83,7 +82,6 @@ void UserList::editClicked() {
         userChosen().emit(user); // Let the world know
     else
         app()->setStatusText(tr("You didn't select a user"));
-    // TODO: Possibly let the user know if they don't pick a user
 }
 
 inline void UserList::deleteClicked() {
