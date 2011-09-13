@@ -44,6 +44,12 @@ BOOST_AUTO_TEST_CASE( new_user ) {
     ue->edtPass1->setText("Test Pass");
     ue->edtPass2->setText("Test Pass");
     h::keyPress(ue->edtPass2, 13);
+    // Now check we're back at the list
+    ul = userList();
+    BOOST_REQUIRE_MESSAGE( ul->isVisible(),
+        "We expected it to go back to the user list after hitting enter when editing a user");
+
+
 }
 
 } // namespace unittests
