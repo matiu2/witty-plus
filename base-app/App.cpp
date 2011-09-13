@@ -90,12 +90,8 @@ void App::notify(const WEvent& event) {
         log("error") << "Uncaught Exception: " << e.what();
         throw (e);
     }
- }
-
-void App::setStatusText(const WString& newStatusText, unsigned long msecs) {
-    statusTextChanged()->emit(newStatusText);
-    WTimer::singleShot(msecs, this, &App::statusTextTimeout);
 }
+
 
 bool App::goBack() {
     if (urlHistory.size() >= 2) {

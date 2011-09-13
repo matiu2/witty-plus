@@ -1,12 +1,4 @@
-/* additional style rules for ie */
-
-/*
- * WCalendar
- */
-
-.Wt-cal td div {
-    zoom: 1;
-}
+/* additional style rules for IE */
 
 .Wt-dialogcover {
     filter: alpha(opacity=50);
@@ -29,31 +21,17 @@
 }
 
 /*
- * WTableView
+ * WAbstractItemView
  */
-.Wt-tableview div {
-    white-space: nowrap;
-}
-
-.Wt-tabs {
-    padding-bottom: 2px; /* should be 1px when we have close icons ... */
-}
-
-.Wt-tabs li a, .Wt-tabs li button {
-    color: white;
-}
-
-.Wt-tabs li .citemselected a {
-    color: black;
-}
-
-.Wt-tabs .Wt-closeicon, .Wt-tabs span.citemselected .Wt-closeicon {
-    background-position: right 1px;
+.Wt-itemview .Wt-header .Wt-label {
     zoom: 1;
 }
 
-.Wt-tabs .Wt-closeicon:hover, .Wt-tabs span.citemselected .Wt-closeicon:hover {
-    background-position: right -12px;
+/*
+ * WTableView
+ */
+.Wt-tableview div {
+    white-space: nowrap
 }
 
 /*
@@ -61,13 +39,6 @@
  */
 .Wt-tree div, .Wt-tree span {
     white-space: nowrap;   
-}
-
-/*
- * WAbstractItemView
- */
-.Wt-itemview .Wt-header .Wt-label {
-    zoom: 1;
 }
 
 /*
@@ -93,21 +64,8 @@ body.Wt-rtl .Wt-treeview .Wt-header .Wt-tv-c {
     position: absolute;
     overflow-x: auto;
     overflow-y: hidden;
-} 
-
-/* nodes */
-.Wt-treeview .Wt-expand {
-    background: url(nav-plus.gif) no-repeat 0 center;
 }
 
-body.Wt-rtl .Wt-treeview .Wt-expand {
-    background: url(nav-plus-rtl.gif) no-repeat 0 center;
-}
-
-.Wt-treeview .Wt-collapse {
-    background: url(nav-minus.gif) no-repeat 0 center;
-}
-
-body.Wt-rtl .Wt-treeview .Wt-collapse {
-    background: url(nav-minus-rtl.gif) no-repeat 0 center;
+.Wt-hrh {
+    line-height: 0px;
 }
