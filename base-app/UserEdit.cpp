@@ -90,7 +90,7 @@ void UserEdit::OKHit() {
             u->setName(edtName->text());
             const WString& password = edtPass1->text();
             if (!password.empty())
-                u->setPassword(password);
+                u->setPassword(password.toUTF8());
         }
         t.commit();
     }

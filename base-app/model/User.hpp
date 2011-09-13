@@ -49,7 +49,6 @@ public:
     const StdSHAValue& passwordHash() const { return _passwordHash; }
     void setPasswordHash(const StdSHAValue& newHash) { _passwordHash = newHash; }
     void setPassword(const string& newPassword) { setPasswordHash(wittyPlus::sha1(newPassword)); }
-    void setPassword(const WString& newPassword) { setPasswordHash(wittyPlus::sha1(newPassword.toUTF8())); }
     // DBO Support
     template<class Action>
     void persist(Action& a) {
