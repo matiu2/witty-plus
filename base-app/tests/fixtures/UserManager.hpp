@@ -33,7 +33,11 @@ namespace h = helpers;
 
 struct UserManagerFixture : public LoginFixture {
     UserManagerFixture() : LoginFixture() {
-        clickLogin();
+        // Login
+        LoginWindow* loginWindow = clickLogin();
+        loginWindow->_usernameEdit->setText("admin");
+        loginWindow->_passwordEdit->setText("admin");
+        h::keyPress(loginWindow->_passwordEdit, 13);
         checkLoggedIn();
         // Check that we can bring up the user manager
         AdminIndex* cp = main->resolve<AdminIndex*>("controls");
@@ -41,10 +45,11 @@ struct UserManagerFixture : public LoginFixture {
         // Click the users link
         wittyPlus::InternalLink* usersLink = cp->resolve<wittyPlus::InternalLink*>("link-users");
         BOOST_REQUIRE_MESSAGE( usersLink, "Looks like the users link didn't appear" );
+        h::click(usersLink);
     }
     /// Returns a copy of the UserManager widget
     UserManager* userManager() {
-        UserManager* result =  main->resolve<UserManager*>("content");
+        UserManager* result = main->resolve<UserManager*>("content");
         BOOST_REQUIRE_MESSAGE( result, "Couldn't find the user manager." );
         return result;
     }
