@@ -47,6 +47,7 @@ struct UserManagerFixture : public LoginFixture {
         BOOST_REQUIRE_MESSAGE( usersLink, "Looks like the users link didn't appear" );
         h::click(usersLink);
     }
+    ~UserManagerFixture() { cleanUpUsersTable(); }
     /// Returns a copy of the UserManager widget
     UserManager* userManager() {
         UserManager* result = main->resolve<UserManager*>("content");

@@ -24,6 +24,13 @@
 #include "../../LoginWindow.hpp"
 #include "../../MainWindow.hpp"
 #include "../../AdminIndex.hpp"
+#include <Wt/Dbo/Session>
+#include <Wt/Dbo/Transaction>
+#include <Wt/Dbo/Ptr>
+#include "../../model/User.hpp"
+#include <boost/foreach.hpp>
+
+namespace dbo = Wt::Dbo;
 
 namespace my_app {
 namespace unittests {
@@ -33,12 +40,31 @@ namespace h = helpers;
 
 /// Our special login fixture for testing the login window
 struct LoginFixture : public AppFixture {
+    LoginFixture() : AppFixture() { cleanUpUsersTable(); }
     /// Clicks the login link
     LoginWindow* clickLogin() {
         h::click(main->_loginLink);
         LoginWindow* result = main->resolve<LoginWindow*>("content");
         BOOST_REQUIRE_MESSAGE( result, "Looks like the login window didn't appear" );
         return result;
+    }
+    /// Makes it so we only have a single user 'admin' 'admin'
+    void cleanUpUsersTable() {
+        dbo::Session& db = app.dbSession();
+        dbo::Transaction t(db);
+        // Delete everyone except admin
+        db.execute("delete from users where name != ?").bind("admin");
+        // Make sure admin has the right info
+        dbo::ptr<model::User> adminUser = db.find<model::User>().where("name = ?").bind("admin").resultValue();
+        if (!adminUser) {
+            // If there was no admin user .. make a new one
+            adminUser = new model::User("admin", "admin");
+            db.add(adminUser);
+        } else {
+            // If admin exists .. make sure the password is 'admin'
+            adminUser.modify()->setPassword("admin");
+        }
+        t.commit();
     }
     /// Makes sure we *are* logged in
     void checkLoggedIn() {
