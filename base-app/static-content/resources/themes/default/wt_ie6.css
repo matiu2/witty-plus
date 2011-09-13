@@ -1,10 +1,19 @@
-/* additional style rules for ie */
+/* additional style rules for ie6 */
 
 /*
- * WCalendar
+ * Wt-outset
  */
-
-.Wt-cal td div {
-    zoom: 1;
+.Wt-outset {
+    border: 1px solid black;
 }
 
+.Wt-outset .Wt-x1, .Wt-outset .Wt-x1a, .Wt-outset .Wt-x2, .Wt-outset .Wt-x2a {
+    background: transparent;
+}
+
+/*
+ * WPanel
+ */
+.Wt-panel {
+    position: static;
+}
