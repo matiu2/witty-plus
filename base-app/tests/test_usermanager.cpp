@@ -23,7 +23,6 @@
 #include <Wt/WSelectionBox>
 #include <boost/test/unit_test.hpp>
 #include <boost/test/test_tools.hpp>
-#include <iostream>
 
 namespace my_app {
 namespace unittests {
