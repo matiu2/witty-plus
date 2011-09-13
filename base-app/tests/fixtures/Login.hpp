@@ -26,7 +26,7 @@
 #include "../../AdminIndex.hpp"
 #include <Wt/Dbo/Session>
 #include <Wt/Dbo/Transaction>
-#include <Wt/Dbo/Ptr>
+#include <Wt/Dbo/ptr>
 #include "../../model/User.hpp"
 #include <boost/foreach.hpp>
 
