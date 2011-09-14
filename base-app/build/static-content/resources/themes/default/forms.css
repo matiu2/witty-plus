@@ -1,0 +1,34 @@
+label {
+  font-weight: bold;
+}
+
+.yui-u label {
+  text-align: right;
+  float: right;
+}
+
+.form .yui-u input { width: 100%; }
+.form div { padding: 2px; }
+.form .yui-u { padding: 0px; }
+
+.btn-box {
+  margin-top: 3px;
+}
+
+.dialog {
+  width: 200px;
+}
+
+.button-bar {
+  padding: 2px;
+  width: 100%;
+}
+
+.button-bar button {
+  width: 100%;
+  font-weight: bold;
+}
+
+.form .yui-gd {
+  padding: 2px;
+}

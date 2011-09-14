@@ -52,7 +52,7 @@ public:
         _urls[urls::home].connect(this, &URL2Action::home);
         _urls[urls::login].connect(this, &URL2Action::login);
         _urls[urls::logout].connect(this, &URL2Action::logout);
-        _urls[urls::adminUsers].connect(this, &URL2Action::adminUsers);
+        _urls[urls::admin_users].connect(this, &URL2Action::admin_users);
     }
     // URL Handlers
     void home() { app->mainWindow()->bindString("content", "PUT YOUR DEFAULT BODY TEXT OR WIDDGETS HERE"); }
@@ -63,15 +63,14 @@ public:
         dbo::ptr<User> newUser = app->userSession()->user();
         if (oldUser != newUser)
             app->userChanged()->emit(oldUser, newUser);
-        app->redirect("/");
+        app->go(urls::home);
         app->setStatusText(WString::tr("you-are-logged-out"));
     }
     /// Shows the login form
     void login() { setBody<LoginWindow>(); }
     /* Admin tasks - must be logged in for these */
-
     /// /admin/users - if you're logged in, lets you adminster the users
-    void adminUsers() { setBodyIfLoggedIn<UserManager>(); }
+    void admin_users() { setBodyIfLoggedIn<UserManager>(); }
 };
 
 

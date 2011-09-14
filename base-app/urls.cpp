@@ -26,7 +26,7 @@ namespace urls {
     const char* home = "/";
     const char* login = "/login";
     const char* logout = "/logout";
-    const char* adminUsers = "/admin/users";
+    const char* admin_users = "/admin/users";
 
 } // namespace urls
 
