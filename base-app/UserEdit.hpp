@@ -62,21 +62,11 @@ private:
     // Event handlers
     void OKHit();
     void CancelHit();
+    void passwordChanged();
 public:
     UserEdit(WContainerWidget* parent=0);
     // Properties
-    void setUser(dbo::ptr<User> user) {
-        _user = user;
-        if (user) {
-            edtName->setText(user->name());
-        } else {
-            edtName->setText("");
-            app()->setStatusText(tr("Adding a new user"));
-        }
-        edtPass1->setText("");
-        edtPass2->setText("");
-        edtName->setFocus();
-    }
+    void setUser(dbo::ptr<User> user);
     dbo::ptr<User> getUser() { return _user; }
     // Signals
     UserSignal& done() { return _done; }
