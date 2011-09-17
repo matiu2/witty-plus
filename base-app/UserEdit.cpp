@@ -18,10 +18,14 @@
 
 #include "UserEdit.hpp"
 #include <Wt/WLineEdit>
+#include <Wt/WValidator>
 #include <Wt/WMessageBox>
 #include <Wt/WAnimation>
+#include "lib/MatchValidator.hpp"
 
 using Wt::WAnimation;
+using Wt::WValidator;
+using wittyPlus::MatchValidator;
 
 namespace my_app {
 
@@ -29,11 +33,13 @@ UserEdit::UserEdit(WContainerWidget* parent) : wittyPlus::MoreAwesomeTemplate(pa
     setTemplateText(tr("user-edit-template"));
     // Set up the widgets
     bindAndCreateField(lblName, edtName, "name");
-    edtName->validator()->setMandatory(true);
+    edtName->setValidator(new WValidator(true, edtName));
     bindAndCreateField(lblPass1, edtPass1, "new-password");
     edtPass1->setEchoMode(WLineEdit::Password);
+    edtPass1->setValidator(new WValidator(!_user, edtName));
     bindAndCreateField(lblPass2, edtPass2, "new-password2");    
     edtPass2->setEchoMode(WLineEdit::Password);
+    edtPass2->setValidator(new MatchValidator<WLineEdit>(edtPass1, tr("passwords-dont-match"), edtName));
     bindAndCreateWidget(btnBar, "btn-bar");
     btnBar->btn1()->clicked().connect(this, &UserEdit::OKHit);
     btnBar->btn2()->clicked().connect(this, &UserEdit::CancelHit);

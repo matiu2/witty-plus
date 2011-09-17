@@ -39,8 +39,6 @@ MainWindow::MainWindow(WContainerWidget* parent) :
     _statusTextHolder->addWidget(_oldStatusText = new WText());
     _statusText->setInline(false);
     _oldStatusText->setInline(false);
-    //_statusText->setHiddenKeepsGeometry(true);
-    //_statusText->addStyleClass("Wt-animated");
     // Set up any widets you have like the navigation tree
     bindString("nav", "Bind Nav box widget here");
     if (app()->userSession()->isLoggedIn()) {
