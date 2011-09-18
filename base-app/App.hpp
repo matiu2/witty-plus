@@ -20,17 +20,22 @@
 #define APP_HPP
 
 #include <iostream>
+#include <vector>
+#include <string>
 #include <Wt/WApplication>
 #include <Wt/Dbo/backend/Postgres>
 #include "lib/SessionHandle.hpp"
 #include "lib/MemorySessionStore.hpp"
 #include "model/User.hpp"
 #include "lib/BaseApp.hpp"
+#include "urls.hpp"
 
 namespace Wt {
     class WEvent;
 }
 
+using std::vector;
+using std::string;
 using Wt::WApplication;
 using Wt::WEnvironment;
 using Wt::Signal;
@@ -51,9 +56,12 @@ public:
     typedef Signal<dbo::ptr<model::User>, dbo::ptr<model::User> > UserChangedSignal;
     typedef Signal<> URLChangedSignal;
     typedef Signal<WString> MessageSignal;
+    typedef vector<string> UrlHistory;
+    typedef vector<string>::const_iterator HistoryIndex;
 protected:
     URL2Action* _url2ActionMapper; /// Handles turning urls into actions
     dbo::backend::Postgres postgres;
+    UrlHistory urlHistory;
     // Signals
     UserChangedSignal* _userChanged;
     MessageSignal* _statusTextChanged;
@@ -62,14 +70,27 @@ protected:
     // Methods
     void adminUsers();
     void notify(const WEvent& event);
+    void rememberHistory(const string& url) {
+        if ((urlHistory.size() >= 1) and (urlHistory.back() == url)) {
+            // They probably hit 'back' in the browser.
+            // Don't record the url in this case, it's already at the top of the history
+            // and we always want the current url in there
+            return;
+        } else {
+            urlHistory.push_back(url);
+        }
+    }
 public:
     App(const WEnvironment& environment);
     UserChangedSignal* userChanged() { return _userChanged; } /// An event triggered when a user logs in or logs out
     MessageSignal* statusTextChanged() { return _statusTextChanged; } /// An event triggered when the status text (shown on the front page) changes
+    /// Shows a status message for a period of time
+    void setStatusText(const WString& newStatusText) { statusTextChanged()->emit(newStatusText); }
     MainWindow* mainWindow() { return _mainWindow; }
     /// Use to send the user somewhere inside the app
     void go(const string& newUrl) { setInternalPath(newUrl, true); }
-    void goBack() { doJavaScript("history.go(-1)"); } // TODO: need to test if this fires the internalPathChanged event
+    bool goBack(); /// Go back one in the history but only if it keeps you inside the app. @return true if we navigated
+    void goBackOrHome() { if (!goBack()) go(urls::home); }
 };
 
 WApplication *createApplication(const WEnvironment& env);

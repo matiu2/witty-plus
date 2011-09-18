@@ -1,13 +1,13 @@
 //
-//  UserList.hpp
+//  UserManager.hpp
 //  my_app
 //
 //  Created by Matthew Sherborne on 22/08/11.
 //  Copyright 2011 Slicehost LLC. All rights reserved.
 //
 
-#ifndef my_app_UserList_hpp
-#define my_app_UserList_hpp
+#ifndef my_app_UserManager_hpp
+#define my_app_UserManager_hpp
 
 #include <Wt/WStackedWidget>
 #include "UserList.hpp"
@@ -37,15 +37,17 @@ private:
     void createAndAddWidget(Widget*& widget) { addWidget(widget = new Widget()); }
     // Event handlers
     void userChosen(dbo::ptr<User> user) {
-        setCurrentIndex(1, slide, true);
+        setCurrentIndex(1, slide, true); // Switch to edit view (with a nice slide effect)
         userEdit->setUser(user);
     }
     void userEdited(dbo::ptr<User>) {
         setCurrentIndex(0, slide, true);
-        // TODO: See if this needs calling .. it might automagically update ?
-        // userList->refillUserList();
+        userList->refillUserList();
     }
-    void userEditCancelled() { setCurrentIndex(0, slide, true); }
+    void userEditCancelled() { 
+        setCurrentIndex(0, slide, true);
+        userList->refillUserList();
+    }
 public:
     UserManager(WContainerWidget* parent=0) :
         WStackedWidget(parent), slide(WAnimation::SlideInFromBottom) 
@@ -61,4 +63,4 @@ public:
 } // namespace my_app
 
 
-#endif
+#endif // #define my_app_UserManager_hpp

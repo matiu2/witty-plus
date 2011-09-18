@@ -19,6 +19,12 @@
 #ifndef URLS_HPP
 #define URLS_HPP
 
+#include <Wt/WString>
+#include "lib/InternalLink.hpp"
+
+using Wt::WString;
+using wittyPlus::InternalLink;
+
 namespace my_app {
 
 /// Consts so we don't accidentally change a url somewhere
@@ -26,7 +32,7 @@ namespace urls {
     extern const char* home;
     extern const char* login;
     extern const char* logout;
-    extern const char* adminUsers;
+    extern const char* admin_users;
 } // namespace urls
 
 } // namespace my_app

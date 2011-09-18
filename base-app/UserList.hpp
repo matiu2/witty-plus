@@ -24,12 +24,12 @@
 #include <Wt/WSignal>
 
 namespace Wt {
-    class WTableView;
+    class WSelectionBox;
     class WPushButton;
 };
 
 namespace dbo = Wt::Dbo;
-using Wt::WTableView;
+using Wt::WSelectionBox;
 using Wt::Signal;
 using Wt::WPushButton;
 using my_app::model::User;
@@ -47,7 +47,7 @@ private:
     WPushButton* btnNew;
     WPushButton* btnEdit;
     WPushButton* btnDelete;
-    WTableView* lstUsers;
+    WSelectionBox* lstUsers;
     // Helper Methods
     void bindAndCreateButton(
         WPushButton*& btn, const char* address,

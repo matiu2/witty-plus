@@ -3,7 +3,7 @@
   <!-- Main Window Messages -->
   <message id="main-template">
     <div id="doc2" class="yui-t6">
-      <div id="hd">
+      <div id="hd" class="nice-box">
         <h1>my_app</h1>
         ${status-text}
       </div>

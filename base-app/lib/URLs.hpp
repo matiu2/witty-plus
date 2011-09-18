@@ -34,7 +34,7 @@ private:
 public:
     URLs(WObject* parent=0) : WObject(parent) {}
     URLSignal& operator[](const string& url) { 
-        URLSignal*& result = urlMap["/" + url];
+        URLSignal*& result = urlMap[url];
         if (result == 0) {
             result = new URLSignal(this);
         }

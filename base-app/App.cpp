@@ -36,7 +36,8 @@ using std::string;
 
 namespace my_app {
 
-App::App(const WEnvironment& environment) : BaseApp(environment, my_appCookieName) {
+App::App(const WEnvironment& environment) :
+    BaseApp(environment, my_appCookieName) {
     // Set up the db
     string postgresConnectionString;
     readConfigurationProperty("DB", postgresConnectionString);
@@ -55,6 +56,7 @@ App::App(const WEnvironment& environment) : BaseApp(environment, my_appCookieNam
     // Set up our signals
     _userChanged = new UserChangedSignal(this);
     _statusTextChanged = new MessageSignal(this);
+    internalPathChanged().connect(this, &App::rememberHistory);
     // Set up the general URL handling
     _url2ActionMapper = new URL2Action(this);
     // Set up the UI
@@ -65,7 +67,7 @@ App::App(const WEnvironment& environment) : BaseApp(environment, my_appCookieNam
     _mainWindow = new MainWindow(root());
     _statusTextChanged->connect(_mainWindow, &MainWindow::setStatusText);
     setBodyClass("yui-skin-sam");
-    // Fire one off as user may have navigated straight here
+    // Fire an internal path changed event off as user may have navigated straight here
     internalPathChanged().emit(app()->internalPath());
 }
 
@@ -75,7 +77,7 @@ void App::adminUsers() {
     dbo::ptr<User> user = userSession()->user();
     if (!user) {
         go(urls::home);
-        statusTextChanged()->emit(WString::tr("access-denied"));
+        setStatusText(WString::tr("access-denied"));
     }
 }
 
@@ -88,8 +90,23 @@ void App::notify(const WEvent& event) {
         log("error") << "Uncaught Exception: " << e.what();
         throw (e);
     }
- }
+}
 
+
+bool App::goBack() {
+    if (urlHistory.size() >= 2) {
+        // last is one past the current url
+        // last-1 is where we are now
+        // last-2 is where we want to go
+        HistoryIndex last=urlHistory.end()-2;
+        const string& result = *last;
+        urlHistory.pop_back(); // pop the current url we just navigated to from the stack
+        go(result);  // rememberHistory will realize we're going back and pop the url from the history
+        return true;
+    } else {
+      return false;
+    }
+}
 
 WApplication *createApplication(const WEnvironment& env) { return new App(env); }
 

@@ -43,9 +43,11 @@ LoginWindow::LoginWindow(WContainerWidget* parent) : MoreAwesomeTemplate(parent)
     // User Field
     bindAndCreateField(_usernameLabel, _usernameEdit, "username");
     _usernameEdit->setFocus();
+    _usernameEdit->setId("username");
     // Password Field
     bindAndCreateField(_passwordLabel, _passwordEdit, "password");
     _passwordEdit->setEchoMode(WLineEdit::Password);
+    _passwordEdit->setId("password");
     // Buttons
     bindWidget("btn-bar", _btnBar = new wittyPlus::ButtonBar(tr("Login"), tr("Cancel")));
     _btnBar->btn1()->clicked().connect(this, &LoginWindow::handleOKHit);
@@ -56,8 +58,6 @@ LoginWindow::LoginWindow(WContainerWidget* parent) : MoreAwesomeTemplate(parent)
     // These do reject
     _usernameEdit->escapePressed().connect(this, &LoginWindow::handleCancelHit);
     _passwordEdit->escapePressed().connect(this, &LoginWindow::handleCancelHit);
-    // Delete ourselves later
-    app()->internalPathChanged().connect(this, &LoginWindow::deleteSelf);
 }
 
 /**
@@ -76,15 +76,17 @@ void LoginWindow::handleOKHit() {
         newUser = app->userSession()->user();
     } else {
         app->log("SECURITY") << username << " failed log in";
-        app->statusTextChanged()->emit(tr("invalid-login"));
+        app->setStatusText(tr("invalid-login"));
     }
     if (oldUser != newUser)
         app->userChanged()->emit(oldUser, newUser);
-    app->goBack(); // Go back to what we were doing (but now with different set of powerz)
+    // Go back to what we were doing (but now with different set of powerz)
+    if (!app->goBack())
+        app->go(urls::home);
 }
 
 void LoginWindow::handleCancelHit() {
-    app()->statusTextChanged()->emit(tr("Login Cancelled"));
+    app()->setStatusText(tr("Login Cancelled"));
     app()->goBack();
 }
 
