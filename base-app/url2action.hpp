@@ -22,6 +22,7 @@
 #include "urls.hpp"
 #include "App.hpp"
 #include "UserManager.hpp"
+#include "LoginWindow.hpp"
 #include "lib/URLs.hpp"
 #include "Wt/WString"
 
@@ -36,18 +37,19 @@ protected:
     App* app;
     // Utility methods
     bool isLoggedIn() { return app->userSession()->user(); }
-    template<class Widget> void setBody() { app->mainWindow()->bindWidget("content", new Widget()); }
+    template<class Widget> void setBody() { app->mainWindow()->setBody(new Widget()); }
     template<class Widget> void setBodyIfLoggedIn() {
-        if (isLoggedIn())
+        if (isLoggedIn()) {
             setBody<Widget>();
-        else
-            app->statusTextChanged()->emit(WString::tr("access-denied"));
+        } else {
+            app->mainWindow()->setBody(WString::tr("access-denied"));
+        }
     }
 public:
     URL2Action(App* app) : WObject(app), app(app) {
         app->internalPathChanged().connect(&_urls, &URLs::run);
         // Hook up all the urls
-        _urls[""].connect(this, &URL2Action::home);
+        _urls[urls::home].connect(this, &URL2Action::home);
         _urls[urls::login].connect(this, &URL2Action::login);
         _urls[urls::logout].connect(this, &URL2Action::logout);
         _urls[urls::adminUsers].connect(this, &URL2Action::adminUsers);
@@ -62,7 +64,7 @@ public:
         if (oldUser != newUser)
             app->userChanged()->emit(oldUser, newUser);
         app->redirect("/");
-        app->statusTextChanged()->emit(WString::tr("you-are-logged-out"));
+        app->setStatusText(WString::tr("you-are-logged-out"));
     }
     /// Shows the login form
     void login() { setBody<LoginWindow>(); }

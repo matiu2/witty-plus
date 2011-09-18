@@ -17,11 +17,10 @@
  */
 
 #include "MainWindow.hpp"
-#include "LoginWindow.hpp"
+#include "lib/InternalLink.hpp"
 #include "AdminIndex.hpp"
 #include "App.hpp"
 #include "urls.hpp"
-#include <Wt/WAnchor>
 
 namespace my_app {
 
@@ -37,7 +36,7 @@ MainWindow::MainWindow(WContainerWidget* parent) : wittyPlus::MoreAwesomeTemplat
         }
         bindAndCreateWidget(_controlPanel, "controls");
     } else {
-        _loginLink = new WAnchor(urls::login, tr("Login"));
+        _loginLink = new InternalLink(urls::login, tr("Login"));
         bindWidget("controls", _loginLink);
     }
     // Look out for people logging in and out
@@ -51,12 +50,14 @@ void MainWindow::handleUserChanged(dbo::ptr<User>, dbo::ptr<User> newUser) {
     if (newUser) {
         // We'll be using the admin control panel, instead of a login link
         bindAndCreateWidget(_controlPanel, "controls");
+        _loginLink = 0; // Needs to be zeroed so we can know whether to hide it or not later
         // Say hello
-        app()->statusTextChanged()->emit(tr("welcome-1").arg(newUser->name()));
+        app()->setStatusText(tr("welcome-1").arg(newUser->name()));
     } else {
         // Someone's logging out
-        app()->statusTextChanged()->emit(tr("goodbye"));
-        bindAndCreateWidget(_loginLink, "controls");
+        app()->setStatusText(tr("goodbye"));
+        _loginLink = new InternalLink(urls::login, tr("Login"));
+        bindWidget("controls", _loginLink);
         _loginLink->setRefInternalPath(urls::login);
         _loginLink->setText(tr("Login"));
     }
@@ -64,7 +65,7 @@ void MainWindow::handleUserChanged(dbo::ptr<User>, dbo::ptr<User> newUser) {
     
 void MainWindow::checkLoginLink(const string &url) {
     if (_loginLink != 0) {
-        if (url == "/login")
+        if (url == urls::login)
             _loginLink->hide();
         else
             _loginLink->show();

@@ -17,7 +17,9 @@
  */
 
 #include "MemorySessionStore.hpp"
+#include <stdexcept>
 
+using std::invalid_argument;
 
 namespace wittyPlus {
 
@@ -27,12 +29,12 @@ const unsigned int MemorySessionStore::defaultTimeout = 1800; // If a user doesn
 /**
 * @brief Records that a user has logged in and a new session is started
 *
-* @param username the login of the user
+* @param userId the login of the user
 * @param cookie the cookie that we stored on their machine
 */
-void MemorySessionStore::login(const string& username, const string& cookie) {
+void MemorySessionStore::login(int userId, const string& cookie) {
     FullLock lock(_lock);
-    sessions.insert(SessionMap::value_type(cookie, Session(username)));
+    sessions.insert(SessionMap::value_type(cookie, Session(userId)));
 }
 
 /**
@@ -45,14 +47,15 @@ void MemorySessionStore::logout(const string& cookie) {
 }
 
 /**
-* @brief Returns the username of the currently logged in user or "" if none
+* @brief Returns the userId of the currently logged in user.
+* Throws std::invalid_argument if no user with that cookie found.
 *
 * @param cookie the cookie that the client browser gave us
 * @param touch If true, updates the session time out
 *
-* @return Username of the currently logged in user or an empty 
+* @return userId of the currently logged in user
 */
-string MemorySessionStore::username(const string& cookie, bool touch) {
+int MemorySessionStore::userId(const string& cookie, bool touch) {
     ReadOnlyLock lock(_lock);
     Session* session = findSession(lock, cookie);
     if (session != 0) {
@@ -62,14 +65,14 @@ string MemorySessionStore::username(const string& cookie, bool touch) {
                 // Session is still good, update its timeout on our end
                 session->updateLoginTime();
             }
-            return session->username();
+            return session->userId();
         } else {
             // Cookie is expired - delete its session and return empty
             ReadWriteLock eraseLock(_lock);
             sessions.erase(cookie);
         }
     }
-    return ""; // No username for that cookie
+    throw invalid_argument("No user with cookie " + cookie + " found");
 }
     
 /**

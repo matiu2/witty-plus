@@ -41,6 +41,7 @@ public:
     // Structors
     User(const string& name="") : _name(name), _passwordHash(20, 0) {};
     User(const string& name, const StdSHAValue& passwordHash) : _name(name), _passwordHash(passwordHash) {};
+    User(const string& name, const string& password) : _name(name), _passwordHash(wittyPlus::sha1(password)) {};
     // Accessors
     const string& name() const { return _name; }
     void setName(const string& newName) { _name = newName; }

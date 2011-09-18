@@ -17,7 +17,6 @@
  */
 
 #include "UserEdit.hpp"
-#include "App.hpp"
 #include <Wt/WLineEdit>
 #include <Wt/WMessageBox>
 #include <Wt/WAnimation>
@@ -37,6 +36,12 @@ UserEdit::UserEdit(WContainerWidget* parent) : wittyPlus::MoreAwesomeTemplate(pa
     bindAndCreateWidget(btnBar, "btn-bar");
     btnBar->btn1()->clicked().connect(this, &UserEdit::OKHit);
     btnBar->btn2()->clicked().connect(this, &UserEdit::CancelHit);
+    // Enter handling and tab indexy stuff
+    edtName->enterPressed().connect(edtPass1, &WLineEdit::setFocus);
+    edtPass1->enterPressed().connect(edtPass2, &WLineEdit::setFocus);
+    edtPass2->enterPressed().connect(this, &UserEdit::OKHit);
+    // Escape is cancel
+    escapePressed().connect(this, &UserEdit::CancelHit);
 }
 
 /// Validates and saves the user
@@ -46,10 +51,11 @@ void UserEdit::OKHit() {
     if (edtPass1->text().empty() && (_user->name() == edtName->text())) {
         Wt::WMessageBox::show(
             tr("cant-save"),
-            tr("password-is-empty"),
+            tr("you-didnt-change-anything"),
             Wt::Ok,
             WAnimation(WAnimation::SlideInFromRight, WAnimation::Ease)
         );
+        edtName->setFocus();
         return;
     }
     // Passwords must match
@@ -60,10 +66,11 @@ void UserEdit::OKHit() {
             Wt::Ok,
             WAnimation(WAnimation::SlideInFromRight, WAnimation::Ease)
         );
+        edtPass1->setFocus();
         return;
     }
     Wt::StandardButton result = Wt::Yes;
-    if (isNewUser) {
+    if (!isNewUser) {
         // If modifying an existing object, prompt to save changes
         result = Wt::WMessageBox::show(
             tr("save-changes?"),
@@ -76,11 +83,15 @@ void UserEdit::OKHit() {
     if (result == Wt::Yes) {
         dbo::Session& s = app()->dbSession();
         dbo::Transaction t(s);
-        model::User* u = _user.modify();
-        u->setName(edtName->text());
-        u->setPassword(edtPass1->text());
-        if (isNewUser)
-           s.add(_user);
+        if (isNewUser) {
+           _user = s.add(new User(edtName->text().toUTF8(), edtPass1->text().toUTF8()));
+        } else {
+            model::User* u = _user.modify();
+            u->setName(edtName->text());
+            const WString& password = edtPass1->text();
+            if (!password.empty())
+                u->setPassword(password);
+        }
         t.commit();
     }
     // Let the parent widget (or whoever) know that we're done
