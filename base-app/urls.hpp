@@ -32,7 +32,7 @@ namespace urls {
     extern const char* home;
     extern const char* login;
     extern const char* logout;
-    extern const char* adminUsers;
+    extern const char* admin_users;
 } // namespace urls
 
 } // namespace my_app

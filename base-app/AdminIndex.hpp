@@ -16,6 +16,9 @@
  * =====================================================================================
  */
 
+#ifndef ADMIN_INDEX_HPP
+#define ADMIN_INDEX_HPP
+
 #include "lib/MoreAwesomeTemplate.hpp"
 #include "urls.hpp"
 #include "lib/InternalLink.hpp"
@@ -29,9 +32,11 @@ class AdminIndex : public MoreAwesomeTemplate {
 public:
     AdminIndex (WContainerWidget* parent=0) : MoreAwesomeTemplate(parent) {
         setTemplateText(tr("admin-index-template"));
-        bindWidget("link-users", new InternalLink(urls::adminUsers, tr("Users")));
+        bindWidget("link-users", new InternalLink(urls::admin_users, tr("Users")));
         bindWidget("link-logout", new InternalLink(urls::logout, tr("Logout")));
     }
 };
 
 } // namespace my_app
+
+#endif //  ADMIN_INDEX_HPP
