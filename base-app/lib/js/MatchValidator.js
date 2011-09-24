@@ -5,9 +5,9 @@ WT_DECLARE_WT_MEMBER
    function(mandatory, otherId, errorMsg) {
      this.validate = function(text) {
        var otherEle = document.getElementById(otherId);
-       if (otherEle.tag == "input")
-         var otherText = otherEle.getAttribute("value");
-       else if (otherEle.tag == "textarea")
+       if (otherEle.tagName.toUpperCase() == "INPUT")
+         var otherText = otherEle.value;
+       else if (otherEle.tagName.toUpperCase() == "TEXTAREA")
          var otherText = otherEle.getInnerHTML();
        if (text == otherText)
          return { valid: true };

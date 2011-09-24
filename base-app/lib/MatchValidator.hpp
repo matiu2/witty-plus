@@ -27,8 +27,13 @@
 #include <boost/concept/requires.hpp>
 #include "js/MatchValidator.js"
 
+namespace Wt {
+    class WFormWidget;
+}
+
 using Wt::WApplication;
 using Wt::WComboBox;
+using Wt::WFormWidget;
 
 namespace wittyPlus {
 
@@ -50,7 +55,7 @@ public:
             js << "new " WT_CLASS ".MatchValidator("
                << (isMandatory() ? "true" : "false") << ","
                << WString(_other->id()).jsStringLiteral() << "," 
-               << errorMessage() 
+               << errorMessage().jsStringLiteral() 
                << ");";
             return js.str();
         } else {
@@ -85,4 +90,4 @@ struct MatchValidator<WComboBox> : public BaseMatchValidator {
 
 } // namespace wittyPlus {
 
-#endif WITTY_PLUS_MATCH_VALIDATOR_HPP
+#endif // WITTY_PLUS_MATCH_VALIDATOR_HPP
