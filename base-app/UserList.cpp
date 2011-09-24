@@ -31,6 +31,7 @@ using Wt::WAnimation;
 namespace my_app {
 
 UserList::UserList(WContainerWidget* parent) : MoreAwesomeTemplate(parent) {
+    setStyleClass("form blue");
     setTemplateText(tr("user-list-template"));
     // Set up the widgets
     createUserList();

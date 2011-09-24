@@ -2,13 +2,20 @@
 <messages>
   <!-- User Edit Interface -->
   <message id="user-edit-template">
-      <div class="yui-g centered">
+      <div class="yui-gb">
         <div class="yui-u first">${name-label}</div>
         <div class="yui-u">${name-field}</div>
+        <div class="yui-u">&nbsp;${name-msg}</div>
+      </div>
+      <div class="yui-gb">
         <div class="yui-u first">${new-password-label}</div>
         <div class="yui-u">${new-password-field}</div>
+        <div class="yui-u">&nbsp;${new-password-msg}</div>
+      </div>
+      <div class="yui-gb">
         <div class="yui-u first">${new-password2-label}</div>
         <div class="yui-u">${new-password2-field}</div>
+        <div class="yui-u">&nbsp;${new-password2-msg}</div>
       </div>
       ${btn-bar}
   </message>

@@ -30,14 +30,15 @@ using wittyPlus::MatchValidator;
 namespace my_app {
 
 UserEdit::UserEdit(WContainerWidget* parent) : wittyPlus::MoreAwesomeTemplate(parent) {
+    setStyleClass("form blue");
     setTemplateText(tr("user-edit-template"));
     // Set up the widgets
-    bindAndCreateField(lblName, edtName, "name");
+    bindAndCreateField(lblName, edtName, msgName, "name");
     edtName->setValidator(new WValidator(true, edtName));
-    bindAndCreateField(lblPass1, edtPass1, "new-password");
+    bindAndCreateField(lblPass1, edtPass1, msgPass1, "new-password");
     edtPass1->setEchoMode(WLineEdit::Password);
     edtPass1->setValidator(new WValidator(!_user));
-    bindAndCreateField(lblPass2, edtPass2, "new-password2");    
+    bindAndCreateField(lblPass2, edtPass2, msgPass2, "new-password2");
     edtPass2->setEchoMode(WLineEdit::Password);
     edtPass2->setValidator(new MatchValidator<WLineEdit>(edtPass1, tr("passwords-dont-match"), edtName));
     bindAndCreateWidget(btnBar, "btn-bar");
@@ -72,7 +73,7 @@ void UserEdit::setUser(dbo::ptr<User> user) {
 
 /// Validates and saves the user
 void UserEdit::OKHit() {
-bool isNewUser = !_user;
+    bool isNewUser = !_user;
 
     // If it's a new user
     // Must have a password

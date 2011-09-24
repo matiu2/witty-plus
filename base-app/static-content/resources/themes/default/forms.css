@@ -7,7 +7,57 @@ label {
   float: right;
 }
 
-.form .yui-u input { width: 100%; }
+.blue {
+  background-image: linear-gradient(left , rgb(255,255,255) 0%, rgb(145,233,255) 50%, rgb(255,255,255) 100%);
+  background-image: -o-linear-gradient(left , rgb(255,255,255) 0%, rgb(145,233,255) 50%, rgb(255,255,255) 100%);
+  background-image: -moz-linear-gradient(left , rgb(255,255,255) 0%, rgb(145,233,255) 50%, rgb(255,255,255) 100%);
+  background-image: -webkit-linear-gradient(left , rgb(255,255,255) 0%, rgb(145,233,255) 50%, rgb(255,255,255) 100%);
+  background-image: -ms-linear-gradient(left , rgb(255,255,255) 0%, rgb(145,233,255) 50%, rgb(255,255,255) 100%);
+
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(0, rgb(255,255,255)),
+    color-stop(0.5, rgb(145,233,255)),
+    color-stop(1, rgb(255,255,255))
+  );
+}
+
+.form .yui-u label {
+  color: #222222;
+}
+
+.form .yui-u input {
+  width: 100%;
+  color: #000066;
+}
+
+.form .yui-u button {
+  width: 100%;
+  color: #000066;
+  background-image: linear-gradient(top, rgb(255,255,255) 0%, rgb(186,216,224) 30%, rgb(186,216,224) 70%, rgb(255,255,255) 100%);
+  background-image: -o-linear-gradient(top, rgb(255,255,255) 0%, rgb(186,216,224) 30%, rgb(186,216,224) 70%, rgb(255,255,255) 100%);
+  background-image: -moz-linear-gradient(top, rgb(255,255,255) 0%, rgb(186,216,224) 30%, rgb(186,216,224) 70%, rgb(255,255,255) 100%);
+  background-image: -webkit-linear-gradient(top, rgb(255,255,255) 0%, rgb(186,216,224) 30%, rgb(186,216,224) 70%, rgb(255,255,255) 100%);
+  background-image: -ms-linear-gradient(top, rgb(255,255,255) 0%, rgb(186,216,224) 30%, rgb(186,216,224) 70%, rgb(255,255,255) 100%);
+
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, rgb(255,255,255)),
+    color-stop(0.3, rgb(186,216,224)),
+    color-stop(0.7, rgb(186,216,224)),
+    color-stop(1, rgb(255,255,255))
+  );
+}
+
+.form .yui-u select {
+  width: 100%;
+  background-color: white;
+  color: #000066;
+}
 .form div { padding: 2px; }
 .form .yui-u { padding: 0px; }
 

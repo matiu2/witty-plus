@@ -25,6 +25,7 @@
 #include "App.hpp"
 #include <Wt/WLineEdit>
 #include <Wt/WSignal>
+#include <Wt/WText>
 
 namespace dbo = Wt::Dbo;
 
@@ -39,6 +40,7 @@ using my_app::model::User;
 using Wt::WLabel;
 using Wt::WLineEdit;
 using Wt::Signal;
+using Wt::WText;
 using wittyPlus::ButtonBar;
 
 namespace my_app {
@@ -54,10 +56,13 @@ private:
     // Fields and labels
     WLabel*    lblName;
     WLineEdit* edtName;
+    WText* msgName;
     WLabel*    lblPass1;
     WLineEdit* edtPass1;
+    WText* msgPass1;
     WLabel*    lblPass2;
     WLineEdit* edtPass2;
+    WText* msgPass2;
     ButtonBar* btnBar;
     // Event handlers
     void OKHit();

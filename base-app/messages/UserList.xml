@@ -2,10 +2,22 @@
 <messages>
   <!-- User Listing Interface -->
   <message id="user-list-template">
-          ${btnNew}
-          ${btnEdit}
-          ${btnDelete}
-      ${contents}
+      <div class="yui-gb">
+          <div class="yui-u first">&nbsp;</div>
+          <div class="yui-u yui-gb">
+            <div class="yui-u first">${btnNew}</div>
+            <div class="yui-u">${btnEdit}</div>
+            <div class="yui-u">${btnDelete}</div>
+          </div>
+          <div class="yui-u">&nbsp;</div>
+      </div>
+      <div class="yui-gb">
+          <div class="yui-u first">&nbsp;</div>
+          <div class="yui-u">
+            ${contents}
+          </div>
+          <div class="yui-u">&nbsp;</div>
+      </div>
   </message>
   <message id="userList-label">Users:</message>
   <message id="Back to User List">Back to User List</message>
