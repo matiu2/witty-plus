@@ -73,8 +73,6 @@ void UserEdit::setUser(dbo::ptr<User> user) {
 
 /// Validates and saves the user
 void UserEdit::OKHit() {
-    bool isNewUser = !_user;
-
     // If it's a new user
     // Must have a password
     // Passwords must match
@@ -94,8 +92,23 @@ void UserEdit::OKHit() {
         }
     } else {
         // If it's a new user
+        // Must have a name
+        if (edtName->validate() != WValidator::Valid) {
+            Wt::WMessageBox::show(
+                tr("cant-save"),
+                tr("new-user-needs-a-name"),
+                Wt::Ok,
+                WAnimation(WAnimation::Pop | WAnimation::Fade, WAnimation::Ease)
+            );
+            edtName1->setFocus();
+            return;
+        }
+        // See if username is already taken
+        dbo::Session* db = app()->dbSession();
+        int userCount = db->Query<int>("select count(1) from " + db->tableName<User>());
+        if (edtName->text())
         // Must have a password
-        if (edtPass1->text().empty())
+        if (edtPass1->text().empty()) {
             Wt::WMessageBox::show(
                 tr("cant-save"),
                 tr("new-user-needs-a-password"),
@@ -104,6 +117,7 @@ void UserEdit::OKHit() {
             );
             edtPass1->setFocus();
             return;
+        }
     }
     // Passwords must match
     if (edtPass1->text() != edtPass2->text()) {

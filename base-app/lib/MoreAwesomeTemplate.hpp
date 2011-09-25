@@ -132,8 +132,10 @@ protected:
         bindAndCreateWidget(validationMsgText, prefix + "-msg");
         // Hook up a javascript handler, to show a message when the content is invalid
         JSlot* validateHandler = new JSlot(this);
+        // Unfortunately we have to run validate ourselves, as witty puts the validation code after other event handlers
         WString validateFunc = "function (sender, event) { {1}.validate(sender); {2}.innerHTML = sender.getAttribute('title'); }";
         validateHandler->setJavaScript(validateFunc.arg(WT_CLASS).arg(validationMsgText->jsRef()).toUTF8());
+        widget->focussed().connect(*validateHandler);
         widget->changed().connect(*validateHandler);
         widget->keyWentUp().connect(*validateHandler);
         widget->keyWentDown().connect(*validateHandler);
