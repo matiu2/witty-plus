@@ -25,8 +25,10 @@
   <message id="new-password2-label">Repeat Password:</message>
   <message id="save-changes?">Save changes?</message>
   <message id="save-new-password-user-x">Save the new password for user {1} ?</message>
+  <message id="change-username-from-x-to-y">About to change Username from '{1}' to '{2}'. Are you sure ?</message>
   <message id="cant-save">Can't save changes</message>
   <message id="you-didnt-change-anything">You didn't change anything</message>
+  <message id="user-name-x-exists">The username '{1}' already exists</message>
   <message id="new-user-needs-a-name">New User needs a name</message>
   <message id="new-user-needs-a-password">New User needs a password</message>
   <message id="passwords-dont-match">Passwords provided don't match</message>

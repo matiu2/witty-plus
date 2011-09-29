@@ -22,6 +22,8 @@
 #include <Wt/WMessageBox>
 #include <Wt/WAnimation>
 #include "lib/MatchValidator.hpp"
+#include "lib/DBNoDupValidator.hpp"
+#include <boost/assert.hpp>
 
 using Wt::WAnimation;
 using Wt::WValidator;
@@ -34,7 +36,10 @@ UserEdit::UserEdit(WContainerWidget* parent) : wittyPlus::MoreAwesomeTemplate(pa
     setTemplateText(tr("user-edit-template"));
     // Set up the widgets
     bindAndCreateField(lblName, edtName, msgName, "name");
-    edtName->setValidator(new WValidator(true, edtName));
+    if (_user)
+        edtName->setValidator(new wittyPlus::DBNoDupValidator<User>(app()->dbSession(), "name", _user.id(), true));
+    else
+        edtName->setValidator(new wittyPlus::DBNoDupValidator<User>(app()->dbSession(), "name", true));
     bindAndCreateField(lblPass1, edtPass1, msgPass1, "new-password");
     edtPass1->setEchoMode(WLineEdit::Password);
     edtPass1->setValidator(new WValidator(!_user));
@@ -55,13 +60,18 @@ UserEdit::UserEdit(WContainerWidget* parent) : wittyPlus::MoreAwesomeTemplate(pa
 }
 
 void UserEdit::setUser(dbo::ptr<User> user) {
+    typedef wittyPlus::DBNoDupValidator<model::User> NameValidator;
     _user = user;
     if (user) {
-        edtName->setText(user->name());
+        NameValidator* nameValidator = dynamic_cast<NameValidator*>(edtName->validator());
+        BOOST_ASSERT(nameValidator != 0);
+        nameValidator->setIdToIgnore(_user.id());
+        edtName->setText(_user->name());
         edtPass1->validator()->setMandatory(false);
         edtPass2->validator()->setMandatory(false);
     } else {
         edtName->setText("");
+        dynamic_cast<wittyPlus::DBNoDupValidator<model::User>*>(edtName->validator())->clearIdToIgnore();
         app()->setStatusText(tr("Adding a new user"));
         edtPass1->validator()->setMandatory(true);
         edtPass2->validator()->setMandatory(true);
@@ -71,13 +81,33 @@ void UserEdit::setUser(dbo::ptr<User> user) {
     edtName->setFocus();
 }
 
-/// Validates and saves the user
+/// Validates (more) and saves the user
 void UserEdit::OKHit() {
-    // If it's a new user
-    // Must have a password
-    // Passwords must match
-
-    // If it's an existing user
+    // Must have a name
+    switch (edtName->validate()) {
+        case WValidator::InvalidEmpty: {
+            Wt::WMessageBox::show(
+                tr("cant-save"),
+                tr("new-user-needs-a-name"),
+                Wt::Ok,
+                WAnimation(WAnimation::Pop | WAnimation::Fade, WAnimation::Ease)
+            );
+            edtName->setFocus();
+            return;
+        }
+        case WValidator::Invalid: {
+            Wt::WMessageBox::show(
+                tr("cant-save"),
+                tr("user-name-x-exists").arg(edtName->text()),
+                Wt::Ok,
+                WAnimation(WAnimation::Pop | WAnimation::Fade, WAnimation::Ease)
+            );
+            edtName->setFocus();
+            return;
+        }
+        case WValidator::Valid: break; // nothing to do .. valid is good :)
+    }
+    // If it's an existing user..
     if (_user) {
         // You have to change something
         if (edtPass1->text().empty() && (_user->name() == edtName->text())) {
@@ -91,24 +121,9 @@ void UserEdit::OKHit() {
             return;
         }
     } else {
-        // If it's a new user
-        // Must have a name
-        if (edtName->validate() != WValidator::Valid) {
-            Wt::WMessageBox::show(
-                tr("cant-save"),
-                tr("new-user-needs-a-name"),
-                Wt::Ok,
-                WAnimation(WAnimation::Pop | WAnimation::Fade, WAnimation::Ease)
-            );
-            edtName1->setFocus();
-            return;
-        }
-        // See if username is already taken
-        dbo::Session* db = app()->dbSession();
-        int userCount = db->Query<int>("select count(1) from " + db->tableName<User>());
-        if (edtName->text())
+        // If it's a new user..
         // Must have a password
-        if (edtPass1->text().empty()) {
+        if (edtPass1->validate() != WValidator::Valid) {
             Wt::WMessageBox::show(
                 tr("cant-save"),
                 tr("new-user-needs-a-password"),
@@ -120,7 +135,7 @@ void UserEdit::OKHit() {
         }
     }
     // Passwords must match
-    if (edtPass1->text() != edtPass2->text()) {
+    if (edtPass2->validate() != WValidator::Valid) {
         Wt::WMessageBox::show(
             tr("cant-save"),
             tr("passwords-dont-match"),
@@ -131,20 +146,29 @@ void UserEdit::OKHit() {
         return;
     }
     Wt::StandardButton result = Wt::Yes;
-    if (!isNewUser) {
-        // If modifying an existing object, prompt to save changes
-        result = Wt::WMessageBox::show(
-            tr("save-changes?"),
-            tr("save-new-password-user-x").arg(_user->name()),
-            Wt::Yes | Wt::No,
-            WAnimation(WAnimation::SlideInFromRight, WAnimation::Ease)
-        );
+    if (_user) {
+        // If modifying an existing user, prompt to save changes
+        if (edtName->text() != _user->name())
+            result = Wt::WMessageBox::show(
+                tr("save-changes?"),
+                tr("change-username-from-x-to-y").arg(_user->name()).arg(edtName->text()),
+                Wt::Yes | Wt::No,
+                WAnimation(WAnimation::SlideInFromRight, WAnimation::Ease)
+            );
+        if ((result == Wt::Yes) && (!edtPass1->text().empty()))
+            result = Wt::WMessageBox::show(
+                tr("save-changes?"),
+                tr("save-new-password-user-x").arg(_user->name()),
+                Wt::Yes | Wt::No,
+                WAnimation(WAnimation::SlideInFromRight, WAnimation::Ease)
+            );
     }
     // Save it
     if (result == Wt::Yes) {
         dbo::Session& s = app()->dbSession();
         dbo::Transaction t(s);
-        if (isNewUser) {
+        if (!_user) {
+            // If we don't have an existing user .. make a new one and add it to the DB
            _user = s.add(new User(edtName->text().toUTF8(), edtPass1->text().toUTF8()));
         } else {
             model::User* u = _user.modify();
