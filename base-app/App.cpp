@@ -93,15 +93,17 @@ void App::notify(const WEvent& event) {
 }
 
 
-bool App::goBack() {
+bool App::goBack(bool dontLogout) {
     if (urlHistory.size() >= 2) {
         // last is one past the current url
         // last-1 is where we are now
         // last-2 is where we want to go
         HistoryIndex last=urlHistory.end()-2;
-        const string& result = *last;
+        const string& newURL = *last;
+        if (dontLogout && (newURL == urls::logout))
+            return false;
         urlHistory.pop_back(); // pop the current url we just navigated to from the stack
-        go(result);  // rememberHistory will realize we're going back and pop the url from the history
+        go(newURL);  // rememberHistory will realize we're going back and pop the url from the history
         return true;
     } else {
       return false;

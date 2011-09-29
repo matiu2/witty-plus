@@ -89,7 +89,11 @@ public:
     MainWindow* mainWindow() { return _mainWindow; }
     /// Use to send the user somewhere inside the app
     void go(const string& newUrl) { setInternalPath(newUrl, true); }
-    bool goBack(); /// Go back one in the history but only if it keeps you inside the app. @return true if we navigated
+    /** Go back one in the history but only if it keeps you inside the app.
+     * @param dontLogout don't go if 'back' would take us to /logout
+     * @return true if we navigated
+     **/
+    bool goBack(bool dontLogout=true);
     void goBackOrHome() { if (!goBack()) go(urls::home); }
 };
 
