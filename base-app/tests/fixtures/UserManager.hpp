@@ -19,11 +19,18 @@
 #ifndef TESTS_FIXTURES_USER_MANAGER_HPP
 #define TESTS_FIXTURES_USER_MANAGER_HPP
 
+#include <Wt/WString>
+#include <Wt/WDialog>
+#include <Wt/WMessageBox>
 #include "Login.hpp"
 #include "../helpers.hpp"
 #include "../../UserManager.hpp"
 #include "../../UserEdit.hpp"
 #include "../../UserList.hpp"
+
+using Wt::WDialog;
+using Wt::WMessageBox;
+using Wt::WString;
 
 namespace my_app {
 namespace unittests {
@@ -48,6 +55,17 @@ struct UserManagerFixture : public LoginFixture {
         h::click(usersLink);
     }
     ~UserManagerFixture() { cleanUpUsersTable(); }
+    // Fields
+    WString lastTitle;   /// last Message dialog title shown
+    WString lastMessage; /// last Message dialog text shown
+    /// Handle an application dialog being shown
+    void onDialogExecuted(WDialog* dlg) {
+        WMessageBox* msgBox = dynamic_cast<WMessageBox*>(dlg);
+        if (msgBox != 0)
+            lastMessage = msgBox->text();
+        lastTitle = dlg->caption();
+        dlg->accept(); // Close it .. we're running tests
+    }
     /// Returns a copy of the UserManager widget
     UserManager* userManager() {
         UserManager* result = main->resolve<UserManager*>("content");

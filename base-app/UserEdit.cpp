@@ -83,104 +83,67 @@ void UserEdit::setUser(dbo::ptr<User> user) {
 
 /// Validates (more) and saves the user
 void UserEdit::OKHit() {
-    // Must have a name
-    switch (edtName->validate()) {
-        case WValidator::InvalidEmpty: {
-            Wt::WMessageBox::show(
-                tr("cant-save"),
-                tr("new-user-needs-a-name"),
-                Wt::Ok,
-                WAnimation(WAnimation::Pop | WAnimation::Fade, WAnimation::Ease)
-            );
-            edtName->setFocus();
-            return;
+    if (validateAll()) {
+        // All entries are valid ..
+        // If it's an existing user..
+        if (_user) {
+            // You have to change something
+            if (edtPass1->text().empty() && (_user->name() == edtName->text())) {
+                Wt::WMessageBox::show(
+                    tr("cant-save"),
+                    tr("you-didnt-change-anything"),
+                    Wt::Ok,
+                    WAnimation(WAnimation::SlideInFromRight, WAnimation::Ease)
+                );
+                edtName->setFocus();
+                return;
+            }
         }
-        case WValidator::Invalid: {
-            Wt::WMessageBox::show(
-                tr("cant-save"),
-                tr("user-name-x-exists").arg(edtName->text()),
-                Wt::Ok,
-                WAnimation(WAnimation::Pop | WAnimation::Fade, WAnimation::Ease)
-            );
-            edtName->setFocus();
-            return;
+        // If it's an existing user .. prompt before overwriting
+        Wt::StandardButton userHappy = Wt::Yes;
+        if (_user) {
+            // If modifying an existing user, prompt to save changes
+            if (edtName->text() != _user->name())
+                userHappy = Wt::WMessageBox::show(
+                    tr("save-changes?"),
+                    tr("change-username-from-x-to-y").arg(_user->name()).arg(edtName->text()),
+                    Wt::Yes | Wt::No,
+                    WAnimation(WAnimation::SlideInFromRight, WAnimation::Ease)
+                );
+            if ((userHappy == Wt::Yes) && (!edtPass1->text().empty()))
+                userHappy = Wt::WMessageBox::show(
+                    tr("save-changes?"),
+                    tr("save-new-password-user-x").arg(_user->name()),
+                    Wt::Yes | Wt::No,
+                    WAnimation(WAnimation::SlideInFromRight, WAnimation::Ease)
+                );
         }
-        case WValidator::Valid: break; // nothing to do .. valid is good :)
-    }
-    // If it's an existing user..
-    if (_user) {
-        // You have to change something
-        if (edtPass1->text().empty() && (_user->name() == edtName->text())) {
-            Wt::WMessageBox::show(
-                tr("cant-save"),
-                tr("you-didnt-change-anything"),
-                Wt::Ok,
-                WAnimation(WAnimation::SlideInFromRight, WAnimation::Ease)
-            );
-            edtName->setFocus();
-            return;
+        // Save it
+        if (userHappy == Wt::Yes) {
+            dbo::Session& s = app()->dbSession();
+            dbo::Transaction t(s);
+            if (!_user) {
+                // If we don't have an existing user .. make a new one and add it to the DB
+               _user = s.add(new User(edtName->text().toUTF8(), edtPass1->text().toUTF8()));
+            } else {
+                model::User* u = _user.modify();
+                u->setName(edtName->text());
+                const WString& password = edtPass1->text();
+                if (!password.empty())
+                    u->setPassword(password.toUTF8());
+            }
+            t.commit();
         }
+        // Let the parent widget (or whoever) know that we're done
+        done().emit(_user); // Should switch back to UserList view and update data
     } else {
-        // If it's a new user..
-        // Must have a password
-        if (edtPass1->validate() != WValidator::Valid) {
-            Wt::WMessageBox::show(
-                tr("cant-save"),
-                tr("new-user-needs-a-password"),
-                Wt::Ok,
-                WAnimation(WAnimation::Pop | WAnimation::Fade, WAnimation::Ease)
-            );
-            edtPass1->setFocus();
-            return;
-        }
-    }
-    // Passwords must match
-    if (edtPass2->validate() != WValidator::Valid) {
         Wt::WMessageBox::show(
             tr("cant-save"),
-            tr("passwords-dont-match"),
+            tr("fix-up-fields"),
             Wt::Ok,
-            WAnimation(WAnimation::SlideInFromRight, WAnimation::Ease)
+            WAnimation(WAnimation::Pop | WAnimation::Fade, WAnimation::Ease)
         );
-        edtPass1->setFocus();
-        return;
     }
-    Wt::StandardButton result = Wt::Yes;
-    if (_user) {
-        // If modifying an existing user, prompt to save changes
-        if (edtName->text() != _user->name())
-            result = Wt::WMessageBox::show(
-                tr("save-changes?"),
-                tr("change-username-from-x-to-y").arg(_user->name()).arg(edtName->text()),
-                Wt::Yes | Wt::No,
-                WAnimation(WAnimation::SlideInFromRight, WAnimation::Ease)
-            );
-        if ((result == Wt::Yes) && (!edtPass1->text().empty()))
-            result = Wt::WMessageBox::show(
-                tr("save-changes?"),
-                tr("save-new-password-user-x").arg(_user->name()),
-                Wt::Yes | Wt::No,
-                WAnimation(WAnimation::SlideInFromRight, WAnimation::Ease)
-            );
-    }
-    // Save it
-    if (result == Wt::Yes) {
-        dbo::Session& s = app()->dbSession();
-        dbo::Transaction t(s);
-        if (!_user) {
-            // If we don't have an existing user .. make a new one and add it to the DB
-           _user = s.add(new User(edtName->text().toUTF8(), edtPass1->text().toUTF8()));
-        } else {
-            model::User* u = _user.modify();
-            u->setName(edtName->text());
-            const WString& password = edtPass1->text();
-            if (!password.empty())
-                u->setPassword(password.toUTF8());
-        }
-        t.commit();
-    }
-    // Let the parent widget (or whoever) know that we're done
-    done().emit(_user);
 }
 
 void UserEdit::CancelHit() {

@@ -67,6 +67,8 @@ App::App(const WEnvironment& environment) :
     _mainWindow = new MainWindow(root());
     _statusTextChanged->connect(_mainWindow, &MainWindow::setStatusText);
     setBodyClass("yui-skin-sam");
+    // Set up custom JS
+    declareJavaScriptFunction("validate", WString::tr("js-validate").toUTF8());
     // Fire an internal path changed event off as user may have navigated straight here
     internalPathChanged().emit(app()->internalPath());
 }

@@ -47,7 +47,7 @@ public:
         WValidator(parent), _mine(dynamic_cast<WFormWidget*>(parent)), _other(other), _errorMessage(errorMessage) { 
     }
     const WString& errorMessage() const { return _errorMessage; }
-    void loadJavaScript(WApplication *app) const { LOAD_JAVASCRIPT(app, "js/MatchValidator.js", "MatchValidator", wtjs1); }
+    void loadJavaScript(WApplication *app) const { LOAD_JAVASCRIPT(app, "js/MatchValidator.js", "MatchValidator", wtjs2); }
     std::string javaScriptValidate () const {
         if (_other) {
             loadJavaScript(WApplication::instance());

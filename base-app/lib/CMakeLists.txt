@@ -2,4 +2,6 @@ project(lib)
 
 file(GLOB libFiles *.cpp)
 
-set(mainFiles ${mainFiles} ${libFiles})
+add_subdirectory(js)
+
+set(mainFiles ${mainFiles} ${libFiles} PARENT_SCOPE)

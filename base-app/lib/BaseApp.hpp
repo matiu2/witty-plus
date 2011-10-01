@@ -22,13 +22,14 @@
 #include <Wt/WApplication>
 #include "SessionHandle.hpp"
 #include "MemorySessionStore.hpp"
+#include <Wt/WJavaScript>
+#include "js/customValidate.js"
 
 namespace Wt {
     class WString;
 } // namespace Wt
 
 using Wt::WString;
-
 
 namespace wittyPlus {
 
@@ -49,6 +50,8 @@ public:
         // Set up the UI
         setTitle(WString::tr("main-title"));
         setBodyClass("yui-skin-sam");
+        // Load our custom javascript handler
+        LOAD_JAVASCRIPT(this, "js/customValidate.js", "validate", wtjs1);
     }
     dbo::Session& dbSession() { return _dbSession; }
     const string& cookieName() { return _cookieName; }

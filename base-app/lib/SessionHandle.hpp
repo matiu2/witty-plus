@@ -125,7 +125,7 @@ public:
         }
         return false;
     }
-    /// Logs the user out of all _userSessionStore eventually; this session immediately. 
+    /// Logs the user out of all _userSessionStore eventually; this session immediately.
     void logout() {
         _userCache.reset();
         _userSessionStore.logout(getCookie());

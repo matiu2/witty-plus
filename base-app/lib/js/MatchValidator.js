@@ -1,7 +1,10 @@
+#ifndef MATCH_VALIDATOR_JS
+#define MATCH_VALIDATOR_JS
+
 /* Note: this is at the same time valid JavaScript and C++. */
 
 WT_DECLARE_WT_MEMBER
-(1, JavaScriptConstructor, "MatchValidator",
+(2, JavaScriptConstructor, "MatchValidator",
    function(mandatory, otherId, errorMsg) {
      this.validate = function(text) {
        var otherEle = document.getElementById(otherId);
@@ -17,4 +20,7 @@ WT_DECLARE_WT_MEMBER
            message: errorMsg
          };
      };
-   });
+   }
+);
+
+#endif // MATCH_VALIDATOR_JS

@@ -2,5 +2,19 @@
 <messages>
   <!-- Main Window Messages -->
   <message id="access-denied">Access denied</message>
+  <!-- Custom Javascript -->
+  <message id="js-validate">
+function (edit) {
+  var v = edit.wtValidate.validate(edit.value);
+  alert("Validating");
+  if (v.valid) {
+    edit.removeAttribute('title');
+    $(edit).removeClass('Wt-invalid');
+  } else {
+    edit.setAttribute('title', v.message);
+    $(edit).addClass('Wt-invalid');
+  }
+}
+  </message>
 </messages>
 

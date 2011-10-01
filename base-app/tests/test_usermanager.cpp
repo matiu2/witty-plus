@@ -76,7 +76,7 @@ BOOST_AUTO_TEST_CASE( new_forget_password ) {
     h::keyPress(ue->edtName, 13);
     BOOST_CHECK_MESSAGE(ue->edtPass1->hasFocus(),
         "Clicking enter after typing your name should give focus to the 1st password field");
-    // Opps forgot to add passwords ;)
+    // testing what happpens if we forgot to add passwords ;)
     h::keyPress(ue->edtPass2, 13);
     // We should still be on the user edit page
     // Now check we're back at the list
