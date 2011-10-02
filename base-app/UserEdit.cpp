@@ -46,7 +46,6 @@ UserEdit::UserEdit(WContainerWidget* parent) : wittyPlus::MoreAwesomeTemplate(pa
     else
         nameValidator = new wittyPlus::DBNoDupValidator<User>(app()->dbSession(), "name", true,
                                   userExistsMsg, userNeededMsg);
-    nameValidator->msgSignal().connect(this, &UserEdit::updateNameValidationMsg);
     edtName->setValidator(nameValidator);
     bindAndCreateField(lblPass1, edtPass1, msgPass1, "new-password");
     edtPass1->setEchoMode(WLineEdit::Password);

@@ -59,7 +59,7 @@ public:
         // Let our ancestor handle the 'mandatory input' side of things
         State result = WValidator::validate(input);
         if (result != Valid) {
-            return showMessage(result);
+            return result;
         }
         // If our ancestor validator implementation says we're good..
         // ..return Valid as long as there are zero other rows with that name in the DB
@@ -67,7 +67,12 @@ public:
         dbo::Query<int> newQuery = _query;
         result = newQuery.bind(input.toUTF8()).resultValue() == 0 ? Valid : Invalid;
         t.commit();
-        return showMessage(result);
+        return result;
+    }
+    ServerSideValidationResult validateWithMessage(WString& value) const {
+        ServerSideValidationResult result = ServerSideValidator::validateWithMessage(value);
+        result.message.arg(value); // In case they want to put the username as an argument in the string
+        return result;
     }
     void setIdToIgnore(typename Traits::IdType idToIgnore) { _query = DBNoDupValidator::makeQuery(_db, _fieldName, idToIgnore); }
     void clearIdToIgnore() { _query = DBNoDupValidator::makeQuery(_db, _fieldName); }

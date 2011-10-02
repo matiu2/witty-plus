@@ -30,6 +30,7 @@
 #include <boost/algorithm/string.hpp>
 #include <locale>
 #include <vector>
+#include "ServerSideValidator.hpp"
 
 namespace Wt {
     class WContainerWidget;
@@ -169,16 +170,10 @@ protected:
     bool validateAll() {
         bool result = true;
         bool haveFocussed = false;
-        WApplication* app = WApplication::instance();
         for(vector<FieldRow>::const_iterator row=fieldRows.begin(); row != fieldRows.end(); ++row) {
-            // We can't set the message text if it doesn't exist
-            if (row->messageText == 0)
-                continue;
-            // Validate on client side. (Using BaseApp's custom validate function,
-            // this will show the message on the client's side)
-            app->doJavaScript( app->javaScriptClass() + ".WT.validate(" + row->widget->jsRef() + ");" );
-            WValidator::State validness = row->widget->validate(); // Validate on server side
-            if (validness != WValidator::Valid) {
+            // Push the server's interpretation of the validation down to the client side widget
+            ServerSideValidationResult validness = ServerSideValidator::validateWidgetAndTellBrowser(row->widget);
+            if (validness.result != WValidator::Valid) {
                 result = false;
                 if (!haveFocussed) {
                     row->widget->setFocus();

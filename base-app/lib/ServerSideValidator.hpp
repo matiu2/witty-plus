@@ -5,14 +5,35 @@
 #ifndef SERVERSIDEVALIDATOR_HPP
 #define SERVERSIDEVALIDATOR_HPP
 
+#include <stdexcept>
+#include <string>
+#include <sstream>
+#include <Wt/WApplication>
+#include <Wt/WString>
 #include <Wt/WValidator>
 #include <Wt/WSignal>
+#include <Wt/WFormWidget>
+#include <Wt/WAbstractToggleButton>
+#include <Wt/WComboBox>
+#include <Wt/WLineEdit>
+#include <Wt/WPushButton>
+#include <Wt/WSlider>
+#include <Wt/WTextArea>
 #include <stdexcept>
 
 using Wt::WValidator;
 using Wt::Signal;
+using Wt::WString;
+using Wt::WFormWidget;
 
 namespace wittyPlus {
+
+/// Holds a validation result, plus a message for the user
+struct ServerSideValidationResult {
+    ServerSideValidationResult(const WString& message, WValidator::State result) : message(message), result(result) {}
+    WString message;
+    WValidator::State result;
+};
 
 /** The standard Wt::WValidator seems to make the assumption that nearly all validation that requires showing a message
   * will be done on the client side.
@@ -26,23 +47,6 @@ public:
 protected:
     WString _validMsg;
     WString _invalidMsg;
-    MsgSignal _msgSignal; // This can be emited by descendant classes when we want to show a message
-    /// Basically just emits the _msgSignal .. the app should hook into that to show stuff to the client,
-    /// Possibly with a Wt::JSlot
-    /// @param validationState the result of calling 'validate' function
-    /// @param msg the message to show on the client side
-    /// @return the validation result as a convenience
-    State showMessage(State validationState, const WString& msg) const {
-        _msgSignal.emit(validationState, msg);
-        return validationState;
-    }
-    /// Shows the message to the client based on the validation result.
-    /// @param validationState the result of calling 'validate' function
-    /// @return the validation result as a convenience
-    State showMessage(State validationState) const {
-        showMessage(validationState, state2msg(validationState));
-        return validationState;
-    }
 public:
     ServerSideValidator(
         const WString& validMsg="", const WString& invalidMsg="", const WString& emptyMsg="",
@@ -55,6 +59,11 @@ public:
     ServerSideValidator(bool isMandatory, WObject* parent=0)
         : WValidator(isMandatory, parent), _validMsg(""), _invalidMsg("")
     {}
+    /// Call this instead of validate when you want to get the message on the server side
+    virtual ServerSideValidationResult validateWithMessage(WString& value) const {
+        State validness = validate(value);
+        return ServerSideValidationResult(state2msg(validness), validness);
+    }
     /// Turns the output of Wt::WValidator::validate into a message for the end user
     WString state2msg(State validationResult) const {
         switch (validationResult) {
@@ -70,9 +79,60 @@ public:
     void setValidMsg(const WString& newMsg) { _validMsg = newMsg; }
     const WString& getInvalidMsg() { return _invalidMsg; }
     void setInvalidMsg(const WString& newMsg) { _invalidMsg = newMsg; }
-    /// Descendants of this class can emit this signal. Users of the class can connect to it to push the message down
-    /// to the client side.
-    MsgSignal& msgSignal() { return _msgSignal; }
+    // Static Functions
+    /// Returns the value of pretty much all widget types
+    static WString getValue(WFormWidget* widget) {
+        Wt::WComboBox* asComboBox = dynamic_cast<Wt::WComboBox*>(widget);
+        if (asComboBox != 0)
+            return asComboBox->currentText();
+        Wt::WLineEdit* asLineEdit = dynamic_cast<Wt::WLineEdit*>(widget);
+        if (asLineEdit != 0)
+            return asLineEdit->text();
+        Wt::WSlider* asSlider = dynamic_cast<Wt::WSlider*>(widget);
+        if (asSlider != 0) {
+            std::stringstream out;
+            out << asSlider->value();
+            return out.str();
+        }
+        Wt::WTextArea* asTextArea = dynamic_cast<Wt::WTextArea*>(widget);
+        if (asTextArea != 0)
+            return asTextArea->text();
+        throw std::logic_error("I don't know how to get the value of whatever widget you passed me");
+    }
+    /// Call this to push a server side validation result to the client side (complete with message)
+    static void tellClient(WFormWidget* widget, const WString& value, ServerSideValidationResult validationResult) {
+        widget->setJavaScriptMember("serverValidationResult",
+         "{ value:" + value.jsStringLiteral() + ","
+          "valid:" + (validationResult.result == WValidator::Valid ? "true," : "false,") +
+         "message:" + validationResult.message.jsStringLiteral() + "}");
+        Wt::WApplication* app = Wt::WApplication::instance();
+        app->doJavaScript( app->javaScriptClass() + ".WT.validate(" + widget->jsRef() + ");" );
+    }
+    /// Convenience function. Call this instead of widget.validate();
+    static ServerSideValidationResult validateWidget(WFormWidget* widget) {
+        ServerSideValidator* validator = dynamic_cast<ServerSideValidator*>(widget->validator());
+        if (validator != 0) {
+            WString value = getValue(widget);
+            return validator->validateWithMessage(value);
+        } else {
+            return ServerSideValidationResult("", widget->validate());
+        }
+    }
+    /// Validates the widget and passes the message on to the browser
+    static ServerSideValidationResult validateWidgetAndTellBrowser(WFormWidget* widget) {
+        ServerSideValidator* validator = dynamic_cast<ServerSideValidator*>(widget->validator());
+        if (validator != 0) {
+            WString value = getValue(widget);
+            ServerSideValidationResult result = validator->validateWithMessage(value);
+            tellClient(widget, value, result);
+            return result;
+        } else {
+            Wt::WApplication* app = Wt::WApplication::instance();
+            app->doJavaScript( app->javaScriptClass() + ".WT.validate(" + widget->jsRef() + ");" );
+            return ServerSideValidationResult("", widget->validate());
+        }
+    }
+
 };
 
 } // namespace wittyPlus
