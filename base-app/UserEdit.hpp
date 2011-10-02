@@ -73,6 +73,18 @@ public:
     // Properties
     void setUser(dbo::ptr<User> user);
     dbo::ptr<User> getUser() { return _user; }
+    // Slots
+    /// Called when edtUser is validated on the server side.
+    /// Updates the display to show the validation message.
+    void updateNameValidationMsg(WValidator::State validationResult, WString msg) {
+        if (validationResult == WValidator::Invalid) {
+            // If user is invalid, it's because they're trying to add a duplicate user
+            // So the message we're displaying will need that username as an argument
+            msg.arg(edtName->text());
+        }
+        edtName->setAttributeValue("title", msg);
+        msgName->setText(msg);
+    }
     // Signals
     UserSignal& done() { return _done; }
     Signal<>& cancelled() { return _cancelled; }

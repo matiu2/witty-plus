@@ -29,7 +29,7 @@
   <message id="cant-save">Can't save changes</message>
   <message id="you-didnt-change-anything">You didn't change anything</message>
   <message id="user-name-x-exists">The username '{1}' already exists</message>
-  <message id="new-user-needs-a-name">New User needs a name</message>
+  <message id="user-needs-a-name">User needs a name</message>
   <message id="new-user-needs-a-password">New User needs a password</message>
   <message id="passwords-dont-match">Passwords provided don't match</message>
   <message id="Adding a new user">Adding a new user</message>

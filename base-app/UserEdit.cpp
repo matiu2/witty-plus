@@ -28,6 +28,7 @@
 using Wt::WAnimation;
 using Wt::WValidator;
 using wittyPlus::MatchValidator;
+using wittyPlus::DBNoDupValidator;
 
 namespace my_app {
 
@@ -36,10 +37,17 @@ UserEdit::UserEdit(WContainerWidget* parent) : wittyPlus::MoreAwesomeTemplate(pa
     setTemplateText(tr("user-edit-template"));
     // Set up the widgets
     bindAndCreateField(lblName, edtName, msgName, "name");
+    DBNoDupValidator<model::User>* nameValidator;
+    WString userExistsMsg = tr("user-name-x-exists");
+    WString userNeededMsg = tr("user-needs-a-name");
     if (_user)
-        edtName->setValidator(new wittyPlus::DBNoDupValidator<User>(app()->dbSession(), "name", _user.id(), true));
+        nameValidator = new wittyPlus::DBNoDupValidator<User>(app()->dbSession(), "name", _user.id(), true,
+                                  userExistsMsg, userNeededMsg);
     else
-        edtName->setValidator(new wittyPlus::DBNoDupValidator<User>(app()->dbSession(), "name", true));
+        nameValidator = new wittyPlus::DBNoDupValidator<User>(app()->dbSession(), "name", true,
+                                  userExistsMsg, userNeededMsg);
+    nameValidator->msgSignal().connect(this, &UserEdit::updateNameValidationMsg);
+    edtName->setValidator(nameValidator);
     bindAndCreateField(lblPass1, edtPass1, msgPass1, "new-password");
     edtPass1->setEchoMode(WLineEdit::Password);
     edtPass1->setValidator(new WValidator(!_user));

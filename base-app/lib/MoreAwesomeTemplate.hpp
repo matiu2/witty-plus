@@ -176,7 +176,7 @@ protected:
                 continue;
             // Validate on client side. (Using BaseApp's custom validate function,
             // this will show the message on the client's side)
-            app->doJavaScript( app->javaScriptClass() + "WT.validate(" + row->widget->jsRef() + ");" );
+            app->doJavaScript( app->javaScriptClass() + ".WT.validate(" + row->widget->jsRef() + ");" );
             WValidator::State validness = row->widget->validate(); // Validate on server side
             if (validness != WValidator::Valid) {
                 result = false;
