@@ -2,10 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>WittyPlus: base-app/lib/sha.hpp Source File</title>
+<title>wittyPlus Base App: base-app/lib/sha.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript">
+$(document).ready(initResizable);
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body onload='searchBox.OnSelectItem(0);'>
@@ -13,50 +20,13 @@
 <script type="text/javascript"><!--
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 --></script>
-<script type="text/javascript">
-function hasClass(ele,cls) {
-  return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
-}
-
-function addClass(ele,cls) {
-  if (!this.hasClass(ele,cls)) ele.className += " "+cls;
-}
-
-function removeClass(ele,cls) {
-  if (hasClass(ele,cls)) {
-    var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
-    ele.className=ele.className.replace(reg,' ');
-  }
-}
-
-function toggleVisibility(linkObj) {
- var base = linkObj.getAttribute('id');
- var summary = document.getElementById(base + '-summary');
- var content = document.getElementById(base + '-content');
- var trigger = document.getElementById(base + '-trigger');
- if ( hasClass(linkObj,'closed') ) {
-   summary.style.display = 'none';
-   content.style.display = 'block';
-   trigger.src = 'open.png';
-   removeClass(linkObj,'closed');
-   addClass(linkObj,'opened');
- } else if ( hasClass(linkObj,'opened') ) {
-   summary.style.display = 'block';
-   content.style.display = 'none';
-   trigger.src = 'closed.png';
-   removeClass(linkObj,'opened');
-   addClass(linkObj,'closed');
- }
- return false;
-}
-</script>
 <div id="top">
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">WittyPlus</div>
+   <div id="projectname">wittyPlus Base App</div>
   </td>
  </tr>
  </tbody>
@@ -89,14 +59,29 @@ function toggleVisibility(linkObj) {
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
+</div>
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+  initNavTree('sha_8hpp.html','');
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="headertitle">
 <h1>base-app/lib/sha.hpp</h1>  </div>
 </div>
 <div class="contents">
-<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*</span>
+<a href="sha_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*</span>
 <a name="l00002"></a>00002 <span class="comment"> * =====================================================================================</span>
 <a name="l00003"></a>00003 <span class="comment"> *</span>
 <a name="l00004"></a>00004 <span class="comment"> *       Filename:  sha.hpp</span>
@@ -123,17 +108,17 @@ function toggleVisibility(linkObj) {
 <a name="l00025"></a>00025 
 <a name="l00026"></a>00026 <span class="keyword">namespace </span>wittyPlus {
 <a name="l00027"></a>00027 
-<a name="l00028"></a>00028 <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> SHALength = 20;
-<a name="l00029"></a>00029 <span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> SHAValue[SHALength];
-<a name="l00030"></a>00030 <span class="keyword">typedef</span> std::vector&lt;unsigned char&gt; StdSHAValue;
+<a name="l00028"></a><a class="code" href="namespacewitty_plus.html#a3f0a0fbcf788de83612374304c119e66">00028</a> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="namespacewitty_plus.html#a3f0a0fbcf788de83612374304c119e66">SHALength</a> = 20;
+<a name="l00029"></a><a class="code" href="namespacewitty_plus.html#ac265de947d7eb50c65bc12fe252c3ac7">00029</a> <span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="namespacewitty_plus.html#ac265de947d7eb50c65bc12fe252c3ac7">SHAValue</a>[<a class="code" href="namespacewitty_plus.html#a3f0a0fbcf788de83612374304c119e66">SHALength</a>];
+<a name="l00030"></a><a class="code" href="namespacewitty_plus.html#acc4d92b30286399f8037f1a40d2a15dd">00030</a> <span class="keyword">typedef</span> std::vector&lt;unsigned char&gt; <a class="code" href="namespacewitty_plus.html#acc4d92b30286399f8037f1a40d2a15dd">StdSHAValue</a>;
 <a name="l00031"></a>00031 <span class="keyword">using</span> std::string;
 <a name="l00032"></a>00032 
-<a name="l00039"></a>00039 <span class="keyword">inline</span> <span class="keywordtype">void</span> sha1(<span class="keyword">const</span> std::string&amp; input, SHAValue&amp; value) {
+<a name="l00039"></a><a class="code" href="namespacewitty_plus.html#a81ef6a44e262d43842ea8bf0d909ddf8">00039</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="namespacewitty_plus.html#a81ef6a44e262d43842ea8bf0d909ddf8" title="c++ version of SHA1. Pass input string, get a hash.">sha1</a>(<span class="keyword">const</span> std::string&amp; input, <a class="code" href="namespacewitty_plus.html#ac265de947d7eb50c65bc12fe252c3ac7">SHAValue</a>&amp; value) {
 <a name="l00040"></a>00040     SHA1(reinterpret_cast&lt;const unsigned char*&gt;(&amp;input[0]), input.length(), &amp;(value[0])); <span class="comment">// Make a hash of the password supplied</span>
 <a name="l00041"></a>00041 }
 <a name="l00042"></a>00042 
-<a name="l00050"></a>00050 <span class="keyword">inline</span> StdSHAValue sha1(<span class="keyword">const</span> std::string&amp; input) {
-<a name="l00051"></a>00051     StdSHAValue result(SHALength, 0);
+<a name="l00050"></a><a class="code" href="namespacewitty_plus.html#a577672e532cf2f8d974034f3bdc6e45e">00050</a> <span class="keyword">inline</span> <a class="code" href="namespacewitty_plus.html#acc4d92b30286399f8037f1a40d2a15dd">StdSHAValue</a> <a class="code" href="namespacewitty_plus.html#a81ef6a44e262d43842ea8bf0d909ddf8" title="c++ version of SHA1. Pass input string, get a hash.">sha1</a>(<span class="keyword">const</span> std::string&amp; input) {
+<a name="l00051"></a>00051     <a class="code" href="namespacewitty_plus.html#acc4d92b30286399f8037f1a40d2a15dd">StdSHAValue</a> result(<a class="code" href="namespacewitty_plus.html#a3f0a0fbcf788de83612374304c119e66">SHALength</a>, 0);
 <a name="l00052"></a>00052     SHA1(reinterpret_cast&lt;const unsigned char*&gt;(&amp;input[0]), input.length(), &amp;(result[0])); <span class="comment">// Make a hash of the password supplied</span>
 <a name="l00053"></a>00053     <span class="keywordflow">return</span> result;
 <a name="l00054"></a>00054 }
@@ -143,12 +128,20 @@ function toggleVisibility(linkObj) {
 <a name="l00058"></a>00058 <span class="preprocessor">#endif //  SHA_HPP</span>
 </pre></div></div>
 </div>
+  <div id="nav-path" class="navpath">
+    <ul>
+      <li class="navelem"><a class="el" href="sha_8hpp.html">sha.hpp</a>      </li>
+      <li class="footer">Generated on Mon Oct 3 2011 11:40:24 for wittyPlus Base App by&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </li>
+    </ul>
+  </div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -157,8 +150,6 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Mon Oct 3 2011 10:48:22 for WittyPlus by&#160;
-<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
+
 </body>
 </html>

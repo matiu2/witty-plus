@@ -2,10 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>WittyPlus: Class Members - Functions</title>
+<title>wittyPlus Base App: Class Members - Functions</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript">
+$(document).ready(initResizable);
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body onload='searchBox.OnSelectItem(0);'>
@@ -13,50 +20,13 @@
 <script type="text/javascript"><!--
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 --></script>
-<script type="text/javascript">
-function hasClass(ele,cls) {
-  return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
-}
-
-function addClass(ele,cls) {
-  if (!this.hasClass(ele,cls)) ele.className += " "+cls;
-}
-
-function removeClass(ele,cls) {
-  if (hasClass(ele,cls)) {
-    var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
-    ele.className=ele.className.replace(reg,' ');
-  }
-}
-
-function toggleVisibility(linkObj) {
- var base = linkObj.getAttribute('id');
- var summary = document.getElementById(base + '-summary');
- var content = document.getElementById(base + '-content');
- var trigger = document.getElementById(base + '-trigger');
- if ( hasClass(linkObj,'closed') ) {
-   summary.style.display = 'none';
-   content.style.display = 'block';
-   trigger.src = 'open.png';
-   removeClass(linkObj,'closed');
-   addClass(linkObj,'opened');
- } else if ( hasClass(linkObj,'opened') ) {
-   summary.style.display = 'block';
-   content.style.display = 'none';
-   trigger.src = 'closed.png';
-   removeClass(linkObj,'opened');
-   addClass(linkObj,'closed');
- }
- return false;
-}
-</script>
 <div id="top">
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">WittyPlus</div>
+   <div id="projectname">wittyPlus Base App</div>
   </td>
  </tr>
  </tbody>
@@ -90,7 +60,7 @@ function toggleVisibility(linkObj) {
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li class="current"><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -99,6 +69,7 @@ function toggleVisibility(linkObj) {
       <li><a href="functions.html"><span>All</span></a></li>
       <li class="current"><a href="functions_func.html"><span>Functions</span></a></li>
       <li><a href="functions_vars.html"><span>Variables</span></a></li>
+      <li><a href="functions_type.html"><span>Typedefs</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
@@ -107,175 +78,510 @@ function toggleVisibility(linkObj) {
       <li><a href="#index_b"><span>b</span></a></li>
       <li><a href="#index_c"><span>c</span></a></li>
       <li><a href="#index_d"><span>d</span></a></li>
+      <li><a href="#index_e"><span>e</span></a></li>
+      <li><a href="#index_f"><span>f</span></a></li>
       <li><a href="#index_g"><span>g</span></a></li>
       <li><a href="#index_h"><span>h</span></a></li>
+      <li><a href="#index_i"><span>i</span></a></li>
+      <li><a href="#index_j"><span>j</span></a></li>
       <li><a href="#index_l"><span>l</span></a></li>
+      <li><a href="#index_m"><span>m</span></a></li>
+      <li><a href="#index_n"><span>n</span></a></li>
       <li><a href="#index_o"><span>o</span></a></li>
       <li><a href="#index_p"><span>p</span></a></li>
+      <li><a href="#index_r"><span>r</span></a></li>
       <li><a href="#index_s"><span>s</span></a></li>
       <li><a href="#index_t"><span>t</span></a></li>
       <li><a href="#index_u"><span>u</span></a></li>
+      <li><a href="#index_v"><span>v</span></a></li>
+      <li><a href="#index_w"><span>w</span></a></li>
+      <li><a href="#index_0x7e"><span>~</span></a></li>
     </ul>
   </div>
 </div>
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+  initNavTree('functions.html','');
+</script>
+<div id="doc-content">
 <div class="contents">
 &#160;
 
 <h3><a class="anchor" id="index_a"></a>- a -</h3><ul>
 <li>admin_users()
-: <a class="el" href="classmy__app_1_1URL2Action.html#aeb430ea4a8b422eca466503668f9a924">my_app::URL2Action</a>
+: <a class="el" href="classmy__app_1_1_u_r_l2_action.html#aeb430ea4a8b422eca466503668f9a924">my_app::URL2Action</a>
+</li>
+<li>AdminIndex()
+: <a class="el" href="classmy__app_1_1_admin_index.html#a9aff7906a8a3d444db6da77712461d6c">my_app::AdminIndex</a>
 </li>
 <li>adminUsers()
-: <a class="el" href="classmy__app_1_1App.html#a3948650ac5f47c68c5326c2e692ea376">my_app::App</a>
+: <a class="el" href="classmy__app_1_1_app.html#a3948650ac5f47c68c5326c2e692ea376">my_app::App</a>
+</li>
+<li>age()
+: <a class="el" href="classwitty_plus_1_1_session.html#a0413b7990d8287b4fd6334bc5b1a57fb">wittyPlus::Session</a>
+</li>
+<li>App()
+: <a class="el" href="classmy__app_1_1_app.html#a7fd2a46d6c87ffde1d8ad1487eb307ae">my_app::App</a>
+</li>
+<li>AppFixture()
+: <a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1_app_fixture.html#ad42521b491c475dbc6ca14ca9a520d90">my_app::unittests::fixtures::AppFixture</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_b"></a>- b -</h3><ul>
+<li>BaseApp()
+: <a class="el" href="classwitty_plus_1_1_base_app.html#af7f69320e0cf8c59302af2a98d144c20">wittyPlus::BaseApp&lt; User &gt;</a>
+</li>
+<li>BaseMatchValidator()
+: <a class="el" href="classwitty_plus_1_1_base_match_validator.html#ad5985ac2ff61ad2b074e6defda66cea4">wittyPlus::BaseMatchValidator</a>
+</li>
 <li>BaseSessionHandle()
-: <a class="el" href="classwittyPlus_1_1BaseSessionHandle.html#a433ced4350ef69f6d1ebad485f28ec20">wittyPlus::BaseSessionHandle</a>
+: <a class="el" href="classwitty_plus_1_1_base_session_handle.html#a433ced4350ef69f6d1ebad485f28ec20">wittyPlus::BaseSessionHandle</a>
 </li>
 <li>bindAndCreateField()
-: <a class="el" href="classwittyPlus_1_1MoreAwesomeTemplate.html#ad083d6afd50d479d70682f048e065d47">wittyPlus::MoreAwesomeTemplate</a>
+: <a class="el" href="classwitty_plus_1_1_more_awesome_template.html#a931e20f75467754f38bd59edc4373420">wittyPlus::MoreAwesomeTemplate</a>
 </li>
 <li>bindAndCreateWidget()
-: <a class="el" href="classwittyPlus_1_1MoreAwesomeTemplate.html#a555fa1059928fff4091ec85b9baa66c1">wittyPlus::MoreAwesomeTemplate</a>
+: <a class="el" href="classwitty_plus_1_1_more_awesome_template.html#a555fa1059928fff4091ec85b9baa66c1">wittyPlus::MoreAwesomeTemplate</a>
+</li>
+<li>BOOST_CONCEPT_ASSERT()
+: <a class="el" href="structwitty_plus_1_1_match_validator.html#a7d1ec2e9e2d1c78a7749137d0c289343">wittyPlus::MatchValidator&lt; WidgetType &gt;</a>
+</li>
+<li>BOOST_CONCEPT_USAGE()
+: <a class="el" href="structwitty_plus_1_1_has_text_concept.html#a0b0bd250c3f8847d36f650d9b6ccad6c">wittyPlus::HasTextConcept&lt; WidgetType &gt;</a>
+</li>
+<li>btn1()
+: <a class="el" href="classwitty_plus_1_1_button_bar.html#a3d21a5593b403b31a124158f351edb36">wittyPlus::ButtonBar</a>
+</li>
+<li>btn2()
+: <a class="el" href="classwitty_plus_1_1_button_bar.html#add898daad042ae5676f3a3380dec607f">wittyPlus::ButtonBar</a>
 </li>
 <li>ButtonBar()
-: <a class="el" href="classwittyPlus_1_1ButtonBar.html#a9aa92adf4b06c0fa5c19a478f024e5b2">wittyPlus::ButtonBar</a>
+: <a class="el" href="classwitty_plus_1_1_button_bar.html#a9aa92adf4b06c0fa5c19a478f024e5b2">wittyPlus::ButtonBar</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_c"></a>- c -</h3><ul>
+<li>cancelled()
+: <a class="el" href="classmy__app_1_1_user_edit.html#a5cf35e878fb5600768c7dee942bf1890">my_app::UserEdit</a>
+</li>
 <li>checkLoggedIn()
-: <a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1LoginFixture.html#a7e12a72b9b5c49eb463b19424bd437aa">my_app::unittests::fixtures::LoginFixture</a>
+: <a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1_login_fixture.html#a7e12a72b9b5c49eb463b19424bd437aa">my_app::unittests::fixtures::LoginFixture</a>
 </li>
 <li>checkLoggedOut()
-: <a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1LoginFixture.html#a029cbcf8adea7511d7fe4bc0434d2b37">my_app::unittests::fixtures::LoginFixture</a>
+: <a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1_login_fixture.html#a029cbcf8adea7511d7fe4bc0434d2b37">my_app::unittests::fixtures::LoginFixture</a>
 </li>
 <li>cleanUpUsersTable()
-: <a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1LoginFixture.html#aa44fc1cdbce34a81e1e9cb503484a3b2">my_app::unittests::fixtures::LoginFixture</a>
+: <a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1_login_fixture.html#aa44fc1cdbce34a81e1e9cb503484a3b2">my_app::unittests::fixtures::LoginFixture</a>
+</li>
+<li>clearIdToIgnore()
+: <a class="el" href="classwitty_plus_1_1_d_b_no_dup_validator.html#a9a6c5bce4124c254641d28c1cf2bf840">wittyPlus::DBNoDupValidator&lt; ModelClass &gt;</a>
 </li>
 <li>clickLogin()
-: <a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1LoginFixture.html#aa11dfb546dbb9c30924cdf1af5cc0034">my_app::unittests::fixtures::LoginFixture</a>
+: <a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1_login_fixture.html#aa11dfb546dbb9c30924cdf1af5cc0034">my_app::unittests::fixtures::LoginFixture</a>
+</li>
+<li>cookieName()
+: <a class="el" href="classwitty_plus_1_1_base_app.html#a32d1c2fbca91c996f09cfe31316abc33">wittyPlus::BaseApp&lt; User &gt;</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_d"></a>- d -</h3><ul>
+<li>DBNoDupValidator()
+: <a class="el" href="classwitty_plus_1_1_d_b_no_dup_validator.html#a3842f81dcbe05f1f15730343483ce51d">wittyPlus::DBNoDupValidator&lt; ModelClass &gt;</a>
+</li>
+<li>dbSession()
+: <a class="el" href="classwitty_plus_1_1_base_app.html#a7f5e0c4a805013cc5de3fd52123da513">wittyPlus::BaseApp&lt; User &gt;</a>
+</li>
+<li>done()
+: <a class="el" href="classmy__app_1_1_user_edit.html#abc07bce1f24aa909e7c48e2f7398418b">my_app::UserEdit</a>
+</li>
 <li>doTouchSession()
-: <a class="el" href="classwittyPlus_1_1BaseSessionHandle.html#a64f339f7197bd6e01b5fb4a64d46ab91">wittyPlus::BaseSessionHandle</a>
-, <a class="el" href="classwittyPlus_1_1SessionHandle.html#aefa35e7755ace7a9a82ee2e902fcc14d">wittyPlus::SessionHandle&lt; SessionStore, User &gt;</a>
+: <a class="el" href="classwitty_plus_1_1_base_session_handle.html#a64f339f7197bd6e01b5fb4a64d46ab91">wittyPlus::BaseSessionHandle</a>
+, <a class="el" href="classwitty_plus_1_1_session_handle.html#aefa35e7755ace7a9a82ee2e902fcc14d">wittyPlus::SessionHandle&lt; SessionStore, User &gt;</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_e"></a>- e -</h3><ul>
+<li>errorMessage()
+: <a class="el" href="classwitty_plus_1_1_base_match_validator.html#a6ebdfdd09315a08d95483b549e9331e1">wittyPlus::BaseMatchValidator</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_f"></a>- f -</h3><ul>
+<li>FieldRow()
+: <a class="el" href="structwitty_plus_1_1_field_row.html#a0a3cf886be153d98899c09cb1e8173b2">wittyPlus::FieldRow</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_g"></a>- g -</h3><ul>
 <li>getCookie()
-: <a class="el" href="classwittyPlus_1_1BaseSessionHandle.html#ac0dda4b23e630fd3b21250179eb731c6">wittyPlus::BaseSessionHandle</a>
+: <a class="el" href="classwitty_plus_1_1_base_session_handle.html#ac0dda4b23e630fd3b21250179eb731c6">wittyPlus::BaseSessionHandle</a>
+</li>
+<li>getInstance()
+: <a class="el" href="classwitty_plus_1_1_memory_session_store.html#a1de5bb994db6c612c67f6bb1c5ba7134">wittyPlus::MemorySessionStore</a>
+</li>
+<li>getInvalidMsg()
+: <a class="el" href="classwitty_plus_1_1_server_side_validator.html#af24e436d6d5bd4ba31006b820ae648f0">wittyPlus::ServerSideValidator</a>
 </li>
 <li>getStoreTimeout()
-: <a class="el" href="classwittyPlus_1_1BaseSessionHandle.html#a0d876cf2d4f10e2df1f9d5c8331f4bcd">wittyPlus::BaseSessionHandle</a>
-, <a class="el" href="classwittyPlus_1_1SessionHandle.html#a51ca32b22f96f347f222276ce20b4e2f">wittyPlus::SessionHandle&lt; SessionStore, User &gt;</a>
+: <a class="el" href="classwitty_plus_1_1_base_session_handle.html#a0d876cf2d4f10e2df1f9d5c8331f4bcd">wittyPlus::BaseSessionHandle</a>
+, <a class="el" href="classwitty_plus_1_1_session_handle.html#a51ca32b22f96f347f222276ce20b4e2f">wittyPlus::SessionHandle&lt; SessionStore, User &gt;</a>
+</li>
+<li>getTimeout()
+: <a class="el" href="classwitty_plus_1_1_memory_session_store.html#a6fc2504b7924805fac37fa247f6b1dbd">wittyPlus::MemorySessionStore</a>
+</li>
+<li>getUser()
+: <a class="el" href="classmy__app_1_1_user_edit.html#a0402665477ec6dfe91fd407c6fa609e4">my_app::UserEdit</a>
+</li>
+<li>getValidMsg()
+: <a class="el" href="classwitty_plus_1_1_server_side_validator.html#a37af09342ff27631e68cce2d15a32b38">wittyPlus::ServerSideValidator</a>
+</li>
+<li>getValue()
+: <a class="el" href="classwitty_plus_1_1_server_side_validator.html#a4a9a6c8ff504200344988db6c1ef44cb">wittyPlus::ServerSideValidator</a>
 </li>
 <li>go()
-: <a class="el" href="classmy__app_1_1App.html#aa74fc028392965a926c62e2c4e3baf20">my_app::App</a>
+: <a class="el" href="classmy__app_1_1_app.html#aa74fc028392965a926c62e2c4e3baf20">my_app::App</a>
+</li>
+<li>goBack()
+: <a class="el" href="classmy__app_1_1_app.html#a4ae3f1eb8b2019bbdd2aa30d855d56d9">my_app::App</a>
 </li>
 <li>goBackOrHome()
-: <a class="el" href="classmy__app_1_1App.html#a3a589b11393ce48a022f42d51487d6cf">my_app::App</a>
+: <a class="el" href="classmy__app_1_1_app.html#a3a589b11393ce48a022f42d51487d6cf">my_app::App</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_h"></a>- h -</h3><ul>
+<li>handleCancelHit()
+: <a class="el" href="classmy__app_1_1_login_window.html#ab196797d2d2653720294f1b5b59a269a">my_app::LoginWindow</a>
+</li>
 <li>handleOKHit()
-: <a class="el" href="classmy__app_1_1LoginWindow.html#a36236301e1fe631d8b326173216c2863">my_app::LoginWindow</a>
+: <a class="el" href="classmy__app_1_1_login_window.html#a36236301e1fe631d8b326173216c2863">my_app::LoginWindow</a>
+</li>
+<li>handleUserChanged()
+: <a class="el" href="classmy__app_1_1_main_window.html#a213ebdacb9e0ef77021bf0f75cd1d945">my_app::MainWindow</a>
+</li>
+<li>home()
+: <a class="el" href="classmy__app_1_1_u_r_l2_action.html#a9783ac762af0d0c28c6cb009cca2d5ea">my_app::URL2Action</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_i"></a>- i -</h3><ul>
+<li>InternalLink()
+: <a class="el" href="classwitty_plus_1_1_internal_link.html#a59b4849da892838c4851e07561136063">wittyPlus::InternalLink</a>
+</li>
+<li>isLoggedIn()
+: <a class="el" href="classmy__app_1_1_u_r_l2_action.html#a5b5e997b7c03445a3cc53afacac694b7">my_app::URL2Action</a>
+, <a class="el" href="classwitty_plus_1_1_session_handle.html#a84695936a436dd197b9674191da956f4">wittyPlus::SessionHandle&lt; SessionStore, User &gt;</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_j"></a>- j -</h3><ul>
+<li>javaScriptValidate()
+: <a class="el" href="classwitty_plus_1_1_base_match_validator.html#a22230cb6da2f6d61989b0e481033bd34">wittyPlus::BaseMatchValidator</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_l"></a>- l -</h3><ul>
+<li>loadJavaScript()
+: <a class="el" href="classwitty_plus_1_1_base_match_validator.html#a7b9a756fe5a526fbd07ff052df7544dc">wittyPlus::BaseMatchValidator</a>
+</li>
 <li>login()
-: <a class="el" href="classwittyPlus_1_1MemorySessionStore.html#a6d3ed68f982189cd2c5c89e71fb970bc">wittyPlus::MemorySessionStore</a>
-, <a class="el" href="classmy__app_1_1URL2Action.html#afb3b10e128e1b2d9a128779cb0791ff4">my_app::URL2Action</a>
+: <a class="el" href="classwitty_plus_1_1_memory_session_store.html#a6d3ed68f982189cd2c5c89e71fb970bc">wittyPlus::MemorySessionStore</a>
+, <a class="el" href="classmy__app_1_1_u_r_l2_action.html#afb3b10e128e1b2d9a128779cb0791ff4">my_app::URL2Action</a>
+</li>
+<li>LoginFixture()
+: <a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1_login_fixture.html#aa55bbf3c0b67af272e612504095fc842">my_app::unittests::fixtures::LoginFixture</a>
+</li>
+<li>loginTime()
+: <a class="el" href="classwitty_plus_1_1_session.html#a61c8cccb74ff0c01aa2a5e5ea5acd92e">wittyPlus::Session</a>
+</li>
+<li>LoginWindow()
+: <a class="el" href="classmy__app_1_1_login_window.html#acd6656375773d50fed87ad0999c036c1">my_app::LoginWindow</a>
 </li>
 <li>logout()
-: <a class="el" href="classwittyPlus_1_1SessionHandle.html#aa007acd765744388e75349b2dcdd3f5d">wittyPlus::SessionHandle&lt; SessionStore, User &gt;</a>
-, <a class="el" href="classwittyPlus_1_1MemorySessionStore.html#aaf13cd412f361dd9a0f885b0d20233db">wittyPlus::MemorySessionStore</a>
-, <a class="el" href="classmy__app_1_1URL2Action.html#a3f3876a3dfe3a4f630c6db9c2c7d8243">my_app::URL2Action</a>
+: <a class="el" href="classmy__app_1_1_u_r_l2_action.html#a3f3876a3dfe3a4f630c6db9c2c7d8243">my_app::URL2Action</a>
+, <a class="el" href="classwitty_plus_1_1_memory_session_store.html#aaf13cd412f361dd9a0f885b0d20233db">wittyPlus::MemorySessionStore</a>
+, <a class="el" href="classwitty_plus_1_1_session_handle.html#aa007acd765744388e75349b2dcdd3f5d">wittyPlus::SessionHandle&lt; SessionStore, User &gt;</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_m"></a>- m -</h3><ul>
+<li>mainWindow()
+: <a class="el" href="classmy__app_1_1_app.html#a83d2592565c6f3eeb8dc4c93c4c082a4">my_app::App</a>
+</li>
+<li>MainWindow()
+: <a class="el" href="classmy__app_1_1_main_window.html#afcd06a882133fdd2ae2857f5b4ae4b7f">my_app::MainWindow</a>
+</li>
+<li>makeQuery()
+: <a class="el" href="classwitty_plus_1_1_d_b_no_dup_validator.html#a6aa1d9dd5da47b23d4972897494ef1e6">wittyPlus::DBNoDupValidator&lt; ModelClass &gt;</a>
+</li>
+<li>MatchValidator()
+: <a class="el" href="structwitty_plus_1_1_match_validator_3_01_w_combo_box_01_4.html#afe8e2e5afb3394560c2c58cae489a113">wittyPlus::MatchValidator&lt; WComboBox &gt;</a>
+, <a class="el" href="structwitty_plus_1_1_match_validator.html#ade85fb799c5a4b9bea1e22c9bf3a1e78">wittyPlus::MatchValidator&lt; WidgetType &gt;</a>
+</li>
+<li>MoreAwesomeTemplate()
+: <a class="el" href="classwitty_plus_1_1_more_awesome_template.html#a5e9b42e5ed9fdb7e60274524f66bbc5f">wittyPlus::MoreAwesomeTemplate</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_n"></a>- n -</h3><ul>
+<li>name()
+: <a class="el" href="classmy__app_1_1model_1_1_user.html#a56ad199d09f4f3d86151a537df621450">my_app::model::User</a>
+</li>
+<li>notify()
+: <a class="el" href="classmy__app_1_1_app.html#a5cab062ff3bdf9ac9c15c79e6f194439">my_app::App</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_o"></a>- o -</h3><ul>
+<li>onDialogExecuted()
+: <a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1_user_manager_fixture.html#a5d9abdd4ae994caa32a64b4ff2448445">my_app::unittests::fixtures::UserManagerFixture</a>
+</li>
 <li>onInternalPathChanged()
-: <a class="el" href="classmy__app_1_1MainWindow.html#a7ecab79d64a9cc0411b3b04b6aa0e374">my_app::MainWindow</a>
+: <a class="el" href="classmy__app_1_1_main_window.html#a7ecab79d64a9cc0411b3b04b6aa0e374">my_app::MainWindow</a>
 </li>
 <li>onTouchSessionsActivate()
-: <a class="el" href="classwittyPlus_1_1BaseSessionHandle.html#a41cb37ea5d61098c91f57cf623065e50">wittyPlus::BaseSessionHandle</a>
+: <a class="el" href="classwitty_plus_1_1_base_session_handle.html#a41cb37ea5d61098c91f57cf623065e50">wittyPlus::BaseSessionHandle</a>
+</li>
+<li>operator[]()
+: <a class="el" href="classwitty_plus_1_1_u_r_ls.html#ad5e39616a411eb1f650e0ecfe735993e">wittyPlus::URLs</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_p"></a>- p -</h3><ul>
+<li>passwordHash()
+: <a class="el" href="classmy__app_1_1model_1_1_user.html#a1400702ac675a451a0a93c452e7bdcf2">my_app::model::User</a>
+</li>
+<li>persist()
+: <a class="el" href="classmy__app_1_1model_1_1_user.html#a6a24be6f1e67d01a0ee721e0cb4f0af8">my_app::model::User</a>
+</li>
 <li>purgeOldSessions()
-: <a class="el" href="classwittyPlus_1_1MemorySessionStore.html#aea2b4645a9d06add5c79b33b9ac8f21c">wittyPlus::MemorySessionStore</a>
+: <a class="el" href="classwitty_plus_1_1_memory_session_store.html#aea2b4645a9d06add5c79b33b9ac8f21c">wittyPlus::MemorySessionStore</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
+<li>refillUserList()
+: <a class="el" href="classmy__app_1_1_user_list.html#a1d4f7aa5cf8a9eb2f6d6daf7199dd2bc">my_app::UserList</a>
+</li>
+<li>rememberHistory()
+: <a class="el" href="classmy__app_1_1_app.html#a6046f22d0bfd237db74279ea540a1fc7">my_app::App</a>
+</li>
+<li>run()
+: <a class="el" href="classwitty_plus_1_1_u_r_ls.html#ab6ebe4d63c4af1f233ea07281c319baf">wittyPlus::URLs</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
+<li>ServerSideValidationResult()
+: <a class="el" href="structwitty_plus_1_1_server_side_validation_result.html#afb2eccb046b386955ff51c180b3941ff">wittyPlus::ServerSideValidationResult</a>
+</li>
+<li>ServerSideValidator()
+: <a class="el" href="classwitty_plus_1_1_server_side_validator.html#af4c4a17ffa31d6180ddd5cba0941a759">wittyPlus::ServerSideValidator</a>
+</li>
+<li>Session()
+: <a class="el" href="classwitty_plus_1_1_session.html#a27616fa206a0068d8b3054a892baee13">wittyPlus::Session</a>
+</li>
+<li>SessionHandle()
+: <a class="el" href="classwitty_plus_1_1_session_handle.html#aeee5808fe99d7814d08e7becf8df483b">wittyPlus::SessionHandle&lt; SessionStore, User &gt;</a>
+</li>
+<li>setBody()
+: <a class="el" href="classmy__app_1_1_u_r_l2_action.html#a23a01a8e5f00b1d0563cb3bc0123d3aa">my_app::URL2Action</a>
+, <a class="el" href="classmy__app_1_1_main_window.html#a51ff9e954a5d5475f9abef1e154c8b7b">my_app::MainWindow</a>
+</li>
+<li>setBodyIfLoggedIn()
+: <a class="el" href="classmy__app_1_1_u_r_l2_action.html#a738279e60ff6ae603ea277f6f4865ccd">my_app::URL2Action</a>
+</li>
+<li>setFocus()
+: <a class="el" href="classmy__app_1_1_login_window.html#ab96cd8b6c8f1058478b102f827ad3df9">my_app::LoginWindow</a>
+</li>
+<li>setIdToIgnore()
+: <a class="el" href="classwitty_plus_1_1_d_b_no_dup_validator.html#a8f989d26df0198d62de4080d28ccc9ea">wittyPlus::DBNoDupValidator&lt; ModelClass &gt;</a>
+</li>
+<li>setInvalidMsg()
+: <a class="el" href="classwitty_plus_1_1_server_side_validator.html#aa3f0331962349fc159da7ab6c68ea7ed">wittyPlus::ServerSideValidator</a>
+</li>
+<li>setName()
+: <a class="el" href="classmy__app_1_1model_1_1_user.html#a2c0e668b5292732da6f8cc6efd42981d">my_app::model::User</a>
+</li>
+<li>setPassword()
+: <a class="el" href="classmy__app_1_1model_1_1_user.html#a94e994854bfa7e98f36ed8fb9ec2dabf">my_app::model::User</a>
+</li>
+<li>setPasswordHash()
+: <a class="el" href="classmy__app_1_1model_1_1_user.html#a9ba2b793943d7276e3626f879ec6f3ac">my_app::model::User</a>
+</li>
 <li>setStatusText()
-: <a class="el" href="classmy__app_1_1App.html#a65730872fd6dee8a9f42ebef9640b953">my_app::App</a>
-, <a class="el" href="classmy__app_1_1MainWindow.html#a665c0fc331a410ab2bd0a6cc998413ac">my_app::MainWindow</a>
+: <a class="el" href="classmy__app_1_1_main_window.html#a665c0fc331a410ab2bd0a6cc998413ac">my_app::MainWindow</a>
+, <a class="el" href="classmy__app_1_1_app.html#a65730872fd6dee8a9f42ebef9640b953">my_app::App</a>
 </li>
 <li>setTimeout()
-: <a class="el" href="classwittyPlus_1_1MemorySessionStore.html#a1dc4e8ef5c7e22f7680030e06679692a">wittyPlus::MemorySessionStore</a>
+: <a class="el" href="classwitty_plus_1_1_memory_session_store.html#a1dc4e8ef5c7e22f7680030e06679692a">wittyPlus::MemorySessionStore</a>
+</li>
+<li>setUser()
+: <a class="el" href="classmy__app_1_1_user_edit.html#af26e040e93f11515b209094dab971873">my_app::UserEdit</a>
+</li>
+<li>setValidMsg()
+: <a class="el" href="classwitty_plus_1_1_server_side_validator.html#a4725a5baf3afab11890eb7374dc38df0">wittyPlus::ServerSideValidator</a>
+</li>
+<li>state2msg()
+: <a class="el" href="classwitty_plus_1_1_server_side_validator.html#a7028e65364a49e7917cc6f20d73b591c">wittyPlus::ServerSideValidator</a>
 </li>
 <li>statusTextChanged()
-: <a class="el" href="classmy__app_1_1App.html#a2e1f3a27b1a27f60582525c91d1eb159">my_app::App</a>
+: <a class="el" href="classmy__app_1_1_app.html#a2e1f3a27b1a27f60582525c91d1eb159">my_app::App</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_t"></a>- t -</h3><ul>
+<li>tellClient()
+: <a class="el" href="classwitty_plus_1_1_server_side_validator.html#a3de7f3ba951e22009b049b9fdfe6ec73">wittyPlus::ServerSideValidator</a>
+</li>
 <li>touch()
-: <a class="el" href="classwittyPlus_1_1MemorySessionStore.html#a2015628d4b24583ef148ce153cd431fc">wittyPlus::MemorySessionStore</a>
+: <a class="el" href="classwitty_plus_1_1_memory_session_store.html#a2015628d4b24583ef148ce153cd431fc">wittyPlus::MemorySessionStore</a>
 </li>
 <li>touchSession()
-: <a class="el" href="classwittyPlus_1_1BaseSessionHandle.html#af615709773f63fcefb1e724331ed9b03">wittyPlus::BaseSessionHandle</a>
+: <a class="el" href="classwitty_plus_1_1_session_manager.html#aab97a2718daaaa1f9608e31f4760bcf1">wittyPlus::SessionManager</a>
+, <a class="el" href="classwitty_plus_1_1_base_session_handle.html#af615709773f63fcefb1e724331ed9b03">wittyPlus::BaseSessionHandle</a>
 </li>
 <li>tryLogin()
-: <a class="el" href="classwittyPlus_1_1SessionHandle.html#a76faab031151971ad6147b92c97bae3b">wittyPlus::SessionHandle&lt; SessionStore, User &gt;</a>
+: <a class="el" href="classwitty_plus_1_1_session_manager.html#a03312532885228ec4af4fee001b849d3">wittyPlus::SessionManager</a>
+, <a class="el" href="classwitty_plus_1_1_session_handle.html#a76faab031151971ad6147b92c97bae3b">wittyPlus::SessionHandle&lt; SessionStore, User &gt;</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_u"></a>- u -</h3><ul>
+<li>updateLoginTime()
+: <a class="el" href="classwitty_plus_1_1_session.html#ade4fca872bdfb9d435760ec063e038c9">wittyPlus::Session</a>
+</li>
+<li>URL2Action()
+: <a class="el" href="classmy__app_1_1_u_r_l2_action.html#af3dcdb8fc3e8510f807607817e0a06c4">my_app::URL2Action</a>
+</li>
+<li>URLs()
+: <a class="el" href="classwitty_plus_1_1_u_r_ls.html#a7988654b6d59e66f1dbdfcb6fd8fd032">wittyPlus::URLs</a>
+</li>
 <li>user()
-: <a class="el" href="classwittyPlus_1_1SessionHandle.html#a7e4f152aad24bf2c62d8215731e1b0f0">wittyPlus::SessionHandle&lt; SessionStore, User &gt;</a>
+: <a class="el" href="classwitty_plus_1_1_session_handle.html#ab51329be2467bace6776f5f2fc87e5d1">wittyPlus::SessionHandle&lt; SessionStore, User &gt;</a>
+</li>
+<li>User()
+: <a class="el" href="classmy__app_1_1model_1_1_user.html#aee27fee8dfa242a6e0118ae81e90a9f4">my_app::model::User</a>
+</li>
+<li>userChanged()
+: <a class="el" href="classmy__app_1_1_app.html#abcba71ade4c1d7e9cee4e9aa9a4f26da">my_app::App</a>
+</li>
+<li>userChosen()
+: <a class="el" href="classmy__app_1_1_user_list.html#a8e6813a8d5e2ad8c66588bcc57ebb723">my_app::UserList</a>
+</li>
+<li>UserEdit()
+: <a class="el" href="classmy__app_1_1_user_edit.html#a751229643bfa9bfdeec5b860c206ba55">my_app::UserEdit</a>
 </li>
 <li>userEdit()
-: <a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1UserManagerFixture.html#a1d6f825e72d21dc1d7c069380ac30eee">my_app::unittests::fixtures::UserManagerFixture</a>
+: <a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1_user_manager_fixture.html#a1d6f825e72d21dc1d7c069380ac30eee">my_app::unittests::fixtures::UserManagerFixture</a>
 </li>
 <li>userId()
-: <a class="el" href="classwittyPlus_1_1MemorySessionStore.html#a442dd48a6d5e6f5642728528ee04ecce">wittyPlus::MemorySessionStore</a>
+: <a class="el" href="classwitty_plus_1_1_session.html#ada46ea2390b68330e309cb4433ba3a2d">wittyPlus::Session</a>
+, <a class="el" href="classwitty_plus_1_1_memory_session_store.html#a442dd48a6d5e6f5642728528ee04ecce">wittyPlus::MemorySessionStore</a>
 </li>
 <li>userList()
-: <a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1UserManagerFixture.html#a752281d027f26c1b24a6d1a5921233f1">my_app::unittests::fixtures::UserManagerFixture</a>
+: <a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1_user_manager_fixture.html#a752281d027f26c1b24a6d1a5921233f1">my_app::unittests::fixtures::UserManagerFixture</a>
+</li>
+<li>UserList()
+: <a class="el" href="classmy__app_1_1_user_list.html#a608aeefea594b0aeb7c6cb9602cb7bfb">my_app::UserList</a>
 </li>
 <li>userManager()
-: <a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1UserManagerFixture.html#a44abc47895442533546586f96a143c55">my_app::unittests::fixtures::UserManagerFixture</a>
+: <a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1_user_manager_fixture.html#a44abc47895442533546586f96a143c55">my_app::unittests::fixtures::UserManagerFixture</a>
+</li>
+<li>UserManager()
+: <a class="el" href="classmy__app_1_1_user_manager.html#ac346a3a9939a1bcf996c4b2da920cec5">my_app::UserManager</a>
+</li>
+<li>UserManagerFixture()
+: <a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1_user_manager_fixture.html#ae8ffc4f5be65104dc4a8a98d54d4ad5b">my_app::unittests::fixtures::UserManagerFixture</a>
+</li>
+<li>username()
+: <a class="el" href="classwitty_plus_1_1_session_manager.html#ae463eea16f1190921d00ec77d4d5f828">wittyPlus::SessionManager</a>
+</li>
+<li>userSession()
+: <a class="el" href="classwitty_plus_1_1_base_app.html#a0cd86d0b8bc591d3b45c7a26fd6a6833">wittyPlus::BaseApp&lt; User &gt;</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_v"></a>- v -</h3><ul>
+<li>validate()
+: <a class="el" href="classwitty_plus_1_1_d_b_no_dup_validator.html#a53c3304d1de2a122b05affe89d37a99d">wittyPlus::DBNoDupValidator&lt; ModelClass &gt;</a>
+, <a class="el" href="structwitty_plus_1_1_match_validator.html#a992ae85384dddec3f470e451ce1d0504">wittyPlus::MatchValidator&lt; WidgetType &gt;</a>
+, <a class="el" href="structwitty_plus_1_1_match_validator_3_01_w_combo_box_01_4.html#a16342a4ca41354a25496da6ea7a96c46">wittyPlus::MatchValidator&lt; WComboBox &gt;</a>
+</li>
+<li>validateAll()
+: <a class="el" href="classwitty_plus_1_1_more_awesome_template.html#a402df99c8dff978200b3914d64beaea4">wittyPlus::MoreAwesomeTemplate</a>
+</li>
+<li>validateWidget()
+: <a class="el" href="classwitty_plus_1_1_server_side_validator.html#a3a0bde8fa93284a68776b496da59d237">wittyPlus::ServerSideValidator</a>
+</li>
+<li>validateWidgetAndTellBrowser()
+: <a class="el" href="classwitty_plus_1_1_server_side_validator.html#a54b3ab6bb35bb11d01c52d677f452afc">wittyPlus::ServerSideValidator</a>
+</li>
+<li>validateWithMessage()
+: <a class="el" href="classwitty_plus_1_1_server_side_validator.html#a2674cd928f5a6e34d3bfcb3c451a283f">wittyPlus::ServerSideValidator</a>
+, <a class="el" href="classwitty_plus_1_1_d_b_no_dup_validator.html#acd5c9c633add129ac45c86276099af45">wittyPlus::DBNoDupValidator&lt; ModelClass &gt;</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_w"></a>- w -</h3><ul>
+<li>WT_TestFixture()
+: <a class="el" href="struct_w_t___test_fixture.html#a6848f83f0cc874efccb3082a9e11928e">WT_TestFixture</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_0x7e"></a>- ~ -</h3><ul>
+<li>~AppFixture()
+: <a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1_app_fixture.html#a37de6953dc7b67d9c62672af09f8cfe8">my_app::unittests::fixtures::AppFixture</a>
+</li>
+<li>~UserManagerFixture()
+: <a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1_user_manager_fixture.html#a69c763c55c4f713721ef5f459df6de4b">my_app::unittests::fixtures::UserManagerFixture</a>
 </li>
 </ul>
 </div>
+</div>
+  <div id="nav-path" class="navpath">
+    <ul>
+      <li class="footer">Generated on Mon Oct 3 2011 11:40:24 for wittyPlus Base App by&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </li>
+    </ul>
+  </div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -284,8 +590,6 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Mon Oct 3 2011 10:48:22 for WittyPlus by&#160;
-<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
+
 </body>
 </html>

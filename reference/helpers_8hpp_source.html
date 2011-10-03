@@ -2,10 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>WittyPlus: base-app/tests/helpers.hpp Source File</title>
+<title>wittyPlus Base App: base-app/tests/helpers.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript">
+$(document).ready(initResizable);
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body onload='searchBox.OnSelectItem(0);'>
@@ -13,50 +20,13 @@
 <script type="text/javascript"><!--
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 --></script>
-<script type="text/javascript">
-function hasClass(ele,cls) {
-  return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
-}
-
-function addClass(ele,cls) {
-  if (!this.hasClass(ele,cls)) ele.className += " "+cls;
-}
-
-function removeClass(ele,cls) {
-  if (hasClass(ele,cls)) {
-    var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
-    ele.className=ele.className.replace(reg,' ');
-  }
-}
-
-function toggleVisibility(linkObj) {
- var base = linkObj.getAttribute('id');
- var summary = document.getElementById(base + '-summary');
- var content = document.getElementById(base + '-content');
- var trigger = document.getElementById(base + '-trigger');
- if ( hasClass(linkObj,'closed') ) {
-   summary.style.display = 'none';
-   content.style.display = 'block';
-   trigger.src = 'open.png';
-   removeClass(linkObj,'closed');
-   addClass(linkObj,'opened');
- } else if ( hasClass(linkObj,'opened') ) {
-   summary.style.display = 'block';
-   content.style.display = 'none';
-   trigger.src = 'closed.png';
-   removeClass(linkObj,'opened');
-   addClass(linkObj,'closed');
- }
- return false;
-}
-</script>
 <div id="top">
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">WittyPlus</div>
+   <div id="projectname">wittyPlus Base App</div>
   </td>
  </tr>
  </tbody>
@@ -89,14 +59,29 @@ function toggleVisibility(linkObj) {
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
+</div>
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+  initNavTree('helpers_8hpp.html','');
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="headertitle">
 <h1>base-app/tests/helpers.hpp</h1>  </div>
 </div>
 <div class="contents">
-<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*</span>
+<a href="helpers_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*</span>
 <a name="l00002"></a>00002 <span class="comment"> * =====================================================================================</span>
 <a name="l00003"></a>00003 <span class="comment"> *</span>
 <a name="l00004"></a>00004 <span class="comment"> *       Filename:  helpers.hpp</span>
@@ -119,8 +104,8 @@ function toggleVisibility(linkObj) {
 <a name="l00021"></a>00021 <span class="preprocessor"></span>
 <a name="l00022"></a>00022 <span class="preprocessor">#include &lt;Wt/WEvent&gt;</span>
 <a name="l00023"></a>00023 <span class="preprocessor">#include &lt;Wt/WApplication&gt;</span>
-<a name="l00024"></a>00024 <span class="preprocessor">#include &quot;../lib/InternalLink.hpp&quot;</span>
-<a name="l00025"></a>00025 <span class="preprocessor">#include &quot;../lib/ButtonBar.hpp&quot;</span>
+<a name="l00024"></a>00024 <span class="preprocessor">#include &quot;<a class="code" href="_internal_link_8hpp.html">../lib/InternalLink.hpp</a>&quot;</span>
+<a name="l00025"></a>00025 <span class="preprocessor">#include &quot;<a class="code" href="_button_bar_8hpp.html">../lib/ButtonBar.hpp</a>&quot;</span>
 <a name="l00026"></a>00026 <span class="preprocessor">#include &lt;Wt/WLink&gt;</span>
 <a name="l00027"></a>00027 <span class="preprocessor">#include &lt;Wt/WString&gt;</span>
 <a name="l00028"></a>00028 <span class="preprocessor">#include &lt;string&gt;</span>
@@ -133,16 +118,16 @@ function toggleVisibility(linkObj) {
 <a name="l00035"></a>00035 
 <a name="l00036"></a>00036 <span class="keyword">namespace </span>my_app {
 <a name="l00037"></a>00037 <span class="keyword">namespace </span>unittests {
-<a name="l00038"></a>00038 <span class="keyword">namespace </span>helpers {
+<a name="l00038"></a><a class="code" href="namespacemy__app_1_1unittests_1_1helpers.html">00038</a> <span class="keyword">namespace </span>helpers {
 <a name="l00039"></a>00039 
 <a name="l00040"></a>00040 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> W<span class="keywordtype">id</span>get&gt;
-<a name="l00041"></a>00041 <span class="keywordtype">void</span> click(Widget* w) {
-<a name="l00042"></a>00042     WMouseEvent click;
+<a name="l00041"></a><a class="code" href="namespacemy__app_1_1unittests_1_1helpers.html#a23e80df55748393083a59e4c26a0c662">00041</a> <span class="keywordtype">void</span> <a class="code" href="namespacemy__app_1_1unittests_1_1helpers.html#a23e80df55748393083a59e4c26a0c662">click</a>(Widget* w) {
+<a name="l00042"></a>00042     WMouseEvent <a class="code" href="namespacemy__app_1_1unittests_1_1helpers.html#a23e80df55748393083a59e4c26a0c662">click</a>;
 <a name="l00043"></a>00043     w-&gt;clicked().emit(click);
 <a name="l00044"></a>00044 }
 <a name="l00045"></a>00045 
 <a name="l00046"></a>00046 <span class="keyword">template</span>&lt;&gt;
-<a name="l00047"></a>00047 <span class="keywordtype">void</span> click&lt;wittyPlus::InternalLink&gt;(<a class="code" href="classwittyPlus_1_1InternalLink.html">wittyPlus::InternalLink</a>* il) {
+<a name="l00047"></a><a class="code" href="namespacemy__app_1_1unittests_1_1helpers.html#a95fdb15b5af76b74cd0ec71e8d50ee16">00047</a> <span class="keywordtype">void</span> click&lt;wittyPlus::InternalLink&gt;(<a class="code" href="classwitty_plus_1_1_internal_link.html">wittyPlus::InternalLink</a>* il) {
 <a name="l00048"></a>00048     WLink&amp; link = il-&gt;link_;
 <a name="l00049"></a>00049     <span class="keywordflow">if</span> (link.type_ == WLink::InternalPath) {
 <a name="l00050"></a>00050         WApplication::instance()-&gt;setInternalPath(link.internalPath().toUTF8(), <span class="keyword">true</span>);
@@ -150,7 +135,7 @@ function toggleVisibility(linkObj) {
 <a name="l00052"></a>00052 }
 <a name="l00053"></a>00053 
 <a name="l00054"></a>00054 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> W<span class="keywordtype">id</span>get&gt;
-<a name="l00055"></a>00055 <span class="keywordtype">void</span> keyPress(Widget* w, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> keyCode) {
+<a name="l00055"></a><a class="code" href="namespacemy__app_1_1unittests_1_1helpers.html#af2bcdb064783357fd95a22e0c793a97d">00055</a> <span class="keywordtype">void</span> <a class="code" href="namespacemy__app_1_1unittests_1_1helpers.html#af2bcdb064783357fd95a22e0c793a97d">keyPress</a>(Widget* w, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> keyCode) {
 <a name="l00056"></a>00056     <span class="keywordflow">switch</span> (keyCode) {
 <a name="l00057"></a>00057         <span class="keywordflow">case</span> 27: <span class="comment">// escape</span>
 <a name="l00058"></a>00058             w-&gt;escapePressed().emit();
@@ -166,24 +151,24 @@ function toggleVisibility(linkObj) {
 <a name="l00068"></a>00068     }
 <a name="l00069"></a>00069 }
 <a name="l00070"></a>00070 
-<a name="l00071"></a>00071 <span class="keywordtype">void</span> click(<a class="code" href="classwittyPlus_1_1ButtonBar.html" title="A nice two buttons next to each other on a panel.">wittyPlus::ButtonBar</a>* btns, <span class="keyword">const</span> std::string label) {
+<a name="l00071"></a><a class="code" href="namespacemy__app_1_1unittests_1_1helpers.html#a5430ba6a8545d91201963df2b258064e">00071</a> <span class="keywordtype">void</span> <a class="code" href="namespacemy__app_1_1unittests_1_1helpers.html#a23e80df55748393083a59e4c26a0c662">click</a>(<a class="code" href="classwitty_plus_1_1_button_bar.html" title="A nice two buttons next to each other on a panel.">wittyPlus::ButtonBar</a>* btns, <span class="keyword">const</span> std::string label) {
 <a name="l00072"></a>00072     WString translated = WString::tr(label);
-<a name="l00073"></a>00073     WPushButton* btn1 = btns-&gt;btn1();
+<a name="l00073"></a>00073     WPushButton* btn1 = btns-&gt;<a class="code" href="classwitty_plus_1_1_button_bar.html#a3d21a5593b403b31a124158f351edb36">btn1</a>();
 <a name="l00074"></a>00074     <span class="keywordflow">if</span> (btn1-&gt;text() == translated) {
-<a name="l00075"></a>00075         click(btn1);
+<a name="l00075"></a>00075         <a class="code" href="namespacemy__app_1_1unittests_1_1helpers.html#a23e80df55748393083a59e4c26a0c662">click</a>(btn1);
 <a name="l00076"></a>00076         <span class="keywordflow">return</span>;
 <a name="l00077"></a>00077     }
-<a name="l00078"></a>00078     WPushButton* btn2 = btns-&gt;btn2();
+<a name="l00078"></a>00078     WPushButton* btn2 = btns-&gt;<a class="code" href="classwitty_plus_1_1_button_bar.html#add898daad042ae5676f3a3380dec607f">btn2</a>();
 <a name="l00079"></a>00079     <span class="keywordflow">if</span> (btn2-&gt;text() == translated) {
-<a name="l00080"></a>00080         click(btns-&gt;btn2());
+<a name="l00080"></a>00080         <a class="code" href="namespacemy__app_1_1unittests_1_1helpers.html#a23e80df55748393083a59e4c26a0c662">click</a>(btns-&gt;<a class="code" href="classwitty_plus_1_1_button_bar.html#add898daad042ae5676f3a3380dec607f">btn2</a>());
 <a name="l00081"></a>00081         <span class="keywordflow">return</span>;
 <a name="l00082"></a>00082     }
 <a name="l00083"></a>00083     BOOST_ERROR(<span class="stringliteral">&quot;Couldn&#39;t find button with label: &quot;</span> + label + <span class="stringliteral">&quot; that translates to &quot;</span> + translated +
 <a name="l00084"></a>00084                 <span class="stringliteral">&quot;\nOptions are: &quot;</span> + btn1-&gt;text() + <span class="stringliteral">&quot; and &quot;</span> + btn2-&gt;text());
 <a name="l00085"></a>00085 }
 <a name="l00086"></a>00086 
-<a name="l00087"></a>00087 <span class="keywordtype">void</span> clickOk(<a class="code" href="classwittyPlus_1_1ButtonBar.html" title="A nice two buttons next to each other on a panel.">wittyPlus::ButtonBar</a>* btns) { click(btns, <span class="stringliteral">&quot;OK&quot;</span>); }
-<a name="l00088"></a>00088 <span class="keywordtype">void</span> clickCancel(<a class="code" href="classwittyPlus_1_1ButtonBar.html" title="A nice two buttons next to each other on a panel.">wittyPlus::ButtonBar</a>* btns) { click(btns, <span class="stringliteral">&quot;Cancel&quot;</span>); }
+<a name="l00087"></a><a class="code" href="namespacemy__app_1_1unittests_1_1helpers.html#aa42b096fadecaf3d4063a7159a98f44b">00087</a> <span class="keywordtype">void</span> <a class="code" href="namespacemy__app_1_1unittests_1_1helpers.html#aa42b096fadecaf3d4063a7159a98f44b">clickOk</a>(<a class="code" href="classwitty_plus_1_1_button_bar.html" title="A nice two buttons next to each other on a panel.">wittyPlus::ButtonBar</a>* btns) { <a class="code" href="namespacemy__app_1_1unittests_1_1helpers.html#a23e80df55748393083a59e4c26a0c662">click</a>(btns, <span class="stringliteral">&quot;OK&quot;</span>); }
+<a name="l00088"></a><a class="code" href="namespacemy__app_1_1unittests_1_1helpers.html#a36f4b37ba4fcc6305a7d4867b03fbe10">00088</a> <span class="keywordtype">void</span> <a class="code" href="namespacemy__app_1_1unittests_1_1helpers.html#a36f4b37ba4fcc6305a7d4867b03fbe10">clickCancel</a>(<a class="code" href="classwitty_plus_1_1_button_bar.html" title="A nice two buttons next to each other on a panel.">wittyPlus::ButtonBar</a>* btns) { <a class="code" href="namespacemy__app_1_1unittests_1_1helpers.html#a23e80df55748393083a59e4c26a0c662">click</a>(btns, <span class="stringliteral">&quot;Cancel&quot;</span>); }
 <a name="l00089"></a>00089 
 <a name="l00090"></a>00090 } <span class="comment">// namespace helpers</span>
 <a name="l00091"></a>00091 } <span class="comment">// namespace unittests</span>
@@ -192,12 +177,20 @@ function toggleVisibility(linkObj) {
 <a name="l00094"></a>00094 <span class="preprocessor">#endif //  MY_APP_UNITTESTS_HELPERS_HPP</span>
 </pre></div></div>
 </div>
+  <div id="nav-path" class="navpath">
+    <ul>
+      <li class="navelem"><a class="el" href="helpers_8hpp.html">helpers.hpp</a>      </li>
+      <li class="footer">Generated on Mon Oct 3 2011 11:40:24 for wittyPlus Base App by&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </li>
+    </ul>
+  </div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -206,8 +199,6 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Mon Oct 3 2011 10:48:22 for WittyPlus by&#160;
-<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
+
 </body>
 </html>

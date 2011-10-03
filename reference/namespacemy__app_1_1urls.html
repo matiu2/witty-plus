@@ -2,10 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>WittyPlus: my_app::urls Namespace Reference</title>
+<title>wittyPlus Base App: my_app::urls Namespace Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript">
+$(document).ready(initResizable);
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body onload='searchBox.OnSelectItem(0);'>
@@ -13,50 +20,13 @@
 <script type="text/javascript"><!--
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 --></script>
-<script type="text/javascript">
-function hasClass(ele,cls) {
-  return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
-}
-
-function addClass(ele,cls) {
-  if (!this.hasClass(ele,cls)) ele.className += " "+cls;
-}
-
-function removeClass(ele,cls) {
-  if (hasClass(ele,cls)) {
-    var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
-    ele.className=ele.className.replace(reg,' ');
-  }
-}
-
-function toggleVisibility(linkObj) {
- var base = linkObj.getAttribute('id');
- var summary = document.getElementById(base + '-summary');
- var content = document.getElementById(base + '-content');
- var trigger = document.getElementById(base + '-trigger');
- if ( hasClass(linkObj,'closed') ) {
-   summary.style.display = 'none';
-   content.style.display = 'block';
-   trigger.src = 'open.png';
-   removeClass(linkObj,'closed');
-   addClass(linkObj,'opened');
- } else if ( hasClass(linkObj,'opened') ) {
-   summary.style.display = 'block';
-   content.style.display = 'none';
-   trigger.src = 'closed.png';
-   removeClass(linkObj,'opened');
-   addClass(linkObj,'closed');
- }
- return false;
-}
-</script>
 <div id="top">
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">WittyPlus</div>
+   <div id="projectname">wittyPlus Base App</div>
   </td>
  </tr>
  </tbody>
@@ -89,15 +59,23 @@ function toggleVisibility(linkObj) {
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="namespaces.html"><span>Namespace&#160;List</span></a></li>
-    </ul>
-  </div>
-  <div id="nav-path" class="navpath">
-    <ul>
-      <li class="navelem"><b>my_app</b>      </li>
-      <li class="navelem"><a class="el" href="namespacemy__app_1_1urls.html">urls</a>      </li>
+      <li><a href="namespacemembers.html"><span>Namespace&#160;Members</span></a></li>
     </ul>
   </div>
 </div>
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+  initNavTree('namespacemy__app_1_1urls.html','');
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="summary">
 <a href="#var-members">Variables</a>  </div>
@@ -111,24 +89,91 @@ function toggleVisibility(linkObj) {
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1d34654296f27dcc88c67f3e976720da"></a><!-- doxytag: member="my_app::urls::home" ref="a1d34654296f27dcc88c67f3e976720da" args="" -->
-const char *&#160;</td><td class="memItemRight" valign="bottom"><b>home</b> = &quot;/&quot;</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1b6561969e981d6c95c5d3c4f1dd1ffe"></a><!-- doxytag: member="my_app::urls::login" ref="a1b6561969e981d6c95c5d3c4f1dd1ffe" args="" -->
-const char *&#160;</td><td class="memItemRight" valign="bottom"><b>login</b> = &quot;/login&quot;</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa7dcd04710f3e5ae48e1bf3b921911e0"></a><!-- doxytag: member="my_app::urls::logout" ref="aa7dcd04710f3e5ae48e1bf3b921911e0" args="" -->
-const char *&#160;</td><td class="memItemRight" valign="bottom"><b>logout</b> = &quot;/logout&quot;</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a303a355de78f954aeea2d3e8a589144b"></a><!-- doxytag: member="my_app::urls::admin_users" ref="a303a355de78f954aeea2d3e8a589144b" args="" -->
-const char *&#160;</td><td class="memItemRight" valign="bottom"><b>admin_users</b> = &quot;/admin/users&quot;</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemy__app_1_1urls.html#a1d34654296f27dcc88c67f3e976720da">home</a> = &quot;/&quot;</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemy__app_1_1urls.html#a1b6561969e981d6c95c5d3c4f1dd1ffe">login</a> = &quot;/login&quot;</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemy__app_1_1urls.html#aa7dcd04710f3e5ae48e1bf3b921911e0">logout</a> = &quot;/logout&quot;</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemy__app_1_1urls.html#a303a355de78f954aeea2d3e8a589144b">admin_users</a> = &quot;/admin/users&quot;</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Consts so we don't accidentally change a url somewhere. </p>
-</div></div>
+</div><hr/><h2>Variable Documentation</h2>
+<a class="anchor" id="a303a355de78f954aeea2d3e8a589144b"></a><!-- doxytag: member="my_app::urls::admin_users" ref="a303a355de78f954aeea2d3e8a589144b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * <a class="el" href="namespacemy__app_1_1urls.html#a303a355de78f954aeea2d3e8a589144b">my_app::urls::admin_users</a> = &quot;/admin/users&quot;</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="urls_8cpp_source.html#l00029">29</a> of file <a class="el" href="urls_8cpp_source.html">urls.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1d34654296f27dcc88c67f3e976720da"></a><!-- doxytag: member="my_app::urls::home" ref="a1d34654296f27dcc88c67f3e976720da" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * <a class="el" href="namespacemy__app_1_1urls.html#a1d34654296f27dcc88c67f3e976720da">my_app::urls::home</a> = &quot;/&quot;</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="urls_8cpp_source.html#l00026">26</a> of file <a class="el" href="urls_8cpp_source.html">urls.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1b6561969e981d6c95c5d3c4f1dd1ffe"></a><!-- doxytag: member="my_app::urls::login" ref="a1b6561969e981d6c95c5d3c4f1dd1ffe" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * <a class="el" href="namespacemy__app_1_1urls.html#a1b6561969e981d6c95c5d3c4f1dd1ffe">my_app::urls::login</a> = &quot;/login&quot;</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="urls_8cpp_source.html#l00027">27</a> of file <a class="el" href="urls_8cpp_source.html">urls.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa7dcd04710f3e5ae48e1bf3b921911e0"></a><!-- doxytag: member="my_app::urls::logout" ref="aa7dcd04710f3e5ae48e1bf3b921911e0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * <a class="el" href="namespacemy__app_1_1urls.html#aa7dcd04710f3e5ae48e1bf3b921911e0">my_app::urls::logout</a> = &quot;/logout&quot;</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="urls_8cpp_source.html#l00028">28</a> of file <a class="el" href="urls_8cpp_source.html">urls.cpp</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+  <div id="nav-path" class="navpath">
+    <ul>
+      <li class="navelem"><a class="el" href="namespacemy__app.html">my_app</a>      </li>
+      <li class="navelem"><a class="el" href="namespacemy__app_1_1urls.html">urls</a>      </li>
+      <li class="footer">Generated on Mon Oct 3 2011 11:40:24 for wittyPlus Base App by&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </li>
+    </ul>
+  </div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -137,8 +182,6 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>admin_users</
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Mon Oct 3 2011 10:48:24 for WittyPlus by&#160;
-<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
+
 </body>
 </html>

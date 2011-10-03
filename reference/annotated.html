@@ -2,10 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>WittyPlus: Class List</title>
+<title>wittyPlus Base App: Class List</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript">
+$(document).ready(initResizable);
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body onload='searchBox.OnSelectItem(0);'>
@@ -13,50 +20,13 @@
 <script type="text/javascript"><!--
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 --></script>
-<script type="text/javascript">
-function hasClass(ele,cls) {
-  return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
-}
-
-function addClass(ele,cls) {
-  if (!this.hasClass(ele,cls)) ele.className += " "+cls;
-}
-
-function removeClass(ele,cls) {
-  if (hasClass(ele,cls)) {
-    var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
-    ele.className=ele.className.replace(reg,' ');
-  }
-}
-
-function toggleVisibility(linkObj) {
- var base = linkObj.getAttribute('id');
- var summary = document.getElementById(base + '-summary');
- var content = document.getElementById(base + '-content');
- var trigger = document.getElementById(base + '-trigger');
- if ( hasClass(linkObj,'closed') ) {
-   summary.style.display = 'none';
-   content.style.display = 'block';
-   trigger.src = 'open.png';
-   removeClass(linkObj,'closed');
-   addClass(linkObj,'opened');
- } else if ( hasClass(linkObj,'opened') ) {
-   summary.style.display = 'block';
-   content.style.display = 'none';
-   trigger.src = 'closed.png';
-   removeClass(linkObj,'opened');
-   addClass(linkObj,'closed');
- }
- return false;
-}
-</script>
 <div id="top">
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">WittyPlus</div>
+   <div id="projectname">wittyPlus Base App</div>
   </td>
  </tr>
  </tbody>
@@ -90,52 +60,77 @@ function toggleVisibility(linkObj) {
     <ul class="tablist">
       <li class="current"><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 </div>
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+  initNavTree('annotated.html','');
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="headertitle">
 <h1>Class List</h1>  </div>
 </div>
 <div class="contents">
 <div class="textblock">Here are the classes, structs, unions and interfaces with brief descriptions:</div><table>
-  <tr><td class="indexkey"><a class="el" href="classmy__app_1_1AdminIndex.html">my_app::AdminIndex</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classmy__app_1_1App.html">my_app::App</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classmy__app_1_1LoginWindow.html">my_app::LoginWindow</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classmy__app_1_1MainWindow.html">my_app::MainWindow</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classmy__app_1_1model_1_1User.html">my_app::model::User</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1AppFixture.html">my_app::unittests::fixtures::AppFixture</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1LoginFixture.html">my_app::unittests::fixtures::LoginFixture</a></td><td class="indexvalue">Our special login fixture for testing the login window </td></tr>
-  <tr><td class="indexkey"><a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1UserManagerFixture.html">my_app::unittests::fixtures::UserManagerFixture</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classmy__app_1_1URL2Action.html">my_app::URL2Action</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classmy__app_1_1UserEdit.html">my_app::UserEdit</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classmy__app_1_1UserList.html">my_app::UserList</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classmy__app_1_1UserManager.html">my_app::UserManager</a></td><td class="indexvalue">GUI to manage users </td></tr>
-  <tr><td class="indexkey"><a class="el" href="classwittyPlus_1_1BaseApp.html">wittyPlus::BaseApp&lt; User &gt;</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classwittyPlus_1_1BaseMatchValidator.html">wittyPlus::BaseMatchValidator</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classwittyPlus_1_1BaseSessionHandle.html">wittyPlus::BaseSessionHandle</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classwittyPlus_1_1ButtonBar.html">wittyPlus::ButtonBar</a></td><td class="indexvalue">A nice two buttons next to each other on a panel </td></tr>
-  <tr><td class="indexkey"><a class="el" href="structwittyPlus_1_1HasTextConcept.html">wittyPlus::HasTextConcept&lt; WidgetType &gt;</a></td><td class="indexvalue">A template concept, insuring that <a class="el" href="structwittyPlus_1_1MatchValidator.html" title="This one works for WLineEdit, WTextArea and WTextEdit.">MatchValidator</a> widgets have a 'text()' method </td></tr>
-  <tr><td class="indexkey"><a class="el" href="classwittyPlus_1_1InternalLink.html">wittyPlus::InternalLink</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="structwittyPlus_1_1MatchValidator.html">wittyPlus::MatchValidator&lt; WidgetType &gt;</a></td><td class="indexvalue">This one works for WLineEdit, WTextArea and WTextEdit </td></tr>
-  <tr><td class="indexkey"><a class="el" href="structwittyPlus_1_1MatchValidator_3_01WComboBox_01_4.html">wittyPlus::MatchValidator&lt; WComboBox &gt;</a></td><td class="indexvalue">This one works for WComboBox </td></tr>
-  <tr><td class="indexkey"><a class="el" href="classwittyPlus_1_1MemorySessionStore.html">wittyPlus::MemorySessionStore</a></td><td class="indexvalue">Handles logged in users </td></tr>
-  <tr><td class="indexkey"><a class="el" href="classwittyPlus_1_1MoreAwesomeTemplate.html">wittyPlus::MoreAwesomeTemplate</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classwittyPlus_1_1Session.html">wittyPlus::Session</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="classwittyPlus_1_1SessionHandle.html">wittyPlus::SessionHandle&lt; SessionStore, User &gt;</a></td><td class="indexvalue">A handle to the session of the currently logged in user. This is what you use in your app </td></tr>
-  <tr><td class="indexkey"><a class="el" href="classwittyPlus_1_1SessionManager.html">wittyPlus::SessionManager</a></td><td class="indexvalue">A handle to the session of the currently logged in user </td></tr>
-  <tr><td class="indexkey"><a class="el" href="classwittyPlus_1_1URLs.html">wittyPlus::URLs</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="structWT__TestFixture.html">WT_TestFixture</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="classmy__app_1_1_admin_index.html">my_app::AdminIndex</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="classmy__app_1_1_app.html">my_app::App</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1_app_fixture.html">my_app::unittests::fixtures::AppFixture</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="classwitty_plus_1_1_base_app.html">wittyPlus::BaseApp&lt; User &gt;</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="classwitty_plus_1_1_base_match_validator.html">wittyPlus::BaseMatchValidator</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="classwitty_plus_1_1_base_session_handle.html">wittyPlus::BaseSessionHandle</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="classwitty_plus_1_1_button_bar.html">wittyPlus::ButtonBar</a></td><td class="indexvalue">A nice two buttons next to each other on a panel </td></tr>
+  <tr><td class="indexkey"><a class="el" href="classwitty_plus_1_1_d_b_no_dup_validator.html">wittyPlus::DBNoDupValidator&lt; ModelClass &gt;</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="structwitty_plus_1_1_field_row.html">wittyPlus::FieldRow</a></td><td class="indexvalue">A row in a form, basically has a label, a widget, and an optional message text </td></tr>
+  <tr><td class="indexkey"><a class="el" href="structwitty_plus_1_1_has_text_concept.html">wittyPlus::HasTextConcept&lt; WidgetType &gt;</a></td><td class="indexvalue">A template concept, insuring that <a class="el" href="structwitty_plus_1_1_match_validator.html" title="This one works for WLineEdit, WTextArea and WTextEdit.">MatchValidator</a> widgets have a 'text()' method </td></tr>
+  <tr><td class="indexkey"><a class="el" href="classwitty_plus_1_1_internal_link.html">wittyPlus::InternalLink</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1_login_fixture.html">my_app::unittests::fixtures::LoginFixture</a></td><td class="indexvalue">Our special login fixture for testing the login window </td></tr>
+  <tr><td class="indexkey"><a class="el" href="classmy__app_1_1_login_window.html">my_app::LoginWindow</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="classmy__app_1_1_main_window.html">my_app::MainWindow</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="structwitty_plus_1_1_match_validator.html">wittyPlus::MatchValidator&lt; WidgetType &gt;</a></td><td class="indexvalue">This one works for WLineEdit, WTextArea and WTextEdit </td></tr>
+  <tr><td class="indexkey"><a class="el" href="structwitty_plus_1_1_match_validator_3_01_w_combo_box_01_4.html">wittyPlus::MatchValidator&lt; WComboBox &gt;</a></td><td class="indexvalue">This one works for WComboBox </td></tr>
+  <tr><td class="indexkey"><a class="el" href="classwitty_plus_1_1_memory_session_store.html">wittyPlus::MemorySessionStore</a></td><td class="indexvalue">Handles logged in users </td></tr>
+  <tr><td class="indexkey"><a class="el" href="classwitty_plus_1_1_more_awesome_template.html">wittyPlus::MoreAwesomeTemplate</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="structwitty_plus_1_1_server_side_validation_result.html">wittyPlus::ServerSideValidationResult</a></td><td class="indexvalue">Holds a validation result, plus a message for the user </td></tr>
+  <tr><td class="indexkey"><a class="el" href="classwitty_plus_1_1_server_side_validator.html">wittyPlus::ServerSideValidator</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="classwitty_plus_1_1_session.html">wittyPlus::Session</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="classwitty_plus_1_1_session_handle.html">wittyPlus::SessionHandle&lt; SessionStore, User &gt;</a></td><td class="indexvalue">A handle to the session of the currently logged in user. This is what you use in your app </td></tr>
+  <tr><td class="indexkey"><a class="el" href="classwitty_plus_1_1_session_manager.html">wittyPlus::SessionManager</a></td><td class="indexvalue">A handle to the session of the currently logged in user </td></tr>
+  <tr><td class="indexkey"><a class="el" href="classmy__app_1_1_u_r_l2_action.html">my_app::URL2Action</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="classwitty_plus_1_1_u_r_ls.html">wittyPlus::URLs</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="classmy__app_1_1model_1_1_user.html">my_app::model::User</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="classmy__app_1_1_user_edit.html">my_app::UserEdit</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="classmy__app_1_1_user_list.html">my_app::UserList</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="classmy__app_1_1_user_manager.html">my_app::UserManager</a></td><td class="indexvalue">GUI to manage users </td></tr>
+  <tr><td class="indexkey"><a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1_user_manager_fixture.html">my_app::unittests::fixtures::UserManagerFixture</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="struct_w_t___test_fixture.html">WT_TestFixture</a></td><td class="indexvalue"></td></tr>
 </table>
 </div>
+</div>
+  <div id="nav-path" class="navpath">
+    <ul>
+      <li class="footer">Generated on Mon Oct 3 2011 11:40:24 for wittyPlus Base App by&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </li>
+    </ul>
+  </div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -144,8 +139,6 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Mon Oct 3 2011 10:48:22 for WittyPlus by&#160;
-<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
+
 </body>
 </html>

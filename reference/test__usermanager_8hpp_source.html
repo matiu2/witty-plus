@@ -2,10 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>WittyPlus: base-app/tests/test_usermanager.hpp Source File</title>
+<title>wittyPlus Base App: base-app/tests/test_usermanager.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript">
+$(document).ready(initResizable);
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body onload='searchBox.OnSelectItem(0);'>
@@ -13,50 +20,13 @@
 <script type="text/javascript"><!--
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 --></script>
-<script type="text/javascript">
-function hasClass(ele,cls) {
-  return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
-}
-
-function addClass(ele,cls) {
-  if (!this.hasClass(ele,cls)) ele.className += " "+cls;
-}
-
-function removeClass(ele,cls) {
-  if (hasClass(ele,cls)) {
-    var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
-    ele.className=ele.className.replace(reg,' ');
-  }
-}
-
-function toggleVisibility(linkObj) {
- var base = linkObj.getAttribute('id');
- var summary = document.getElementById(base + '-summary');
- var content = document.getElementById(base + '-content');
- var trigger = document.getElementById(base + '-trigger');
- if ( hasClass(linkObj,'closed') ) {
-   summary.style.display = 'none';
-   content.style.display = 'block';
-   trigger.src = 'open.png';
-   removeClass(linkObj,'closed');
-   addClass(linkObj,'opened');
- } else if ( hasClass(linkObj,'opened') ) {
-   summary.style.display = 'block';
-   content.style.display = 'none';
-   trigger.src = 'closed.png';
-   removeClass(linkObj,'opened');
-   addClass(linkObj,'closed');
- }
- return false;
-}
-</script>
 <div id="top">
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">WittyPlus</div>
+   <div id="projectname">wittyPlus Base App</div>
   </td>
  </tr>
  </tbody>
@@ -89,14 +59,29 @@ function toggleVisibility(linkObj) {
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
+</div>
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+  initNavTree('test__usermanager_8hpp.html','');
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="headertitle">
 <h1>base-app/tests/test_usermanager.hpp</h1>  </div>
 </div>
 <div class="contents">
-<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*</span>
+<a href="test__usermanager_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*</span>
 <a name="l00002"></a>00002 <span class="comment"> * =====================================================================================</span>
 <a name="l00003"></a>00003 <span class="comment"> *</span>
 <a name="l00004"></a>00004 <span class="comment"> *       Filename:  test_usermanager.hpp</span>
@@ -114,46 +99,54 @@ function toggleVisibility(linkObj) {
 <a name="l00016"></a>00016 <span class="comment"> * =====================================================================================</span>
 <a name="l00017"></a>00017 <span class="comment"> */</span>
 <a name="l00018"></a>00018 
-<a name="l00019"></a>00019 <span class="preprocessor">#define BOOST_TEST_DYN_LINK</span>
-<a name="l00020"></a>00020 <span class="preprocessor"></span><span class="preprocessor">#define BOOST_TEST_MODULE user_manager_module</span>
+<a name="l00019"></a><a class="code" href="test__usermanager_8hpp.html#a139f00d2466d591f60b8d6a73c8273f1">00019</a> <span class="preprocessor">#define BOOST_TEST_DYN_LINK</span>
+<a name="l00020"></a><a class="code" href="test__usermanager_8hpp.html#a6b2a3852db8bb19ab6909bac01859985">00020</a> <span class="preprocessor"></span><span class="preprocessor">#define BOOST_TEST_MODULE user_manager_module</span>
 <a name="l00021"></a>00021 <span class="preprocessor"></span>
-<a name="l00022"></a>00022 <span class="preprocessor">#include &quot;helpers.hpp&quot;</span>
+<a name="l00022"></a>00022 <span class="preprocessor">#include &quot;<a class="code" href="helpers_8hpp.html">helpers.hpp</a>&quot;</span>
 <a name="l00023"></a>00023 
 <a name="l00024"></a>00024 <span class="keyword">namespace </span>my_app {
 <a name="l00025"></a>00025 <span class="keyword">namespace </span>unittests {
 <a name="l00026"></a>00026 
 <a name="l00027"></a>00027 <span class="keyword">namespace </span>h = helpers;
 <a name="l00028"></a>00028 
-<a name="l00029"></a>00029 BOOST_FIXTURE_TEST_SUITE( user_manager_suite , fixtures::LoginFixture );
+<a name="l00029"></a>00029 <a class="code" href="namespacemy__app_1_1unittests.html#abc39034cbcb78a01fb5a08d1c1afc5f5">BOOST_FIXTURE_TEST_SUITE</a>( user_manager_suite , fixtures::LoginFixture );
 <a name="l00030"></a>00030 
-<a name="l00031"></a>00031 BOOST_AUTO_TEST_CASE( new_user ) {
+<a name="l00031"></a>00031 <a class="code" href="namespacemy__app_1_1unittests.html#aab678abdcc2c91dee1a5664417d2e669">BOOST_AUTO_TEST_CASE</a>( new_user ) {
 <a name="l00032"></a>00032     UserList* ul = userList();
 <a name="l00033"></a>00033     BOOST_REQUIRE_MESSAGE( ul-&gt;isVisible(), <span class="stringliteral">&quot;We expected the userlist to be visible&quot;</span> );
-<a name="l00034"></a>00034     h::click(ul-&gt;btnNew());
+<a name="l00034"></a>00034     <a class="code" href="namespacemy__app_1_1unittests_1_1helpers.html#a23e80df55748393083a59e4c26a0c662">h::click</a>(ul-&gt;btnNew());
 <a name="l00035"></a>00035     UserEdit* ue = userEdit();
 <a name="l00036"></a>00036     BOOST_CHECK_MESSAGE( ue-&gt;isVisible(), <span class="stringliteral">&quot;Click new should show the UserEdit screen&quot;</span> );
 <a name="l00037"></a>00037     <span class="comment">// Now fill in the new user details</span>
 <a name="l00038"></a>00038     ue-&gt;edtName-&gt;setText(<span class="stringliteral">&quot;Test User 1&quot;</span>);
-<a name="l00039"></a>00039     h::keyPress(ue-&gt;edtName, 13)
+<a name="l00039"></a>00039     <a class="code" href="namespacemy__app_1_1unittests_1_1helpers.html#af2bcdb064783357fd95a22e0c793a97d">h::keyPress</a>(ue-&gt;edtName, 13)
 <a name="l00040"></a>00040     BOOST_CHECK_MESSAGE(ue-&gt;edtPass1-&gt;hasFocus(),
-<a name="l00041"></a>00041         &quot;Clicking enter after typing your name should give focus to the 1st password field&quot;);
-<a name="l00042"></a>00042     ue-&gt;edtPass1-&gt;setText(&quot;Test Pass&quot;);
-<a name="l00043"></a>00043     ue-&gt;edtPass2-&gt;setText(&quot;Test Pass&quot;);
-<a name="l00044"></a>00044     h::keyPress(ue-&gt;edtPass2, 13);
+<a name="l00041"></a>00041         <span class="stringliteral">&quot;Clicking enter after typing your name should give focus to the 1st password field&quot;</span>);
+<a name="l00042"></a>00042     ue-&gt;edtPass1-&gt;setText(<span class="stringliteral">&quot;Test Pass&quot;</span>);
+<a name="l00043"></a>00043     ue-&gt;edtPass2-&gt;setText(<span class="stringliteral">&quot;Test Pass&quot;</span>);
+<a name="l00044"></a>00044     <a class="code" href="namespacemy__app_1_1unittests_1_1helpers.html#af2bcdb064783357fd95a22e0c793a97d">h::keyPress</a>(ue-&gt;edtPass2, 13);
 <a name="l00045"></a>00045 }
 <a name="l00046"></a>00046 
 <a name="l00047"></a>00047 } <span class="comment">// namespace unittests</span>
 <a name="l00048"></a>00048 } <span class="comment">// namespace my_app</span>
 <a name="l00049"></a>00049 
-<a name="l00050"></a>00050 BOOST_AUTO_TEST_SUITE_END() <span class="comment">// login_suite</span>
+<a name="l00050"></a>00050 <a class="code" href="test__usermanager_8cpp.html#af7f71af5c6c124222dd1c42c5df892f4">BOOST_AUTO_TEST_SUITE_END</a>() <span class="comment">// login_suite</span>
 </pre></div></div>
 </div>
+  <div id="nav-path" class="navpath">
+    <ul>
+      <li class="navelem"><a class="el" href="test__usermanager_8hpp.html">test_usermanager.hpp</a>      </li>
+      <li class="footer">Generated on Mon Oct 3 2011 11:40:24 for wittyPlus Base App by&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </li>
+    </ul>
+  </div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -162,8 +155,6 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Mon Oct 3 2011 10:48:22 for WittyPlus by&#160;
-<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
+
 </body>
 </html>

@@ -2,10 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>WittyPlus: File List</title>
+<title>wittyPlus Base App: File List</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript">
+$(document).ready(initResizable);
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body onload='searchBox.OnSelectItem(0);'>
@@ -13,50 +20,13 @@
 <script type="text/javascript"><!--
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 --></script>
-<script type="text/javascript">
-function hasClass(ele,cls) {
-  return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
-}
-
-function addClass(ele,cls) {
-  if (!this.hasClass(ele,cls)) ele.className += " "+cls;
-}
-
-function removeClass(ele,cls) {
-  if (hasClass(ele,cls)) {
-    var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
-    ele.className=ele.className.replace(reg,' ');
-  }
-}
-
-function toggleVisibility(linkObj) {
- var base = linkObj.getAttribute('id');
- var summary = document.getElementById(base + '-summary');
- var content = document.getElementById(base + '-content');
- var trigger = document.getElementById(base + '-trigger');
- if ( hasClass(linkObj,'closed') ) {
-   summary.style.display = 'none';
-   content.style.display = 'block';
-   trigger.src = 'open.png';
-   removeClass(linkObj,'closed');
-   addClass(linkObj,'opened');
- } else if ( hasClass(linkObj,'opened') ) {
-   summary.style.display = 'block';
-   content.style.display = 'none';
-   trigger.src = 'closed.png';
-   removeClass(linkObj,'opened');
-   addClass(linkObj,'closed');
- }
- return false;
-}
-</script>
 <div id="top">
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">WittyPlus</div>
+   <div id="projectname">wittyPlus Base App</div>
   </td>
  </tr>
  </tbody>
@@ -89,52 +59,93 @@ function toggleVisibility(linkObj) {
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li class="current"><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div>
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+  initNavTree('files.html','');
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="headertitle">
 <h1>File List</h1>  </div>
 </div>
 <div class="contents">
-<div class="textblock">Here is a list of all documented files with brief descriptions:</div><table>
-  <tr><td class="indexkey">base-app/<b>AdminIndex.hpp</b> <a href="AdminIndex_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey">base-app/<b>App.hpp</b> <a href="App_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey">base-app/<b>common.hpp</b> <a href="common_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey">base-app/<b>db.hpp</b> <a href="db_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey">base-app/<b>LoginWindow.hpp</b> <a href="LoginWindow_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey">base-app/<b>MainWindow.hpp</b> <a href="MainWindow_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey">base-app/<b>url2action.hpp</b> <a href="url2action_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey">base-app/<b>urls.hpp</b> <a href="urls_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey">base-app/<b>UserEdit.hpp</b> <a href="UserEdit_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey">base-app/<b>UserList.hpp</b> <a href="UserList_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey">base-app/<b>UserManager.hpp</b> <a href="UserManager_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey">base-app/lib/<b>BaseApp.hpp</b> <a href="BaseApp_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey">base-app/lib/<b>BaseSessionHandle.hpp</b> <a href="BaseSessionHandle_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey">base-app/lib/<b>ButtonBar.hpp</b> <a href="ButtonBar_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey">base-app/lib/<b>InternalLink.hpp</b> <a href="InternalLink_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey">base-app/lib/<b>MatchValidator.hpp</b> <a href="MatchValidator_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey">base-app/lib/<b>MemorySessionStore.hpp</b> <a href="MemorySessionStore_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey">base-app/lib/<b>MoreAwesomeTemplate.hpp</b> <a href="MoreAwesomeTemplate_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey">base-app/lib/<b>SessionHandle.hpp</b> <a href="SessionHandle_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey">base-app/lib/<b>SessionManager.hpp</b> <a href="SessionManager_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey">base-app/lib/<b>sha.hpp</b> <a href="sha_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey">base-app/lib/<b>URLs.hpp</b> <a href="URLs_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey">base-app/model/<b>User.hpp</b> <a href="User_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey">base-app/tests/<b>helpers.hpp</b> <a href="helpers_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey">base-app/tests/<b>test_usermanager.hpp</b> <a href="test__usermanager_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey">base-app/tests/<b>wt_test_base.hpp</b> <a href="wt__test__base_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey">base-app/tests/fixtures/<b>App.hpp</b> <a href="tests_2fixtures_2App_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey">base-app/tests/fixtures/<b>Login.hpp</b> <a href="Login_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey">base-app/tests/fixtures/<b>UserManager.hpp</b> <a href="tests_2fixtures_2UserManager_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+<div class="textblock">Here is a list of all files with brief descriptions:</div><table>
+  <tr><td class="indexkey">base-app/<a class="el" href="_admin_index_8hpp.html">AdminIndex.hpp</a> <a href="_admin_index_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/<a class="el" href="_app_8cpp.html">App.cpp</a> <a href="_app_8cpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/<a class="el" href="_app_8hpp.html">App.hpp</a> <a href="_app_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/<a class="el" href="common_8hpp.html">common.hpp</a> <a href="common_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/<a class="el" href="db_8hpp.html">db.hpp</a> <a href="db_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/<a class="el" href="_login_window_8cpp.html">LoginWindow.cpp</a> <a href="_login_window_8cpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/<a class="el" href="_login_window_8hpp.html">LoginWindow.hpp</a> <a href="_login_window_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/<a class="el" href="main_8cpp.html">main.cpp</a> <a href="main_8cpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/<a class="el" href="_main_window_8cpp.html">MainWindow.cpp</a> <a href="_main_window_8cpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/<a class="el" href="_main_window_8hpp.html">MainWindow.hpp</a> <a href="_main_window_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/<a class="el" href="setup_d_b_8cpp.html">setupDB.cpp</a> <a href="setup_d_b_8cpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/<a class="el" href="url2action_8hpp.html">url2action.hpp</a> <a href="url2action_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/<a class="el" href="urls_8cpp.html">urls.cpp</a> <a href="urls_8cpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/<a class="el" href="urls_8hpp.html">urls.hpp</a> <a href="urls_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/<a class="el" href="_user_edit_8cpp.html">UserEdit.cpp</a> <a href="_user_edit_8cpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/<a class="el" href="_user_edit_8hpp.html">UserEdit.hpp</a> <a href="_user_edit_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/<a class="el" href="_user_list_8cpp.html">UserList.cpp</a> <a href="_user_list_8cpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/<a class="el" href="_user_list_8hpp.html">UserList.hpp</a> <a href="_user_list_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/<a class="el" href="_user_manager_8hpp.html">UserManager.hpp</a> <a href="_user_manager_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/build/CMakeFiles/CompilerIdC/<a class="el" href="base-app_2build_2_c_make_files_2_compiler_id_c_2_c_make_c_compiler_id_8c.html">CMakeCCompilerId.c</a> <a href="base-app_2build_2_c_make_files_2_compiler_id_c_2_c_make_c_compiler_id_8c_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/build/CMakeFiles/CompilerIdCXX/<a class="el" href="base-app_2build_2_c_make_files_2_compiler_id_c_x_x_2_c_make_c_x_x_compiler_id_8cpp.html">CMakeCXXCompilerId.cpp</a> <a href="base-app_2build_2_c_make_files_2_compiler_id_c_x_x_2_c_make_c_x_x_compiler_id_8cpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/lib/<a class="el" href="_base_app_8hpp.html">BaseApp.hpp</a> <a href="_base_app_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/lib/<a class="el" href="_base_session_handle_8cpp.html">BaseSessionHandle.cpp</a> <a href="_base_session_handle_8cpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/lib/<a class="el" href="_base_session_handle_8hpp.html">BaseSessionHandle.hpp</a> <a href="_base_session_handle_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/lib/<a class="el" href="_button_bar_8hpp.html">ButtonBar.hpp</a> <a href="_button_bar_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/lib/<a class="el" href="_d_b_no_dup_validator_8hpp.html">DBNoDupValidator.hpp</a> <a href="_d_b_no_dup_validator_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/lib/<a class="el" href="_internal_link_8hpp.html">InternalLink.hpp</a> <a href="_internal_link_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/lib/<a class="el" href="_match_validator_8hpp.html">MatchValidator.hpp</a> <a href="_match_validator_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/lib/<a class="el" href="_memory_session_store_8cpp.html">MemorySessionStore.cpp</a> <a href="_memory_session_store_8cpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/lib/<a class="el" href="_memory_session_store_8hpp.html">MemorySessionStore.hpp</a> <a href="_memory_session_store_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/lib/<a class="el" href="_more_awesome_template_8hpp.html">MoreAwesomeTemplate.hpp</a> <a href="_more_awesome_template_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/lib/<a class="el" href="_server_side_validator_8hpp.html">ServerSideValidator.hpp</a> <a href="_server_side_validator_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/lib/<a class="el" href="_session_handle_8hpp.html">SessionHandle.hpp</a> <a href="_session_handle_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/lib/<a class="el" href="_session_manager_8hpp.html">SessionManager.hpp</a> <a href="_session_manager_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/lib/<a class="el" href="sha_8hpp.html">sha.hpp</a> <a href="sha_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/lib/<a class="el" href="_u_r_ls_8hpp.html">URLs.hpp</a> <a href="_u_r_ls_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/model/<a class="el" href="_user_8hpp.html">User.hpp</a> <a href="_user_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/tests/<a class="el" href="helpers_8hpp.html">helpers.hpp</a> <a href="helpers_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/tests/<a class="el" href="tests_2main_8cpp.html">main.cpp</a> <a href="tests_2main_8cpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/tests/<a class="el" href="test__login_8cpp.html">test_login.cpp</a> <a href="test__login_8cpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/tests/<a class="el" href="test__usermanager_8cpp.html">test_usermanager.cpp</a> <a href="test__usermanager_8cpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/tests/<a class="el" href="test__usermanager_8hpp.html">test_usermanager.hpp</a> <a href="test__usermanager_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/tests/<a class="el" href="wt__test__base_8hpp.html">wt_test_base.hpp</a> <a href="wt__test__base_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/tests/fixtures/<a class="el" href="tests_2fixtures_2_app_8hpp.html">App.hpp</a> <a href="tests_2fixtures_2_app_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/tests/fixtures/<a class="el" href="_login_8hpp.html">Login.hpp</a> <a href="_login_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">base-app/tests/fixtures/<a class="el" href="tests_2fixtures_2_user_manager_8hpp.html">UserManager.hpp</a> <a href="tests_2fixtures_2_user_manager_8hpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">qtcreator-build/CMakeFiles/CompilerIdC/<a class="el" href="qtcreator-build_2_c_make_files_2_compiler_id_c_2_c_make_c_compiler_id_8c.html">CMakeCCompilerId.c</a> <a href="qtcreator-build_2_c_make_files_2_compiler_id_c_2_c_make_c_compiler_id_8c_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">qtcreator-build/CMakeFiles/CompilerIdCXX/<a class="el" href="qtcreator-build_2_c_make_files_2_compiler_id_c_x_x_2_c_make_c_x_x_compiler_id_8cpp.html">CMakeCXXCompilerId.cpp</a> <a href="qtcreator-build_2_c_make_files_2_compiler_id_c_x_x_2_c_make_c_x_x_compiler_id_8cpp_source.html">[code]</a></td><td class="indexvalue"></td></tr>
 </table>
 </div>
+</div>
+  <div id="nav-path" class="navpath">
+    <ul>
+      <li class="footer">Generated on Mon Oct 3 2011 11:40:24 for wittyPlus Base App by&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </li>
+    </ul>
+  </div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -143,8 +154,6 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Mon Oct 3 2011 10:48:26 for WittyPlus by&#160;
-<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
+
 </body>
 </html>

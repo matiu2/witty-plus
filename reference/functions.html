@@ -2,10 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>WittyPlus: Class Members</title>
+<title>wittyPlus Base App: Class Members</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript">
+$(document).ready(initResizable);
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body onload='searchBox.OnSelectItem(0);'>
@@ -13,50 +20,13 @@
 <script type="text/javascript"><!--
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 --></script>
-<script type="text/javascript">
-function hasClass(ele,cls) {
-  return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
-}
-
-function addClass(ele,cls) {
-  if (!this.hasClass(ele,cls)) ele.className += " "+cls;
-}
-
-function removeClass(ele,cls) {
-  if (hasClass(ele,cls)) {
-    var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
-    ele.className=ele.className.replace(reg,' ');
-  }
-}
-
-function toggleVisibility(linkObj) {
- var base = linkObj.getAttribute('id');
- var summary = document.getElementById(base + '-summary');
- var content = document.getElementById(base + '-content');
- var trigger = document.getElementById(base + '-trigger');
- if ( hasClass(linkObj,'closed') ) {
-   summary.style.display = 'none';
-   content.style.display = 'block';
-   trigger.src = 'open.png';
-   removeClass(linkObj,'closed');
-   addClass(linkObj,'opened');
- } else if ( hasClass(linkObj,'opened') ) {
-   summary.style.display = 'block';
-   content.style.display = 'none';
-   trigger.src = 'closed.png';
-   removeClass(linkObj,'opened');
-   addClass(linkObj,'closed');
- }
- return false;
-}
-</script>
 <div id="top">
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">WittyPlus</div>
+   <div id="projectname">wittyPlus Base App</div>
   </td>
  </tr>
  </tbody>
@@ -90,7 +60,7 @@ function toggleVisibility(linkObj) {
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li class="current"><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -99,189 +69,134 @@ function toggleVisibility(linkObj) {
       <li class="current"><a href="functions.html"><span>All</span></a></li>
       <li><a href="functions_func.html"><span>Functions</span></a></li>
       <li><a href="functions_vars.html"><span>Variables</span></a></li>
+      <li><a href="functions_type.html"><span>Typedefs</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
     <ul class="tablist">
-      <li><a href="#index_a"><span>a</span></a></li>
-      <li><a href="#index_b"><span>b</span></a></li>
-      <li><a href="#index_c"><span>c</span></a></li>
-      <li><a href="#index_d"><span>d</span></a></li>
-      <li><a href="#index_g"><span>g</span></a></li>
-      <li><a href="#index_h"><span>h</span></a></li>
-      <li><a href="#index_l"><span>l</span></a></li>
-      <li><a href="#index_o"><span>o</span></a></li>
-      <li><a href="#index_p"><span>p</span></a></li>
-      <li><a href="#index_s"><span>s</span></a></li>
-      <li><a href="#index_t"><span>t</span></a></li>
-      <li><a href="#index_u"><span>u</span></a></li>
+      <li class="current"><a href="functions.html#index__"><span>_</span></a></li>
+      <li><a href="functions_0x61.html#index_a"><span>a</span></a></li>
+      <li><a href="functions_0x62.html#index_b"><span>b</span></a></li>
+      <li><a href="functions_0x63.html#index_c"><span>c</span></a></li>
+      <li><a href="functions_0x64.html#index_d"><span>d</span></a></li>
+      <li><a href="functions_0x65.html#index_e"><span>e</span></a></li>
+      <li><a href="functions_0x66.html#index_f"><span>f</span></a></li>
+      <li><a href="functions_0x67.html#index_g"><span>g</span></a></li>
+      <li><a href="functions_0x68.html#index_h"><span>h</span></a></li>
+      <li><a href="functions_0x69.html#index_i"><span>i</span></a></li>
+      <li><a href="functions_0x6a.html#index_j"><span>j</span></a></li>
+      <li><a href="functions_0x6c.html#index_l"><span>l</span></a></li>
+      <li><a href="functions_0x6d.html#index_m"><span>m</span></a></li>
+      <li><a href="functions_0x6e.html#index_n"><span>n</span></a></li>
+      <li><a href="functions_0x6f.html#index_o"><span>o</span></a></li>
+      <li><a href="functions_0x70.html#index_p"><span>p</span></a></li>
+      <li><a href="functions_0x72.html#index_r"><span>r</span></a></li>
+      <li><a href="functions_0x73.html#index_s"><span>s</span></a></li>
+      <li><a href="functions_0x74.html#index_t"><span>t</span></a></li>
+      <li><a href="functions_0x75.html#index_u"><span>u</span></a></li>
+      <li><a href="functions_0x76.html#index_v"><span>v</span></a></li>
+      <li><a href="functions_0x77.html#index_w"><span>w</span></a></li>
+      <li><a href="functions_0x7e.html#index_0x7e"><span>~</span></a></li>
     </ul>
   </div>
 </div>
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+  initNavTree('functions.html','');
+</script>
+<div id="doc-content">
 <div class="contents">
-<div class="textblock">Here is a list of all documented class members with links to the class documentation for each member:</div>
+<div class="textblock">Here is a list of all class members with links to the classes they belong to:</div>
 
-<h3><a class="anchor" id="index_a"></a>- a -</h3><ul>
-<li>admin_users()
-: <a class="el" href="classmy__app_1_1URL2Action.html#aeb430ea4a8b422eca466503668f9a924">my_app::URL2Action</a>
+<h3><a class="anchor" id="index__"></a>- _ -</h3><ul>
+<li>_btn1
+: <a class="el" href="classwitty_plus_1_1_button_bar.html#ab87e648fbb385e160d2d61f527df2bbb">wittyPlus::ButtonBar</a>
 </li>
-<li>adminUsers()
-: <a class="el" href="classmy__app_1_1App.html#a3948650ac5f47c68c5326c2e692ea376">my_app::App</a>
+<li>_btn2
+: <a class="el" href="classwitty_plus_1_1_button_bar.html#a145d410c0513b6cd62f761b69ad11edb">wittyPlus::ButtonBar</a>
 </li>
-<li>app
-: <a class="el" href="classmy__app_1_1URL2Action.html#a3b428f898d438c20b9d40f0f9c82604c">my_app::URL2Action</a>
+<li>_controlPanel
+: <a class="el" href="classmy__app_1_1_main_window.html#a1af420920e30afd60d35460051078a96">my_app::MainWindow</a>
 </li>
-</ul>
-
-
-<h3><a class="anchor" id="index_b"></a>- b -</h3><ul>
-<li>BaseSessionHandle()
-: <a class="el" href="classwittyPlus_1_1BaseSessionHandle.html#a433ced4350ef69f6d1ebad485f28ec20">wittyPlus::BaseSessionHandle</a>
+<li>_cookieName
+: <a class="el" href="classwitty_plus_1_1_base_app.html#a4f4bba5c993527829c2b431b72638169">wittyPlus::BaseApp&lt; User &gt;</a>
+, <a class="el" href="classwitty_plus_1_1_base_session_handle.html#a850f54341faf572e3900791d66f0cf60">wittyPlus::BaseSessionHandle</a>
 </li>
-<li>bindAndCreateField()
-: <a class="el" href="classwittyPlus_1_1MoreAwesomeTemplate.html#ad083d6afd50d479d70682f048e065d47">wittyPlus::MoreAwesomeTemplate</a>
+<li>_dbSession
+: <a class="el" href="classwitty_plus_1_1_base_app.html#aa48f07a8f0527bf36dcde9690c09acd5">wittyPlus::BaseApp&lt; User &gt;</a>
 </li>
-<li>bindAndCreateWidget()
-: <a class="el" href="classwittyPlus_1_1MoreAwesomeTemplate.html#a555fa1059928fff4091ec85b9baa66c1">wittyPlus::MoreAwesomeTemplate</a>
+<li>_errorMessage
+: <a class="el" href="classwitty_plus_1_1_base_match_validator.html#ac751631a80d4c1c4461c85301f4f2fbf">wittyPlus::BaseMatchValidator</a>
 </li>
-<li>ButtonBar()
-: <a class="el" href="classwittyPlus_1_1ButtonBar.html#a9aa92adf4b06c0fa5c19a478f024e5b2">wittyPlus::ButtonBar</a>
+<li>_invalidMsg
+: <a class="el" href="classwitty_plus_1_1_server_side_validator.html#affd51676401345b906707f5dc361ce06">wittyPlus::ServerSideValidator</a>
 </li>
-</ul>
-
-
-<h3><a class="anchor" id="index_c"></a>- c -</h3><ul>
-<li>checkLoggedIn()
-: <a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1LoginFixture.html#a7e12a72b9b5c49eb463b19424bd437aa">my_app::unittests::fixtures::LoginFixture</a>
+<li>_loginLink
+: <a class="el" href="classmy__app_1_1_main_window.html#ab2e46a60744ed3c38e3ddf331146e251">my_app::MainWindow</a>
 </li>
-<li>checkLoggedOut()
-: <a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1LoginFixture.html#a029cbcf8adea7511d7fe4bc0434d2b37">my_app::unittests::fixtures::LoginFixture</a>
+<li>_mainWindow
+: <a class="el" href="classmy__app_1_1_app.html#a7af024b6866793c8aaee648da3ab7c78">my_app::App</a>
 </li>
-<li>cleanUpUsersTable()
-: <a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1LoginFixture.html#aa44fc1cdbce34a81e1e9cb503484a3b2">my_app::unittests::fixtures::LoginFixture</a>
+<li>_mine
+: <a class="el" href="classwitty_plus_1_1_base_match_validator.html#af199195b8d4fc74631ea763cbbfad98b">wittyPlus::BaseMatchValidator</a>
 </li>
-<li>clickLogin()
-: <a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1LoginFixture.html#aa11dfb546dbb9c30924cdf1af5cc0034">my_app::unittests::fixtures::LoginFixture</a>
+<li>_oldStatusText
+: <a class="el" href="classmy__app_1_1_main_window.html#a7e65200442e84a7f3e73cc8834bb0574">my_app::MainWindow</a>
 </li>
-</ul>
-
-
-<h3><a class="anchor" id="index_d"></a>- d -</h3><ul>
-<li>doTouchSession()
-: <a class="el" href="classwittyPlus_1_1BaseSessionHandle.html#a64f339f7197bd6e01b5fb4a64d46ab91">wittyPlus::BaseSessionHandle</a>
-, <a class="el" href="classwittyPlus_1_1SessionHandle.html#aefa35e7755ace7a9a82ee2e902fcc14d">wittyPlus::SessionHandle&lt; SessionStore, User &gt;</a>
+<li>_other
+: <a class="el" href="classwitty_plus_1_1_base_match_validator.html#a555cdc40eab967f4a35751b0489e8d6c">wittyPlus::BaseMatchValidator</a>
 </li>
-</ul>
-
-
-<h3><a class="anchor" id="index_g"></a>- g -</h3><ul>
-<li>getCookie()
-: <a class="el" href="classwittyPlus_1_1BaseSessionHandle.html#ac0dda4b23e630fd3b21250179eb731c6">wittyPlus::BaseSessionHandle</a>
+<li>_statusText
+: <a class="el" href="classmy__app_1_1_main_window.html#a2b076114d12850284074a22a52691656">my_app::MainWindow</a>
 </li>
-<li>getStoreTimeout()
-: <a class="el" href="classwittyPlus_1_1BaseSessionHandle.html#a0d876cf2d4f10e2df1f9d5c8331f4bcd">wittyPlus::BaseSessionHandle</a>
-, <a class="el" href="classwittyPlus_1_1SessionHandle.html#a51ca32b22f96f347f222276ce20b4e2f">wittyPlus::SessionHandle&lt; SessionStore, User &gt;</a>
+<li>_statusTextChanged
+: <a class="el" href="classmy__app_1_1_app.html#af3fe49c94c9d614f537c54317bb6de7f">my_app::App</a>
 </li>
-<li>go()
-: <a class="el" href="classmy__app_1_1App.html#aa74fc028392965a926c62e2c4e3baf20">my_app::App</a>
+<li>_statusTextHolder
+: <a class="el" href="classmy__app_1_1_main_window.html#a02e5f0e25b3394f8700eadab3f81add7">my_app::MainWindow</a>
 </li>
-<li>goBackOrHome()
-: <a class="el" href="classmy__app_1_1App.html#a3a589b11393ce48a022f42d51487d6cf">my_app::App</a>
+<li>_statusTextSet
+: <a class="el" href="classmy__app_1_1_main_window.html#aef60a4de8b1b8fb185dc4a9105f0a201">my_app::MainWindow</a>
 </li>
-</ul>
-
-
-<h3><a class="anchor" id="index_h"></a>- h -</h3><ul>
-<li>handleOKHit()
-: <a class="el" href="classmy__app_1_1LoginWindow.html#a36236301e1fe631d8b326173216c2863">my_app::LoginWindow</a>
+<li>_url2ActionMapper
+: <a class="el" href="classmy__app_1_1_app.html#a2569747e5d48129380383b79e57b55e1">my_app::App</a>
 </li>
-</ul>
-
-
-<h3><a class="anchor" id="index_l"></a>- l -</h3><ul>
-<li>login()
-: <a class="el" href="classwittyPlus_1_1MemorySessionStore.html#a6d3ed68f982189cd2c5c89e71fb970bc">wittyPlus::MemorySessionStore</a>
-, <a class="el" href="classmy__app_1_1URL2Action.html#afb3b10e128e1b2d9a128779cb0791ff4">my_app::URL2Action</a>
+<li>_urls
+: <a class="el" href="classmy__app_1_1_u_r_l2_action.html#a95ec1f45751fd74d95b7df749ae1751c">my_app::URL2Action</a>
 </li>
-<li>logout()
-: <a class="el" href="classwittyPlus_1_1SessionHandle.html#aa007acd765744388e75349b2dcdd3f5d">wittyPlus::SessionHandle&lt; SessionStore, User &gt;</a>
-, <a class="el" href="classwittyPlus_1_1MemorySessionStore.html#aaf13cd412f361dd9a0f885b0d20233db">wittyPlus::MemorySessionStore</a>
-, <a class="el" href="classmy__app_1_1URL2Action.html#a3f3876a3dfe3a4f630c6db9c2c7d8243">my_app::URL2Action</a>
+<li>_userChanged
+: <a class="el" href="classmy__app_1_1_app.html#a89c0791af9e0e4f387aaa1cdd4cefc45">my_app::App</a>
 </li>
-</ul>
-
-
-<h3><a class="anchor" id="index_o"></a>- o -</h3><ul>
-<li>onInternalPathChanged()
-: <a class="el" href="classmy__app_1_1MainWindow.html#a7ecab79d64a9cc0411b3b04b6aa0e374">my_app::MainWindow</a>
+<li>_userSession
+: <a class="el" href="classwitty_plus_1_1_base_app.html#a4b29240772b07ae66df08954d0ac43a4">wittyPlus::BaseApp&lt; User &gt;</a>
 </li>
-<li>onTouchSessionsActivate()
-: <a class="el" href="classwittyPlus_1_1BaseSessionHandle.html#a41cb37ea5d61098c91f57cf623065e50">wittyPlus::BaseSessionHandle</a>
-</li>
-</ul>
-
-
-<h3><a class="anchor" id="index_p"></a>- p -</h3><ul>
-<li>postgres
-: <a class="el" href="classmy__app_1_1App.html#a78a09e4ce877245152610681762b7d5b">my_app::App</a>
-</li>
-<li>purgeOldSessions()
-: <a class="el" href="classwittyPlus_1_1MemorySessionStore.html#aea2b4645a9d06add5c79b33b9ac8f21c">wittyPlus::MemorySessionStore</a>
-</li>
-</ul>
-
-
-<h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
-<li>setStatusText()
-: <a class="el" href="classmy__app_1_1App.html#a65730872fd6dee8a9f42ebef9640b953">my_app::App</a>
-, <a class="el" href="classmy__app_1_1MainWindow.html#a665c0fc331a410ab2bd0a6cc998413ac">my_app::MainWindow</a>
-</li>
-<li>setTimeout()
-: <a class="el" href="classwittyPlus_1_1MemorySessionStore.html#a1dc4e8ef5c7e22f7680030e06679692a">wittyPlus::MemorySessionStore</a>
-</li>
-<li>statusTextChanged()
-: <a class="el" href="classmy__app_1_1App.html#a2e1f3a27b1a27f60582525c91d1eb159">my_app::App</a>
-</li>
-</ul>
-
-
-<h3><a class="anchor" id="index_t"></a>- t -</h3><ul>
-<li>touch()
-: <a class="el" href="classwittyPlus_1_1MemorySessionStore.html#a2015628d4b24583ef148ce153cd431fc">wittyPlus::MemorySessionStore</a>
-</li>
-<li>touchSession()
-: <a class="el" href="classwittyPlus_1_1BaseSessionHandle.html#af615709773f63fcefb1e724331ed9b03">wittyPlus::BaseSessionHandle</a>
-</li>
-<li>tryLogin()
-: <a class="el" href="classwittyPlus_1_1SessionHandle.html#a76faab031151971ad6147b92c97bae3b">wittyPlus::SessionHandle&lt; SessionStore, User &gt;</a>
-</li>
-</ul>
-
-
-<h3><a class="anchor" id="index_u"></a>- u -</h3><ul>
-<li>user()
-: <a class="el" href="classwittyPlus_1_1SessionHandle.html#a7e4f152aad24bf2c62d8215731e1b0f0">wittyPlus::SessionHandle&lt; SessionStore, User &gt;</a>
-</li>
-<li>userEdit()
-: <a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1UserManagerFixture.html#a1d6f825e72d21dc1d7c069380ac30eee">my_app::unittests::fixtures::UserManagerFixture</a>
-</li>
-<li>userId()
-: <a class="el" href="classwittyPlus_1_1MemorySessionStore.html#a442dd48a6d5e6f5642728528ee04ecce">wittyPlus::MemorySessionStore</a>
-</li>
-<li>userList()
-: <a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1UserManagerFixture.html#a752281d027f26c1b24a6d1a5921233f1">my_app::unittests::fixtures::UserManagerFixture</a>
-</li>
-<li>userManager()
-: <a class="el" href="structmy__app_1_1unittests_1_1fixtures_1_1UserManagerFixture.html#a44abc47895442533546586f96a143c55">my_app::unittests::fixtures::UserManagerFixture</a>
+<li>_validMsg
+: <a class="el" href="classwitty_plus_1_1_server_side_validator.html#a48503db75b819dc3789776d143fcc00a">wittyPlus::ServerSideValidator</a>
 </li>
 </ul>
 </div>
+</div>
+  <div id="nav-path" class="navpath">
+    <ul>
+      <li class="footer">Generated on Mon Oct 3 2011 11:40:24 for wittyPlus Base App by&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </li>
+    </ul>
+  </div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -290,8 +205,6 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Mon Oct 3 2011 10:48:22 for WittyPlus by&#160;
-<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
+
 </body>
 </html>

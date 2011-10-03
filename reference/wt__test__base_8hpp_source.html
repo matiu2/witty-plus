@@ -2,10 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>WittyPlus: base-app/tests/wt_test_base.hpp Source File</title>
+<title>wittyPlus Base App: base-app/tests/wt_test_base.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript">
+$(document).ready(initResizable);
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body onload='searchBox.OnSelectItem(0);'>
@@ -13,50 +20,13 @@
 <script type="text/javascript"><!--
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 --></script>
-<script type="text/javascript">
-function hasClass(ele,cls) {
-  return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
-}
-
-function addClass(ele,cls) {
-  if (!this.hasClass(ele,cls)) ele.className += " "+cls;
-}
-
-function removeClass(ele,cls) {
-  if (hasClass(ele,cls)) {
-    var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
-    ele.className=ele.className.replace(reg,' ');
-  }
-}
-
-function toggleVisibility(linkObj) {
- var base = linkObj.getAttribute('id');
- var summary = document.getElementById(base + '-summary');
- var content = document.getElementById(base + '-content');
- var trigger = document.getElementById(base + '-trigger');
- if ( hasClass(linkObj,'closed') ) {
-   summary.style.display = 'none';
-   content.style.display = 'block';
-   trigger.src = 'open.png';
-   removeClass(linkObj,'closed');
-   addClass(linkObj,'opened');
- } else if ( hasClass(linkObj,'opened') ) {
-   summary.style.display = 'block';
-   content.style.display = 'none';
-   trigger.src = 'closed.png';
-   removeClass(linkObj,'opened');
-   addClass(linkObj,'closed');
- }
- return false;
-}
-</script>
 <div id="top">
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">WittyPlus</div>
+   <div id="projectname">wittyPlus Base App</div>
   </td>
  </tr>
  </tbody>
@@ -89,14 +59,29 @@ function toggleVisibility(linkObj) {
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
+</div>
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+  initNavTree('wt__test__base_8hpp.html','');
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="headertitle">
 <h1>base-app/tests/wt_test_base.hpp</h1>  </div>
 </div>
 <div class="contents">
-<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*</span>
+<a href="wt__test__base_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*</span>
 <a name="l00002"></a>00002 <span class="comment"> * =====================================================================================</span>
 <a name="l00003"></a>00003 <span class="comment"> *</span>
 <a name="l00004"></a>00004 <span class="comment"> *       Filename:  wt_test_base.hpp</span>
@@ -120,21 +105,29 @@ function toggleVisibility(linkObj) {
 <a name="l00022"></a>00022 <span class="preprocessor">#include &lt;Wt/WApplication&gt;</span>
 <a name="l00023"></a>00023 <span class="preprocessor">#include &lt;Wt/Test/WTestEnvironment&gt;</span>
 <a name="l00024"></a>00024 
-<a name="l00025"></a><a class="code" href="structWT__TestFixture.html">00025</a> <span class="keyword">struct </span><a class="code" href="structWT__TestFixture.html">WT_TestFixture</a> {
-<a name="l00026"></a>00026     <a class="code" href="structWT__TestFixture.html">WT_TestFixture</a>() : env(<span class="stringliteral">&quot;.&quot;</span>, <span class="stringliteral">&quot;config.test&quot;</span>), app(env) { app.initialize(); }
-<a name="l00027"></a>00027     Wt::Test::WTestEnvironment env;
-<a name="l00028"></a>00028     Wt::WApplication app;
+<a name="l00025"></a><a class="code" href="struct_w_t___test_fixture.html">00025</a> <span class="keyword">struct </span><a class="code" href="struct_w_t___test_fixture.html">WT_TestFixture</a> {
+<a name="l00026"></a><a class="code" href="struct_w_t___test_fixture.html#a6848f83f0cc874efccb3082a9e11928e">00026</a>     <a class="code" href="struct_w_t___test_fixture.html#a6848f83f0cc874efccb3082a9e11928e">WT_TestFixture</a>() : <a class="code" href="struct_w_t___test_fixture.html#a110e0dfbbb2f5ba8fb9e7e7bb31fb5d8">env</a>(<span class="stringliteral">&quot;.&quot;</span>, <span class="stringliteral">&quot;config.test&quot;</span>), <a class="code" href="struct_w_t___test_fixture.html#a35d6145f6c62a96bc926300ba21384ad">app</a>(<a class="code" href="struct_w_t___test_fixture.html#a110e0dfbbb2f5ba8fb9e7e7bb31fb5d8">env</a>) { <a class="code" href="struct_w_t___test_fixture.html#a35d6145f6c62a96bc926300ba21384ad">app</a>.initialize(); }
+<a name="l00027"></a><a class="code" href="struct_w_t___test_fixture.html#a110e0dfbbb2f5ba8fb9e7e7bb31fb5d8">00027</a>     Wt::Test::WTestEnvironment <a class="code" href="struct_w_t___test_fixture.html#a110e0dfbbb2f5ba8fb9e7e7bb31fb5d8">env</a>;
+<a name="l00028"></a><a class="code" href="struct_w_t___test_fixture.html#a35d6145f6c62a96bc926300ba21384ad">00028</a>     Wt::WApplication <a class="code" href="struct_w_t___test_fixture.html#a35d6145f6c62a96bc926300ba21384ad">app</a>;
 <a name="l00029"></a>00029 };
 <a name="l00030"></a>00030 
 <a name="l00031"></a>00031 <span class="preprocessor">#endif // wt_test_base_HPP</span>
 </pre></div></div>
 </div>
+  <div id="nav-path" class="navpath">
+    <ul>
+      <li class="navelem"><a class="el" href="wt__test__base_8hpp.html">wt_test_base.hpp</a>      </li>
+      <li class="footer">Generated on Mon Oct 3 2011 11:40:24 for wittyPlus Base App by&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </li>
+    </ul>
+  </div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -143,8 +136,6 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Mon Oct 3 2011 10:48:22 for WittyPlus by&#160;
-<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
+
 </body>
 </html>

@@ -2,10 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>WittyPlus: base-app/url2action.hpp Source File</title>
+<title>wittyPlus Base App: base-app/url2action.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript">
+$(document).ready(initResizable);
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body onload='searchBox.OnSelectItem(0);'>
@@ -13,50 +20,13 @@
 <script type="text/javascript"><!--
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 --></script>
-<script type="text/javascript">
-function hasClass(ele,cls) {
-  return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
-}
-
-function addClass(ele,cls) {
-  if (!this.hasClass(ele,cls)) ele.className += " "+cls;
-}
-
-function removeClass(ele,cls) {
-  if (hasClass(ele,cls)) {
-    var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
-    ele.className=ele.className.replace(reg,' ');
-  }
-}
-
-function toggleVisibility(linkObj) {
- var base = linkObj.getAttribute('id');
- var summary = document.getElementById(base + '-summary');
- var content = document.getElementById(base + '-content');
- var trigger = document.getElementById(base + '-trigger');
- if ( hasClass(linkObj,'closed') ) {
-   summary.style.display = 'none';
-   content.style.display = 'block';
-   trigger.src = 'open.png';
-   removeClass(linkObj,'closed');
-   addClass(linkObj,'opened');
- } else if ( hasClass(linkObj,'opened') ) {
-   summary.style.display = 'block';
-   content.style.display = 'none';
-   trigger.src = 'closed.png';
-   removeClass(linkObj,'opened');
-   addClass(linkObj,'closed');
- }
- return false;
-}
-</script>
 <div id="top">
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">WittyPlus</div>
+   <div id="projectname">wittyPlus Base App</div>
   </td>
  </tr>
  </tbody>
@@ -89,14 +59,29 @@ function toggleVisibility(linkObj) {
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
+</div>
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+  initNavTree('url2action_8hpp.html','');
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="headertitle">
 <h1>base-app/url2action.hpp</h1>  </div>
 </div>
 <div class="contents">
-<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*</span>
+<a href="url2action_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*</span>
 <a name="l00002"></a>00002 <span class="comment"> * =====================================================================================</span>
 <a name="l00003"></a>00003 <span class="comment"> *</span>
 <a name="l00004"></a>00004 <span class="comment"> *       Filename:  url2action.hpp</span>
@@ -117,55 +102,55 @@ function toggleVisibility(linkObj) {
 <a name="l00019"></a>00019 <span class="preprocessor">#ifndef URL2ACTION_HPP</span>
 <a name="l00020"></a>00020 <span class="preprocessor"></span><span class="preprocessor">#define URL2ACTION_HPP</span>
 <a name="l00021"></a>00021 <span class="preprocessor"></span>
-<a name="l00022"></a>00022 <span class="preprocessor">#include &quot;urls.hpp&quot;</span>
-<a name="l00023"></a>00023 <span class="preprocessor">#include &quot;App.hpp&quot;</span>
-<a name="l00024"></a>00024 <span class="preprocessor">#include &quot;UserManager.hpp&quot;</span>
-<a name="l00025"></a>00025 <span class="preprocessor">#include &quot;LoginWindow.hpp&quot;</span>
-<a name="l00026"></a>00026 <span class="preprocessor">#include &quot;lib/URLs.hpp&quot;</span>
+<a name="l00022"></a>00022 <span class="preprocessor">#include &quot;<a class="code" href="urls_8hpp.html">urls.hpp</a>&quot;</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#include &quot;<a class="code" href="_app_8hpp.html">App.hpp</a>&quot;</span>
+<a name="l00024"></a>00024 <span class="preprocessor">#include &quot;<a class="code" href="_user_manager_8hpp.html">UserManager.hpp</a>&quot;</span>
+<a name="l00025"></a>00025 <span class="preprocessor">#include &quot;<a class="code" href="_login_window_8hpp.html">LoginWindow.hpp</a>&quot;</span>
+<a name="l00026"></a>00026 <span class="preprocessor">#include &quot;<a class="code" href="_u_r_ls_8hpp.html">lib/URLs.hpp</a>&quot;</span>
 <a name="l00027"></a>00027 <span class="preprocessor">#include &quot;Wt/WString&quot;</span>
 <a name="l00028"></a>00028 
 <a name="l00029"></a>00029 <span class="keyword">using</span> Wt::WString;
-<a name="l00030"></a>00030 <span class="keyword">using</span> <a class="code" href="classwittyPlus_1_1URLs.html">wittyPlus::URLs</a>;
+<a name="l00030"></a>00030 <span class="keyword">using</span> <a class="code" href="classwitty_plus_1_1_u_r_ls.html">wittyPlus::URLs</a>;
 <a name="l00031"></a>00031 
 <a name="l00032"></a>00032 <span class="keyword">namespace </span>my_app {
 <a name="l00033"></a>00033 
-<a name="l00034"></a><a class="code" href="classmy__app_1_1URL2Action.html">00034</a> <span class="keyword">class </span><a class="code" href="classmy__app_1_1URL2Action.html">URL2Action</a> : <span class="keyword">public</span> WObject {
+<a name="l00034"></a><a class="code" href="classmy__app_1_1_u_r_l2_action.html">00034</a> <span class="keyword">class </span><a class="code" href="classmy__app_1_1_u_r_l2_action.html">URL2Action</a> : <span class="keyword">public</span> WObject {
 <a name="l00035"></a>00035 <span class="keyword">protected</span>:
-<a name="l00036"></a>00036     <a class="code" href="classwittyPlus_1_1URLs.html">URLs</a> _urls; 
-<a name="l00037"></a><a class="code" href="classmy__app_1_1URL2Action.html#a3b428f898d438c20b9d40f0f9c82604c">00037</a>     <a class="code" href="classmy__app_1_1App.html">App</a>* <a class="code" href="classmy__app_1_1URL2Action.html#a3b428f898d438c20b9d40f0f9c82604c" title="Allows us to connect urls to actions.">app</a>;
+<a name="l00036"></a><a class="code" href="classmy__app_1_1_u_r_l2_action.html#a95ec1f45751fd74d95b7df749ae1751c">00036</a>     <a class="code" href="classwitty_plus_1_1_u_r_ls.html">URLs</a> <a class="code" href="classmy__app_1_1_u_r_l2_action.html#a95ec1f45751fd74d95b7df749ae1751c">_urls</a>; 
+<a name="l00037"></a><a class="code" href="classmy__app_1_1_u_r_l2_action.html#a3b428f898d438c20b9d40f0f9c82604c">00037</a>     <a class="code" href="classmy__app_1_1_app.html">App</a>* <a class="code" href="classmy__app_1_1_u_r_l2_action.html#a3b428f898d438c20b9d40f0f9c82604c" title="Allows us to connect urls to actions.">app</a>;
 <a name="l00038"></a>00038     <span class="comment">// Utility methods</span>
-<a name="l00039"></a>00039     <span class="keywordtype">bool</span> isLoggedIn() { <span class="keywordflow">return</span> <a class="code" href="classmy__app_1_1URL2Action.html#a3b428f898d438c20b9d40f0f9c82604c" title="Allows us to connect urls to actions.">app</a>-&gt;userSession()-&gt;user(); }
-<a name="l00040"></a>00040     <span class="keyword">template</span>&lt;<span class="keyword">class</span> W<span class="keywordtype">id</span>get&gt; <span class="keywordtype">void</span> setBody() { <a class="code" href="classmy__app_1_1URL2Action.html#a3b428f898d438c20b9d40f0f9c82604c" title="Allows us to connect urls to actions.">app</a>-&gt;mainWindow()-&gt;setBody(<span class="keyword">new</span> Widget()); }
-<a name="l00041"></a>00041     <span class="keyword">template</span>&lt;<span class="keyword">class</span> W<span class="keywordtype">id</span>get&gt; <span class="keywordtype">void</span> setBodyIfLoggedIn() {
-<a name="l00042"></a>00042         <span class="keywordflow">if</span> (isLoggedIn()) {
+<a name="l00039"></a><a class="code" href="classmy__app_1_1_u_r_l2_action.html#a5b5e997b7c03445a3cc53afacac694b7">00039</a>     <span class="keywordtype">bool</span> <a class="code" href="classmy__app_1_1_u_r_l2_action.html#a5b5e997b7c03445a3cc53afacac694b7">isLoggedIn</a>() { <span class="keywordflow">return</span> <a class="code" href="classmy__app_1_1_u_r_l2_action.html#a3b428f898d438c20b9d40f0f9c82604c" title="Allows us to connect urls to actions.">app</a>-&gt;<a class="code" href="classwitty_plus_1_1_base_app.html#a0cd86d0b8bc591d3b45c7a26fd6a6833">userSession</a>()-&gt;user(); }
+<a name="l00040"></a><a class="code" href="classmy__app_1_1_u_r_l2_action.html#a23a01a8e5f00b1d0563cb3bc0123d3aa">00040</a>     <span class="keyword">template</span>&lt;<span class="keyword">class</span> W<span class="keywordtype">id</span>get&gt; <span class="keywordtype">void</span> <a class="code" href="classmy__app_1_1_u_r_l2_action.html#a23a01a8e5f00b1d0563cb3bc0123d3aa">setBody</a>() { <a class="code" href="classmy__app_1_1_u_r_l2_action.html#a3b428f898d438c20b9d40f0f9c82604c" title="Allows us to connect urls to actions.">app</a>-&gt;<a class="code" href="classmy__app_1_1_app.html#a83d2592565c6f3eeb8dc4c93c4c082a4">mainWindow</a>()-&gt;<a class="code" href="classmy__app_1_1_main_window.html#a51ff9e954a5d5475f9abef1e154c8b7b">setBody</a>(<span class="keyword">new</span> Widget()); }
+<a name="l00041"></a><a class="code" href="classmy__app_1_1_u_r_l2_action.html#a738279e60ff6ae603ea277f6f4865ccd">00041</a>     <span class="keyword">template</span>&lt;<span class="keyword">class</span> W<span class="keywordtype">id</span>get&gt; <span class="keywordtype">void</span> <a class="code" href="classmy__app_1_1_u_r_l2_action.html#a738279e60ff6ae603ea277f6f4865ccd">setBodyIfLoggedIn</a>() {
+<a name="l00042"></a>00042         <span class="keywordflow">if</span> (<a class="code" href="classmy__app_1_1_u_r_l2_action.html#a5b5e997b7c03445a3cc53afacac694b7">isLoggedIn</a>()) {
 <a name="l00043"></a>00043             setBody&lt;Widget&gt;();
 <a name="l00044"></a>00044         } <span class="keywordflow">else</span> {
-<a name="l00045"></a>00045             <a class="code" href="classmy__app_1_1URL2Action.html#a3b428f898d438c20b9d40f0f9c82604c" title="Allows us to connect urls to actions.">app</a>-&gt;mainWindow()-&gt;setBody(WString::tr(<span class="stringliteral">&quot;access-denied&quot;</span>));
+<a name="l00045"></a>00045             <a class="code" href="classmy__app_1_1_u_r_l2_action.html#a3b428f898d438c20b9d40f0f9c82604c" title="Allows us to connect urls to actions.">app</a>-&gt;<a class="code" href="classmy__app_1_1_app.html#a83d2592565c6f3eeb8dc4c93c4c082a4">mainWindow</a>()-&gt;<a class="code" href="classmy__app_1_1_main_window.html#a51ff9e954a5d5475f9abef1e154c8b7b">setBody</a>(WString::tr(<span class="stringliteral">&quot;access-denied&quot;</span>));
 <a name="l00046"></a>00046         }
 <a name="l00047"></a>00047     }
 <a name="l00048"></a>00048 <span class="keyword">public</span>:
-<a name="l00049"></a>00049     URL2Action(App* <a class="code" href="classmy__app_1_1URL2Action.html#a3b428f898d438c20b9d40f0f9c82604c" title="Allows us to connect urls to actions.">app</a>) : WObject(app), app(app) {
-<a name="l00050"></a>00050         app-&gt;internalPathChanged().connect(&amp;_urls, &amp;URLs::run);
+<a name="l00049"></a><a class="code" href="classmy__app_1_1_u_r_l2_action.html#af3dcdb8fc3e8510f807607817e0a06c4">00049</a>     <a class="code" href="classmy__app_1_1_u_r_l2_action.html#af3dcdb8fc3e8510f807607817e0a06c4">URL2Action</a>(<a class="code" href="classmy__app_1_1_app.html">App</a>* <a class="code" href="classmy__app_1_1_u_r_l2_action.html#a3b428f898d438c20b9d40f0f9c82604c" title="Allows us to connect urls to actions.">app</a>) : WObject(app), app(app) {
+<a name="l00050"></a>00050         app-&gt;internalPathChanged().connect(&amp;<a class="code" href="classmy__app_1_1_u_r_l2_action.html#a95ec1f45751fd74d95b7df749ae1751c">_urls</a>, &amp;URLs::run);
 <a name="l00051"></a>00051         <span class="comment">// Hook up all the urls</span>
-<a name="l00052"></a>00052         _urls[urls::home].connect(<span class="keyword">this</span>, &amp;URL2Action::home);
-<a name="l00053"></a>00053         _urls[<a class="code" href="classmy__app_1_1URL2Action.html#afb3b10e128e1b2d9a128779cb0791ff4" title="Shows the login form.">urls::login</a>].connect(<span class="keyword">this</span>, &amp;<a class="code" href="classmy__app_1_1URL2Action.html#afb3b10e128e1b2d9a128779cb0791ff4" title="Shows the login form.">URL2Action::login</a>);
-<a name="l00054"></a>00054         _urls[<a class="code" href="classmy__app_1_1URL2Action.html#a3f3876a3dfe3a4f630c6db9c2c7d8243" title="Actually logs you out.">urls::logout</a>].connect(<span class="keyword">this</span>, &amp;<a class="code" href="classmy__app_1_1URL2Action.html#a3f3876a3dfe3a4f630c6db9c2c7d8243" title="Actually logs you out.">URL2Action::logout</a>);
-<a name="l00055"></a>00055         _urls[<a class="code" href="classmy__app_1_1URL2Action.html#aeb430ea4a8b422eca466503668f9a924" title="/admin/users - if you&amp;#39;re logged in, lets you adminster the users">urls::admin_users</a>].connect(<span class="keyword">this</span>, &amp;<a class="code" href="classmy__app_1_1URL2Action.html#aeb430ea4a8b422eca466503668f9a924" title="/admin/users - if you&amp;#39;re logged in, lets you adminster the users">URL2Action::admin_users</a>);
+<a name="l00052"></a>00052         <a class="code" href="classmy__app_1_1_u_r_l2_action.html#a95ec1f45751fd74d95b7df749ae1751c">_urls</a>[<a class="code" href="classmy__app_1_1_u_r_l2_action.html#a9783ac762af0d0c28c6cb009cca2d5ea">urls::home</a>].connect(<span class="keyword">this</span>, &amp;<a class="code" href="classmy__app_1_1_u_r_l2_action.html#a9783ac762af0d0c28c6cb009cca2d5ea">URL2Action::home</a>);
+<a name="l00053"></a>00053         <a class="code" href="classmy__app_1_1_u_r_l2_action.html#a95ec1f45751fd74d95b7df749ae1751c">_urls</a>[<a class="code" href="classmy__app_1_1_u_r_l2_action.html#afb3b10e128e1b2d9a128779cb0791ff4" title="Shows the login form.">urls::login</a>].connect(<span class="keyword">this</span>, &amp;<a class="code" href="classmy__app_1_1_u_r_l2_action.html#afb3b10e128e1b2d9a128779cb0791ff4" title="Shows the login form.">URL2Action::login</a>);
+<a name="l00054"></a>00054         <a class="code" href="classmy__app_1_1_u_r_l2_action.html#a95ec1f45751fd74d95b7df749ae1751c">_urls</a>[<a class="code" href="classmy__app_1_1_u_r_l2_action.html#a3f3876a3dfe3a4f630c6db9c2c7d8243" title="Actually logs you out.">urls::logout</a>].connect(<span class="keyword">this</span>, &amp;<a class="code" href="classmy__app_1_1_u_r_l2_action.html#a3f3876a3dfe3a4f630c6db9c2c7d8243" title="Actually logs you out.">URL2Action::logout</a>);
+<a name="l00055"></a>00055         <a class="code" href="classmy__app_1_1_u_r_l2_action.html#a95ec1f45751fd74d95b7df749ae1751c">_urls</a>[<a class="code" href="classmy__app_1_1_u_r_l2_action.html#aeb430ea4a8b422eca466503668f9a924" title="/admin/users - if you&amp;#39;re logged in, lets you adminster the users">urls::admin_users</a>].connect(<span class="keyword">this</span>, &amp;<a class="code" href="classmy__app_1_1_u_r_l2_action.html#aeb430ea4a8b422eca466503668f9a924" title="/admin/users - if you&amp;#39;re logged in, lets you adminster the users">URL2Action::admin_users</a>);
 <a name="l00056"></a>00056     }
 <a name="l00057"></a>00057     <span class="comment">// URL Handlers</span>
-<a name="l00058"></a>00058     <span class="keywordtype">void</span> home() { app-&gt;mainWindow()-&gt;bindString(<span class="stringliteral">&quot;content&quot;</span>, <span class="stringliteral">&quot;PUT YOUR DEFAULT BODY TEXT OR WIDDGETS HERE&quot;</span>); }
-<a name="l00060"></a><a class="code" href="classmy__app_1_1URL2Action.html#a3f3876a3dfe3a4f630c6db9c2c7d8243">00060</a>     <span class="keywordtype">void</span> <a class="code" href="classmy__app_1_1URL2Action.html#a3f3876a3dfe3a4f630c6db9c2c7d8243" title="Actually logs you out.">logout</a>() {
-<a name="l00061"></a>00061         dbo::ptr&lt;User&gt; oldUser = app-&gt;userSession()-&gt;user();
-<a name="l00062"></a>00062         app-&gt;userSession()-&gt;logout();
-<a name="l00063"></a>00063         dbo::ptr&lt;User&gt; newUser = app-&gt;userSession()-&gt;user();
+<a name="l00058"></a><a class="code" href="classmy__app_1_1_u_r_l2_action.html#a9783ac762af0d0c28c6cb009cca2d5ea">00058</a>     <span class="keywordtype">void</span> <a class="code" href="classmy__app_1_1_u_r_l2_action.html#a9783ac762af0d0c28c6cb009cca2d5ea">home</a>() { <a class="code" href="classmy__app_1_1_u_r_l2_action.html#a3b428f898d438c20b9d40f0f9c82604c" title="Allows us to connect urls to actions.">app</a>-&gt;<a class="code" href="classmy__app_1_1_app.html#a83d2592565c6f3eeb8dc4c93c4c082a4">mainWindow</a>()-&gt;bindString(<span class="stringliteral">&quot;content&quot;</span>, <span class="stringliteral">&quot;PUT YOUR DEFAULT BODY TEXT OR WIDDGETS HERE&quot;</span>); }
+<a name="l00060"></a><a class="code" href="classmy__app_1_1_u_r_l2_action.html#a3f3876a3dfe3a4f630c6db9c2c7d8243">00060</a>     <span class="keywordtype">void</span> <a class="code" href="classmy__app_1_1_u_r_l2_action.html#a3f3876a3dfe3a4f630c6db9c2c7d8243" title="Actually logs you out.">logout</a>() {
+<a name="l00061"></a>00061         dbo::ptr&lt;User&gt; oldUser = <a class="code" href="classmy__app_1_1_u_r_l2_action.html#a3b428f898d438c20b9d40f0f9c82604c" title="Allows us to connect urls to actions.">app</a>-&gt;<a class="code" href="classwitty_plus_1_1_base_app.html#a0cd86d0b8bc591d3b45c7a26fd6a6833">userSession</a>()-&gt;user();
+<a name="l00062"></a>00062         <a class="code" href="classmy__app_1_1_u_r_l2_action.html#a3b428f898d438c20b9d40f0f9c82604c" title="Allows us to connect urls to actions.">app</a>-&gt;<a class="code" href="classwitty_plus_1_1_base_app.html#a0cd86d0b8bc591d3b45c7a26fd6a6833">userSession</a>()-&gt;logout();
+<a name="l00063"></a>00063         dbo::ptr&lt;User&gt; newUser = <a class="code" href="classmy__app_1_1_u_r_l2_action.html#a3b428f898d438c20b9d40f0f9c82604c" title="Allows us to connect urls to actions.">app</a>-&gt;<a class="code" href="classwitty_plus_1_1_base_app.html#a0cd86d0b8bc591d3b45c7a26fd6a6833">userSession</a>()-&gt;user();
 <a name="l00064"></a>00064         <span class="keywordflow">if</span> (oldUser != newUser)
-<a name="l00065"></a>00065             app-&gt;userChanged()-&gt;emit(oldUser, newUser);
-<a name="l00066"></a>00066         app-&gt;go(urls::home);
-<a name="l00067"></a>00067         app-&gt;setStatusText(WString::tr(<span class="stringliteral">&quot;you-are-logged-out&quot;</span>));
+<a name="l00065"></a>00065             <a class="code" href="classmy__app_1_1_u_r_l2_action.html#a3b428f898d438c20b9d40f0f9c82604c" title="Allows us to connect urls to actions.">app</a>-&gt;<a class="code" href="classmy__app_1_1_app.html#abcba71ade4c1d7e9cee4e9aa9a4f26da">userChanged</a>()-&gt;emit(oldUser, newUser);
+<a name="l00066"></a>00066         <a class="code" href="classmy__app_1_1_u_r_l2_action.html#a3b428f898d438c20b9d40f0f9c82604c" title="Allows us to connect urls to actions.">app</a>-&gt;<a class="code" href="classmy__app_1_1_app.html#aa74fc028392965a926c62e2c4e3baf20" title="Use to send the user somewhere inside the app.">go</a>(<a class="code" href="namespacemy__app_1_1urls.html#a1d34654296f27dcc88c67f3e976720da">urls::home</a>);
+<a name="l00067"></a>00067         <a class="code" href="classmy__app_1_1_u_r_l2_action.html#a3b428f898d438c20b9d40f0f9c82604c" title="Allows us to connect urls to actions.">app</a>-&gt;<a class="code" href="classmy__app_1_1_app.html#a65730872fd6dee8a9f42ebef9640b953" title="Shows a status message for a period of time.">setStatusText</a>(WString::tr(<span class="stringliteral">&quot;you-are-logged-out&quot;</span>));
 <a name="l00068"></a>00068     }
-<a name="l00070"></a><a class="code" href="classmy__app_1_1URL2Action.html#afb3b10e128e1b2d9a128779cb0791ff4">00070</a>     <span class="keywordtype">void</span> <a class="code" href="classmy__app_1_1URL2Action.html#afb3b10e128e1b2d9a128779cb0791ff4" title="Shows the login form.">login</a>() { setBody&lt;LoginWindow&gt;(); }
+<a name="l00070"></a><a class="code" href="classmy__app_1_1_u_r_l2_action.html#afb3b10e128e1b2d9a128779cb0791ff4">00070</a>     <span class="keywordtype">void</span> <a class="code" href="classmy__app_1_1_u_r_l2_action.html#afb3b10e128e1b2d9a128779cb0791ff4" title="Shows the login form.">login</a>() { setBody&lt;LoginWindow&gt;(); }
 <a name="l00071"></a>00071     <span class="comment">/* Admin tasks - must be logged in for these */</span>
-<a name="l00073"></a><a class="code" href="classmy__app_1_1URL2Action.html#aeb430ea4a8b422eca466503668f9a924">00073</a>     <span class="keywordtype">void</span> <a class="code" href="classmy__app_1_1URL2Action.html#aeb430ea4a8b422eca466503668f9a924" title="/admin/users - if you&amp;#39;re logged in, lets you adminster the users">admin_users</a>() { setBodyIfLoggedIn&lt;UserManager&gt;(); }
+<a name="l00073"></a><a class="code" href="classmy__app_1_1_u_r_l2_action.html#aeb430ea4a8b422eca466503668f9a924">00073</a>     <span class="keywordtype">void</span> <a class="code" href="classmy__app_1_1_u_r_l2_action.html#aeb430ea4a8b422eca466503668f9a924" title="/admin/users - if you&amp;#39;re logged in, lets you adminster the users">admin_users</a>() { setBodyIfLoggedIn&lt;UserManager&gt;(); }
 <a name="l00074"></a>00074 };
 <a name="l00075"></a>00075 
 <a name="l00076"></a>00076 
@@ -174,12 +159,20 @@ function toggleVisibility(linkObj) {
 <a name="l00079"></a>00079 <span class="preprocessor">#endif // URL2ACTION_HPP</span>
 </pre></div></div>
 </div>
+  <div id="nav-path" class="navpath">
+    <ul>
+      <li class="navelem"><a class="el" href="url2action_8hpp.html">url2action.hpp</a>      </li>
+      <li class="footer">Generated on Mon Oct 3 2011 11:40:24 for wittyPlus Base App by&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </li>
+    </ul>
+  </div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -188,8 +181,6 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Mon Oct 3 2011 10:48:22 for WittyPlus by&#160;
-<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
+
 </body>
 </html>
