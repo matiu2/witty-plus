@@ -53,6 +53,8 @@ struct UserManagerFixture : public LoginFixture {
         wittyPlus::InternalLink* usersLink = cp->resolve<wittyPlus::InternalLink*>("link-users");
         BOOST_REQUIRE_MESSAGE( usersLink, "Looks like the users link didn't appear" );
         h::click(usersLink);
+        // Sign up to catch dialogs
+        env.dialogExecuted().connect(this, &UserManagerFixture::onDialogExecuted);
     }
     ~UserManagerFixture() { cleanUpUsersTable(); }
     // Fields

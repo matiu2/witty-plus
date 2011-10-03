@@ -76,17 +76,13 @@ BOOST_AUTO_TEST_CASE( new_forget_password ) {
     h::keyPress(ue->edtName, 13);
     BOOST_CHECK_MESSAGE(ue->edtPass1->hasFocus(),
         "Clicking enter after typing your name should give focus to the 1st password field");
-    // testing what happpens if we forgot to add passwords ;)
+    // Testing what happpens if we forgot to add passwords ;)
     h::keyPress(ue->edtPass2, 13);
+    // Check if the dialog message was shown
+    BOOST_CHECK_EQUAL(lastMessage, WString::tr("fix-up-fields"));
+    // BOOST_CHECK(ue->edtPass1->hasFocus()); // TODO: Make this line work. At the moment the dialog removes focus.
     // We should still be on the user edit page
-    // Now check we're back at the list
-    ul = userList();
-    BOOST_REQUIRE_MESSAGE( ul->isVisible(),
-        "We expected it to go back to the user list after hitting enter when editing a user");
-    // Check our new user is in the list
-    BOOST_CHECK_GT( ul->lstUsers->count(), 1); // Need more than one user
-    int index = ul->lstUsers->findText(testUsername, Wt::MatchStringExactly);
-    BOOST_CHECK_MESSAGE( index >= 0, "Couldn't find our user in the list" );
+    BOOST_REQUIRE_MESSAGE( ue->isVisible(), "We should still be on the user edit page");
 }
 
 } // namespace unittests

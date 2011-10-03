@@ -106,7 +106,7 @@ BOOST_AUTO_TEST_CASE( login_logout ) {
     BOOST_REQUIRE( logout );
     h::click(logout);
     // Check it worked
-    checkLoggedOut("/logout");
+    checkLoggedOut("/");
 }
 
 BOOST_AUTO_TEST_SUITE_END() // login_suite
