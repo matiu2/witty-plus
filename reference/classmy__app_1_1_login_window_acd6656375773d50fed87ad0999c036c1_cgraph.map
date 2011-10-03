@@ -1,0 +1,17 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classwitty_plus_1_1_more_awesome_template.html#a931e20f75467754f38bd59edc4373420" title="creates a Widget and it&#39;s field and binds it into the template." alt="" coords="293,5,640,35"/>
+<area shape="rect" id="node7" href="$classwitty_plus_1_1_button_bar.html#a3d21a5593b403b31a124158f351edb36" title="wittyPlus::ButtonBar::btn1" alt="" coords="380,59,553,88"/>
+<area shape="rect" id="node9" href="$classwitty_plus_1_1_button_bar.html#add898daad042ae5676f3a3380dec607f" title="wittyPlus::ButtonBar::btn2" alt="" coords="380,112,553,141"/>
+<area shape="rect" id="node11" href="$classmy__app_1_1_login_window.html#ab196797d2d2653720294f1b5b59a269a" title="my_app::LoginWindow::handleCancelHit" alt="" coords="337,165,596,195"/>
+<area shape="rect" id="node23" href="$classmy__app_1_1_login_window.html#a36236301e1fe631d8b326173216c2863" title="Called when the user hits OK to login." alt="" coords="349,219,584,248"/>
+<area shape="rect" id="node5" href="$classwitty_plus_1_1_more_awesome_template.html#a555fa1059928fff4091ec85b9baa66c1" title="Replace a template placeholder &#39;name&#39; with a widget (pointed to by pointer)." alt="" coords="688,5,1048,35"/>
+<area shape="rect" id="node13" href="$namespacemy__app.html#a17c23e48d31c36f108a4b0ec2d477cb3" title="my_app::app" alt="" coords="820,112,916,141"/>
+<area shape="rect" id="node15" href="$classmy__app_1_1_app.html#a4ae3f1eb8b2019bbdd2aa30d855d56d9" title="my_app::App::goBack" alt="" coords="793,219,943,248"/>
+<area shape="rect" id="node19" href="$classmy__app_1_1_app.html#a65730872fd6dee8a9f42ebef9640b953" title="Shows a status message for a period of time." alt="" coords="773,165,963,195"/>
+<area shape="rect" id="node17" href="$classmy__app_1_1_app.html#aa74fc028392965a926c62e2c4e3baf20" title="Use to send the user somewhere inside the app." alt="" coords="1147,244,1267,273"/>
+<area shape="rect" id="node21" href="$classmy__app_1_1_app.html#a2e1f3a27b1a27f60582525c91d1eb159" title="An event triggered when a user logs in or logs out." alt="" coords="1096,165,1317,195"/>
+<area shape="rect" id="node29" href="$classmy__app_1_1_app.html#abcba71ade4c1d7e9cee4e9aa9a4f26da" title="my_app::App::userChanged" alt="" coords="776,323,960,352"/>
+<area shape="rect" id="node31" href="$classwitty_plus_1_1_base_app.html#a0cd86d0b8bc591d3b45c7a26fd6a6833" title="wittyPlus::BaseApp::userSession" alt="" coords="760,376,976,405"/>
+<area shape="rect" id="node33" href="$classwitty_plus_1_1_base_app.html#a32d1c2fbca91c996f09cfe31316abc33" title="wittyPlus::BaseApp::cookieName" alt="" coords="1097,349,1316,379"/>
+<area shape="rect" id="node35" href="$classwitty_plus_1_1_base_app.html#a7f5e0c4a805013cc5de3fd52123da513" title="wittyPlus::BaseApp::dbSession" alt="" coords="1104,403,1309,432"/>
+</map>

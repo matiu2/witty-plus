@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$_app_8cpp.html" title="base&#45;app/App.cpp" alt="" coords="5,83,131,112"/>
+<area shape="rect" id="node5" href="$_main_window_8cpp.html" title="base&#45;app/MainWindow.cpp" alt="" coords="155,83,333,112"/>
+<area shape="rect" id="node7" href="$_login_8hpp.html" title="base&#45;app/tests/fixtures/Login.hpp" alt="" coords="357,83,571,112"/>
+<area shape="rect" id="node13" href="$test__login_8cpp.html" title="base&#45;app/tests/test_login.cpp" alt="" coords="512,160,704,189"/>
+<area shape="rect" id="node9" href="$tests_2fixtures_2_user_manager_8hpp.html" title="base&#45;app/tests/fixtures/UserManager.hpp" alt="" coords="227,160,488,189"/>
+<area shape="rect" id="node11" href="$test__usermanager_8cpp.html" title="base&#45;app/tests/test_usermanager.cpp" alt="" coords="237,237,477,267"/>
+</map>

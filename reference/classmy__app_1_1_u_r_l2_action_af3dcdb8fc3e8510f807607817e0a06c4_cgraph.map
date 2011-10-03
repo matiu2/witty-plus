@@ -1,0 +1,14 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classmy__app_1_1_u_r_l2_action.html#aeb430ea4a8b422eca466503668f9a924" title="/admin/users &#45; if you&#39;re logged in, lets you adminster the users" alt="" coords="280,5,509,35"/>
+<area shape="rect" id="node5" href="$classmy__app_1_1_u_r_l2_action.html#a9783ac762af0d0c28c6cb009cca2d5ea" title="my_app::URL2Action::home" alt="" coords="301,59,488,88"/>
+<area shape="rect" id="node9" href="$classmy__app_1_1_u_r_l2_action.html#afb3b10e128e1b2d9a128779cb0791ff4" title="Shows the login form." alt="" coords="304,112,485,141"/>
+<area shape="rect" id="node11" href="$classmy__app_1_1_u_r_l2_action.html#a3f3876a3dfe3a4f630c6db9c2c7d8243" title="Actually logs you out." alt="" coords="300,165,489,195"/>
+<area shape="rect" id="node7" href="$classmy__app_1_1_app.html#a83d2592565c6f3eeb8dc4c93c4c082a4" title="my_app::App::mainWindow" alt="" coords="576,59,757,88"/>
+<area shape="rect" id="node13" href="$classmy__app_1_1_app.html#aa74fc028392965a926c62e2c4e3baf20" title="Use to send the user somewhere inside the app." alt="" coords="607,112,727,141"/>
+<area shape="rect" id="node15" href="$classmy__app_1_1_app.html#a65730872fd6dee8a9f42ebef9640b953" title="Shows a status message for a period of time." alt="" coords="572,165,761,195"/>
+<area shape="rect" id="node19" href="$classmy__app_1_1_app.html#abcba71ade4c1d7e9cee4e9aa9a4f26da" title="my_app::App::userChanged" alt="" coords="575,219,759,248"/>
+<area shape="rect" id="node21" href="$classwitty_plus_1_1_base_app.html#a0cd86d0b8bc591d3b45c7a26fd6a6833" title="wittyPlus::BaseApp::userSession" alt="" coords="559,272,775,301"/>
+<area shape="rect" id="node17" href="$classmy__app_1_1_app.html#a2e1f3a27b1a27f60582525c91d1eb159" title="An event triggered when a user logs in or logs out." alt="" coords="824,165,1045,195"/>
+<area shape="rect" id="node23" href="$classwitty_plus_1_1_base_app.html#a32d1c2fbca91c996f09cfe31316abc33" title="wittyPlus::BaseApp::cookieName" alt="" coords="825,245,1044,275"/>
+<area shape="rect" id="node25" href="$classwitty_plus_1_1_base_app.html#a7f5e0c4a805013cc5de3fd52123da513" title="wittyPlus::BaseApp::dbSession" alt="" coords="832,299,1037,328"/>
+</map>

@@ -1,0 +1,18 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$urls_8hpp.html" title="urls.hpp" alt="" coords="281,315,348,344"/>
+<area shape="rect" id="node16" href="$_app_8hpp.html" title="App.hpp" alt="" coords="1395,237,1464,267"/>
+<area shape="rect" id="node80" href="$_user_manager_8hpp.html" title="UserManager.hpp" alt="" coords="845,83,971,112"/>
+<area shape="rect" id="node125" href="$_login_window_8hpp.html" title="LoginWindow.hpp" alt="" coords="1367,160,1492,189"/>
+<area shape="rect" id="node135" href="$_u_r_ls_8hpp.html" title="lib/URLs.hpp" alt="" coords="1193,160,1292,189"/>
+<area shape="rect" id="node7" href="$_internal_link_8hpp.html" title="lib/InternalLink.hpp" alt="" coords="73,392,204,421"/>
+<area shape="rect" id="node27" href="$_session_handle_8hpp.html" title="lib/SessionHandle.hpp" alt="" coords="2148,392,2300,421"/>
+<area shape="rect" id="node54" href="$_memory_session_store_8hpp.html" title="lib/MemorySessionStore.hpp" alt="" coords="1479,392,1668,421"/>
+<area shape="rect" id="node64" href="$_user_8hpp.html" title="model/User.hpp" alt="" coords="412,315,527,344"/>
+<area shape="rect" id="node70" href="$_base_app_8hpp.html" title="lib/BaseApp.hpp" alt="" coords="1819,315,1936,344"/>
+<area shape="rect" id="node45" href="$_base_session_handle_8hpp.html" title="BaseSessionHandle.hpp" alt="" coords="2509,469,2675,499"/>
+<area shape="rect" id="node50" href="$sha_8hpp.html" title="sha.hpp" alt="" coords="917,469,984,499"/>
+<area shape="rect" id="node84" href="$_user_list_8hpp.html" title="UserList.hpp" alt="" coords="644,160,740,189"/>
+<area shape="rect" id="node110" href="$_user_edit_8hpp.html" title="UserEdit.hpp" alt="" coords="932,160,1031,189"/>
+<area shape="rect" id="node86" href="$_more_awesome_template_8hpp.html" title="lib/MoreAwesomeTemplate.hpp" alt="" coords="892,315,1097,344"/>
+<area shape="rect" id="node114" href="$_button_bar_8hpp.html" title="lib/ButtonBar.hpp" alt="" coords="1179,237,1301,267"/>
+</map>

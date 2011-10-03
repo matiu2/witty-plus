@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classmy__app_1_1_app.html#a3948650ac5f47c68c5326c2e692ea376" title="Called when we want to administrate our list of users." alt="" coords="292,5,468,35"/>
+<area shape="rect" id="node5" href="$classwitty_plus_1_1_session_handle.html#a84695936a436dd197b9674191da956f4" title="wittyPlus::SessionHandle::isLoggedIn" alt="" coords="259,59,501,88"/>
+<area shape="rect" id="node7" href="$classwitty_plus_1_1_session_handle.html#a76faab031151971ad6147b92c97bae3b" title="Tries to log the user in, creates the session, and sets the session cookie." alt="" coords="267,112,493,141"/>
+</map>

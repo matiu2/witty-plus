@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classmy__app_1_1_user_edit.html#a5cf35e878fb5600768c7dee942bf1890" title="my_app::UserEdit::cancelled" alt="" coords="300,5,489,35"/>
+<area shape="rect" id="node5" href="$classmy__app_1_1_user_edit.html#abc07bce1f24aa909e7c48e2f7398418b" title="my_app::UserEdit::done" alt="" coords="313,59,476,88"/>
+<area shape="rect" id="node7" href="$classmy__app_1_1_user_list.html#a8e6813a8d5e2ad8c66588bcc57ebb723" title="my_app::UserList::userChosen" alt="" coords="293,112,496,141"/>
+</map>

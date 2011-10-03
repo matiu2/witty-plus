@@ -1,0 +1,11 @@
+<map id="G" name="G">
+<area shape="rect" id="node9" href="$classmy__app_1_1_app.html" title="my_app::App" alt="" coords="1544,289,1643,319"/>
+<area shape="rect" id="node4" href="$classwitty_plus_1_1_u_r_ls.html" title="wittyPlus::URLs" alt="" coords="412,31,529,60"/>
+<area shape="rect" id="node17" href="$classwitty_plus_1_1_base_session_handle.html" title="wittyPlus::BaseSessionHandle" alt="" coords="369,183,572,212"/>
+<area shape="rect" id="node11" href="$classwitty_plus_1_1_base_app.html" title="BaseApp" alt="" coords="1260,263,1335,292"/>
+<area shape="rect" id="node15" href="$classwitty_plus_1_1_session_handle.html" title="A handle to the session of the currently logged in user. This is what you use in your app..." alt="" coords="716,315,1025,344"/>
+<area shape="rect" id="node29" href="$classmy__app_1_1_main_window.html" title="my_app::MainWindow" alt="" coords="1223,512,1372,541"/>
+<area shape="rect" id="node31" href="$classwitty_plus_1_1_more_awesome_template.html" title="wittyPlus::MoreAwesomeTemplate" alt="" coords="359,613,583,643"/>
+<area shape="rect" id="node37" href="$classmy__app_1_1_admin_index.html" title="my_app::AdminIndex" alt="" coords="799,644,943,673"/>
+<area shape="rect" id="node47" href="$classwitty_plus_1_1_internal_link.html" title="wittyPlus::InternalLink" alt="" coords="796,540,945,569"/>
+</map>

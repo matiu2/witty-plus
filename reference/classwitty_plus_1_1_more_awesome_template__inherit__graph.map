@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node5" href="$classmy__app_1_1_admin_index.html" title="my_app::AdminIndex" alt="" coords="424,5,568,35"/>
+<area shape="rect" id="node7" href="$classmy__app_1_1_login_window.html" title="my_app::LoginWindow" alt="" coords="419,59,573,88"/>
+<area shape="rect" id="node9" href="$classmy__app_1_1_main_window.html" title="my_app::MainWindow" alt="" coords="421,112,571,141"/>
+<area shape="rect" id="node11" href="$classmy__app_1_1_user_edit.html" title="my_app::UserEdit" alt="" coords="433,165,559,195"/>
+<area shape="rect" id="node13" href="$classmy__app_1_1_user_list.html" title="my_app::UserList" alt="" coords="433,219,559,248"/>
+<area shape="rect" id="node15" href="$classwitty_plus_1_1_button_bar.html" title="A nice two buttons next to each other on a panel." alt="" coords="425,272,567,301"/>
+</map>

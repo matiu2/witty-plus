@@ -1,0 +1,20 @@
+<map id="G" name="G">
+<area shape="rect" id="node7" href="$_main_window_8hpp.html" title="../MainWindow.hpp" alt="" coords="1553,160,1687,189"/>
+<area shape="rect" id="node109" href="$_login_window_8hpp.html" title="../LoginWindow.hpp" alt="" coords="1711,160,1847,189"/>
+<area shape="rect" id="node112" href="$_button_bar_8hpp.html" title="lib/ButtonBar.hpp" alt="" coords="1259,237,1381,267"/>
+<area shape="rect" id="node123" href="$_admin_index_8hpp.html" title="../AdminIndex.hpp" alt="" coords="2589,237,2717,267"/>
+<area shape="rect" id="node128" href="$_login_8hpp.html" title="fixtures/Login.hpp" alt="" coords="2152,83,2277,112"/>
+<area shape="rect" id="node9" href="$_more_awesome_template_8hpp.html" title="lib/MoreAwesomeTemplate.hpp" alt="" coords="787,315,992,344"/>
+<area shape="rect" id="node47" href="$_user_8hpp.html" title="model/User.hpp" alt="" coords="2153,392,2268,421"/>
+<area shape="rect" id="node57" href="$_app_8hpp.html" title="App.hpp" alt="" coords="1744,237,1813,267"/>
+<area shape="rect" id="node33" href="$_server_side_validator_8hpp.html" title="ServerSideValidator.hpp" alt="" coords="1117,392,1280,421"/>
+<area shape="rect" id="node53" href="$sha_8hpp.html" title="../lib/sha.hpp" alt="" coords="2157,469,2253,499"/>
+<area shape="rect" id="node66" href="$_session_handle_8hpp.html" title="lib/SessionHandle.hpp" alt="" coords="1809,392,1961,421"/>
+<area shape="rect" id="node88" href="$_memory_session_store_8hpp.html" title="lib/MemorySessionStore.hpp" alt="" coords="1563,392,1752,421"/>
+<area shape="rect" id="node93" href="$_base_app_8hpp.html" title="lib/BaseApp.hpp" alt="" coords="1507,315,1624,344"/>
+<area shape="rect" id="node98" href="$urls_8hpp.html" title="urls.hpp" alt="" coords="2445,315,2512,344"/>
+<area shape="rect" id="node82" href="$_base_session_handle_8hpp.html" title="BaseSessionHandle.hpp" alt="" coords="1520,469,1685,499"/>
+<area shape="rect" id="node101" href="$_internal_link_8hpp.html" title="lib/InternalLink.hpp" alt="" coords="2544,392,2675,421"/>
+<area shape="rect" id="node130" href="$tests_2fixtures_2_app_8hpp.html" title="App.hpp" alt="" coords="2607,160,2676,189"/>
+<area shape="rect" id="node134" href="$helpers_8hpp.html" title="../helpers.hpp" alt="" coords="2431,160,2532,189"/>
+</map>

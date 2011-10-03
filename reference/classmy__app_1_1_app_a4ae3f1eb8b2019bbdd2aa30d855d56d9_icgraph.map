@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classmy__app_1_1_app.html#a3a589b11393ce48a022f42d51487d6cf" title="my_app::App::goBackOrHome" alt="" coords="235,5,435,35"/>
+<area shape="rect" id="node5" href="$classmy__app_1_1_login_window.html#ab196797d2d2653720294f1b5b59a269a" title="my_app::LoginWindow::handleCancelHit" alt="" coords="205,59,464,88"/>
+<area shape="rect" id="node9" href="$classmy__app_1_1_login_window.html#a36236301e1fe631d8b326173216c2863" title="Called when the user hits OK to login." alt="" coords="217,112,452,141"/>
+<area shape="rect" id="node7" href="$classmy__app_1_1_login_window.html#acd6656375773d50fed87ad0999c036c1" title="my_app::LoginWindow::LoginWindow" alt="" coords="512,85,752,115"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classwitty_plus_1_1_server_side_validator.html#a4a9a6c8ff504200344988db6c1ef44cb" title="Returns the value of pretty much all widget types." alt="" coords="384,5,643,35"/>
+<area shape="rect" id="node5" href="$classwitty_plus_1_1_server_side_validator.html#a2674cd928f5a6e34d3bfcb3c451a283f" title="Call this instead of validate when you want to get the message on the server side." alt="" coords="348,59,679,88"/>
+<area shape="rect" id="node7" href="$classwitty_plus_1_1_server_side_validator.html#a7028e65364a49e7917cc6f20d73b591c" title="Turns the output of Wt::WValidator::validate into a message for the end user." alt="" coords="729,59,996,88"/>
+</map>

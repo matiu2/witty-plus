@@ -1,0 +1,23 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classmy__app_1_1_app.html#a7fd2a46d6c87ffde1d8ad1487eb307ae" title="my_app::App::App" alt="" coords="241,59,372,88"/>
+<area shape="rect" id="node5" href="$namespacemy__app_1_1unittests.html#aab678abdcc2c91dee1a5664417d2e669" title="my_app::unittests::BOOST_AUTO_TEST_CASE" alt="" coords="152,112,461,141"/>
+<area shape="rect" id="node7" href="$classwitty_plus_1_1_base_session_handle.html#ac0dda4b23e630fd3b21250179eb731c6" title="Used to not hit the user sessions store (provided by overrider) too much." alt="" coords="172,165,441,195"/>
+<area shape="rect" id="node21" href="$classwitty_plus_1_1_session_handle.html#a76faab031151971ad6147b92c97bae3b" title="Tries to log the user in, creates the session, and sets the session cookie." alt="" coords="977,219,1204,248"/>
+<area shape="rect" id="node23" href="$classmy__app_1_1_login_window.html#ab196797d2d2653720294f1b5b59a269a" title="my_app::LoginWindow::handleCancelHit" alt="" coords="177,269,436,299"/>
+<area shape="rect" id="node27" href="$classmy__app_1_1_login_window.html#a36236301e1fe631d8b326173216c2863" title="Called when the user hits OK to login." alt="" coords="189,323,424,352"/>
+<area shape="rect" id="node30" href="$classmy__app_1_1_main_window.html#a213ebdacb9e0ef77021bf0f75cd1d945" title="my_app::MainWindow::handleUserChanged" alt="" coords="168,376,445,405"/>
+<area shape="rect" id="node32" href="$classmy__app_1_1_main_window.html#afcd06a882133fdd2ae2857f5b4ae4b7f" title="my_app::MainWindow::MainWindow" alt="" coords="585,401,820,431"/>
+<area shape="rect" id="node35" href="$classmy__app_1_1_user_list.html#a1d4f7aa5cf8a9eb2f6d6daf7199dd2bc" title="my_app::UserList::refillUserList" alt="" coords="204,480,409,509"/>
+<area shape="rect" id="node37" href="$classmy__app_1_1_user_edit.html#af26e040e93f11515b209094dab971873" title="my_app::UserEdit::setUser" alt="" coords="216,533,397,563"/>
+<area shape="rect" id="node39" href="$classwitty_plus_1_1_server_side_validator.html#a3de7f3ba951e22009b049b9fdfe6ec73" title="Call this to push a server side validation result to the client side (complete with message)..." alt="" coords="177,587,436,616"/>
+<area shape="rect" id="node41" href="$classwitty_plus_1_1_server_side_validator.html#a54b3ab6bb35bb11d01c52d677f452afc" title="Validates the widget and passes the message on to the browser." alt="" coords="511,612,895,641"/>
+<area shape="rect" id="node46" href="$classmy__app_1_1_user_edit.html#a751229643bfa9bfdeec5b860c206ba55" title="my_app::UserEdit::UserEdit" alt="" coords="213,691,400,720"/>
+<area shape="rect" id="node9" href="$classwitty_plus_1_1_session_handle.html#aefa35e7755ace7a9a82ee2e902fcc14d" title="Does the actual touching of the session store user session." alt="" coords="564,5,841,35"/>
+<area shape="rect" id="node11" href="$classwitty_plus_1_1_session_handle.html#aa007acd765744388e75349b2dcdd3f5d" title="Logs the user out of all _userSessionStore eventually; this session immediately." alt="" coords="596,59,809,88"/>
+<area shape="rect" id="node13" href="$classwitty_plus_1_1_session_handle.html#aeee5808fe99d7814d08e7becf8df483b" title="wittyPlus::SessionHandle::SessionHandle" alt="" coords="569,112,836,141"/>
+<area shape="rect" id="node15" href="$classwitty_plus_1_1_session_handle.html#ab51329be2467bace6776f5f2fc87e5d1" title="Returns a dbo::ptr to the currently logged in user *." alt="" coords="600,165,805,195"/>
+<area shape="rect" id="node17" href="$classmy__app_1_1_app.html#a3948650ac5f47c68c5326c2e692ea376" title="Called when we want to administrate our list of users." alt="" coords="1003,112,1179,141"/>
+<area shape="rect" id="node19" href="$classwitty_plus_1_1_session_handle.html#a84695936a436dd197b9674191da956f4" title="wittyPlus::SessionHandle::isLoggedIn" alt="" coords="969,165,1212,195"/>
+<area shape="rect" id="node25" href="$classmy__app_1_1_login_window.html#acd6656375773d50fed87ad0999c036c1" title="my_app::LoginWindow::LoginWindow" alt="" coords="583,296,823,325"/>
+<area shape="rect" id="node43" href="$classwitty_plus_1_1_more_awesome_template.html#a402df99c8dff978200b3914d64beaea4" title="wittyPlus::MoreAwesomeTemplate::validateAll" alt="" coords="944,612,1237,641"/>
+</map>

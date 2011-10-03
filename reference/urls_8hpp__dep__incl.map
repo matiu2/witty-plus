@@ -1,0 +1,21 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$_admin_index_8hpp.html" title="base&#45;app/AdminIndex.hpp" alt="" coords="84,160,257,189"/>
+<area shape="rect" id="node5" href="$_main_window_8cpp.html" title="base&#45;app/MainWindow.cpp" alt="" coords="5,237,184,267"/>
+<area shape="rect" id="node16" href="$_app_8hpp.html" title="base&#45;app/App.hpp" alt="" coords="984,83,1109,112"/>
+<area shape="rect" id="node26" href="$url2action_8hpp.html" title="base&#45;app/url2action.hpp" alt="" coords="1204,315,1364,344"/>
+<area shape="rect" id="node56" href="$urls_8cpp.html" title="base&#45;app/urls.cpp" alt="" coords="1631,83,1756,112"/>
+<area shape="rect" id="node7" href="$_login_8hpp.html" title="base&#45;app/tests/fixtures/Login.hpp" alt="" coords="408,237,621,267"/>
+<area shape="rect" id="node13" href="$test__login_8cpp.html" title="base&#45;app/tests/test_login.cpp" alt="" coords="309,315,501,344"/>
+<area shape="rect" id="node9" href="$tests_2fixtures_2_user_manager_8hpp.html" title="base&#45;app/tests/fixtures/UserManager.hpp" alt="" coords="528,315,789,344"/>
+<area shape="rect" id="node11" href="$test__usermanager_8cpp.html" title="base&#45;app/tests/test_usermanager.cpp" alt="" coords="539,392,779,421"/>
+<area shape="rect" id="node18" href="$_app_8cpp.html" title="base&#45;app/App.cpp" alt="" coords="1221,392,1347,421"/>
+<area shape="rect" id="node20" href="$_main_window_8hpp.html" title="base&#45;app/MainWindow.hpp" alt="" coords="281,160,460,189"/>
+<area shape="rect" id="node29" href="$_user_edit_8hpp.html" title="base&#45;app/UserEdit.hpp" alt="" coords="713,160,868,189"/>
+<area shape="rect" id="node38" href="$_login_window_8hpp.html" title="base&#45;app/LoginWindow.hpp" alt="" coords="892,160,1073,189"/>
+<area shape="rect" id="node41" href="$_login_window_8cpp.html" title="base&#45;app/LoginWindow.cpp" alt="" coords="1181,237,1363,267"/>
+<area shape="rect" id="node46" href="$main_8cpp.html" title="base&#45;app/main.cpp" alt="" coords="1148,160,1279,189"/>
+<area shape="rect" id="node49" href="$tests_2fixtures_2_app_8hpp.html" title="base&#45;app/tests/fixtures/App.hpp" alt="" coords="484,160,689,189"/>
+<area shape="rect" id="node52" href="$_user_list_8cpp.html" title="base&#45;app/UserList.cpp" alt="" coords="1303,160,1455,189"/>
+<area shape="rect" id="node31" href="$_user_manager_8hpp.html" title="base&#45;app/UserManager.hpp" alt="" coords="696,237,877,267"/>
+<area shape="rect" id="node36" href="$_user_edit_8cpp.html" title="base&#45;app/UserEdit.cpp" alt="" coords="901,237,1056,267"/>
+</map>

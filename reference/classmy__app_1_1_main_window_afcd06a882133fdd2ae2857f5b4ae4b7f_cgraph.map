@@ -1,0 +1,9 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$namespacemy__app.html#a17c23e48d31c36f108a4b0ec2d477cb3" title="my_app::app" alt="" coords="764,5,860,35"/>
+<area shape="rect" id="node5" href="$classmy__app_1_1_main_window.html#a213ebdacb9e0ef77021bf0f75cd1d945" title="my_app::MainWindow::handleUserChanged" alt="" coords="297,57,575,87"/>
+<area shape="rect" id="node14" href="$classmy__app_1_1_main_window.html#a7ecab79d64a9cc0411b3b04b6aa0e374" title="my_app::MainWindow::onInternalPathChanged" alt="" coords="289,111,583,140"/>
+<area shape="rect" id="node16" href="$classmy__app_1_1_app.html#abcba71ade4c1d7e9cee4e9aa9a4f26da" title="my_app::App::userChanged" alt="" coords="344,164,528,193"/>
+<area shape="rect" id="node8" href="$classwitty_plus_1_1_more_awesome_template.html#a555fa1059928fff4091ec85b9baa66c1" title="Replace a template placeholder &#39;name&#39; with a widget (pointed to by pointer)." alt="" coords="632,59,992,88"/>
+<area shape="rect" id="node10" href="$classmy__app_1_1_app.html#a65730872fd6dee8a9f42ebef9640b953" title="Shows a status message for a period of time." alt="" coords="717,112,907,141"/>
+<area shape="rect" id="node12" href="$classmy__app_1_1_app.html#a2e1f3a27b1a27f60582525c91d1eb159" title="An event triggered when a user logs in or logs out." alt="" coords="1040,112,1261,141"/>
+</map>

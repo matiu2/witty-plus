@@ -1,0 +1,10 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classwitty_plus_1_1_base_app.html#a0cd86d0b8bc591d3b45c7a26fd6a6833" title="wittyPlus::BaseApp::userSession" alt="" coords="273,85,489,115"/>
+<area shape="rect" id="node5" href="$classmy__app_1_1_app.html#a3948650ac5f47c68c5326c2e692ea376" title="Called when we want to administrate our list of users." alt="" coords="569,5,745,35"/>
+<area shape="rect" id="node7" href="$classmy__app_1_1_login_window.html#a36236301e1fe631d8b326173216c2863" title="Called when the user hits OK to login." alt="" coords="540,59,775,88"/>
+<area shape="rect" id="node11" href="$classmy__app_1_1_u_r_l2_action.html#a5b5e997b7c03445a3cc53afacac694b7" title="my_app::URL2Action::isLoggedIn" alt="" coords="548,112,767,141"/>
+<area shape="rect" id="node15" href="$classmy__app_1_1_u_r_l2_action.html#a3f3876a3dfe3a4f630c6db9c2c7d8243" title="Actually logs you out." alt="" coords="563,165,752,195"/>
+<area shape="rect" id="node9" href="$classmy__app_1_1_login_window.html#acd6656375773d50fed87ad0999c036c1" title="my_app::LoginWindow::LoginWindow" alt="" coords="836,59,1076,88"/>
+<area shape="rect" id="node13" href="$classmy__app_1_1_u_r_l2_action.html#a738279e60ff6ae603ea277f6f4865ccd" title="my_app::URL2Action::setBodyIfLoggedIn" alt="" coords="824,112,1088,141"/>
+<area shape="rect" id="node17" href="$classmy__app_1_1_u_r_l2_action.html#af3dcdb8fc3e8510f807607817e0a06c4" title="my_app::URL2Action::URL2Action" alt="" coords="843,165,1069,195"/>
+</map>

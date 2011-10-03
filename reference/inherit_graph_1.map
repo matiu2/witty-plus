@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" id="node1" href="$structmy__app_1_1unittests_1_1fixtures_1_1_app_fixture.html" title="my_app::unittests::fixtures::AppFixture" alt="" coords="5,5,253,35"/>
+<area shape="rect" id="node3" href="$structmy__app_1_1unittests_1_1fixtures_1_1_login_fixture.html" title="Our special login fixture for testing the login window." alt="" coords="301,5,557,35"/>
+<area shape="rect" id="node5" href="$structmy__app_1_1unittests_1_1fixtures_1_1_user_manager_fixture.html" title="my_app::unittests::fixtures::UserManagerFixture" alt="" coords="607,5,908,35"/>
+</map>

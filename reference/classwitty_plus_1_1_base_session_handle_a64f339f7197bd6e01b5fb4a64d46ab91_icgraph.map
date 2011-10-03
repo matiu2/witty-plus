@@ -1,0 +1,7 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classwitty_plus_1_1_base_session_handle.html#af615709773f63fcefb1e724331ed9b03" title="Call to let us know that the user is still logged in. Doesn&#39;t cost much." alt="" coords="361,59,649,88"/>
+<area shape="rect" id="node5" href="$classwitty_plus_1_1_session_handle.html#ab51329be2467bace6776f5f2fc87e5d1" title="Returns a dbo::ptr to the currently logged in user *." alt="" coords="699,59,904,88"/>
+<area shape="rect" id="node7" href="$classmy__app_1_1_app.html#a3948650ac5f47c68c5326c2e692ea376" title="Called when we want to administrate our list of users." alt="" coords="985,5,1161,35"/>
+<area shape="rect" id="node9" href="$classwitty_plus_1_1_session_handle.html#a84695936a436dd197b9674191da956f4" title="wittyPlus::SessionHandle::isLoggedIn" alt="" coords="952,59,1195,88"/>
+<area shape="rect" id="node11" href="$classwitty_plus_1_1_session_handle.html#a76faab031151971ad6147b92c97bae3b" title="Tries to log the user in, creates the session, and sets the session cookie." alt="" coords="960,112,1187,141"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classwitty_plus_1_1_session_handle.html#aefa35e7755ace7a9a82ee2e902fcc14d" title="Does the actual touching of the session store user session." alt="" coords="323,5,600,35"/>
+<area shape="rect" id="node5" href="$classwitty_plus_1_1_session_handle.html#aa007acd765744388e75349b2dcdd3f5d" title="Logs the user out of all _userSessionStore eventually; this session immediately." alt="" coords="355,59,568,88"/>
+<area shape="rect" id="node7" href="$classwitty_plus_1_1_session_handle.html#aeee5808fe99d7814d08e7becf8df483b" title="wittyPlus::SessionHandle::SessionHandle" alt="" coords="328,112,595,141"/>
+<area shape="rect" id="node9" href="$classwitty_plus_1_1_session_handle.html#ab51329be2467bace6776f5f2fc87e5d1" title="Returns a dbo::ptr to the currently logged in user *." alt="" coords="359,165,564,195"/>
+<area shape="rect" id="node11" href="$classmy__app_1_1_app.html#a3948650ac5f47c68c5326c2e692ea376" title="Called when we want to administrate our list of users." alt="" coords="681,112,857,141"/>
+<area shape="rect" id="node13" href="$classwitty_plus_1_1_session_handle.html#a84695936a436dd197b9674191da956f4" title="wittyPlus::SessionHandle::isLoggedIn" alt="" coords="648,165,891,195"/>
+<area shape="rect" id="node15" href="$classwitty_plus_1_1_session_handle.html#a76faab031151971ad6147b92c97bae3b" title="Tries to log the user in, creates the session, and sets the session cookie." alt="" coords="656,219,883,248"/>
+</map>

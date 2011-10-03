@@ -1,0 +1,9 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classmy__app_1_1_app.html#aa74fc028392965a926c62e2c4e3baf20" title="Use to send the user somewhere inside the app." alt="" coords="295,5,415,35"/>
+<area shape="rect" id="node5" href="$classmy__app_1_1_app.html#a65730872fd6dee8a9f42ebef9640b953" title="Shows a status message for a period of time." alt="" coords="260,59,449,88"/>
+<area shape="rect" id="node9" href="$classmy__app_1_1_app.html#abcba71ade4c1d7e9cee4e9aa9a4f26da" title="my_app::App::userChanged" alt="" coords="263,112,447,141"/>
+<area shape="rect" id="node11" href="$classwitty_plus_1_1_base_app.html#a0cd86d0b8bc591d3b45c7a26fd6a6833" title="wittyPlus::BaseApp::userSession" alt="" coords="247,165,463,195"/>
+<area shape="rect" id="node7" href="$classmy__app_1_1_app.html#a2e1f3a27b1a27f60582525c91d1eb159" title="An event triggered when a user logs in or logs out." alt="" coords="512,59,733,88"/>
+<area shape="rect" id="node13" href="$classwitty_plus_1_1_base_app.html#a32d1c2fbca91c996f09cfe31316abc33" title="wittyPlus::BaseApp::cookieName" alt="" coords="513,139,732,168"/>
+<area shape="rect" id="node15" href="$classwitty_plus_1_1_base_app.html#a7f5e0c4a805013cc5de3fd52123da513" title="wittyPlus::BaseApp::dbSession" alt="" coords="520,192,725,221"/>
+</map>

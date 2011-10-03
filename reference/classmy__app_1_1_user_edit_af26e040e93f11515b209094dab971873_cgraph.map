@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$namespacemy__app.html#a17c23e48d31c36f108a4b0ec2d477cb3" title="my_app::app" alt="" coords="281,5,377,35"/>
+<area shape="rect" id="node5" href="$classmy__app_1_1_app.html#a65730872fd6dee8a9f42ebef9640b953" title="Shows a status message for a period of time." alt="" coords="235,59,424,88"/>
+<area shape="rect" id="node7" href="$classmy__app_1_1_app.html#a2e1f3a27b1a27f60582525c91d1eb159" title="An event triggered when a user logs in or logs out." alt="" coords="472,59,693,88"/>
+</map>

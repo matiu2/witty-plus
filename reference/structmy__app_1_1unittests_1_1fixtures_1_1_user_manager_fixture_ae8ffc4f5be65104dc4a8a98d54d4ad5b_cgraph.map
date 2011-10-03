@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$structmy__app_1_1unittests_1_1fixtures_1_1_login_fixture.html#a7e12a72b9b5c49eb463b19424bd437aa" title="Makes sure we *are* logged in." alt="" coords="483,5,835,35"/>
+<area shape="rect" id="node5" href="$namespacemy__app_1_1unittests_1_1helpers.html#a23e80df55748393083a59e4c26a0c662" title="my_app::unittests::helpers::click" alt="" coords="553,59,764,88"/>
+<area shape="rect" id="node7" href="$structmy__app_1_1unittests_1_1fixtures_1_1_login_fixture.html#aa11dfb546dbb9c30924cdf1af5cc0034" title="Clicks the login link." alt="" coords="497,112,820,141"/>
+<area shape="rect" id="node9" href="$namespacemy__app_1_1unittests_1_1helpers.html#af2bcdb064783357fd95a22e0c793a97d" title="my_app::unittests::helpers::keyPress" alt="" coords="540,165,777,195"/>
+</map>

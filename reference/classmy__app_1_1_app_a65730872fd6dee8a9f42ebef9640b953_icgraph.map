@@ -1,0 +1,11 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classmy__app_1_1_app.html#a3948650ac5f47c68c5326c2e692ea376" title="Called when we want to administrate our list of users." alt="" coords="293,5,469,35"/>
+<area shape="rect" id="node5" href="$classmy__app_1_1_login_window.html#ab196797d2d2653720294f1b5b59a269a" title="my_app::LoginWindow::handleCancelHit" alt="" coords="252,59,511,88"/>
+<area shape="rect" id="node9" href="$classmy__app_1_1_login_window.html#a36236301e1fe631d8b326173216c2863" title="Called when the user hits OK to login." alt="" coords="264,112,499,141"/>
+<area shape="rect" id="node12" href="$classmy__app_1_1_main_window.html#a213ebdacb9e0ef77021bf0f75cd1d945" title="my_app::MainWindow::handleUserChanged" alt="" coords="243,165,520,195"/>
+<area shape="rect" id="node16" href="$classmy__app_1_1_u_r_l2_action.html#a3f3876a3dfe3a4f630c6db9c2c7d8243" title="Actually logs you out." alt="" coords="287,219,476,248"/>
+<area shape="rect" id="node20" href="$classmy__app_1_1_user_edit.html#af26e040e93f11515b209094dab971873" title="my_app::UserEdit::setUser" alt="" coords="291,272,472,301"/>
+<area shape="rect" id="node7" href="$classmy__app_1_1_login_window.html#acd6656375773d50fed87ad0999c036c1" title="my_app::LoginWindow::LoginWindow" alt="" coords="568,85,808,115"/>
+<area shape="rect" id="node14" href="$classmy__app_1_1_main_window.html#afcd06a882133fdd2ae2857f5b4ae4b7f" title="my_app::MainWindow::MainWindow" alt="" coords="571,165,805,195"/>
+<area shape="rect" id="node18" href="$classmy__app_1_1_u_r_l2_action.html#af3dcdb8fc3e8510f807607817e0a06c4" title="my_app::URL2Action::URL2Action" alt="" coords="575,219,801,248"/>
+</map>

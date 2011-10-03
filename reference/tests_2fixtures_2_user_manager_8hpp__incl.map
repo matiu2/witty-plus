@@ -1,0 +1,19 @@
+<map id="G" name="G">
+<area shape="rect" id="node9" href="$_login_8hpp.html" title="Login.hpp" alt="" coords="1695,83,1773,112"/>
+<area shape="rect" id="node52" href="$helpers_8hpp.html" title="../helpers.hpp" alt="" coords="586,160,687,189"/>
+<area shape="rect" id="node122" href="$_user_manager_8hpp.html" title="../../UserManager.hpp" alt="" coords="2359,83,2509,112"/>
+<area shape="rect" id="node126" href="$_user_list_8hpp.html" title="UserList.hpp" alt="" coords="2605,160,2701,189"/>
+<area shape="rect" id="node135" href="$_user_edit_8hpp.html" title="UserEdit.hpp" alt="" coords="1538,160,1637,189"/>
+<area shape="rect" id="node11" href="$tests_2fixtures_2_app_8hpp.html" title="App.hpp" alt="" coords="1050,160,1119,189"/>
+<area shape="rect" id="node32" href="$_user_8hpp.html" title="model/User.hpp" alt="" coords="2386,315,2501,344"/>
+<area shape="rect" id="node87" href="$_login_window_8hpp.html" title="../../LoginWindow.hpp" alt="" coords="1335,160,1485,189"/>
+<area shape="rect" id="node98" href="$_main_window_8hpp.html" title="../../MainWindow.hpp" alt="" coords="1661,160,1807,189"/>
+<area shape="rect" id="node107" href="$_admin_index_8hpp.html" title="../../AdminIndex.hpp" alt="" coords="131,237,270,267"/>
+<area shape="rect" id="node13" href="$_app_8hpp.html" title="../../App.hpp" alt="" coords="1334,237,1427,267"/>
+<area shape="rect" id="node19" href="$_session_handle_8hpp.html" title="lib/SessionHandle.hpp" alt="" coords="1603,315,1755,344"/>
+<area shape="rect" id="node38" href="$urls_8hpp.html" title="urls.hpp" alt="" coords="462,315,529,344"/>
+<area shape="rect" id="node29" href="$sha_8hpp.html" title="sha.hpp" alt="" coords="2462,392,2529,421"/>
+<area shape="rect" id="node41" href="$_internal_link_8hpp.html" title="lib/InternalLink.hpp" alt="" coords="367,392,498,421"/>
+<area shape="rect" id="node58" href="$_button_bar_8hpp.html" title="../lib/ButtonBar.hpp" alt="" coords="1059,237,1193,267"/>
+<area shape="rect" id="node62" href="$_more_awesome_template_8hpp.html" title="MoreAwesomeTemplate.hpp" alt="" coords="1382,315,1569,344"/>
+</map>

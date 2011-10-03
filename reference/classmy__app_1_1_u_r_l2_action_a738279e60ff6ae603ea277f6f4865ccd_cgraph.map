@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classmy__app_1_1_u_r_l2_action.html#a5b5e997b7c03445a3cc53afacac694b7" title="my_app::URL2Action::isLoggedIn" alt="" coords="317,32,536,61"/>
+<area shape="rect" id="node11" href="$classmy__app_1_1_app.html#a83d2592565c6f3eeb8dc4c93c4c082a4" title="my_app::App::mainWindow" alt="" coords="336,85,517,115"/>
+<area shape="rect" id="node13" href="$classmy__app_1_1_main_window.html#a51ff9e954a5d5475f9abef1e154c8b7b" title="my_app::MainWindow::setBody" alt="" coords="324,139,529,168"/>
+<area shape="rect" id="node5" href="$classwitty_plus_1_1_base_app.html#a0cd86d0b8bc591d3b45c7a26fd6a6833" title="wittyPlus::BaseApp::userSession" alt="" coords="585,32,801,61"/>
+<area shape="rect" id="node7" href="$classwitty_plus_1_1_base_app.html#a32d1c2fbca91c996f09cfe31316abc33" title="wittyPlus::BaseApp::cookieName" alt="" coords="851,5,1069,35"/>
+<area shape="rect" id="node9" href="$classwitty_plus_1_1_base_app.html#a7f5e0c4a805013cc5de3fd52123da513" title="wittyPlus::BaseApp::dbSession" alt="" coords="857,59,1063,88"/>
+</map>

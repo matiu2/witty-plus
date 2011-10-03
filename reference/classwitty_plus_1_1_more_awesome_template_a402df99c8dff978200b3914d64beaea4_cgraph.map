@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classwitty_plus_1_1_server_side_validator.html#a54b3ab6bb35bb11d01c52d677f452afc" title="Validates the widget and passes the message on to the browser." alt="" coords="348,55,732,84"/>
+<area shape="rect" id="node5" href="$namespacemy__app.html#a17c23e48d31c36f108a4b0ec2d477cb3" title="my_app::app" alt="" coords="1249,29,1345,59"/>
+<area shape="rect" id="node7" href="$classwitty_plus_1_1_server_side_validator.html#a4a9a6c8ff504200344988db6c1ef44cb" title="Returns the value of pretty much all widget types." alt="" coords="819,28,1077,57"/>
+<area shape="rect" id="node9" href="$classwitty_plus_1_1_server_side_validator.html#a3de7f3ba951e22009b049b9fdfe6ec73" title="Call this to push a server side validation result to the client side (complete with message)..." alt="" coords="819,81,1077,111"/>
+<area shape="rect" id="node12" href="$classwitty_plus_1_1_server_side_validator.html#a2674cd928f5a6e34d3bfcb3c451a283f" title="Call this instead of validate when you want to get the message on the server side." alt="" coords="783,135,1113,164"/>
+<area shape="rect" id="node14" href="$classwitty_plus_1_1_server_side_validator.html#a7028e65364a49e7917cc6f20d73b591c" title="Turns the output of Wt::WValidator::validate into a message for the end user." alt="" coords="1164,135,1431,164"/>
+</map>

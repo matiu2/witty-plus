@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classwitty_plus_1_1_server_side_validator.html#a2674cd928f5a6e34d3bfcb3c451a283f" title="Call this instead of validate when you want to get the message on the server side." alt="" coords="324,32,655,61"/>
+<area shape="rect" id="node5" href="$classwitty_plus_1_1_server_side_validator.html#a3a0bde8fa93284a68776b496da59d237" title="Convenience function. Call this instead of widget.validate();." alt="" coords="751,5,1044,35"/>
+<area shape="rect" id="node7" href="$classwitty_plus_1_1_server_side_validator.html#a54b3ab6bb35bb11d01c52d677f452afc" title="Validates the widget and passes the message on to the browser." alt="" coords="705,59,1089,88"/>
+<area shape="rect" id="node9" href="$classwitty_plus_1_1_more_awesome_template.html#a402df99c8dff978200b3914d64beaea4" title="wittyPlus::MoreAwesomeTemplate::validateAll" alt="" coords="1139,59,1432,88"/>
+</map>

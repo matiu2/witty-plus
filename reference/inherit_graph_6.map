@@ -1,0 +1,4 @@
+<map id="G" name="G">
+<area shape="rect" id="node1" href="$classwitty_plus_1_1_base_session_handle.html" title="wittyPlus::BaseSessionHandle" alt="" coords="5,5,208,35"/>
+<area shape="rect" id="node3" href="$classwitty_plus_1_1_session_handle.html" title="A handle to the session of the currently logged in user. This is what you use in your app..." alt="" coords="257,5,567,35"/>
+</map>

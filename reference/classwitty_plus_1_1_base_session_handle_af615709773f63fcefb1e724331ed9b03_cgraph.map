@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classwitty_plus_1_1_base_session_handle.html#a64f339f7197bd6e01b5fb4a64d46ab91" title="Override this to let us know how often we should hit the user session store." alt="" coords="372,5,679,35"/>
+<area shape="rect" id="node5" href="$classwitty_plus_1_1_base_session_handle.html#a0d876cf2d4f10e2df1f9d5c8331f4bcd" title="The name of the cookie we&#39;re after .. this is global across the whole application and all threads..." alt="" coords="372,59,679,88"/>
+<area shape="rect" id="node7" href="$classwitty_plus_1_1_base_session_handle.html#a41cb37ea5d61098c91f57cf623065e50" title="Record that we haven&#39;t touched the session in a while." alt="" coords="344,112,707,141"/>
+</map>

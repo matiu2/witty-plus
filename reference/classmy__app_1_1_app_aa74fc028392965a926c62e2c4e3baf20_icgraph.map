@@ -1,0 +1,10 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classmy__app_1_1_app.html#a3948650ac5f47c68c5326c2e692ea376" title="Called when we want to administrate our list of users." alt="" coords="184,5,360,35"/>
+<area shape="rect" id="node5" href="$classmy__app_1_1_app.html#a4ae3f1eb8b2019bbdd2aa30d855d56d9" title="my_app::App::goBack" alt="" coords="197,109,347,139"/>
+<area shape="rect" id="node7" href="$classmy__app_1_1_app.html#a3a589b11393ce48a022f42d51487d6cf" title="my_app::App::goBackOrHome" alt="" coords="445,55,645,84"/>
+<area shape="rect" id="node13" href="$classmy__app_1_1_login_window.html#a36236301e1fe631d8b326173216c2863" title="Called when the user hits OK to login." alt="" coords="428,161,663,191"/>
+<area shape="rect" id="node18" href="$classmy__app_1_1_u_r_l2_action.html#a3f3876a3dfe3a4f630c6db9c2c7d8243" title="Actually logs you out." alt="" coords="177,213,367,243"/>
+<area shape="rect" id="node9" href="$classmy__app_1_1_login_window.html#ab196797d2d2653720294f1b5b59a269a" title="my_app::LoginWindow::handleCancelHit" alt="" coords="416,108,675,137"/>
+<area shape="rect" id="node11" href="$classmy__app_1_1_login_window.html#acd6656375773d50fed87ad0999c036c1" title="my_app::LoginWindow::LoginWindow" alt="" coords="723,135,963,164"/>
+<area shape="rect" id="node20" href="$classmy__app_1_1_u_r_l2_action.html#af3dcdb8fc3e8510f807607817e0a06c4" title="my_app::URL2Action::URL2Action" alt="" coords="432,215,659,244"/>
+</map>

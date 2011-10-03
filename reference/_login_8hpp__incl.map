@@ -1,0 +1,18 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$tests_2fixtures_2_app_8hpp.html" title="App.hpp" alt="" coords="343,83,412,112"/>
+<area shape="rect" id="node41" href="$_user_8hpp.html" title="model/User.hpp" alt="" coords="786,315,900,344"/>
+<area shape="rect" id="node67" href="$helpers_8hpp.html" title="../helpers.hpp" alt="" coords="2340,83,2442,112"/>
+<area shape="rect" id="node114" href="$_login_window_8hpp.html" title="../../LoginWindow.hpp" alt="" coords="1215,83,1364,112"/>
+<area shape="rect" id="node124" href="$_main_window_8hpp.html" title="../../MainWindow.hpp" alt="" coords="814,83,960,112"/>
+<area shape="rect" id="node133" href="$_admin_index_8hpp.html" title="../../AdminIndex.hpp" alt="" coords="2234,160,2372,189"/>
+<area shape="rect" id="node5" href="$_app_8hpp.html" title="../../App.hpp" alt="" coords="516,160,610,189"/>
+<area shape="rect" id="node17" href="$_session_handle_8hpp.html" title="lib/SessionHandle.hpp" alt="" coords="464,315,616,344"/>
+<area shape="rect" id="node37" href="$_memory_session_store_8hpp.html" title="lib/MemorySessionStore.hpp" alt="" coords="196,315,386,344"/>
+<area shape="rect" id="node48" href="$_base_app_8hpp.html" title="lib/BaseApp.hpp" alt="" coords="284,237,402,267"/>
+<area shape="rect" id="node53" href="$urls_8hpp.html" title="urls.hpp" alt="" coords="2306,237,2372,267"/>
+<area shape="rect" id="node33" href="$sha_8hpp.html" title="sha.hpp" alt="" coords="650,392,716,421"/>
+<area shape="rect" id="node56" href="$_internal_link_8hpp.html" title="lib/InternalLink.hpp" alt="" coords="2458,315,2588,344"/>
+<area shape="rect" id="node73" href="$_button_bar_8hpp.html" title="../lib/ButtonBar.hpp" alt="" coords="1826,160,1959,189"/>
+<area shape="rect" id="node77" href="$_more_awesome_template_8hpp.html" title="MoreAwesomeTemplate.hpp" alt="" coords="1516,237,1703,267"/>
+<area shape="rect" id="node98" href="$_server_side_validator_8hpp.html" title="ServerSideValidator.hpp" alt="" coords="1364,315,1527,344"/>
+</map>

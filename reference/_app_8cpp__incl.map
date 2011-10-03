@@ -1,0 +1,20 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$_app_8hpp.html" title="App.hpp" alt="" coords="1119,237,1188,267"/>
+<area shape="rect" id="node54" href="$_user_8hpp.html" title="model/User.hpp" alt="" coords="785,315,900,344"/>
+<area shape="rect" id="node77" href="$_main_window_8hpp.html" title="MainWindow.hpp" alt="" coords="1191,160,1313,189"/>
+<area shape="rect" id="node115" href="$db_8hpp.html" title="db.hpp" alt="" coords="1008,83,1069,112"/>
+<area shape="rect" id="node120" href="$url2action_8hpp.html" title="url2action.hpp" alt="" coords="1871,83,1972,112"/>
+<area shape="rect" id="node15" href="$_session_handle_8hpp.html" title="lib/SessionHandle.hpp" alt="" coords="1279,392,1431,421"/>
+<area shape="rect" id="node44" href="$_memory_session_store_8hpp.html" title="lib/MemorySessionStore.hpp" alt="" coords="377,392,567,421"/>
+<area shape="rect" id="node61" href="$_base_app_8hpp.html" title="lib/BaseApp.hpp" alt="" coords="1271,315,1388,344"/>
+<area shape="rect" id="node70" href="$urls_8hpp.html" title="urls.hpp" alt="" coords="2468,315,2535,344"/>
+<area shape="rect" id="node33" href="$_base_session_handle_8hpp.html" title="BaseSessionHandle.hpp" alt="" coords="1165,469,1331,499"/>
+<area shape="rect" id="node38" href="$sha_8hpp.html" title="sha.hpp" alt="" coords="795,469,861,499"/>
+<area shape="rect" id="node73" href="$_internal_link_8hpp.html" title="lib/InternalLink.hpp" alt="" coords="2887,392,3017,421"/>
+<area shape="rect" id="node79" href="$_more_awesome_template_8hpp.html" title="lib/MoreAwesomeTemplate.hpp" alt="" coords="1959,315,2164,344"/>
+<area shape="rect" id="node100" href="$_server_side_validator_8hpp.html" title="ServerSideValidator.hpp" alt="" coords="1764,392,1927,421"/>
+<area shape="rect" id="node124" href="$_user_manager_8hpp.html" title="UserManager.hpp" alt="" coords="1437,160,1563,189"/>
+<area shape="rect" id="node134" href="$_login_window_8hpp.html" title="LoginWindow.hpp" alt="" coords="1859,160,1984,189"/>
+<area shape="rect" id="node142" href="$_u_r_ls_8hpp.html" title="lib/URLs.hpp" alt="" coords="3020,160,3119,189"/>
+<area shape="rect" id="node128" href="$_user_list_8hpp.html" title="UserList.hpp" alt="" coords="1452,237,1548,267"/>
+</map>

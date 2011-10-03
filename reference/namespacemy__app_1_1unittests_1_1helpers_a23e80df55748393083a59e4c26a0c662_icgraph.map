@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$namespacemy__app_1_1unittests.html#a1148161a852908fd89a4bbd0a8e6fca8" title="my_app::unittests::BOOST_AUTO_TEST_CASE" alt="" coords="324,5,633,35"/>
+<area shape="rect" id="node5" href="$namespacemy__app_1_1unittests_1_1helpers.html#a5430ba6a8545d91201963df2b258064e" title="my_app::unittests::helpers::click" alt="" coords="373,59,584,88"/>
+<area shape="rect" id="node7" href="$namespacemy__app_1_1unittests_1_1helpers.html#a36f4b37ba4fcc6305a7d4867b03fbe10" title="my_app::unittests::helpers::clickCancel" alt="" coords="353,112,604,141"/>
+<area shape="rect" id="node9" href="$namespacemy__app_1_1unittests_1_1helpers.html#aa42b096fadecaf3d4063a7159a98f44b" title="my_app::unittests::helpers::clickOk" alt="" coords="365,165,592,195"/>
+<area shape="rect" id="node11" href="$structmy__app_1_1unittests_1_1fixtures_1_1_login_fixture.html#aa55bbf3c0b67af272e612504095fc842" title="my_app::unittests::fixtures::LoginFixture::LoginFixture" alt="" coords="312,219,645,248"/>
+<area shape="rect" id="node13" href="$structmy__app_1_1unittests_1_1fixtures_1_1_user_manager_fixture.html#ae8ffc4f5be65104dc4a8a98d54d4ad5b" title="my_app::unittests::fixtures::UserManagerFixture::UserManagerFixture" alt="" coords="264,272,693,301"/>
+</map>

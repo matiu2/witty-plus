@@ -1,0 +1,4 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classwitty_plus_1_1_memory_session_store.html#a2015628d4b24583ef148ce153cd431fc" title="Resets the server side timeout for this session." alt="" coords="296,5,544,35"/>
+<area shape="rect" id="node5" href="$classwitty_plus_1_1_memory_session_store.html#a442dd48a6d5e6f5642728528ee04ecce" title="Returns the currently logged in userId or throws invalid_argument if no&#45;one&#39;s logged in..." alt="" coords="293,59,547,88"/>
+</map>
