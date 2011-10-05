@@ -67,7 +67,10 @@ private:
     // Event handlers
     void OKHit();
     void CancelHit();
-    void passwordChanged();
+    // Statless slots
+    void focusName() { edtName->setFocus(); }
+    void focusPass1() { edtPass1->setFocus(); }
+    void focusPass2() { edtPass2->setFocus(); }
 public:
     UserEdit(WContainerWidget* parent=0);
     // Properties

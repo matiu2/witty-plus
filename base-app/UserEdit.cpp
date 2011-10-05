@@ -56,12 +56,13 @@ UserEdit::UserEdit(WContainerWidget* parent) : wittyPlus::MoreAwesomeTemplate(pa
     bindAndCreateWidget(btnBar, "btn-bar");
     btnBar->btn1()->clicked().connect(this, &UserEdit::OKHit);
     btnBar->btn2()->clicked().connect(this, &UserEdit::CancelHit);
+    // Remember easy actions on client side
+    implementStateless(&UserEdit::focusPass1, &UserEdit::focusName);
+    implementStateless(&UserEdit::focusPass2, &UserEdit::focusPass1); 
     // Enter handling and tab indexy stuff
-    edtName->enterPressed().connect(edtPass1, &WLineEdit::setFocus);
-    edtPass1->enterPressed().connect(edtPass2, &WLineEdit::setFocus);
-    edtPass1->changed().connect(this, &UserEdit::passwordChanged);
+    edtName->enterPressed().connect(this, &UserEdit::focusPass1);
+    edtPass1->enterPressed().connect(this, &UserEdit::focusPass2);
     edtPass2->enterPressed().connect(this, &UserEdit::OKHit);
-    edtPass2->changed().connect(this, &UserEdit::passwordChanged);
     // Escape is cancel
     escapePressed().connect(this, &UserEdit::CancelHit);
 }
@@ -156,20 +157,5 @@ void UserEdit::OKHit() {
 void UserEdit::CancelHit() {
     cancelled().emit();
 }
-
-/// If you change one password, you have to change the other
-void UserEdit::passwordChanged() {
-    if (_user) {
-        // If we're editing an existing user
-        WLineEdit* changed = dynamic_cast<WLineEdit*>(sender());
-        if (changed) {
-            // If one has no text .. make the other not mandatory
-            // If first has text, other is now mandatory
-            WLineEdit* other = (changed == edtPass1 ? edtPass2 : edtPass1);
-            other->validator()->setMandatory(!changed->text().empty());
-        }
-    }
-}
-
 
 } // namespace my_app
