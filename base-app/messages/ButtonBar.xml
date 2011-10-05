@@ -7,6 +7,7 @@
         <div class="yui-u first">${btn-1}</div>
         <div class="yui-u">${btn-2}</div>
       </div>
+      <div class="yui-u">&nbsp;</div>
   </message>
   <message id="Discard Edits">Discard Edits</message>
   <message id="you-want-discard">Discard work just done on this page?</message>

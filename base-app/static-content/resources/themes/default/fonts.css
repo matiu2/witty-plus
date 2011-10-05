@@ -1,8 +1,6 @@
 body {
-  font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-  font-size: 108%; /* 14pt */
-  letter-spacing: -1px;
-  color: #444;
+  font-family: 'Spinnaker', sans-serif;
+  color: #0B0B0B;
 }
 
 .nice-box {

@@ -2,13 +2,15 @@
 <messages>
   <!-- Login Window Messages -->
   <message id="login-template">
-      <div class="yui-gd">
+      <div class="yui-gb">
           <div class="yui-u first">${username-label}</div>
           <div class="yui-u">${username-field}</div>
+          <div class="yui-u">&nbsp;</div>
       </div>
-      <div class="yui-gd">
+      <div class="yui-gb">
           <div class="yui-u first">${password-label}</div>
           <div class="yui-u">${password-field}</div>
+          <div class="yui-u">&nbsp;</div>
       </div>
       ${btn-bar}
   </message>

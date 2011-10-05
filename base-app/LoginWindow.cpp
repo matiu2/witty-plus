@@ -39,7 +39,7 @@ namespace my_app {
 
 LoginWindow::LoginWindow(WContainerWidget* parent) : MoreAwesomeTemplate(parent) {
     setTemplateText(tr("login-template"));
-    addStyleClass("yui-gd dialog form"); // 1/3 + 2/3 style
+    addStyleClass("form");
     // User Field
     bindAndCreateField(_usernameLabel, _usernameEdit, "username");
     _usernameEdit->setFocus();
