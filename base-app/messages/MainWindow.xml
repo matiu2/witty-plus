@@ -2,7 +2,29 @@
 <messages>
   <!-- Main Window Messages -->
   <message id="main-template">
-    <div id="doc2" class="yui-t6">
+      <div id="doc2" class="yui-t6">
+      <div id="hd" class="nice-box">
+        <h1>my_app</h1>
+        ${status-text}
+      </div>
+      <div id="bd">
+        <div id="yui-main">
+          <div class="yui-b">
+            ${content}
+          </div>
+        </div>
+        <div class="yui-b">
+          <div class="yui-g">${controls}</div>
+          <div class="yui-g">${nav}</div>
+        </div>
+      </div>
+    </div>
+    <div id="ft" role="contentinfo">
+      <p>Footer</p>
+    </div>
+  </message>
+  <message id="main-iphone-template">
+      <div id="doc3">
       <div id="hd" class="nice-box">
         <h1>my_app</h1>
         ${status-text}

@@ -95,6 +95,8 @@ public:
      **/
     bool goBack(bool dontLogout=true);
     void goBackOrHome() { if (!goBack()) go(urls::home); }
+    /// Returns true if client is running on an iphone TODO: Add more possibilities here
+    bool isIPhone() { return environment().userAgent().find("iPhone") != string::npos; }
 };
 
 WApplication *createApplication(const WEnvironment& env);

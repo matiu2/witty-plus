@@ -30,7 +30,11 @@ MainWindow::MainWindow(WContainerWidget* parent) :
     wittyPlus::MoreAwesomeTemplate(parent), _statusTextSet(time(NULL)), _loginLink(0),
     fade(WAnimation::SlideInFromRight|WAnimation::Fade, WAnimation::Ease, 500)
 {
-    setTemplateText(tr("main-template"));
+    // Different display depending on if we're iphone or something bigger
+    if (app()->isIPhone())
+        setTemplateText(tr("main-iphone-template"));
+    else
+        setTemplateText(tr("main-template"));
     // Set up the status text
     bindAndCreateWidget(_statusTextHolder, "status-text");
     _statusTextHolder->setStyleClass("status-text");
