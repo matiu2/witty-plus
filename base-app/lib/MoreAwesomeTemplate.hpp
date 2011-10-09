@@ -92,10 +92,11 @@ protected:
     * The template must be of the format:
     *
     * <message id="some-template">
-    *  <div class="yui-gd">
-    *      <div class="yui-u first">${name-label}</div>
-    *      <div class="yui-u">${name-field}</div>
-    *  </div>
+    *   <div class="field-row">
+    *     <span class="label">${name-label}</span>
+    *     <span class="widget">${name-field}</span>
+    *     <span class="help-text">&nbsp;${name-msg}</span>
+    *   </div>
     * </message>
     * <message id="name-label">Name</message> <!-- OR the line below -->
     * <message id="Name">Name</message>
@@ -133,11 +134,11 @@ protected:
     * The template must be of the format:
     *
     * <message id="some-template">
-    *  <div class="yui-gb">
-    *      <div class="yui-u first">${name-label}</div>
-    *      <div class="yui-u">${name-field}</div>
-    *      <div class="yui-u">${name-msg}</div>
-    *  </div>
+    *   <div class="field-row">
+    *     <span class="label">${name-label}</span>
+    *     <span class="widget">${name-field}</span>
+    *     <span class="help-text">&nbsp;${name-msg}</span>
+    *   </div>
     * </message>
     * <message id="name-label">Name</message> <!-- OR the line below -->
     * <message id="Name">Name</message>

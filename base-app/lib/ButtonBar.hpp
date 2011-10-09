@@ -46,7 +46,7 @@ public:
         WString btn1Text = button1Text.empty() ? WString::tr("OK") : button1Text;
         WString btn2Text = button2Text.empty() ? WString::tr("Cancel") : button2Text;
         setTemplateText(tr("button-bar"));
-        setStyleClass("yui-gb button-bar");
+        setStyleClass("button-bar");
         bindAndCreateWidget(_btn1, "btn-1", btn1Text);
         bindAndCreateWidget(_btn2, "btn-2", btn2Text);
     }

@@ -49,7 +49,6 @@ public:
         messageResourceBundle().use(appRoot() + "messages/LoginWindow");
         // Set up the UI
         setTitle(WString::tr("main-title"));
-        setBodyClass("yui-skin-sam");
         // Load our custom javascript handler
         LOAD_JAVASCRIPT(this, "js/customValidate.js", "validate", wtjs1);
     }
