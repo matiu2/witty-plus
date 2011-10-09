@@ -60,14 +60,14 @@ App::App(const WEnvironment& environment) :
     // Set up the general URL handling
     _url2ActionMapper = new URL2Action(this);
     // Set up the UI
-    useStyleSheet("http://fonts.googleapis.com/css?family=Spinnaker");
-    useStyleSheet(resourcesUrl() + "/themes/" + cssTheme() + "/fonts.css");
-    useStyleSheet(resourcesUrl() + "/themes/" + cssTheme() + "/forms.css");
-    useStyleSheet(resourcesUrl() + "/themes/" + cssTheme() + "/controlPanel.css");
+    if (isIPhone()) {
+        useStyleSheet(resourcesUrl() + "/themes/" + cssTheme() + "/mobile.css");
+    } else {
+        useStyleSheet(resourcesUrl() + "/themes/" + cssTheme() + "/desktop.css");
+    }
     setTitle(WString::tr("main-title"));
     _mainWindow = new MainWindow(root());
     _statusTextChanged->connect(_mainWindow, &MainWindow::setStatusText);
-    setBodyClass("yui-skin-sam");
     // Set up custom JS
     declareJavaScriptFunction("validate", WString::tr("js-validate").toUTF8());
     // Fire an internal path changed event off as user may have navigated straight here
