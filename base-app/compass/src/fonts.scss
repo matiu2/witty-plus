@@ -1,0 +1,29 @@
+@import "compass/css3/font-face";
+@import "compass/css3/text-shadow";
+
+@include font-face("changa-one", font-files("changa-one.ttf", truetype));
+/*@include font-face("ubuntu-mono", font-files("ubuntu-mono.ttf", truetype));*/
+@include font-face("chivo", font-files("chivo.ttf", truetype));
+
+h1 {
+    font-family: "changa-one", "Arial Black", sans-serif;
+    font-size: $h1-font-size;
+    margin-bottom: 0.5em;
+}
+
+#header h1 {
+    margin: 0;
+}
+
+p {
+    font-family: "chivo", "Arial", sans-serif;
+    text-align: justify;
+    text-justify: newspaper;
+    margin-bottom: 0.5em;
+}
+
+a {
+    font-family: "chivo", "Arial", sans-serif;
+    text-decoration: none;
+    @include text-shadow;
+}

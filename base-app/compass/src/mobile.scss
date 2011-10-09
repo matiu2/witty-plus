@@ -1,0 +1,38 @@
+/* Used for iphone and other mobile clients with small displays */
+
+$min-width: 420px;
+$max-width: 420px;
+$top: 5px;
+
+$header-height: 80px;
+$header-padding: 10px;
+
+$controls-top: $top;
+$controls-height: 40px;
+$controls-padding: 5px;
+
+$content-top: $top + $header-height + $header-padding;
+
+$side-bar-width: 140px;
+$side-bar-margin: 20px;
+$side-bar-padding: 10px;
+$side-bar-room: $side-bar-width + $side-bar-margin;
+
+$footer-height: 50px;
+
+.Wt-domRoot {
+    min-width: 760px;
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+}
+
+@import "shared-mobile-desktop";
+
+$h1-font-size: 60px;
+
+@import "fonts";
+
+#controls-box a {
+    font-size: 40px;
+}

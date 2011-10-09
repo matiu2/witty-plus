@@ -1,0 +1,38 @@
+/* Used for layout for desktop output */
+
+$min-width: 780px;
+$max-width: 1260px;
+$top: 10px;
+
+$header-height: 40px;
+$header-padding: 10px;
+
+$controls-top: $top;
+$controls-height: 40px;
+$controls-padding: 5px;
+
+$content-top: $top + $header-height + $header-padding;
+
+$side-bar-width: 140px;
+$side-bar-margin: 20px;
+$side-bar-padding: 10px;
+$side-bar-room: $side-bar-width + $side-bar-margin;
+
+$footer-height: 50px;
+
+.Wt-domRoot {
+    min-width: 760px;
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+}
+
+@import "shared-mobile-desktop";
+
+$h1-font-size: 40px;
+
+@import "fonts";
+
+#controls-box a {
+    font-size: 20px;
+}

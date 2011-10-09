@@ -1,0 +1,49 @@
+/* Things shared between mobile and desktop */
+@import "compass/layout/stretching";
+@import "compass/css3/box-shadow";
+@import "compass/css3/border-radius";
+
+#header {
+    @include stretch-x;
+    @include box-shadow;
+    @include border-radius;
+    height: $header-height;
+    padding: $header-padding;
+}
+
+#controls-box {
+    position: absolute;
+    right: 0px;
+    height: $controls-height;
+    ul {
+        margin: 0px;
+        padding: 0px;
+    }
+    li {
+        display: block;
+        list-style: none;
+        padding: $controls-height / 2;
+        text-align: center;
+        float: left;
+    }
+}
+
+#main-container  {
+    @include stretch($content-top, $side-bar-room, $footer-height, $side-bar-margin);
+    padding-top: 10px;
+}
+
+#navigation-box {
+    position: absolute;
+    right: 0px;
+    top: $content-top + 1px;
+    min-height: 160px;
+    width: $side-bar-width;
+    padding: $side-bar-padding;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0px;
+    height: $footer-height;
+}
