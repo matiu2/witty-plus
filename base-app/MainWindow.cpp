@@ -27,14 +27,11 @@
 namespace my_app {
 
 MainWindow::MainWindow(WContainerWidget* parent) :
-    wittyPlus::MoreAwesomeTemplate(parent), _statusTextSet(time(NULL)), _loginLink(0),
+    wittyPlus::MoreAwesomeTemplate(parent), _statusTextSet(time(NULL)), _loginMenu(0),
     fade(WAnimation::SlideInFromRight|WAnimation::Fade, WAnimation::Ease, 500)
 {
     // Different display depending on if we're iphone or something bigger
-    if (app()->isIPhone())
-        setTemplateText(tr("main-iphone-template"));
-    else
-        setTemplateText(tr("main-template"));
+    setTemplateText(tr("main-template"));
     // Set up the status text
     bindAndCreateWidget(_statusTextHolder, "status-text");
     _statusTextHolder->setStyleClass("status-text");
@@ -46,19 +43,25 @@ MainWindow::MainWindow(WContainerWidget* parent) :
     // Set up any widets you have like the navigation tree
     bindString("nav", "Bind Nav box widget here");
     if (app()->userSession()->isLoggedIn()) {
-        if (_loginLink != 0) {
-            delete _loginLink;
-            _loginLink = 0;
-        }
+        _loginMenu = 0; // Needs to be zeroed so we can know whether to hide it or not later
         bindAndCreateWidget(_controlPanel, "controls");
     } else {
-        _loginLink = new InternalLink(urls::login, tr("Login"));
-        bindWidget("controls", _loginLink);
+        makeLoginMenu();
     }
+    // Put your content in the middle
+    bindString("content", tr("sample-content"));
     // Look out for people logging in and out
     app()->userChanged()->connect(this, &MainWindow::handleUserChanged);
     // Don't show 'login' when on the 'login page'
     app()->internalPathChanged().connect(this, &MainWindow::onInternalPathChanged); 
+}
+
+void MainWindow::makeLoginMenu() {
+    _loginMenu = new WMenu(Wt::Horizontal);
+    _loginMenu->itemSelected().connect(this, &MainWindow::menuClicked);
+    bindWidget("controls", _loginMenu);
+    _loginMenu->setRenderAsList(true);
+    addMenuLink(_loginMenu, tr("Login"), urls::login);
 }
 
 void MainWindow::handleUserChanged(dbo::ptr<User>, dbo::ptr<User> newUser) {
@@ -66,16 +69,13 @@ void MainWindow::handleUserChanged(dbo::ptr<User>, dbo::ptr<User> newUser) {
     if (newUser) {
         // We'll be using the admin control panel, instead of a login link
         bindAndCreateWidget(_controlPanel, "controls");
-        _loginLink = 0; // Needs to be zeroed so we can know whether to hide it or not later
+        _loginMenu = 0; // Needs to be zeroed so we can know whether to hide it or not later
         // Say hello
         app()->setStatusText(tr("welcome-1").arg(newUser->name()));
     } else {
         // Someone's logging out
         app()->setStatusText(tr("goodbye"));
-        _loginLink = new InternalLink(urls::login, tr("Login"));
-        bindWidget("controls", _loginLink);
-        _loginLink->setRefInternalPath(urls::login);
-        _loginLink->setText(tr("Login"));
+        makeLoginMenu();
     }
 }
     
@@ -84,11 +84,11 @@ void MainWindow::handleUserChanged(dbo::ptr<User>, dbo::ptr<User> newUser) {
 */
 void MainWindow::onInternalPathChanged(const string &url) {
     // See if we need to render the login link or not
-    if (_loginLink != 0) {
+    if (_loginMenu != 0) {
         if (url == urls::login)
-            _loginLink->hide();
+            _loginMenu->hide();
         else
-            _loginLink->show();
+            _loginMenu->show();
     }
     // Also check if status text needs to fade out
     app()->log("DEBUG") << "Time since last status text update: " << difftime(time(NULL), _statusTextSet);
@@ -113,3 +113,4 @@ void MainWindow::setStatusText(const WString& newMessage) {
 }
 
 } // namespace my_app
+

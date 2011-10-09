@@ -24,6 +24,8 @@
 #include "App.hpp"
 #include <Wt/WText>
 #include <Wt/WAnimation>
+#include <Wt/WMenu>
+#include <Wt/WMenuItem>
 #include <ctime>
 
 namespace Wt {
@@ -31,6 +33,7 @@ namespace Wt {
     class WString;
     class WWidget;
     class WStackedWidget;
+    class WMenu;
 }
 
 namespace wittyPlus {
@@ -44,6 +47,7 @@ using Wt::WWidget;
 using Wt::WText;
 using Wt::WAnimation;
 using Wt::WStackedWidget;
+using Wt::WMenu;
 using wittyPlus::InternalLink;
 using my_app::model::User;
 
@@ -58,10 +62,17 @@ protected:
     WText* _statusText;
     WText* _oldStatusText;
     time_t _statusTextSet; // When it was set
-    InternalLink* _loginLink;
+    WMenu* _loginMenu;
     AdminIndex* _controlPanel; // Lets logged in users do stuff
     // Helpers
     WAnimation fade;
+    void makeLoginMenu();
+    void addMenuLink(WMenu* menu, const WString& text, const std::string& url) {
+        menu->addItem(new WMenuItem(text, 0))->setPathComponent(url);
+    }
+    void menuClicked(WMenuItem* item) {
+        app()->setInternalPath(item->pathComponent(), true);
+    }
     // Signal handlers
     void handleUserChanged(dbo::ptr<User> oldUser,  dbo::ptr<User> newUser);
     void onInternalPathChanged(const string& url);
