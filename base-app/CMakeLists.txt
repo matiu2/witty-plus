@@ -61,6 +61,7 @@ set(mainFiles urls.cpp UserEdit.cpp lib/MemorySessionStore.cpp  lib/BaseSessionH
 
 add_subdirectory(lib)
 add_subdirectory(tests)
+add_subdirectory(compass)
 CONFIGURE_FILE(memcheck-test.sh memcheck-test.sh)
 CONFIGURE_FILE(test.sh test.sh)
 
