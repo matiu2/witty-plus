@@ -21,6 +21,8 @@
 
 #include <Wt/WEvent>
 #include <Wt/WApplication>
+#include <Wt/WMenu>
+#include <Wt/WMenuItem>
 #include "../lib/InternalLink.hpp"
 #include "../lib/ButtonBar.hpp"
 #include <Wt/WLink>
@@ -49,6 +51,14 @@ void click<wittyPlus::InternalLink>(wittyPlus::InternalLink* il) {
     if (link.type_ == WLink::InternalPath) {
         WApplication::instance()->setInternalPath(link.internalPath().toUTF8(), true);
     }
+}
+
+template<>
+void click<Wt::WMenu>(Wt::WMenu* menu) {
+    // Just Click the first item in the menu
+    vector< Wt::WMenuItem* >::const_iterator first = menu->items().begin();
+    if (first != menu->items().end())
+        (*first)->select();
 }
 
 template<typename Widget>

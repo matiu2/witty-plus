@@ -40,7 +40,7 @@ BOOST_AUTO_TEST_CASE( login_escape ) {
     h::keyPress(login->_passwordEdit, 27); // Hit Escape
     // Make sure we didn't log in
     BOOST_CHECK_EQUAL( app.internalPath(), "/" );
-    BOOST_CHECK_MESSAGE( main->_loginLink, "The login ling should still be there" );
+    BOOST_CHECK_MESSAGE( main->_loginMenu, "The login ling should still be there" );
 }
 
 BOOST_AUTO_TEST_CASE( login_enter ) {
