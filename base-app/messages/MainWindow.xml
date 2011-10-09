@@ -2,49 +2,40 @@
 <messages>
   <!-- Main Window Messages -->
   <message id="main-template">
-      <div id="doc2" class="yui-t6">
-      <div id="hd" class="nice-box">
-        <h1>my_app</h1>
-        ${status-text}
-      </div>
-      <div id="bd">
-        <div id="yui-main">
-          <div class="yui-b">
-            ${content}
-          </div>
-        </div>
-        <div class="yui-b">
-          <div class="yui-g">${controls}</div>
-          <div class="yui-g">${nav}</div>
-        </div>
-      </div>
+    <div id="header">
+      <h1>Welcome to Vida Nueva</h1>
+      <span id="status-text">${status-text}</span>
     </div>
-    <div id="ft" role="contentinfo">
-      <p>Footer</p>
+    <div id="main-container">
+      ${content}
+    </div>
+    <div id="controls-box">${controls}</div>
+    <div id="navigation-box">${nav}</div>
+    <div id="footer">
+        <div>This is just a sample footer, but you can put whatever you want here. Perhaps an address or copyright information</div>
     </div>
   </message>
-  <message id="main-iphone-template">
-      <div id="doc3">
-      <div id="hd" class="nice-box">
-        <h1>my_app</h1>
-        ${status-text}
-      </div>
-      <div id="bd">
-        <div id="yui-main">
-          <div class="yui-b">
-            ${content}
-          </div>
-        </div>
-        <div class="yui-b">
-          <div class="yui-g">${controls}</div>
-          <div class="yui-g">${nav}</div>
-        </div>
-      </div>
-    </div>
-    <div id="ft" role="contentinfo">
-      <p>Footer</p>
-    </div>
-  </message>
+  <message id="sample-content">
+      <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec est dui. Suspendisse velit sapien, aliquam sed molestie lobortis, bibendum non lacus. Nunc egestas tellus vitae mauris imperdiet sit amet interdum lectus pulvinar. Donec tempus tempor ligula quis sollicitudin. Maecenas a ultrices ligula. Aliquam enim erat, pellentesque quis laoreet sit amet, sollicitudin in sapien. Donec sit amet libero magna, interdum fringilla erat. Nam eu dolor eros. Donec blandit feugiat auctor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut feugiat dui at arcu gravida vitae egestas enim molestie. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In eget mauris ipsum. Ut ut sapien enim. Vestibulum sit amet eros turpis, vitae malesuada tellus. Aliquam velit mi, congue eu feugiat in, pellentesque sit amet libero.
+      </p>
+
+      <p>
+          Nulla quis felis enim, nec vestibulum sem. Donec purus lacus, varius id euismod sed, fermentum vel orci. Vestibulum ut sem at felis elementum tempor ac et ipsum. Vivamus purus libero, accumsan vitae sodales in, sollicitudin et ligula. Aliquam aliquam mi non nulla accumsan eu scelerisque purus vehicula. Ut est nisl, faucibus eu accumsan a, sagittis ut odio. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent viverra porttitor diam. Phasellus egestas fermentum magna, sit amet molestie metus volutpat nec.
+      </p>
+
+      <p>
+          Etiam vestibulum urna non ante suscipit nec interdum nisi rhoncus. Duis mollis lorem ut neque placerat sed egestas odio volutpat. Nulla facilisi. Curabitur mollis tempus nunc nec adipiscing. Mauris ac est ullamcorper est scelerisque posuere quis et tellus. Proin non orci vel urna egestas dictum in nec lectus. Ut rhoncus mi ac massa feugiat sed posuere mauris ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vestibulum congue, urna a consectetur tempor, purus arcu porta nibh, vel scelerisque quam lacus ac libero.
+      </p>
+
+      <p>
+          Aenean cursus lacinia nisl, vitae vehicula lectus aliquet eu. Mauris id justo tincidunt nibh porttitor auctor ac et ante. Fusce non ante eros, in fringilla ante. Sed scelerisque placerat orci, et laoreet tellus viverra at. Duis rhoncus vehicula risus. Sed vitae ipsum diam. Nullam volutpat tristique libero quis pulvinar.
+      </p>
+
+      <p>
+          Quisque id metus lorem, ut ornare leo. Ut non metus id nunc euismod facilisis. Praesent id sapien nisi. Integer et facilisis elit. Aliquam erat volutpat. Vivamus mauris justo, ultricies molestie placerat non, venenatis ac dolor. Aenean dolor sapien, iaculis ac porttitor vitae, venenatis ac lectus.
+      </p>
+          </message>
   <message id="main-title">Welcome to my_app</message>
   <message id="you-are-logged-out">You are logged out</message>
   <message id="you-are-logged-in">You are logged in</message>

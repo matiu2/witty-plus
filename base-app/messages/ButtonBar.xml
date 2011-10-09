@@ -2,12 +2,8 @@
 <messages>
   <!-- Login Window Messages -->
   <message id="button-bar">
-      <div class="yui-u first">&nbsp;</div>
-      <div class="yui-u yui-g">
-        <div class="yui-u first">${btn-1}</div>
-        <div class="yui-u">${btn-2}</div>
-      </div>
-      <div class="yui-u">&nbsp;</div>
+    ${btn-1}
+    ${btn-2}
   </message>
   <message id="Discard Edits">Discard Edits</message>
   <message id="you-want-discard">Discard work just done on this page?</message>
