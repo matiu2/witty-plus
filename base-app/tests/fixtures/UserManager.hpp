@@ -50,7 +50,7 @@ struct UserManagerFixture : public LoginFixture {
         AdminIndex* cp = main->resolve<AdminIndex*>("controls");
         BOOST_REQUIRE_MESSAGE( cp, "Looks like the control panel didn't appear" );
         // Click the users link
-        wittyPlus::InternalLink* usersLink = cp->resolve<wittyPlus::InternalLink*>("link-users");
+        wittyPlus::InternalLink* usersLink = h::findSimpleMenuItem(cp, urls::admin_users);
         BOOST_REQUIRE_MESSAGE( usersLink, "Looks like the users link didn't appear" );
         h::click(usersLink);
         // Sign up to catch dialogs

@@ -102,7 +102,7 @@ BOOST_AUTO_TEST_CASE( login_logout ) {
     // Click the logout link
     AdminIndex* cp = main->resolve<AdminIndex*>("controls");
     BOOST_REQUIRE( cp );
-    wittyPlus::InternalLink* logout = cp->resolve<wittyPlus::InternalLink*>("link-logout");
+    wittyPlus::InternalLink* logout = h::findSimpleMenuItem(cp, urls::logout);
     BOOST_REQUIRE( logout );
     h::click(logout);
     // Check it worked

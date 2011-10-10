@@ -21,6 +21,7 @@
 
 #include "App.hpp"
 #include "../helpers.hpp"
+#include "../../urls.hpp"
 #include "../../LoginWindow.hpp"
 #include "../../MainWindow.hpp"
 #include "../../AdminIndex.hpp"
@@ -74,7 +75,7 @@ struct LoginFixture : public AppFixture {
         AdminIndex* cp = main->resolve<AdminIndex*>("controls");
         BOOST_CHECK_MESSAGE( cp, "Looks like the control panel didn't appear" );
         // Make sure the logout link is there
-        BOOST_CHECK_MESSAGE( cp->resolve<wittyPlus::InternalLink*>("link-logout"),
+        BOOST_CHECK_MESSAGE( h::findSimpleMenuItem(cp, urls::logout),
                              "Looks like the logout link didn't appear" );
     }
     /// Makes sure we're *not* logged in

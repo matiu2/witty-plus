@@ -25,6 +25,7 @@
 #include <Wt/WMenuItem>
 #include "../lib/InternalLink.hpp"
 #include "../lib/ButtonBar.hpp"
+#include "../lib/SimpleMenu.hpp"
 #include <Wt/WLink>
 #include <Wt/WString>
 #include <string>
@@ -96,6 +97,17 @@ void click(wittyPlus::ButtonBar* btns, const std::string label) {
 
 void clickOk(wittyPlus::ButtonBar* btns) { click(btns, "OK"); }
 void clickCancel(wittyPlus::ButtonBar* btns) { click(btns, "Cancel"); }
+
+wittyPlus::InternalLink* findSimpleMenuItem(wittyPlus::SimpleMenu* menu, const string& url) {
+    wittyPlus::InternalLink* result = 0;
+    for (int i=0; i<menu->_impl->count(); ++i) {
+        result = dynamic_cast<wittyPlus::InternalLink*>(menu->_impl->widget(i));
+        if (result != 0)
+            if (result->link().internalPath() == url)
+                return result;
+    }
+    return 0;
+}
 
 } // namespace helpers
 } // namespace unittests

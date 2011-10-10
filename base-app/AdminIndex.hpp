@@ -19,21 +19,20 @@
 #ifndef ADMIN_INDEX_HPP
 #define ADMIN_INDEX_HPP
 
-#include "lib/MoreAwesomeTemplate.hpp"
 #include "urls.hpp"
 #include "lib/InternalLink.hpp"
+#include "lib/SimpleMenu.hpp"
 
-using wittyPlus::MoreAwesomeTemplate;
+using wittyPlus::SimpleMenu;
 using wittyPlus::InternalLink;
 
 namespace my_app {
 
-class AdminIndex : public MoreAwesomeTemplate {
+class AdminIndex : public SimpleMenu {
 public:
-    AdminIndex (WContainerWidget* parent=0) : MoreAwesomeTemplate(parent) {
-        setTemplateText(tr("admin-index-template"));
-        bindWidget("link-users", new InternalLink(urls::admin_users, tr("Users")));
-        bindWidget("link-logout", new InternalLink(urls::logout, tr("Logout")));
+    AdminIndex (WContainerWidget* parent=0) : SimpleMenu(parent) {
+        addLink(tr("Users"), urls::admin_users);
+        addLink(tr("Logout"), urls::logout);
     }
 };
 
