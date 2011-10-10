@@ -7,9 +7,9 @@ $top: 10px;
 $header-height: 40px;
 $header-padding: 10px;
 
-$controls-top: $top;
 $controls-height: 40px;
 $controls-padding: 5px;
+$controls-font-size: 20px;
 
 $content-top: $top + $header-height + $header-padding;
 
@@ -27,12 +27,94 @@ $footer-height: 50px;
     position: relative;
 }
 
+@import "colors";
 @import "shared-mobile-desktop";
+
+#controls-box {
+    position: absolute;
+    right: 0px;
+}
+
+#navigation-box {
+    position: absolute;
+    right: 0px;
+    top: $content-top + 1px;
+    min-height: 160px;
+    width: $side-bar-width;
+    padding: $side-bar-padding;
+}
 
 $h1-font-size: 40px;
 
 @import "fonts";
 
 #controls-box a {
-    font-size: 20px;
+    font-size: $controls-font-size;
 }
+
+/*******************************/
+/* Set up the mixins for forms */
+/*******************************/
+
+/* Override some of the forms stuff, just for desktop */
+
+$field-left-margin: 10px;
+$field-height: $controls-font-size + 2px;
+$label-width: 200px;
+
+.form {
+    width: 640px;
+    span {
+        display: block;
+    }
+}
+
+.field-row {
+    height: $field-height;
+    margin-top: 5px;
+    padding: 5px 0px 5px 0px;
+}
+
+@mixin button-row {
+    $button-width: 80px;
+    margin-top: $field-height / 2;
+    button:first-child {
+        margin-left: $label-width + $field-left-margin;
+    }
+    button {
+        width: $button-width;
+        font-size: $controls-font-size;
+        height: $controls-font-size + 10px;
+    }
+}
+
+.button-bar {
+    @include button-row;
+}
+
+.button-row {
+    @include button-row;
+}
+
+@mixin default-field-layout {
+    padding: 3px;
+    width: 320px;
+    margin-left: $field-left-margin;
+    vertical-align: top;
+    height: $field-height;
+    line-height: $field-height;
+    font-size: $controls-font-size;
+}
+
+@mixin form-label-layout {
+    text-align: right;
+    font-size: $controls-font-size;
+    width: $label-width;
+    display: block;
+    vertical-align: bottom;
+    float: left;
+    height: $field-height;
+    line-height: $field-height;
+}
+
+@import "forms";

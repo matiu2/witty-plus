@@ -1,1 +1,39 @@
-@import "compass/layout/stretching"
+
+@mixin form-field {
+    @include border-radius;
+    @include default-field-layout;
+    border: 1px inset $field-border-color;
+    font-family: "chivo", "Arial", sans-serif;
+    color: $field-text-color;
+}
+
+@mixin form-label {
+    @include form-label-layout;
+    font-family: "chivo", "Arial", sans-serif;
+    color: $label-color;
+}
+
+.field-row {
+    label {
+        @include form-label;
+    }
+    input {
+        @include form-field;
+    }
+    textarea {
+        @include form-field;
+    }
+    select {
+        @include form-field;
+        margin-left: $label-width;
+    }
+}
+
+button {
+    font-family: "chivo", "Arial", sans-serif;
+    background-color: $button-background-color;
+    border: 1px outset $button-border-color;
+    color: $button-text-color;
+    height: $field-height;
+    padding: 2px;
+}

@@ -12,8 +12,6 @@
 }
 
 #controls-box {
-    position: absolute;
-    right: 0px;
     height: $controls-height;
     ul {
         margin: 0px;
@@ -23,23 +21,13 @@
         display: block;
         list-style: none;
         padding: $controls-height / 2;
-        text-align: center;
-        float: left;
+        text-align: center; float: left;
     }
 }
 
 #main-container  {
     @include stretch($content-top, $side-bar-room, $footer-height, $side-bar-margin);
     padding-top: 10px;
-}
-
-#navigation-box {
-    position: absolute;
-    right: 0px;
-    top: $content-top + 1px;
-    min-height: 160px;
-    width: $side-bar-width;
-    padding: $side-bar-padding;
 }
 
 #footer {

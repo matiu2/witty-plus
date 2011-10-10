@@ -2,7 +2,6 @@
 <messages>
   <!-- Main Window Messages -->
   <message id="admin-index-template">
-      <div class="strong">Admin menu</div>
       <ul>
           <li>${link-users}</li>
           <li>${link-logout}</li>
