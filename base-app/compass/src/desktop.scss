@@ -30,6 +30,10 @@ $footer-height: 50px;
 @import "colors";
 @import "shared-mobile-desktop";
 
+#main-container  {
+    @include stretch($content-top, $side-bar-room, $footer-height, $side-bar-margin);
+}
+
 #controls-box {
     position: absolute;
     right: 0px;

@@ -25,7 +25,6 @@
     }
     select {
         @include form-field;
-        margin-left: $label-width;
     }
 }
 

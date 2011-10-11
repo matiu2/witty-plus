@@ -4,7 +4,7 @@
 @import "compass/css3/border-radius";
 
 #header {
-    @include stretch-x;
+    width: 100%;
     @include box-shadow;
     @include border-radius;
     height: $header-height;
@@ -12,7 +12,7 @@
 }
 
 #controls-box {
-    height: $controls-height;
+    min-height: $controls-height;
     ul {
         margin: 0px;
         padding: 0px;
@@ -26,12 +26,9 @@
 }
 
 #main-container  {
-    @include stretch($content-top, $side-bar-room, $footer-height, $side-bar-margin);
     padding-top: 10px;
 }
 
 #footer {
-    position: absolute;
-    bottom: 0px;
     height: $footer-height;
 }

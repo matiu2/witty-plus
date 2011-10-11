@@ -7,7 +7,6 @@ $top: 5px;
 $header-height: 80px;
 $header-padding: 10px;
 
-$controls-top: $top;
 $controls-height: 40px;
 $controls-padding: 5px;
 $controls-font-size: $header-height - ($header-height / 10);
@@ -21,6 +20,8 @@ $side-bar-room: $side-bar-width + $side-bar-margin;
 
 $footer-height: 50px;
 
+p { font-size: 40px; }
+
 .Wt-domRoot {
     min-width: 760px;
     max-width: 1280px;
@@ -31,11 +32,15 @@ $footer-height: 50px;
 @import "colors";
 @import "shared-mobile-desktop";
 
+#controls-box {
+    width: 100%;
+    clear: both;
+}
+
 #navigation-box {
-    @include stretch-x;
-    display: block;
+    width: 100%;
+    clear: both;
     min-height: 160px;
-    padding: $side-bar-padding;
 }
 
 $h1-font-size: 60px;
@@ -69,20 +74,27 @@ $field-height: 80px;
     }
 }
 
-.button-bar {
+@mixin button-row {
     $button-width: 80px;
+    width: 100%;
     margin-top: $field-height / 2;
-    white-space: nowrap;
     button {
-        width: 410px;
-        height: $controls-font-size + 20px;
+        width: 308px;
+        min-height: $controls-font-size + 20px;
         font-size: $controls-font-size;
         margin-left: 10px;
     }
     button:first-child {
         margin-left: 0px;
     }
+}
 
+.button-bar {
+    @include button-row;
+}
+
+.button-row {
+    @include button-row;
 }
 
 @mixin default-field-layout {
