@@ -55,7 +55,7 @@ public:
         _urls[urls::admin_users].connect(this, &URL2Action::admin_users);
     }
     // URL Handlers
-    void home() { app->mainWindow()->bindString("content", "PUT YOUR DEFAULT BODY TEXT OR WIDDGETS HERE"); }
+    void home() { app->mainWindow()->bindString("content", WString::tr("sample-content")); }
     /// Actually logs you out
     void logout() {
         dbo::ptr<User> oldUser = app->userSession()->user();

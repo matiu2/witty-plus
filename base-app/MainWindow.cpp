@@ -27,15 +27,13 @@
 namespace my_app {
 
 MainWindow::MainWindow(WContainerWidget* parent) :
-    wittyPlus::MoreAwesomeTemplate(parent), _statusTextSet(time(NULL)), _loginMenu(0),
-    fade(WAnimation::SlideInFromRight|WAnimation::Fade, WAnimation::Ease, 500)
+    wittyPlus::MoreAwesomeTemplate(parent), _statusTextSet(time(NULL)), _loginMenu(0)
 {
     // Different display depending on if we're iphone or something bigger
     setTemplateText(tr("main-template"));
     // Set up the status text
     bindAndCreateWidget(_statusTextHolder, "status-text");
     _statusTextHolder->setStyleClass("status-text");
-    _statusTextHolder->setTransitionAnimation(fade, true);
     _statusTextHolder->addWidget(_statusText = new WText());
     _statusTextHolder->addWidget(_oldStatusText = new WText());
     _statusText->setInline(false);

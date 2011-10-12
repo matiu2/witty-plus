@@ -65,7 +65,6 @@ protected:
     WMenu* _loginMenu;
     AdminIndex* _controlPanel; // Lets logged in users do stuff
     // Helpers
-    WAnimation fade;
     void makeLoginMenu();
     void addMenuLink(WMenu* menu, const WString& text, const std::string& url) {
         menu->addItem(new WMenuItem(text, 0))->setPathComponent(url);

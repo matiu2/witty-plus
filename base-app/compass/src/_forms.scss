@@ -36,3 +36,14 @@ button {
     height: $field-height;
     padding: 2px;
 }
+
+select {
+  background-color: white;
+  border: solid 1px black;
+  overflow: auto;
+  height: auto;
+}
+
+.help-text {
+  overflow: visible;
+}

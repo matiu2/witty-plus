@@ -27,3 +27,14 @@ a {
     text-decoration: none;
     @include text-shadow;
 }
+
+.help-text {
+    font-size: $controls-font-size;
+    font-family: "chivo", "Arial", sans-serif;
+}
+
+.status-text div {
+    font-size: $controls-font-size;
+    font-family: "chivo", "Arial", sans-serif;
+}
+

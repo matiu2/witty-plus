@@ -4,7 +4,7 @@ $min-width: 780px;
 $max-width: 1260px;
 $top: 10px;
 
-$header-height: 40px;
+$header-height: 60px;
 $header-padding: 10px;
 
 $controls-height: 40px;
@@ -29,14 +29,29 @@ $footer-height: 50px;
 
 @import "colors";
 @import "shared-mobile-desktop";
+@import "compass/css3/border-radius";
+@import "compass/css3/columns";
+@import "compass/css3/images"; $experimental-support-for-svg: true;
+
+.status-text {
+    display: block;
+    min-height: 20px;
+    border: solid 1px #eeeeee;
+    @include border-radius;
+    overflow: hidden;
+}
 
 #main-container  {
-    @include stretch($content-top, $side-bar-room, $footer-height, $side-bar-margin);
+    margin-right: $side-bar-room;
 }
 
 #controls-box {
     position: absolute;
     right: 0px;
+    top: 0px;
+    ul {
+        padding: 16px;
+    }
 }
 
 #navigation-box {
@@ -48,12 +63,17 @@ $footer-height: 50px;
     padding: $side-bar-padding;
 }
 
+#footer {
+    margin-top: 20px;
+}
+
 $h1-font-size: 40px;
 
 @import "fonts";
 
 #controls-box a {
     font-size: $controls-font-size;
+    margin: 20px;
 }
 
 /*******************************/
@@ -65,12 +85,10 @@ $h1-font-size: 40px;
 $field-left-margin: 10px;
 $field-height: $controls-font-size + 2px;
 $label-width: 200px;
+$button-width: 80px;
 
 .form {
-    width: 640px;
-    span {
-        display: block;
-    }
+    width: 100%;
 }
 
 .field-row {
@@ -80,7 +98,6 @@ $label-width: 200px;
 }
 
 @mixin button-row {
-    $button-width: 80px;
     margin-top: $field-height / 2;
     button:first-child {
         margin-left: $label-width + $field-left-margin;
@@ -122,3 +139,9 @@ $label-width: 200px;
 }
 
 @import "forms";
+
+.form select:first-child {
+    margin-left: $label-width + $field-left-margin;
+    width: ($button-width * 3) + (7 * 3) - 5; /* 7 is the 2px margin + 5px padding that wt.css gives buttons */
+}
+
