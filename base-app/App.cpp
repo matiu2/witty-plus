@@ -105,6 +105,9 @@ Wt::Dbo::ptr<User> App::user() { return userSession()->user(); }
 void App::logout() { userSession()->logout(); }
 // IUser Implementation end //
 
+// INavigation Implementation start //
+
+void App::go(const string& newUrl) { setInternalPath(newUrl, true); }
 
 bool App::goBack(bool dontLogout) {
     if (urlHistory.size() >= 2) {
@@ -122,6 +125,10 @@ bool App::goBack(bool dontLogout) {
       return false;
     }
 }
+
+void App::goBackOrHome() { if (!goBack()) go(urls::home); }
+
+// INavigation Implementation end //
 
 WApplication *createApplication(const WEnvironment& env) { return new App(env); }
 

@@ -30,6 +30,7 @@
 #include "App.hpp"
 #include "IGui.hpp"
 #include "IUsers.hpp"
+#include "INavigation.hpp"
 #include "model/User.hpp"
 
 using Wt::WString;
@@ -69,6 +70,7 @@ void LoginWindow::handleOKHit() {
     App* app = wittyPlus::app(); /// Remove .. should be cool with all the IUsers, IApp, etc.
     IUsers* users = IUsers::instance();
     IGui*  gui = IGui::instance();
+    INavigation* nav = INavigation::instance();
     // See if we can log them in
     string username = _usernameEdit->text().toUTF8();
     string password = _passwordEdit->text().toUTF8();
@@ -85,13 +87,13 @@ void LoginWindow::handleOKHit() {
     if (oldUser != newUser)
         users->userChanged()->emit(oldUser, newUser);
     // Go back to what we were doing (but now with different set of powerz)
-    if (!app->goBack())
-        app->go(urls::home);
+    if (!nav->goBack())
+        nav->go(urls::home);
 }
 
 void LoginWindow::handleCancelHit() {
     IGui::instance()->setStatusText(tr("Login Cancelled"));
-    app()->goBack();
+    INavigation::instance()->goBack();
 }
 
 } // namespace my_app

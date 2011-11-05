@@ -30,6 +30,7 @@
 #include "lib/BaseApp.hpp"
 #include "urls.hpp"
 #include "IUsers.hpp"
+#include "INavigation.hpp"
 
 namespace Wt {
     class WEvent;
@@ -53,7 +54,7 @@ const string my_appCookieName = "my_app_cookie";
 
 typedef base::BaseApp<model::User> BaseApp;
 
-class App : public BaseApp {
+class App : public BaseApp, public IUsers, public INavigation {
 public:
     typedef Signal<> URLChangedSignal;
     typedef Signal<WString> MessageSignal;
@@ -89,20 +90,21 @@ public:
     MainWindow* mainWindow() { return _mainWindow; }
     void setStatusText(const WString& newStatusText) { statusTextChanged()->emit(newStatusText); } // TODO: remove .. so IGUI can handle it
 
-    // IUser Implementation
+    // IUsers Implementation
     virtual bool tryLogin(const string& username, const string& password);
     virtual UserChangedSignal* userChanged(); /// An event triggered when a user logs in or logs out
     virtual Wt::Dbo::ptr<model::User> user(); /// Returns a dbo::ptr to the currently logged in user
     virtual void logout(); /// Logs out the current user
-
-    /// Use to send the user somewhere inside the app
-    void go(const string& newUrl) { setInternalPath(newUrl, true); }
+    
+    // INavigation Implementation
+    virtual void go(const string& newUrl); /// Use to send the user somewhere inside the app
     /** Go back one in the history but only if it keeps you inside the app.
      * @param dontLogout don't go if 'back' would take us to /logout
      * @return true if we navigated
      **/
-    bool goBack(bool dontLogout=true);
-    void goBackOrHome() { if (!goBack()) go(urls::home); }
+    virtual bool goBack(bool dontLogout=true);
+    virtual void goBackOrHome(); /// Go Back, but if we don't have history .. go home
+
     /// For extension developers to register their extensions
     ExtensionManager* extensionManager() { return _extensionManager; }
     /// Returns true if client is running on an iphone TODO: Add more possibilities here
