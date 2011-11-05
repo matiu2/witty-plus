@@ -30,6 +30,8 @@
 #include "lib/BaseApp.hpp"
 #include "urls.hpp"
 
+#include "IGui.hpp"
+
 namespace Wt {
     class WEvent;
 }
@@ -52,7 +54,7 @@ const string my_appCookieName = "my_app_cookie";
 
 typedef base::BaseApp<model::User> BaseApp;
 
-class App : public BaseApp {
+class App : public BaseApp, public IGui {
 public:
     typedef Signal<dbo::ptr<model::User>, dbo::ptr<model::User> > UserChangedSignal;
     typedef Signal<> URLChangedSignal;
@@ -87,8 +89,12 @@ public:
     UserChangedSignal* userChanged() { return _userChanged; } /// An event triggered when a user logs in or logs out
     MessageSignal* statusTextChanged() { return _statusTextChanged; } /// An event triggered when the status text (shown on the front page) changes
     /// Shows a status message for a period of time
-    void setStatusText(const WString& newStatusText) { statusTextChanged()->emit(newStatusText); }
     MainWindow* mainWindow() { return _mainWindow; }
+    // IGui implementation
+    virtual void setStatusText(const WString& newStatusText) { statusTextChanged()->emit(newStatusText); }
+    virtual void setBody(const Wt::WString& newBody) { mainWindow()->setBody(newBody); }
+    virtual void setBody(const Wt::WWidget* newWidget) { mainWindow()->setBody(newWidget); }
+
     /// Use to send the user somewhere inside the app
     void go(const string& newUrl) { setInternalPath(newUrl, true); }
     /** Go back one in the history but only if it keeps you inside the app.

@@ -21,6 +21,7 @@
 
 #include "urls.hpp"
 #include "App.hpp"
+#include "IGui.hpp"
 #include "UserManager.hpp"
 #include "LoginWindow.hpp"
 #include "lib/URLs.hpp"
@@ -38,12 +39,12 @@ protected:
     App* app;
     // Utility methods
     bool isLoggedIn() { return app->userSession()->user(); }
-    template<class Widget> void setBody() { app->mainWindow()->setBody(new Widget()); }
+    template<class Widget> void setBody() { IGui::instance()->setBody(new Widget()); }
     template<class Widget> void setBodyIfLoggedIn() {
         if (isLoggedIn()) {
             setBody<Widget>();
         } else {
-            app->mainWindow()->setBody(WString::tr("access-denied"));
+            IGui::instance()->setBody(WString::tr("access-denied"));
         }
     }
 public:

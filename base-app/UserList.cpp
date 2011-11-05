@@ -18,6 +18,7 @@
 
 #include "UserList.hpp"
 #include "App.hpp"
+#include "IGui.hpp"
 #include <Wt/Dbo/QueryModel>
 #include <Wt/WPushButton>
 #include <Wt/WSelectionBox>
@@ -82,7 +83,7 @@ void UserList::editClicked() {
     if (user)
         userChosen().emit(user); // Let the world know
     else
-        app()->setStatusText(tr("You didn't select a user"));
+        IGui::instance()->setStatusText(tr("You didn't select a user"));
 }
 
 inline void UserList::deleteClicked() {

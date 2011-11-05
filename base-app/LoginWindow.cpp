@@ -28,6 +28,7 @@
 #include <Wt/Dbo/ptr>
 #include <string>
 #include "App.hpp"
+#include "IGui.hpp"
 #include "model/User.hpp"
 
 using Wt::WString;
@@ -76,7 +77,7 @@ void LoginWindow::handleOKHit() {
         newUser = app->userSession()->user();
     } else {
         app->log("SECURITY") << username << " failed log in";
-        app->setStatusText(tr("invalid-login"));
+        IGui::instance()->setStatusText(tr("invalid-login"));
     }
     if (oldUser != newUser)
         app->userChanged()->emit(oldUser, newUser);
@@ -86,7 +87,7 @@ void LoginWindow::handleOKHit() {
 }
 
 void LoginWindow::handleCancelHit() {
-    app()->setStatusText(tr("Login Cancelled"));
+    IGui::instance()->setStatusText(r("Login Cancelled"));
     app()->goBack();
 }
 

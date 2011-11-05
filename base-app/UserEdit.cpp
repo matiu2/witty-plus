@@ -24,6 +24,7 @@
 #include "lib/MatchValidator.hpp"
 #include "lib/DBNoDupValidator.hpp"
 #include <boost/assert.hpp>
+#include "IGui.hpp"
 
 using Wt::WAnimation;
 using Wt::WValidator;
@@ -81,7 +82,7 @@ void UserEdit::setUser(dbo::ptr<User> user) {
     } else {
         edtName->setText("");
         dynamic_cast<base::DBNoDupValidator<model::User>*>(edtName->validator())->clearIdToIgnore();
-        app()->setStatusText(tr("Adding a new user"));
+        IGui::instance()->setStatusText(tr("Adding a new user"));
         edtPass1->validator()->setMandatory(true);
         edtPass2->validator()->setMandatory(true);
     }
