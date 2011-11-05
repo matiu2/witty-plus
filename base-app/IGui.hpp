@@ -27,7 +27,7 @@ class IGui {
 public:
     virtual void setStatusText(const WString& newStatusText) = 0;
     virtual void setBody(const Wt::WString& newStatusText) = 0;
-    virtual void setBody(const Wt::WWidget* newWidget) = 0;
+    virtual void setBody(Wt::WWidget* newWidget) = 0;
 
     static IGui* instance();
 };

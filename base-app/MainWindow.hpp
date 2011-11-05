@@ -80,9 +80,9 @@ protected:
 public:
     MainWindow(WContainerWidget* parent=0);
     // IGui implementation
-    virtual void setBody(const WString& text="") { bindString("content", text); }
-    virtual void setBody(WWidget* widget) { bindWidget("content", widget); }
-    virtual void setStatusText(const WString& newMessage);
+    void setBody(const WString& text="") { bindString("content", text); }
+    void setBody(Wt::WWidget* widget) { bindWidget("content", widget); }
+    void setStatusText(const WString& newMessage);
 };
 
 } // namespace my_app

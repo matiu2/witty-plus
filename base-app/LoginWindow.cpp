@@ -87,7 +87,7 @@ void LoginWindow::handleOKHit() {
 }
 
 void LoginWindow::handleCancelHit() {
-    IGui::instance()->setStatusText(r("Login Cancelled"));
+    IGui::instance()->setStatusText(tr("Login Cancelled"));
     app()->goBack();
 }
 

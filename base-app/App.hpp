@@ -52,7 +52,7 @@ const string my_appCookieName = "my_app_cookie";
 
 typedef base::BaseApp<model::User> BaseApp;
 
-class App : public BaseApp, public IGui {
+class App : public BaseApp {
 public:
     typedef Signal<dbo::ptr<model::User>, dbo::ptr<model::User> > UserChangedSignal;
     typedef Signal<> URLChangedSignal;
