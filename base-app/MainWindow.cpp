@@ -103,7 +103,7 @@ void MainWindow::onInternalPathChanged(const string &url) {
 
 // IGui implementation
 
-void MainWindow::setBody(const WString& text="") { bindString("content", text); }
+void MainWindow::setBody(const WString& text) { bindString("content", text); }
 void MainWindow::setBody(Wt::WWidget* widget) { bindWidget("content", widget); }
 
 /// Shows the new status text near the top of the page

@@ -18,10 +18,11 @@
 
 #include "IGui.hpp"
 #include "App.hpp"
+#include "MainWindow.hpp"
 
 namespace wittyPlus {
 
-static IGui* IGui::instance() {
+IGui* IGui::instance() {
     return app()->mainWindow();
 }
 
