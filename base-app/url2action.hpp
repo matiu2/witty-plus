@@ -76,6 +76,6 @@ public:
 };
 
 
-} // namespace my_app {
+} // namespace wittyPlus
 
 #endif // URL2ACTION_HPP

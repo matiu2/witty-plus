@@ -10,14 +10,12 @@ class App;
 /** This class registers extensions
   **/
 class ExtensionManager : public Wt::WObject {
-    friend class App;
+    friend class App; // Only App can create us
 private:
     ExtensionManager(Wt::WObject* parent=0);
 public:
-    /// The app object associated with this extension manager
-    App* app();
     /// Returns the extension manager associated with the WApplication of the current thread
-    static ExtensionManager* instance();
+    static ExtensionManager* instance(); // Only one instance per App/thread
 };
 
 } // namespace wittyPlus

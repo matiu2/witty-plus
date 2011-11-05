@@ -29,6 +29,6 @@ namespace urls {
     extern const char* admin_users;
 } // namespace urls
 
-} // namespace my_app
+} // namespace wittyPlus
 
 #endif //  URLS_HPP

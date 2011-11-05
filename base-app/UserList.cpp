@@ -17,14 +17,15 @@
  */
 
 #include "UserList.hpp"
-#include "App.hpp"
 #include "IGui.hpp"
+#include "IUsers.hpp"
 #include <Wt/Dbo/QueryModel>
 #include <Wt/WPushButton>
 #include <Wt/WSelectionBox>
 #include <Wt/WLogger>
 #include <Wt/WMessageBox>
 #include <Wt/WAnimation>
+#include <Wt/WApplication>
 
 using wittyPlus::model::User;
 using Wt::WAnimation;
@@ -51,7 +52,7 @@ inline void UserList::createUserList() {
     lstUsers->setSelectionMode(Wt::SingleSelection);
     lstUsers->doubleClicked().connect(this, &UserList::editClicked); // Double click is same as edit
     lstUsers->enterPressed().connect(this, &UserList::editClicked);  // Enter is same as edit
-    dbo::Session& db = app()->dbSession();
+    dbo::Session& db = Wt::WApplication::instance()->dbSession();
     usersModel.setQuery(db.find<User>()); // Get all users
     usersModel.addColumn("name");
     lstUsers->setModel(&usersModel);
@@ -61,7 +62,7 @@ inline void UserList::createUserList() {
 
 void UserList::refillUserList() {
     // Fill it with data
-    dbo::Session& db = app()->dbSession();
+    dbo::Session& db = Wt::WApplication::instance()->dbSession();
     dbo::Transaction t(db);
     usersModel.reload();
     lstUsers->setCurrentIndex(1);
@@ -91,7 +92,7 @@ inline void UserList::deleteClicked() {
     dbo::ptr<User> user = currentUser();
     if (user) {
         // Can't delete the current user
-        if (user == app()->userSession()->user()) {
+        if (user == IUsers::instance()->user()) {
             // Tell the user they can't delete themselves
             Wt::WMessageBox::show(
                 tr("cant-delete-self"),
@@ -111,7 +112,7 @@ inline void UserList::deleteClicked() {
         if (result == Wt::Yes) {
             dbo::ptr<User> user = currentUser();
             if (user) {
-                dbo::Session& db = app()->dbSession();
+                dbo::Session& db = Wt::WApplication::instance()->dbSession();
                 dbo::Transaction t(db);
                 user.remove();
                 refillUserList();
@@ -149,4 +150,4 @@ inline dbo::ptr<User> UserList::currentUser() {
     return result;
 }
 
-} // namespace my_app
+} // namespace wittyPlus

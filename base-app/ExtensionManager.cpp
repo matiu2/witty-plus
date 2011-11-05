@@ -9,10 +9,6 @@ ExtensionManager::ExtensionManager(Wt::WObject* parent) : Wt::WObject(parent) {}
 
 // Public methods
 
-App* ExtensionManager::app() {
-    return wittyPlus::app();
-}
-
 // Static funcs
 
 ExtensionManager* ExtensionManager::instance() {

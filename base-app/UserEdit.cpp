@@ -160,4 +160,4 @@ void UserEdit::CancelHit() {
     cancelled().emit();
 }
 
-} // namespace my_app
+} // namespace wittyPlus

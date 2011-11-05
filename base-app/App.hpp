@@ -50,7 +50,7 @@ class MainWindow;
 class URL2Action;
 class ExtensionManager;
 
-const string my_appCookieName = "my_app_cookie";
+const string appCookieName = "witty-plus-app-cookie";
 
 typedef base::BaseApp<model::User> BaseApp;
 
@@ -103,7 +103,7 @@ public:
      * @return true if we navigated
      **/
     virtual bool goBack(bool dontLogout=true);
-    virtual void goBackOrHome(); /// Go Back, but if we don't have history .. go home
+    virtual void goBackOrHome(); /// Go Back, if we don't have history .. go home
 
     /// For extension developers to register their extensions
     ExtensionManager* extensionManager() { return _extensionManager; }
@@ -115,6 +115,6 @@ WApplication *createApplication(const WEnvironment& env);
 
 App* app();
 
-} // namespace my_app
+} // namespace wittyPlus
 
 #endif // APP_HPP

@@ -38,7 +38,7 @@ using std::string;
 namespace wittyPlus {
 
 App::App(const WEnvironment& environment) :
-    BaseApp(environment, my_appCookieName) {
+    BaseApp(environment, appCookieName) {
     // Set up the db
     string postgresConnectionString;
     readConfigurationProperty("DB", postgresConnectionString);
@@ -134,4 +134,4 @@ WApplication *createApplication(const WEnvironment& env) { return new App(env); 
 
 App* app() { return dynamic_cast<App*>(WApplication::instance()); }
 
-} // namespace my_app
+} // namespace wittyPlus

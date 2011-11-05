@@ -25,9 +25,9 @@
 #include <Wt/WLogger>
 #include <Wt/WPushButton>
 #include <Wt/WContainerWidget>
+#include <Wt/WApplication>
 #include <Wt/Dbo/ptr>
 #include <string>
-#include "App.hpp"
 #include "IGui.hpp"
 #include "IUsers.hpp"
 #include "INavigation.hpp"
@@ -67,7 +67,7 @@ LoginWindow::LoginWindow(WContainerWidget* parent) : MoreAwesomeTemplate(parent)
 * @brief Called when the user hits OK to login
 */
 void LoginWindow::handleOKHit() {
-    App* app = wittyPlus::app(); /// Remove .. should be cool with all the IUsers, IApp, etc.
+    Wt::WApplication* app = wittyPlus::app();
     IUsers* users = IUsers::instance();
     IGui*  gui = IGui::instance();
     INavigation* nav = INavigation::instance();
@@ -96,4 +96,4 @@ void LoginWindow::handleCancelHit() {
     INavigation::instance()->goBack();
 }
 
-} // namespace my_app
+} // namespace wittyPlus

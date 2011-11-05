@@ -67,6 +67,6 @@ public:
     void refillUserList();
 };
 
-} // namespace my_app {
+} // namespace wittyPlus
 
 #endif // USER_LIST_HPP

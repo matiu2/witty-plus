@@ -21,12 +21,12 @@
 
 #include "lib/MoreAwesomeTemplate.hpp"
 #include "model/User.hpp"
-#include "App.hpp"
 #include "IGui.hpp"
 #include <Wt/WText>
 #include <Wt/WAnimation>
 #include <Wt/WMenu>
 #include <Wt/WMenuItem>
+#include <Wt/WApplication>
 #include <ctime>
 
 namespace Wt {
@@ -72,7 +72,7 @@ protected:
         menu->addItem(new WMenuItem(text, 0))->setPathComponent(url);
     }
     void menuClicked(WMenuItem* item) {
-        app()->setInternalPath(item->pathComponent(), true);
+        Wt::WApplication::instance()->setInternalPath(item->pathComponent(), true);
     }
     // Signal handlers
     void handleUserChanged(dbo::ptr<User> oldUser,  dbo::ptr<User> newUser);
@@ -85,7 +85,7 @@ public:
     void setStatusText(const WString& newMessage);
 };
 
-} // namespace my_app
+} // namespace wittyPlus
 
 #endif // MAINWINDOW_HPP
 

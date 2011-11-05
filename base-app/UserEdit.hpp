@@ -22,7 +22,6 @@
 #include "lib/MoreAwesomeTemplate.hpp"
 #include "model/User.hpp"
 #include "lib/ButtonBar.hpp"
-#include "App.hpp"
 #include <Wt/WLineEdit>
 #include <Wt/WSignal>
 #include <Wt/WText>
@@ -79,6 +78,6 @@ public:
     Signal<>& cancelled() { return _cancelled; }
 };
 
-} // namespace my_app
+} // namespace wittyPlus
 
 #endif // USER_EDIT_HPP

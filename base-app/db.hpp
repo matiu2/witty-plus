@@ -35,6 +35,6 @@ void mapModels(dbo::Session& session) {
     session.mapClass<model::User>("users");
 }
 
-} // namespace my_app {
+} // namespace wittyPlus
 
 #endif // DB_HPP
