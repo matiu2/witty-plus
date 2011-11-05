@@ -19,7 +19,7 @@
 #pragma once
 
 #include <string>
-#include <Wt/WObject>
+#include <Wt/WSignal>
 #include <Wt/Dbo/ptr>
 #include "model/User.hpp"
 
@@ -31,7 +31,7 @@ class IUsers {
 public:
     virtual bool tryLogin(const string& username, const string& password) = 0;
     virtual UserChangedSignal* userChanged() = 0; /// An event triggered when a user logs in or logs out
-    virtual Wt::Dbo::ptr<User> user() = 0;
+    virtual Wt::Dbo::ptr<model::User> user() = 0;
     virtual void logout() = 0;
 
     static IUsers* instance();

@@ -29,6 +29,7 @@
 #include "model/User.hpp"
 #include "lib/BaseApp.hpp"
 #include "urls.hpp"
+#include "IUsers.hpp"
 
 namespace Wt {
     class WEvent;
@@ -91,8 +92,8 @@ public:
     // IUser Implementation
     virtual bool tryLogin(const string& username, const string& password);
     virtual UserChangedSignal* userChanged(); /// An event triggered when a user logs in or logs out
-    virtual Wt::Dbo::ptr<User> user();
-    virtual void logout();
+    virtual Wt::Dbo::ptr<model::User> user(); /// Returns a dbo::ptr to the currently logged in user
+    virtual void logout(); /// Logs out the current user
 
     /// Use to send the user somewhere inside the app
     void go(const string& newUrl) { setInternalPath(newUrl, true); }

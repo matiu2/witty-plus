@@ -21,6 +21,6 @@
 
 namespace wittyPlus {
 
-IUsers* IUsers::instance() { return app(); }
+IUsers* IUsers::instance() { return dynamic_cast<IUsers*>(app()); }
 
 }
