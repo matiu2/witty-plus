@@ -21,6 +21,6 @@
 
 namespace wittyPlus {
 
-INavigation* INavigation() { return dynamic_cast<INavigation*>(app()); }
+INavigation* INavigation::instance() { return dynamic_cast<INavigation*>(app()); }
 
 } // namespace wittyPlus
