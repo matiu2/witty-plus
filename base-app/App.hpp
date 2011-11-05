@@ -30,8 +30,6 @@
 #include "lib/BaseApp.hpp"
 #include "urls.hpp"
 
-#include "IGui.hpp"
-
 namespace Wt {
     class WEvent;
 }
@@ -90,10 +88,7 @@ public:
     MessageSignal* statusTextChanged() { return _statusTextChanged; } /// An event triggered when the status text (shown on the front page) changes
     /// Shows a status message for a period of time
     MainWindow* mainWindow() { return _mainWindow; }
-    // IGui implementation
-    virtual void setStatusText(const WString& newStatusText) { statusTextChanged()->emit(newStatusText); }
-    virtual void setBody(const Wt::WString& newBody) { mainWindow()->setBody(newBody); }
-    virtual void setBody(const Wt::WWidget* newWidget) { mainWindow()->setBody(newWidget); }
+    void setStatusText(const WString& newStatusText) { statusTextChanged()->emit(newStatusText); } // TODO: remove .. so IGUI can handle it
 
     /// Use to send the user somewhere inside the app
     void go(const string& newUrl) { setInternalPath(newUrl, true); }

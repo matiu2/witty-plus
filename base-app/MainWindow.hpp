@@ -22,6 +22,7 @@
 #include "lib/MoreAwesomeTemplate.hpp"
 #include "model/User.hpp"
 #include "App.hpp"
+#include "IGui.hpp"
 #include <Wt/WText>
 #include <Wt/WAnimation>
 #include <Wt/WMenu>
@@ -56,7 +57,7 @@ using base::InternalLink;
 
 class AdminIndex;
 
-class MainWindow : public base::MoreAwesomeTemplate {
+class MainWindow : public base::MoreAwesomeTemplate, public IGui {
 protected:
     // Fields
     WStackedWidget* _statusTextHolder;
@@ -78,9 +79,10 @@ protected:
     void onInternalPathChanged(const string& url);
 public:
     MainWindow(WContainerWidget* parent=0);
-    void setBody(const WString& text="") { bindString("content", text); }
-    void setBody(WWidget* widget) { bindWidget("content", widget); }
-    void setStatusText(const WString& newMessage);
+    // IGui implementation
+    virtual void setBody(const WString& text="") { bindString("content", text); }
+    virtual void setBody(WWidget* widget) { bindWidget("content", widget); }
+    virtual void setStatusText(const WString& newMessage);
 };
 
 } // namespace my_app

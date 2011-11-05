@@ -98,7 +98,6 @@ void App::notify(const WEvent& event) {
     }
 }
 
-
 bool App::goBack(bool dontLogout) {
     if (urlHistory.size() >= 2) {
         // last is one past the current url

@@ -22,7 +22,7 @@
 namespace wittyPlus {
 
 static IGui* IGui::instance() {
-    return app();
+    return app()->mainWindow();
 }
 
 } // namespace wittyPlus
