@@ -42,14 +42,15 @@ using Wt::Signal;
 using Wt::WEvent;
 namespace dbo = Wt::Dbo;
 
-namespace my_app {
+namespace wittyPlus {
 
 class MainWindow;
 class URL2Action;
+class ExtensionManager;
 
 const string my_appCookieName = "my_app_cookie";
 
-typedef wittyPlus::BaseApp<model::User> BaseApp;
+typedef base::BaseApp<model::User> BaseApp;
 
 class App : public BaseApp {
 public:
@@ -62,6 +63,7 @@ protected:
     URL2Action* _url2ActionMapper; /// Handles turning urls into actions
     dbo::backend::Postgres postgres;
     UrlHistory urlHistory;
+    ExtensionManager* _extensionManager;
     // Signals
     UserChangedSignal* _userChanged;
     MessageSignal* _statusTextChanged;
@@ -95,6 +97,8 @@ public:
      **/
     bool goBack(bool dontLogout=true);
     void goBackOrHome() { if (!goBack()) go(urls::home); }
+    /// For extension developers to register their extensions
+    ExtensionManager* extensionManager() { return _extensionManager; }
     /// Returns true if client is running on an iphone TODO: Add more possibilities here
     bool isIPhone() { return environment().userAgent().find("iPhone") != string::npos; }
 };

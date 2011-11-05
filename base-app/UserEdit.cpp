@@ -27,12 +27,13 @@
 
 using Wt::WAnimation;
 using Wt::WValidator;
-using wittyPlus::MatchValidator;
-using wittyPlus::DBNoDupValidator;
 
-namespace my_app {
+namespace wittyPlus {
 
-UserEdit::UserEdit(WContainerWidget* parent) : wittyPlus::MoreAwesomeTemplate(parent) {
+using base::MatchValidator;
+using base::DBNoDupValidator;
+
+UserEdit::UserEdit(WContainerWidget* parent) : base::MoreAwesomeTemplate(parent) {
     setStyleClass("form blue");
     setTemplateText(tr("user-edit-template"));
     // Set up the widgets
@@ -41,10 +42,10 @@ UserEdit::UserEdit(WContainerWidget* parent) : wittyPlus::MoreAwesomeTemplate(pa
     WString userExistsMsg = tr("user-name-x-exists");
     WString userNeededMsg = tr("user-needs-a-name");
     if (_user)
-        nameValidator = new wittyPlus::DBNoDupValidator<User>(app()->dbSession(), "name", _user.id(), true,
+        nameValidator = new base::DBNoDupValidator<User>(app()->dbSession(), "name", _user.id(), true,
                                   userExistsMsg, userNeededMsg);
     else
-        nameValidator = new wittyPlus::DBNoDupValidator<User>(app()->dbSession(), "name", true,
+        nameValidator = new base::DBNoDupValidator<User>(app()->dbSession(), "name", true,
                                   userExistsMsg, userNeededMsg);
     edtName->setValidator(nameValidator);
     bindAndCreateField(lblPass1, edtPass1, msgPass1, "new-password");
@@ -68,7 +69,7 @@ UserEdit::UserEdit(WContainerWidget* parent) : wittyPlus::MoreAwesomeTemplate(pa
 }
 
 void UserEdit::setUser(dbo::ptr<User> user) {
-    typedef wittyPlus::DBNoDupValidator<model::User> NameValidator;
+    typedef base::DBNoDupValidator<model::User> NameValidator;
     _user = user;
     if (user) {
         NameValidator* nameValidator = dynamic_cast<NameValidator*>(edtName->validator());
@@ -79,7 +80,7 @@ void UserEdit::setUser(dbo::ptr<User> user) {
         edtPass2->validator()->setMandatory(false);
     } else {
         edtName->setText("");
-        dynamic_cast<wittyPlus::DBNoDupValidator<model::User>*>(edtName->validator())->clearIdToIgnore();
+        dynamic_cast<base::DBNoDupValidator<model::User>*>(edtName->validator())->clearIdToIgnore();
         app()->setStatusText(tr("Adding a new user"));
         edtPass1->validator()->setMandatory(true);
         edtPass2->validator()->setMandatory(true);

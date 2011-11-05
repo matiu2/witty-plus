@@ -21,6 +21,7 @@
 #include "model/User.hpp"
 #include "db.hpp"
 #include "url2action.hpp"
+#include "ExtensionManager.hpp"
 
 #include <stdexcept>
 #include <Wt/WString>
@@ -34,7 +35,7 @@ using Wt::WEnvironment;
 using Wt::WString;
 using std::string;
 
-namespace my_app {
+namespace wittyPlus {
 
 App::App(const WEnvironment& environment) :
     BaseApp(environment, my_appCookieName) {
@@ -45,6 +46,8 @@ App::App(const WEnvironment& environment) :
     dbSession().setConnection(postgres);
     log("notice") << "Mapping classes";
     mapModels(dbSession());
+    // Set up the extensions
+    _extensionManager = new ExtensionManager(this);
     // Load the message bundles
     messageResourceBundle().use(appRoot() + "messages/App");
     messageResourceBundle().use(appRoot() + "messages/MainWindow");

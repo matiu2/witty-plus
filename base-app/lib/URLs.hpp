@@ -23,6 +23,7 @@ using Wt::WObject;
 using Wt::Signal;
 
 namespace wittyPlus {
+namespace base {
 
 class URLs : public WObject {
 public:
@@ -47,4 +48,5 @@ public:
     }
 };
 
+} // namespace base
 } // namespace wittyPlus

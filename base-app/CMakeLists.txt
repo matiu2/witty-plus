@@ -47,7 +47,7 @@ endif()
 
 set(CMAKE_INCLUDE_DIRECTORIES_BEFORE on)
 
-find_package(OpenSSL 1.0.0 REQUIRED)
+find_package(OpenSSL REQUIRED)
 include_directories(BEFORE ${OPENSSL_INCLUDE_DIR})
 
 # Boost
@@ -57,11 +57,12 @@ set(Boost_USE_STATIC_RUNTIME OFF)
 find_package(Boost 1.42.0 REQUIRED COMPONENTS system program_options signals date_time filesystem regex thread unit_test_framework)
 include_directories(BEFORE SYSTEM ${Boost_INCLUDE_DIR})
 
-set(mainFiles urls.cpp UserEdit.cpp lib/MemorySessionStore.cpp  lib/BaseSessionHandle.cpp App.cpp MainWindow.cpp LoginWindow.cpp UserList.cpp)
+set(mainFiles urls.cpp UserEdit.cpp lib/MemorySessionStore.cpp  lib/BaseSessionHandle.cpp App.cpp MainWindow.cpp LoginWindow.cpp UserList.cpp ExtensionManager.cpp)
 
 add_subdirectory(lib)
 add_subdirectory(tests)
 add_subdirectory(compass)
+add_subdirectory(extensions)
 CONFIGURE_FILE(memcheck-test.sh memcheck-test.sh)
 CONFIGURE_FILE(test.sh test.sh)
 

@@ -48,6 +48,7 @@ using Wt::WValidator;
 using std::vector;
 
 namespace wittyPlus {
+namespace base {
 
 /// A row in a form, basically has a label, a widget, and an optional message text
 struct FieldRow {
@@ -173,7 +174,7 @@ protected:
         bool haveFocussed = false;
         for(vector<FieldRow>::const_iterator row=fieldRows.begin(); row != fieldRows.end(); ++row) {
             // Push the server's interpretation of the validation down to the client side widget
-            ServerSideValidationResult validness = ServerSideValidator::validateWidgetAndTellBrowser(row->widget);
+            base::ServerSideValidationResult validness = ServerSideValidator::validateWidgetAndTellBrowser(row->widget);
             if (validness.result != WValidator::Valid) {
                 result = false;
                 if (!haveFocussed) {
@@ -188,6 +189,7 @@ public:
     MoreAwesomeTemplate(WContainerWidget* parent=0) : WTemplate(parent), fieldRows() {}
 };
 
-}
+} // namespace base
+} // namespace wittyPlus
 
 #endif // MORE_AWESOME_TEMPLATE_HPP

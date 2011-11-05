@@ -18,7 +18,7 @@
 
 #include "urls.hpp"
 
-namespace my_app {
+namespace wittyPlus {
 
 /// Consts so we don't accidentally change a url somewhere
 namespace urls {

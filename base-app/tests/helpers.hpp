@@ -36,7 +36,7 @@ using Wt::WApplication;
 using Wt::WLink;
 using Wt::WString;
 
-namespace my_app {
+namespace wittyPlus {
 namespace unittests {
 namespace helpers {
 
@@ -47,7 +47,7 @@ void click(Widget* w) {
 }
 
 template<>
-void click<wittyPlus::InternalLink>(wittyPlus::InternalLink* il) {
+void click<base::InternalLink>(base::InternalLink* il) {
     WLink& link = il->link_;
     if (link.type_ == WLink::InternalPath) {
         WApplication::instance()->setInternalPath(link.internalPath().toUTF8(), true);
@@ -79,7 +79,7 @@ void keyPress(Widget* w, unsigned char keyCode) {
     }
 }
 
-void click(wittyPlus::ButtonBar* btns, const std::string label) {
+void click(base::ButtonBar* btns, const std::string label) {
     WString translated = WString::tr(label);
     WPushButton* btn1 = btns->btn1();
     if (btn1->text() == translated) {
@@ -95,13 +95,13 @@ void click(wittyPlus::ButtonBar* btns, const std::string label) {
                 "\nOptions are: " + btn1->text() + " and " + btn2->text());
 }
 
-void clickOk(wittyPlus::ButtonBar* btns) { click(btns, "OK"); }
-void clickCancel(wittyPlus::ButtonBar* btns) { click(btns, "Cancel"); }
+void clickOk(base::ButtonBar* btns) { click(btns, "OK"); }
+void clickCancel(base::ButtonBar* btns) { click(btns, "Cancel"); }
 
-wittyPlus::InternalLink* findSimpleMenuItem(wittyPlus::SimpleMenu* menu, const string& url) {
-    wittyPlus::InternalLink* result = 0;
+base::InternalLink* findSimpleMenuItem(base::SimpleMenu* menu, const string& url) {
+    base::InternalLink* result = 0;
     for (int i=0; i<menu->_impl->count(); ++i) {
-        result = dynamic_cast<wittyPlus::InternalLink*>(menu->_impl->widget(i));
+        result = dynamic_cast<base::InternalLink*>(menu->_impl->widget(i));
         if (result != 0)
             if (result->link().internalPath() == url)
                 return result;
@@ -111,6 +111,6 @@ wittyPlus::InternalLink* findSimpleMenuItem(wittyPlus::SimpleMenu* menu, const s
 
 } // namespace helpers
 } // namespace unittests
-} // namespace my_app
+} // namespace wittyPlus
 
 #endif //  MY_APP_UNITTESTS_HELPERS_HPP

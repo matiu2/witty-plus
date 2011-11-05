@@ -14,6 +14,7 @@ using std::string;
 namespace dbo = Wt::Dbo;
 
 namespace wittyPlus {
+namespace base {
 
 /** A field validator that makes sure an object is not already in the DB **/
 template <class ModelClass>
@@ -90,6 +91,7 @@ public:
     }
 };
 
-}
+} // namespace wittyPlus
+} // namespace base
 
 #endif // DB_NO_DUP_VALIDATOR_HPP

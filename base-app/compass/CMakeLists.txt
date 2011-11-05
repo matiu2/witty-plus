@@ -16,7 +16,7 @@ set(COMPASS_OUTPUT_DIR "../static-content/resources/themes/default")
 configure_file(config.rb.in config.rb)
 
 add_custom_target(css 
-    COMMAND compass compile compass
+    COMMAND compass compile .
     WORKING_DIRECTORY .
     DEPENDS config.rb
     COMMENT "Running Compass to generate style sheets"

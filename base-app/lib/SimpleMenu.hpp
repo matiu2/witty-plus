@@ -18,6 +18,7 @@ using Wt::WContainerWidget;
 using std::string;
 
 namespace wittyPlus {
+namespace base {
 
 class SimpleMenu : public WCompositeWidget {
 private:
@@ -33,6 +34,7 @@ public:
     }
 };
 
+} // namespace base
 } // namespace wittyPlus
 
 #endif // SIMPLEMENU_HPP

@@ -44,6 +44,7 @@ using std::time;
 namespace dbo = Wt::Dbo;
 
 namespace wittyPlus {
+namespace base {
 
 /**
 * @brief A handle to the session of the currently logged in user. This is what you use in your app
@@ -165,6 +166,7 @@ public:
     bool isLoggedIn() { return user(); }
 };
 
+} // namespace base
 } // namespace wittyPlus
 
 #endif // SESSION_HANDLE_HPP

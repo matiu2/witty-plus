@@ -24,7 +24,7 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/test/test_tools.hpp>
 
-namespace my_app {
+namespace wittyPlus {
 namespace unittests {
 
 namespace h = helpers;

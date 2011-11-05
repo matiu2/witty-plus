@@ -27,7 +27,7 @@ int main ( int argc, char *argv[] ) {
         WServer server(argv[0]);
         server.setServerConfiguration(argc, argv, WTHTTP_CONFIGURATION);
 
-        server.addEntryPoint(Wt::Application, my_app::createApplication, "", "/css/favicon.ico");
+        server.addEntryPoint(Wt::Application, wittyPlus::createApplication, "", "/css/favicon.ico");
         if (server.start()) {
             WServer::waitForShutdown();
             server.stop();

@@ -25,10 +25,10 @@
 #include <iostream>
 
 namespace dbo = Wt::Dbo;
-using namespace my_app;
+using namespace wittyPlus;
 using std::cout;
 using std::endl;
-using my_app::model::User;
+using wittyPlus::model::User;
 
 const std::string ADMIN_USERNAME = "admin";
 const std::string ADMIN_PASSWORD = "admin";
@@ -49,7 +49,7 @@ int main(int , char** ) {
     if (isNew)
         pUser = new User();
     pUser.modify()->setName(ADMIN_USERNAME);
-    pUser.modify()->setPasswordHash(wittyPlus::sha1(ADMIN_PASSWORD));
+    pUser.modify()->setPasswordHash(base::sha1(ADMIN_PASSWORD));
     if (isNew)
         session.add(pUser);
     transaction.commit();

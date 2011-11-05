@@ -19,13 +19,7 @@
 #ifndef URLS_HPP
 #define URLS_HPP
 
-#include <Wt/WString>
-#include "lib/InternalLink.hpp"
-
-using Wt::WString;
-using wittyPlus::InternalLink;
-
-namespace my_app {
+namespace wittyPlus {
 
 /// Consts so we don't accidentally change a url somewhere
 namespace urls {

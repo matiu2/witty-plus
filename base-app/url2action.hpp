@@ -27,9 +27,10 @@
 #include "Wt/WString"
 
 using Wt::WString;
-using wittyPlus::URLs;
 
-namespace my_app {
+namespace wittyPlus {
+
+using base::URLs;
 
 class URL2Action : public WObject {
 protected:

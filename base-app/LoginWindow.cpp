@@ -33,9 +33,9 @@
 using Wt::WString;
 using std::string;
 namespace dbo = Wt::Dbo;
-using my_app::model::User;
+using wittyPlus::model::User;
 
-namespace my_app {
+namespace wittyPlus {
 
 LoginWindow::LoginWindow(WContainerWidget* parent) : MoreAwesomeTemplate(parent) {
     setTemplateText(tr("login-template"));
@@ -49,7 +49,7 @@ LoginWindow::LoginWindow(WContainerWidget* parent) : MoreAwesomeTemplate(parent)
     _passwordEdit->setEchoMode(WLineEdit::Password);
     _passwordEdit->setId("password");
     // Buttons
-    bindWidget("btn-bar", _btnBar = new wittyPlus::ButtonBar(tr("Login"), tr("Cancel")));
+    bindWidget("btn-bar", _btnBar = new base::ButtonBar(tr("Login"), tr("Cancel")));
     _btnBar->btn1()->clicked().connect(this, &LoginWindow::handleOKHit);
     _btnBar->btn2()->clicked().connect(this, &LoginWindow::handleCancelHit);
     // Hook up accept and reject signals
@@ -64,7 +64,7 @@ LoginWindow::LoginWindow(WContainerWidget* parent) : MoreAwesomeTemplate(parent)
 * @brief Called when the user hits OK to login
 */
 void LoginWindow::handleOKHit() {
-    App* app = my_app::app();
+    App* app = wittyPlus::app();
     // See if we can log them in
     string username = _usernameEdit->text().toUTF8();
     string password = _passwordEdit->text().toUTF8();

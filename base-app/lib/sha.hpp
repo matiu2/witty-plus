@@ -24,6 +24,7 @@
 #include <string>
 
 namespace wittyPlus {
+namespace base {
 
 const unsigned int SHALength = 20;
 typedef unsigned char SHAValue[SHALength];
@@ -53,6 +54,7 @@ inline StdSHAValue sha1(const std::string& input) {
     return result;
 }
 
+} // namespace base
 } // namespace wittyPlus
 
 #endif //  SHA_HPP

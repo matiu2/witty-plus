@@ -36,6 +36,7 @@ using Wt::WComboBox;
 using Wt::WFormWidget;
 
 namespace wittyPlus {
+namespace base {
 
 class BaseMatchValidator: public Wt::WValidator {
 protected:
@@ -88,6 +89,7 @@ struct MatchValidator<WComboBox> : public BaseMatchValidator {
 };
 
 
+} // namespace base {
 } // namespace wittyPlus {
 
 #endif // WITTY_PLUS_MATCH_VALIDATOR_HPP

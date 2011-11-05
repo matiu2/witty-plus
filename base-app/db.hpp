@@ -24,7 +24,7 @@
 
 namespace dbo = Wt::Dbo;
 
-namespace my_app {
+namespace wittyPlus {
 
 /**
 * @brief Maps c++ classes to Dbo objects

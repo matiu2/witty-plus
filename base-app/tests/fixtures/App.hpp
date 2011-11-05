@@ -23,7 +23,7 @@
 #include <Wt/WEnvironment>
 #include <Wt/Test/WTestEnvironment>
 
-namespace my_app {
+namespace wittyPlus {
 namespace unittests {
 namespace fixtures {
 
@@ -31,8 +31,8 @@ struct AppFixture {
     AppFixture() : env(".", "wt-config.xml"), app(env), main(app.mainWindow()) { app.initialize(); }
     ~AppFixture() { app.quit(); }
     Wt::Test::WTestEnvironment env;
-    my_app::App app;
-    my_app::MainWindow* main;
+    wittyPlus::App app;
+    wittyPlus::MainWindow* main;
 };
 
 } // namespace fixtures

@@ -36,10 +36,6 @@ namespace Wt {
     class WMenu;
 }
 
-namespace wittyPlus {
-    class InternalLink;
-}
-
 using Wt::WTemplate;
 using Wt::WContainerWidget;
 using Wt::WString;
@@ -48,14 +44,19 @@ using Wt::WText;
 using Wt::WAnimation;
 using Wt::WStackedWidget;
 using Wt::WMenu;
-using wittyPlus::InternalLink;
-using my_app::model::User;
+using wittyPlus::model::User;
 
-namespace my_app {
+namespace wittyPlus {
+
+namespace base {
+    class InternalLink;
+}
+
+using base::InternalLink;
 
 class AdminIndex;
 
-class MainWindow : public wittyPlus::MoreAwesomeTemplate {
+class MainWindow : public base::MoreAwesomeTemplate {
 protected:
     // Fields
     WStackedWidget* _statusTextHolder;

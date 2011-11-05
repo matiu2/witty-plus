@@ -27,7 +27,7 @@
 #include "../AdminIndex.hpp"
 #include "fixtures/Login.hpp"
 
-namespace my_app {
+namespace wittyPlus {
 namespace unittests {
 
 namespace h = helpers;

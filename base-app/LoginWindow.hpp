@@ -41,15 +41,15 @@ using Wt::WContainerWidget;
 using Wt::WPushButton;
 using Wt::WLineEdit;
 
-namespace my_app {
+namespace wittyPlus {
 
-class LoginWindow : public wittyPlus::MoreAwesomeTemplate {
+class LoginWindow : public base::MoreAwesomeTemplate {
 private:
     WLabel* _usernameLabel;
     WLineEdit* _usernameEdit;
     WLabel* _passwordLabel;
     WLineEdit* _passwordEdit;
-    wittyPlus::ButtonBar* _btnBar;
+    base::ButtonBar* _btnBar;
 protected:
     void handleOKHit();
     void handleCancelHit();
