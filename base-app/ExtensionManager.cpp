@@ -1,19 +1,22 @@
 #include "ExtensionManager.hpp"
 
-#include <Wt/WApplication>
+#include <Wt/WObject>
 #include "App.hpp"
 
 namespace wittyPlus {
 
-ExtensionManager::ExtensionManager(WObject* parent) : WObject(parent) {
+ExtensionManager::ExtensionManager(Wt::WObject* parent) : Wt::WObject(parent) {}
 
+// Public methods
+
+App* ExtensionManager::app() {
+    return wittyPlus::app();
 }
 
 // Static funcs
 
 ExtensionManager* ExtensionManager::instance() {
-    Wt::WApplication* app = Wt::WApplication::instance();
-    return app->extensionManager();
+    return wittyPlus::app()->extensionManager();
 }
 
 } // namespace wittyPlus
