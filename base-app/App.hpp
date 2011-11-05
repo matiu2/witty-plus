@@ -54,7 +54,6 @@ typedef base::BaseApp<model::User> BaseApp;
 
 class App : public BaseApp {
 public:
-    typedef Signal<dbo::ptr<model::User>, dbo::ptr<model::User> > UserChangedSignal;
     typedef Signal<> URLChangedSignal;
     typedef Signal<WString> MessageSignal;
     typedef vector<string> UrlHistory;
@@ -84,11 +83,16 @@ protected:
     }
 public:
     App(const WEnvironment& environment);
-    UserChangedSignal* userChanged() { return _userChanged; } /// An event triggered when a user logs in or logs out
     MessageSignal* statusTextChanged() { return _statusTextChanged; } /// An event triggered when the status text (shown on the front page) changes
     /// Shows a status message for a period of time
     MainWindow* mainWindow() { return _mainWindow; }
     void setStatusText(const WString& newStatusText) { statusTextChanged()->emit(newStatusText); } // TODO: remove .. so IGUI can handle it
+
+    // IUser Implementation
+    virtual bool tryLogin(const string& username, const string& password);
+    virtual UserChangedSignal* userChanged(); /// An event triggered when a user logs in or logs out
+    virtual Wt::Dbo::ptr<User> user();
+    virtual void logout();
 
     /// Use to send the user somewhere inside the app
     void go(const string& newUrl) { setInternalPath(newUrl, true); }

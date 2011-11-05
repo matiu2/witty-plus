@@ -98,6 +98,14 @@ void App::notify(const WEvent& event) {
     }
 }
 
+// IUser Implementation start //
+bool App::tryLogin(const string& username, const string& password) { return userSession()->tryLogin(username, password); }
+UserChangedSignal* App::userChanged() { return _userChanged; }
+Wt::Dbo::ptr<User> App::user() { return userSession()->user(); }
+void App::logout() { userSession()->logout(); }
+// IUser Implementation end //
+
+
 bool App::goBack(bool dontLogout) {
     if (urlHistory.size() >= 2) {
         // last is one past the current url

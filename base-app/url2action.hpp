@@ -22,10 +22,11 @@
 #include "urls.hpp"
 #include "App.hpp"
 #include "IGui.hpp"
+#include "IUsers.hpp"
 #include "UserManager.hpp"
 #include "LoginWindow.hpp"
 #include "lib/URLs.hpp"
-#include "Wt/WString"
+#include <Wt/WString>
 
 using Wt::WString;
 
@@ -38,7 +39,7 @@ protected:
     URLs _urls; /// Allows us to connect urls to actions
     App* app;
     // Utility methods
-    bool isLoggedIn() { return app->userSession()->user(); }
+    bool isLoggedIn() { return IUsers::instance()->user(); }
     template<class Widget> void setBody() { IGui::instance()->setBody(new Widget()); }
     template<class Widget> void setBodyIfLoggedIn() {
         if (isLoggedIn()) {
@@ -60,9 +61,10 @@ public:
     void home() { app->mainWindow()->bindString("content", WString::tr("sample-content")); }
     /// Actually logs you out
     void logout() {
-        dbo::ptr<User> oldUser = app->userSession()->user();
-        app->userSession()->logout();
-        dbo::ptr<User> newUser = app->userSession()->user();
+        IUsers* users = IUsers::instance();
+        dbo::ptr<User> oldUser = users->user();
+        users->logout();
+        dbo::ptr<User> newUser = users->user();
         if (oldUser != newUser)
             app->userChanged()->emit(oldUser, newUser);
         app->go(urls::home);
