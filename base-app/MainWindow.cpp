@@ -100,6 +100,12 @@ void MainWindow::onInternalPathChanged(const string &url) {
 // Public methods
 //------------------------
 
+
+// IGui implementation
+
+void MainWindow::setBody(const WString& text="") { bindString("content", text); }
+void MainWindow::setBody(Wt::WWidget* widget) { bindWidget("content", widget); }
+
 /// Shows the new status text near the top of the page
 void MainWindow::setStatusText(const WString& newMessage) {
     // Flip the text messages around with effects 
