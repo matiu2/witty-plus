@@ -3,7 +3,7 @@
  *
  *       Filename:  db.hpp
  *
- *    Description:  Maps all the models to the database
+ *    Description:  Include this if you need to use the DB
  *
  *        Version:  1.0
  *        Created:  06/08/11 06:45:55
@@ -26,14 +26,8 @@ namespace dbo = Wt::Dbo;
 
 namespace wittyPlus {
 
-/**
-* @brief Maps c++ classes to Dbo objects
-*
-* @param session the already connected session that'll do the mapping
-*/
-void mapModels(dbo::Session& session) {
-    session.mapClass<model::User>("users");
-}
+/// Returns the db session for the current app/thread
+Wt::Dbo::Session& dbSession();
 
 } // namespace wittyPlus
 

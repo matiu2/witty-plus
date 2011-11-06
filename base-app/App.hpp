@@ -29,6 +29,7 @@
 #include "model/User.hpp"
 #include "lib/BaseApp.hpp"
 #include "urls.hpp"
+#include "IDB.hpp"
 #include "IUsers.hpp"
 #include "INavigation.hpp"
 
@@ -54,7 +55,7 @@ const string appCookieName = "witty-plus-app-cookie";
 
 typedef base::BaseApp<model::User> BaseApp;
 
-class App : public BaseApp, public IUsers, public INavigation {
+class App : public BaseApp, public IUsers, public INavigation, public IDB {
 public:
     typedef Signal<> URLChangedSignal;
     typedef Signal<WString> MessageSignal;

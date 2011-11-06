@@ -45,7 +45,8 @@ App::App(const WEnvironment& environment) :
     postgres.connect(postgresConnectionString);
     dbSession().setConnection(postgres);
     log("notice") << "Mapping classes";
-    mapModels(dbSession());
+    // Map the models to db tables
+    dbSession().mapClass<model::User>("users");
     // Set up the extensions
     _extensionManager = new ExtensionManager(this);
     // Load the message bundles
