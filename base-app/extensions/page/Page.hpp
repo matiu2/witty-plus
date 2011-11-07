@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  urls.hpp
+ *       Filename:  page.cpp
  *
- *    Description:  A nice place too keep all the urls
+ *    Description:  A plugin that provides a single page
  *
  *        Version:  1.0
- *        Created:  10/08/11 22:10:08
+ *        Created:  13/10/11 02:29:55
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -16,19 +16,17 @@
  * =====================================================================================
  */
 
-#ifndef URLS_HPP
-#define URLS_HPP
+#pragma once
+#include <Wt/WObject>
 
 namespace wittyPlus {
+namespace page {
 
-/// Consts so we don't accidentally change a url somewhere
-namespace urls {
-    extern const char* home;
-    extern const char* login;
-    extern const char* logout;
-    extern const char* admin_users;
-} // namespace urls
+/// A singleton that will be created when the plugin is loaded by the main app. Not thread safe.
+class Extension: public WObject {
+public:
+    const string& name() { return "Page"; }
+};
 
+} // namespace page
 } // namespace wittyPlus
-
-#endif //  URLS_HPP

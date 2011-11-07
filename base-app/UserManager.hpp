@@ -1,13 +1,13 @@
 //
 //  UserManager.hpp
-//  my_app
 //
 //  Created by Matthew Sherborne on 22/08/11.
 //  Copyright 2011 Slicehost LLC. All rights reserved.
 //
 
-#ifndef my_app_UserManager_hpp
-#define my_app_UserManager_hpp
+#pragma once
+#ifndef wittyPlus_UserManager_hpp
+#define wittyPlus_UserManager_hpp
 
 #include <Wt/WStackedWidget>
 #include "UserList.hpp"
@@ -60,7 +60,7 @@ public:
     }
 };
     
-} // namespace my_app
+} // namespace wittyPlus
 
 
-#endif // #define my_app_UserManager_hpp
+#endif // #define wittyPlus_UserManager_hpp

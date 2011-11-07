@@ -21,6 +21,7 @@
 #include "model/User.hpp"
 #include "db.hpp"
 #include "url2action.hpp"
+#include "ExtensionManager.hpp"
 
 #include <stdexcept>
 #include <Wt/WString>
@@ -37,14 +38,17 @@ using std::string;
 namespace wittyPlus {
 
 App::App(const WEnvironment& environment) :
-    BaseApp(environment, my_appCookieName) {
+    BaseApp(environment, appCookieName) {
     // Set up the db
     string postgresConnectionString;
     readConfigurationProperty("DB", postgresConnectionString);
     postgres.connect(postgresConnectionString);
     dbSession().setConnection(postgres);
     log("notice") << "Mapping classes";
-    mapModels(dbSession());
+    // Map the models to db tables
+    dbSession().mapClass<model::User>("users");
+    // Set up the extensions
+    _extensionManager = new ExtensionManager(this);
     // Load the message bundles
     messageResourceBundle().use(appRoot() + "messages/App");
     messageResourceBundle().use(appRoot() + "messages/MainWindow");
@@ -95,6 +99,17 @@ void App::notify(const WEvent& event) {
     }
 }
 
+// IUser Implementation start //
+bool App::tryLogin(const string& username, const string& password) { return userSession()->tryLogin(username, password); }
+UserChangedSignal* App::userChanged() { return _userChanged; }
+Wt::Dbo::ptr<User> App::user() { return userSession()->user(); }
+void App::logout() { userSession()->logout(); }
+bool App::isLoggedIn() { return userSession()->isLoggedIn(); }
+// IUser Implementation end //
+
+// INavigation Implementation start //
+
+void App::go(const string& newUrl) { setInternalPath(newUrl, true); }
 
 bool App::goBack(bool dontLogout) {
     if (urlHistory.size() >= 2) {
@@ -113,8 +128,12 @@ bool App::goBack(bool dontLogout) {
     }
 }
 
+void App::goBackOrHome() { if (!goBack()) go(urls::home); }
+
+// INavigation Implementation end //
+
 WApplication *createApplication(const WEnvironment& env) { return new App(env); }
 
 App* app() { return dynamic_cast<App*>(WApplication::instance()); }
 
-} // namespace my_app
+} // namespace wittyPlus

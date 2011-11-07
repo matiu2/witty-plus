@@ -30,4 +30,4 @@ namespace urls {
 
 } // namespace urls
 
-} // namespace my_app
+} // namespace wittyPlus

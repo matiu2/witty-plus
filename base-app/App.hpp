@@ -29,6 +29,8 @@
 #include "model/User.hpp"
 #include "lib/BaseApp.hpp"
 #include "urls.hpp"
+#include "IUsers.hpp"
+#include "INavigation.hpp"
 
 namespace Wt {
     class WEvent;
@@ -46,14 +48,14 @@ namespace wittyPlus {
 
 class MainWindow;
 class URL2Action;
+class ExtensionManager;
 
-const string my_appCookieName = "my_app_cookie";
+const string appCookieName = "witty-plus-app-cookie";
 
 typedef base::BaseApp<model::User> BaseApp;
 
-class App : public BaseApp {
+class App : public BaseApp, public IUsers, public INavigation {
 public:
-    typedef Signal<dbo::ptr<model::User>, dbo::ptr<model::User> > UserChangedSignal;
     typedef Signal<> URLChangedSignal;
     typedef Signal<WString> MessageSignal;
     typedef vector<string> UrlHistory;
@@ -62,6 +64,7 @@ protected:
     URL2Action* _url2ActionMapper; /// Handles turning urls into actions
     dbo::backend::Postgres postgres;
     UrlHistory urlHistory;
+    ExtensionManager* _extensionManager;
     // Signals
     UserChangedSignal* _userChanged;
     MessageSignal* _statusTextChanged;
@@ -82,19 +85,29 @@ protected:
     }
 public:
     App(const WEnvironment& environment);
-    UserChangedSignal* userChanged() { return _userChanged; } /// An event triggered when a user logs in or logs out
     MessageSignal* statusTextChanged() { return _statusTextChanged; } /// An event triggered when the status text (shown on the front page) changes
     /// Shows a status message for a period of time
-    void setStatusText(const WString& newStatusText) { statusTextChanged()->emit(newStatusText); }
     MainWindow* mainWindow() { return _mainWindow; }
-    /// Use to send the user somewhere inside the app
-    void go(const string& newUrl) { setInternalPath(newUrl, true); }
+    void setStatusText(const WString& newStatusText) { statusTextChanged()->emit(newStatusText); } // TODO: remove .. so IGUI can handle it
+
+    // IUsers Implementation
+    virtual bool tryLogin(const string& username, const string& password);
+    virtual UserChangedSignal* userChanged(); /// An event triggered when a user logs in or logs out
+    virtual Wt::Dbo::ptr<model::User> user(); /// Returns a dbo::ptr to the currently logged in user
+    virtual void logout(); /// Logs out the current user
+    virtual bool isLoggedIn(); /// Returns true if a user is currently logged in
+    
+    // INavigation Implementation
+    virtual void go(const string& newUrl); /// Use to send the user somewhere inside the app
     /** Go back one in the history but only if it keeps you inside the app.
      * @param dontLogout don't go if 'back' would take us to /logout
      * @return true if we navigated
      **/
-    bool goBack(bool dontLogout=true);
-    void goBackOrHome() { if (!goBack()) go(urls::home); }
+    virtual bool goBack(bool dontLogout=true);
+    virtual void goBackOrHome(); /// Go Back, if we don't have history .. go home
+
+    /// For extension developers to register their extensions
+    ExtensionManager* extensionManager() { return _extensionManager; }
     /// Returns true if client is running on an iphone TODO: Add more possibilities here
     bool isIPhone() { return environment().userAgent().find("iPhone") != string::npos; }
 };
@@ -103,6 +116,6 @@ WApplication *createApplication(const WEnvironment& env);
 
 App* app();
 
-} // namespace my_app
+} // namespace wittyPlus
 
 #endif // APP_HPP

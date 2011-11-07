@@ -20,13 +20,14 @@
 #define URL2ACTION_HPP
 
 #include "urls.hpp"
-#include "App.hpp"
+#include "IGui.hpp"
+#include "IUsers.hpp"
+#include "INavigation.hpp"
 #include "UserManager.hpp"
 #include "LoginWindow.hpp"
 #include "lib/URLs.hpp"
-#include "Wt/WString"
-
-using Wt::WString;
+#include <Wt/WApplication>
+#include <Wt/WString>
 
 namespace wittyPlus {
 
@@ -35,19 +36,18 @@ using base::URLs;
 class URL2Action : public WObject {
 protected:
     URLs _urls; /// Allows us to connect urls to actions
-    App* app;
     // Utility methods
-    bool isLoggedIn() { return app->userSession()->user(); }
-    template<class Widget> void setBody() { app->mainWindow()->setBody(new Widget()); }
+    bool isLoggedIn() { return IUsers::instance()->user(); }
+    template<class Widget> void setBody() { IGui::instance()->setBody(new Widget()); }
     template<class Widget> void setBodyIfLoggedIn() {
         if (isLoggedIn()) {
             setBody<Widget>();
         } else {
-            app->mainWindow()->setBody(WString::tr("access-denied"));
+            IGui::instance()->setBody(Wt::WString::tr("access-denied"));
         }
     }
 public:
-    URL2Action(App* app) : WObject(app), app(app) {
+    URL2Action(WApplication* app) : WObject(app) {
         app->internalPathChanged().connect(&_urls, &URLs::run);
         // Hook up all the urls
         _urls[urls::home].connect(this, &URL2Action::home);
@@ -56,16 +56,17 @@ public:
         _urls[urls::admin_users].connect(this, &URL2Action::admin_users);
     }
     // URL Handlers
-    void home() { app->mainWindow()->bindString("content", WString::tr("sample-content")); }
+    void home() { IGui::instance()->setBody(Wt::WString::tr("sample-content")); }
     /// Actually logs you out
     void logout() {
-        dbo::ptr<User> oldUser = app->userSession()->user();
-        app->userSession()->logout();
-        dbo::ptr<User> newUser = app->userSession()->user();
+        IUsers* users = IUsers::instance();
+        dbo::ptr<User> oldUser = users->user();
+        users->logout();
+        dbo::ptr<User> newUser = users->user();
         if (oldUser != newUser)
-            app->userChanged()->emit(oldUser, newUser);
-        app->go(urls::home);
-        app->setStatusText(WString::tr("you-are-logged-out"));
+            users->userChanged()->emit(oldUser, newUser);
+        INavigation::instance()->go(urls::home);
+        IGui::instance()->setStatusText(Wt::WString::tr("you-are-logged-out"));
     }
     /// Shows the login form
     void login() { setBody<LoginWindow>(); }
@@ -75,6 +76,6 @@ public:
 };
 
 
-} // namespace my_app {
+} // namespace wittyPlus
 
 #endif // URL2ACTION_HPP

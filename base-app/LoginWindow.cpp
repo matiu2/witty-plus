@@ -25,9 +25,13 @@
 #include <Wt/WLogger>
 #include <Wt/WPushButton>
 #include <Wt/WContainerWidget>
+#include <Wt/WApplication>
 #include <Wt/Dbo/ptr>
 #include <string>
-#include "App.hpp"
+#include "urls.hpp"
+#include "IGui.hpp"
+#include "IUsers.hpp"
+#include "INavigation.hpp"
 #include "model/User.hpp"
 
 using Wt::WString;
@@ -64,30 +68,33 @@ LoginWindow::LoginWindow(WContainerWidget* parent) : MoreAwesomeTemplate(parent)
 * @brief Called when the user hits OK to login
 */
 void LoginWindow::handleOKHit() {
-    App* app = wittyPlus::app();
+    Wt::WApplication* app = Wt::WApplication::instance();
+    IUsers* users = IUsers::instance();
+    IGui*  gui = IGui::instance();
+    INavigation* nav = INavigation::instance();
     // See if we can log them in
     string username = _usernameEdit->text().toUTF8();
     string password = _passwordEdit->text().toUTF8();
-    dbo::ptr<User> oldUser = app->userSession()->user();
+    dbo::ptr<User> oldUser = users->user();
     dbo::ptr<User> newUser;
-    if (app->userSession()->tryLogin(username, password)) {
+    if (users->tryLogin(username, password)) {
         // Let the application know
         app->log("SECURITY") << username << " logged in";
-        newUser = app->userSession()->user();
+        newUser = users->user();
     } else {
         app->log("SECURITY") << username << " failed log in";
-        app->setStatusText(tr("invalid-login"));
+        gui->setStatusText(tr("invalid-login"));
     }
     if (oldUser != newUser)
-        app->userChanged()->emit(oldUser, newUser);
+        users->userChanged()->emit(oldUser, newUser);
     // Go back to what we were doing (but now with different set of powerz)
-    if (!app->goBack())
-        app->go(urls::home);
+    if (!nav->goBack())
+        nav->go(urls::home);
 }
 
 void LoginWindow::handleCancelHit() {
-    app()->setStatusText(tr("Login Cancelled"));
-    app()->goBack();
+    IGui::instance()->setStatusText(tr("Login Cancelled"));
+    INavigation::instance()->goBack();
 }
 
-} // namespace my_app
+} // namespace wittyPlus

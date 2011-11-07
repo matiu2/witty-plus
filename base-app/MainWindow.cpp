@@ -19,10 +19,12 @@
 #include "MainWindow.hpp"
 #include "lib/InternalLink.hpp"
 #include "AdminIndex.hpp"
-#include "App.hpp"
+#include "IUsers.hpp"
+#include "IGui.hpp"
 #include "urls.hpp"
 #include <Wt/WLogger>
 #include <Wt/WStackedWidget>
+#include <Wt/WApplication>
 
 namespace wittyPlus {
 
@@ -40,7 +42,8 @@ MainWindow::MainWindow(WContainerWidget* parent) :
     _oldStatusText->setInline(false);
     // Set up any widets you have like the navigation tree
     bindString("nav", "Bind Nav box widget here");
-    if (app()->userSession()->isLoggedIn()) {
+    IUsers* users = IUsers::instance();
+    if (users->isLoggedIn()) {
         _loginMenu = 0; // Needs to be zeroed so we can know whether to hide it or not later
         bindAndCreateWidget(_controlPanel, "controls");
     } else {
@@ -49,9 +52,9 @@ MainWindow::MainWindow(WContainerWidget* parent) :
     // Put your content in the middle
     bindString("content", tr("sample-content"));
     // Look out for people logging in and out
-    app()->userChanged()->connect(this, &MainWindow::handleUserChanged);
+    users->userChanged()->connect(this, &MainWindow::handleUserChanged);
     // Don't show 'login' when on the 'login page'
-    app()->internalPathChanged().connect(this, &MainWindow::onInternalPathChanged); 
+    Wt::WApplication::instance()->internalPathChanged().connect(this, &MainWindow::onInternalPathChanged); 
 }
 
 void MainWindow::makeLoginMenu() {
@@ -64,15 +67,16 @@ void MainWindow::makeLoginMenu() {
 
 void MainWindow::handleUserChanged(dbo::ptr<User>, dbo::ptr<User> newUser) {
     // If they just logged in
+    IGui* gui = IGui::instance();
     if (newUser) {
         // We'll be using the admin control panel, instead of a login link
         bindAndCreateWidget(_controlPanel, "controls");
         _loginMenu = 0; // Needs to be zeroed so we can know whether to hide it or not later
         // Say hello
-        app()->setStatusText(tr("welcome-1").arg(newUser->name()));
+        gui->setStatusText(tr("welcome-1").arg(newUser->name()));
     } else {
         // Someone's logging out
-        app()->setStatusText(tr("goodbye"));
+        gui->setStatusText(tr("goodbye"));
         makeLoginMenu();
     }
 }
@@ -88,10 +92,11 @@ void MainWindow::onInternalPathChanged(const string &url) {
         else
             _loginMenu->show();
     }
+    Wt::WApplication* app = Wt::WApplication::instance();
     // Also check if status text needs to fade out
-    app()->log("DEBUG") << "Time since last status text update: " << difftime(time(NULL), _statusTextSet);
+    app->log("DEBUG") << "Time since last status text update: " << difftime(time(NULL), _statusTextSet);
     if (difftime(time(NULL), _statusTextSet) > 1) { // if older than 1 seconds
-        app()->log("DEBUG") << "Fading out status text";
+        app->log("DEBUG") << "Fading out status text";
         setStatusText("");
     }
 }
@@ -99,6 +104,12 @@ void MainWindow::onInternalPathChanged(const string &url) {
 //------------------------
 // Public methods
 //------------------------
+
+
+// IGui implementation
+
+void MainWindow::setBody(const WString& text) { bindString("content", text); }
+void MainWindow::setBody(Wt::WWidget* widget) { bindWidget("content", widget); }
 
 /// Shows the new status text near the top of the page
 void MainWindow::setStatusText(const WString& newMessage) {
@@ -110,5 +121,5 @@ void MainWindow::setStatusText(const WString& newMessage) {
     _statusTextSet = time(NULL); // Remember when we set it
 }
 
-} // namespace my_app
+} // namespace wittyPlus
 

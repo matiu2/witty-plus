@@ -39,7 +39,7 @@ int main(int , char** ) {
     session.setConnection(postgres);
     dbo::Transaction transaction(session);
     // Create the schema
-    mapModels(session);
+    session.mapClass<User>("users");
     session.createTables();
     // Fill some nice data
     // Add a user

@@ -24,6 +24,8 @@
 #include "lib/MatchValidator.hpp"
 #include "lib/DBNoDupValidator.hpp"
 #include <boost/assert.hpp>
+#include "IGui.hpp"
+#include "db.hpp"
 
 using Wt::WAnimation;
 using Wt::WValidator;
@@ -41,11 +43,12 @@ UserEdit::UserEdit(WContainerWidget* parent) : base::MoreAwesomeTemplate(parent)
     DBNoDupValidator<model::User>* nameValidator;
     WString userExistsMsg = tr("user-name-x-exists");
     WString userNeededMsg = tr("user-needs-a-name");
+    Wt::Dbo::Session& db = dbSession();
     if (_user)
-        nameValidator = new base::DBNoDupValidator<User>(app()->dbSession(), "name", _user.id(), true,
+        nameValidator = new base::DBNoDupValidator<User>(db, "name", _user.id(), true,
                                   userExistsMsg, userNeededMsg);
     else
-        nameValidator = new base::DBNoDupValidator<User>(app()->dbSession(), "name", true,
+        nameValidator = new base::DBNoDupValidator<User>(db, "name", true,
                                   userExistsMsg, userNeededMsg);
     edtName->setValidator(nameValidator);
     bindAndCreateField(lblPass1, edtPass1, msgPass1, "new-password");
@@ -81,7 +84,7 @@ void UserEdit::setUser(dbo::ptr<User> user) {
     } else {
         edtName->setText("");
         dynamic_cast<base::DBNoDupValidator<model::User>*>(edtName->validator())->clearIdToIgnore();
-        app()->setStatusText(tr("Adding a new user"));
+        IGui::instance()->setStatusText(tr("Adding a new user"));
         edtPass1->validator()->setMandatory(true);
         edtPass2->validator()->setMandatory(true);
     }
@@ -129,11 +132,11 @@ void UserEdit::OKHit() {
         }
         // Save it
         if (userHappy == Wt::Yes) {
-            dbo::Session& s = app()->dbSession();
-            dbo::Transaction t(s);
+            Wt::Dbo::Session& db = dbSession();
+            dbo::Transaction t(db);
             if (!_user) {
                 // If we don't have an existing user .. make a new one and add it to the DB
-               _user = s.add(new User(edtName->text().toUTF8(), edtPass1->text().toUTF8()));
+               _user = db.add(new User(edtName->text().toUTF8(), edtPass1->text().toUTF8()));
             } else {
                 model::User* u = _user.modify();
                 u->setName(edtName->text());
@@ -159,4 +162,4 @@ void UserEdit::CancelHit() {
     cancelled().emit();
 }
 
-} // namespace my_app
+} // namespace wittyPlus

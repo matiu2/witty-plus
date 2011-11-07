@@ -22,7 +22,6 @@
 #include "lib/MoreAwesomeTemplate.hpp"
 #include "lib/ButtonBar.hpp"
 #include "lib/SessionHandle.hpp"
-#include "App.hpp"
 #include <Wt/WLineEdit>
 #include <Wt/WLogger>
 #include <string>
@@ -58,6 +57,6 @@ public:
     void setFocus() { _usernameEdit->setFocus(); }
 };
 
-} // namespace my_app
+} // namespace wittyPlus
 
 #endif // LOGIN_WINDOW_HPP

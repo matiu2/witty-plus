@@ -21,11 +21,12 @@
 
 #include "lib/MoreAwesomeTemplate.hpp"
 #include "model/User.hpp"
-#include "App.hpp"
+#include "IGui.hpp"
 #include <Wt/WText>
 #include <Wt/WAnimation>
 #include <Wt/WMenu>
 #include <Wt/WMenuItem>
+#include <Wt/WApplication>
 #include <ctime>
 
 namespace Wt {
@@ -56,7 +57,7 @@ using base::InternalLink;
 
 class AdminIndex;
 
-class MainWindow : public base::MoreAwesomeTemplate {
+class MainWindow : public base::MoreAwesomeTemplate, public IGui {
 protected:
     // Fields
     WStackedWidget* _statusTextHolder;
@@ -68,22 +69,23 @@ protected:
     // Helpers
     void makeLoginMenu();
     void addMenuLink(WMenu* menu, const WString& text, const std::string& url) {
-        menu->addItem(new WMenuItem(text, 0))->setPathComponent(url);
+        menu->addItem(new Wt::WMenuItem(text, 0))->setPathComponent(url);
     }
-    void menuClicked(WMenuItem* item) {
-        app()->setInternalPath(item->pathComponent(), true);
+    void menuClicked(Wt::WMenuItem* item) {
+        Wt::WApplication::instance()->setInternalPath(item->pathComponent(), true);
     }
     // Signal handlers
     void handleUserChanged(dbo::ptr<User> oldUser,  dbo::ptr<User> newUser);
     void onInternalPathChanged(const string& url);
 public:
     MainWindow(WContainerWidget* parent=0);
-    void setBody(const WString& text="") { bindString("content", text); }
-    void setBody(WWidget* widget) { bindWidget("content", widget); }
+    // IGui implementation
+    void setBody(const WString& text="");
+    void setBody(Wt::WWidget* widget);
     void setStatusText(const WString& newMessage);
 };
 
-} // namespace my_app
+} // namespace wittyPlus
 
 #endif // MAINWINDOW_HPP
 

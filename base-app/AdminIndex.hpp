@@ -37,6 +37,6 @@ public:
     }
 };
 
-} // namespace my_app
+} // namespace wittyPlus
 
 #endif //  ADMIN_INDEX_HPP
