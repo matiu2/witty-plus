@@ -42,14 +42,14 @@ using Wt::Signal;
 using Wt::WEvent;
 namespace dbo = Wt::Dbo;
 
-namespace my_app {
+namespace wittyPlus {
 
 class MainWindow;
 class URL2Action;
 
 const string my_appCookieName = "my_app_cookie";
 
-typedef wittyPlus::BaseApp<model::User> BaseApp;
+typedef base::BaseApp<model::User> BaseApp;
 
 class App : public BaseApp {
 public:

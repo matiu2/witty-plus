@@ -33,7 +33,7 @@
 
 namespace dbo = Wt::Dbo;
 
-namespace my_app {
+namespace wittyPlus {
 namespace unittests {
 namespace fixtures {
 

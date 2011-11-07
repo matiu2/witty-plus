@@ -23,10 +23,11 @@
 #include "lib/InternalLink.hpp"
 #include "lib/SimpleMenu.hpp"
 
-using wittyPlus::SimpleMenu;
-using wittyPlus::InternalLink;
 
-namespace my_app {
+namespace wittyPlus {
+
+using base::SimpleMenu;
+using base::InternalLink;
 
 class AdminIndex : public SimpleMenu {
 public:

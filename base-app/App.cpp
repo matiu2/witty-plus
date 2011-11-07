@@ -34,7 +34,7 @@ using Wt::WEnvironment;
 using Wt::WString;
 using std::string;
 
-namespace my_app {
+namespace wittyPlus {
 
 App::App(const WEnvironment& environment) :
     BaseApp(environment, my_appCookieName) {

@@ -27,6 +27,7 @@ using Wt::WString;
 using Wt::WFormWidget;
 
 namespace wittyPlus {
+namespace base {
 
 /// Holds a validation result, plus a message for the user
 struct ServerSideValidationResult {
@@ -135,5 +136,6 @@ public:
 
 };
 
+} // namespace base
 } // namespace wittyPlus
 #endif // SERVERSIDEVALIDATOR_HPP

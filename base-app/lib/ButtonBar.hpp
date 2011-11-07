@@ -25,6 +25,7 @@
 using Wt::WPushButton;
 
 namespace wittyPlus {
+namespace base {
 
 /**
 * @brief A nice two buttons next to each other on a panel
@@ -55,6 +56,7 @@ public:
 };
 
 
+} // namespace base
 } // namespace wittyPlus
 
 #endif // BUTTON_BAR_HPP

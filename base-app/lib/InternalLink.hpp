@@ -31,6 +31,7 @@ using Wt::WContainerWidget;
 using std::string;
 
 namespace wittyPlus {
+namespace base {
 
 // Like WAnchor, but defaults to setting an internal link
 class InternalLink : public WAnchor {
@@ -39,6 +40,7 @@ public:
         WAnchor(WLink(WLink::InternalPath, url), text, parent) {}
 };
 
-}
+} // namespace base
+} // namespace wittyPlus
 
 #endif //  INTERNAL_LINK_HPP

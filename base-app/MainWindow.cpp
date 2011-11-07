@@ -24,10 +24,10 @@
 #include <Wt/WLogger>
 #include <Wt/WStackedWidget>
 
-namespace my_app {
+namespace wittyPlus {
 
 MainWindow::MainWindow(WContainerWidget* parent) :
-    wittyPlus::MoreAwesomeTemplate(parent), _statusTextSet(time(NULL)), _loginMenu(0)
+    base::MoreAwesomeTemplate(parent), _statusTextSet(time(NULL)), _loginMenu(0)
 {
     // Different display depending on if we're iphone or something bigger
     setTemplateText(tr("main-template"));

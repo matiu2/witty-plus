@@ -24,6 +24,7 @@
 #include "UserManager.hpp"
 
 namespace wittyPlus {
+namespace base {
 
 /**
 * @brief A handle to the session of the currently logged in user
@@ -36,6 +37,7 @@ public:
 
 };
 
+} // namespace base
 } // namespace wittyPlus
 
 #endif // SESSION_MANAGER_HPP

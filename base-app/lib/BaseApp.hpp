@@ -32,6 +32,7 @@ namespace Wt {
 using Wt::WString;
 
 namespace wittyPlus {
+namespace base {
 
 template <class User>
 class BaseApp : public Wt::WApplication {
@@ -64,6 +65,7 @@ public:
 };
 
 
+} // namespace base
 } // namespace wittyPlus
 
 #endif //  BASE_APP_HPP

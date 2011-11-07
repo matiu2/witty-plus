@@ -28,6 +28,7 @@ using Wt::WTimer;
 using std::string;
 
 namespace wittyPlus {
+namespace base {
 
 class BaseSessionHandle : public WObject {
 protected:
@@ -44,6 +45,7 @@ public:
     void touchSession();   /// Let us know that the user is still here. a session, (doesn't cost much .. just starts the timer if it's not already started)
 };
 
+} // namespace base
 } // namespace wittyPlus
 
 #endif // BASESESSIONHANDLE_HPP

@@ -22,6 +22,7 @@
 using std::invalid_argument;
 
 namespace wittyPlus {
+namespace base {
 
 MemorySessionStore* MemorySessionStore::globalInstance = 0;
 const unsigned int MemorySessionStore::defaultTimeout = 1800; // If a user doesn't touch a session for 30 minutes .. they log out
@@ -101,4 +102,5 @@ void MemorySessionStore::purgeOldSessions() {
     }
 }
 
+} // namespace base
 } // namespace wittyPlus

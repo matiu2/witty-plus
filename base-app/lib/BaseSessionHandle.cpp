@@ -24,6 +24,7 @@ using Wt::WApplication;
 using Wt::WEnvironment;
 
 namespace wittyPlus {
+namespace base {
 
 /**
 * @brief Get's the cookie from the app
@@ -62,4 +63,5 @@ void BaseSessionHandle::touchSession() {
 }
 
 
+} // namespace base
 } // namespace wittyPlus

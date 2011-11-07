@@ -35,17 +35,15 @@ namespace Wt {
     class WLineEdit;
 };
 
-using wittyPlus::MoreAwesomeTemplate;
-using my_app::model::User;
+using wittyPlus::model::User;
 using Wt::WLabel;
 using Wt::WLineEdit;
 using Wt::Signal;
 using Wt::WText;
-using wittyPlus::ButtonBar;
 
-namespace my_app {
+namespace wittyPlus {
 
-class UserEdit : public MoreAwesomeTemplate {
+class UserEdit : public base::MoreAwesomeTemplate {
 public:
     typedef Signal< dbo::ptr<User> > UserSignal;
 private:
@@ -63,7 +61,7 @@ private:
     WLabel*    lblPass2;
     WLineEdit* edtPass2;
     WText* msgPass2;
-    ButtonBar* btnBar;
+    base::ButtonBar* btnBar;
     // Event handlers
     void OKHit();
     void CancelHit();

@@ -32,11 +32,11 @@ namespace dbo = Wt::Dbo;
 using Wt::WSelectionBox;
 using Wt::Signal;
 using Wt::WPushButton;
-using my_app::model::User;
+using wittyPlus::model::User;
 
-namespace my_app {
+namespace wittyPlus {
 
-class UserList : public wittyPlus::MoreAwesomeTemplate {
+class UserList : public base::MoreAwesomeTemplate {
 public:
     typedef Signal< dbo::ptr<User> > UserSignal;
     typedef void (UserList::*ButtonMethod)();

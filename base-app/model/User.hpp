@@ -26,10 +26,10 @@
 
 namespace dbo = Wt::Dbo;
 using std::string;
-using wittyPlus::StdSHAValue;
 using Wt::WString;
+using wittyPlus::base::StdSHAValue;
 
-namespace my_app {
+namespace wittyPlus {
 namespace model {
 
 class User {
@@ -41,14 +41,14 @@ public:
     // Structors
     User(const string& name="") : _name(name), _passwordHash(20, 0) {};
     User(const string& name, const StdSHAValue& passwordHash) : _name(name), _passwordHash(passwordHash) {};
-    User(const string& name, const string& password) : _name(name), _passwordHash(wittyPlus::sha1(password)) {};
+    User(const string& name, const string& password) : _name(name), _passwordHash(base::sha1(password)) {};
     // Accessors
     const string& name() const { return _name; }
     void setName(const string& newName) { _name = newName; }
     void setName(const WString& newName) { _name = newName.toUTF8(); }
     const StdSHAValue& passwordHash() const { return _passwordHash; }
     void setPasswordHash(const StdSHAValue& newHash) { _passwordHash = newHash; }
-    void setPassword(const string& newPassword) { setPasswordHash(wittyPlus::sha1(newPassword)); }
+    void setPassword(const string& newPassword) { setPasswordHash(base::sha1(newPassword)); }
     // DBO Support
     template<class Action>
     void persist(Action& a) {

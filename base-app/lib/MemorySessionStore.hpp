@@ -43,6 +43,7 @@ using boost::shared_lock;
 using boost::upgrade_lock;
 
 namespace wittyPlus {
+namespace base {
 
 /**
 * Info about a single logged in session ..
@@ -126,6 +127,7 @@ public:
     void purgeOldSessions(); /// Clean out expired sessions
 };
 
+} // namespace base
 } // namespace wittyPlus
 
 #endif // MEMORY_SESSION_STORE_HPP

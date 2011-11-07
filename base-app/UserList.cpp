@@ -25,10 +25,10 @@
 #include <Wt/WMessageBox>
 #include <Wt/WAnimation>
 
-using my_app::model::User;
+using wittyPlus::model::User;
 using Wt::WAnimation;
 
-namespace my_app {
+namespace wittyPlus {
 
 UserList::UserList(WContainerWidget* parent) : MoreAwesomeTemplate(parent) {
     setStyleClass("form blue");

@@ -17,11 +17,11 @@
 
 using Wt::WStackedWidget;
 using Wt::WAnimation;
-using my_app::model::User;
+using wittyPlus::model::User;
 
 namespace dbo = Wt::Dbo;
 
-namespace my_app {
+namespace wittyPlus {
     
 
 /// GUI to manage users

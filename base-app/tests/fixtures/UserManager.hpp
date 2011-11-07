@@ -32,7 +32,7 @@ using Wt::WDialog;
 using Wt::WMessageBox;
 using Wt::WString;
 
-namespace my_app {
+namespace wittyPlus {
 namespace unittests {
 namespace fixtures {
 
