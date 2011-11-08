@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Page.hpp
+ *       Filename:  IURLs.hpp
  *
- *    Description:  The app like object that handles pages
+ *    Description:  An interface where you can register your interest in handling certain urls
  *
  *        Version:  1.0
- *        Created:  08/11/11 10:33:38
+ *        Created:  07/11/11 22:33:59
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -18,16 +18,15 @@
 
 #pragma once
 
-#include <Wt/WObject>
+#include "lib/URLSignal.hpp"
 
 namespace wittyPlus {
-namespace page {
 
-class Page: public Wt::WObject {
+class IURLs {
 public:
-    Page(WObject* parent) : WObject(parent) {}
+    virtual base::URLSignal& urlSignal(const string& url) = 0;
 
+    static IURLs* instance();
 };
 
-} // namespace page
 } // namespace wittyPlus

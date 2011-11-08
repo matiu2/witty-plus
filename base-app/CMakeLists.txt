@@ -57,7 +57,7 @@ set(Boost_USE_STATIC_RUNTIME OFF)
 find_package(Boost 1.42.0 REQUIRED COMPONENTS system program_options signals date_time filesystem regex thread unit_test_framework)
 include_directories(BEFORE SYSTEM ${Boost_INCLUDE_DIR})
 
-set(mainFiles IGui.cpp IUsers.cpp INavigation.cpp urls.cpp UserEdit.cpp lib/MemorySessionStore.cpp  lib/BaseSessionHandle.cpp App.cpp db.cpp MainWindow.cpp LoginWindow.cpp UserList.cpp ExtensionManager.cpp)
+set(mainFiles url2action.cpp IGui.cpp IUsers.cpp INavigation.cpp urls.cpp UserEdit.cpp lib/MemorySessionStore.cpp  lib/BaseSessionHandle.cpp App.cpp db.cpp MainWindow.cpp LoginWindow.cpp UserList.cpp ExtensionManager.cpp)
 
 add_subdirectory(lib)
 add_subdirectory(tests)

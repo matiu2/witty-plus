@@ -33,14 +33,15 @@ namespace wittyPlus {
 
 using base::URLs;
 
+/** Builds on the application wide url to signal map and adds some of the base app's standard URLs.
+  **/
 class URL2Action : public WObject {
 protected:
     URLs _urls; /// Allows us to connect urls to actions
     // Utility methods
-    bool isLoggedIn() { return IUsers::instance()->user(); }
     template<class Widget> void setBody() { IGui::instance()->setBody(new Widget()); }
     template<class Widget> void setBodyIfLoggedIn() {
-        if (isLoggedIn()) {
+        if (IUsers::instance()->isLoggedIn()) {
             setBody<Widget>();
         } else {
             IGui::instance()->setBody(Wt::WString::tr("access-denied"));
@@ -55,6 +56,8 @@ public:
         _urls[urls::logout].connect(this, &URL2Action::logout);
         _urls[urls::admin_users].connect(this, &URL2Action::admin_users);
     }
+    /// External reference for finding/registering a signal handler to a url
+    base::URLSignal& urlSignal(const string& url); /// Registers a certain handler to a certain url base
     // URL Handlers
     void home() { IGui::instance()->setBody(Wt::WString::tr("sample-content")); }
     /// Actually logs you out

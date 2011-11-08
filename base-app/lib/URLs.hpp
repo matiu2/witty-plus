@@ -18,6 +18,7 @@
 
 #include <Wt/WObject>
 #include <Wt/WSignal>
+#include "URLSignal.hpp"
 
 using Wt::WObject;
 using Wt::Signal;
@@ -25,11 +26,15 @@ using Wt::Signal;
 namespace wittyPlus {
 namespace base {
 
+/** 
+  * A base class with a map of urls to signals. When a certain url is hit .. the signal is called.
+  * Witty already has a signal that is fired on practically every url change. This class tries to use 
+  * the power of map to make things a bit more effecient and hold a giant runtime repository.
+ **/
 class URLs : public WObject {
 public:
-    typedef Signal<> URLSignal;
     typedef void (*Handler)();
-    typedef map<string, URLSignal*> URLMap;
+    typedef std::map<std::string, base::URLSignal*> URLMap;
 private:
     URLMap urlMap;
 public:

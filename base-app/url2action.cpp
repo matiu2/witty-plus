@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Page.hpp
+ *       Filename:  url2action.cpp
  *
- *    Description:  The app like object that handles pages
+ *    Description:  Handles base app mapping of urls to actions, plus registering interest of extensions.
  *
  *        Version:  1.0
- *        Created:  08/11/11 10:33:38
+ *        Created:  07/11/11 22:43:33
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -16,18 +16,12 @@
  * =====================================================================================
  */
 
-#pragma once
-
-#include <Wt/WObject>
+#include "url2action.hpp"
 
 namespace wittyPlus {
-namespace page {
 
-class Page: public Wt::WObject {
-public:
-    Page(WObject* parent) : WObject(parent) {}
+base::URLSignal& URL2Action::urlSignal(const string& url) {
+    return _urls[url];
+}
 
-};
-
-} // namespace page
 } // namespace wittyPlus

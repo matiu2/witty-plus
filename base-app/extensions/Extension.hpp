@@ -16,23 +16,23 @@
  * =====================================================================================
  */
 
+#pragma once
+
 #include <Wt/WObject>
 #include <Wt/Dbo/Session>
 
 namespace wittyPlus {
 
-class BaseExtension : WT::WObject {
+class Extension {
 public:
-    BaseExtension(Wt::WObject* parent=0) : Wt::WObject(parent) {}
-    /** Called once for each app (and thread) .. use this to map classes to tables
-      * @param session for you to call session.mapClass<YourClass>("tableName");
+    /** Called once for each app (and thread) .. use this to map classes to tables, register with URLs you're interested
+     * in etc. Check out the Page plugin for an example
       **/
-    virtual void mapClasses(Wt::Dbo::Session& session) {}
-    /** Override this to handle a url when the user navigates there
-      * @return true if you've handled the url and no-one else should bother. false if you didn't handle it and we
-      * should keep searching for a handler.
-     **/
-    virtual bool handleUrl(const string& url) {}
+    virtual const char* name() const = 0; /// The name of the extension
+    /// Launch the extension for a single app / thread
+    /// @param parent the new parent of object of the extension instance's class hierachy (usually a Wt::WApplication).
+    /// @return The actual instance of the extension for this app
+    virtual Wt::WObject* launch(Wt::WObject* parent) const = 0; 
 };
 
 } // namespace wittyPlus {

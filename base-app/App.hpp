@@ -30,6 +30,7 @@
 #include "lib/BaseApp.hpp"
 #include "urls.hpp"
 #include "IUsers.hpp"
+#include "IURLs.hpp"
 #include "INavigation.hpp"
 
 namespace Wt {
@@ -54,7 +55,7 @@ const string appCookieName = "witty-plus-app-cookie";
 
 typedef base::BaseApp<model::User> BaseApp;
 
-class App : public BaseApp, public IUsers, public INavigation {
+class App : public BaseApp, public IUsers, public INavigation, public IURLs {
 public:
     typedef Signal<> URLChangedSignal;
     typedef Signal<WString> MessageSignal;
@@ -64,7 +65,6 @@ protected:
     URL2Action* _url2ActionMapper; /// Handles turning urls into actions
     dbo::backend::Postgres postgres;
     UrlHistory urlHistory;
-    ExtensionManager* _extensionManager;
     // Signals
     UserChangedSignal* _userChanged;
     MessageSignal* _statusTextChanged;
@@ -106,8 +106,9 @@ public:
     virtual bool goBack(bool dontLogout=true);
     virtual void goBackOrHome(); /// Go Back, if we don't have history .. go home
 
-    /// For extension developers to register their extensions
-    ExtensionManager* extensionManager() { return _extensionManager; }
+    // IURLs implementation
+    virtual base::URLSignal& urlSignal(const string& url); /// Returns/creates the signal that will be called when a certain URL is navigated to
+
     /// Returns true if client is running on an iphone TODO: Add more possibilities here
     bool isIPhone() { return environment().userAgent().find("iPhone") != string::npos; }
 };

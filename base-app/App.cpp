@@ -47,8 +47,6 @@ App::App(const WEnvironment& environment) :
     log("notice") << "Mapping classes";
     // Map the models to db tables
     dbSession().mapClass<model::User>("users");
-    // Set up the extensions
-    _extensionManager = new ExtensionManager(this);
     // Load the message bundles
     messageResourceBundle().use(appRoot() + "messages/App");
     messageResourceBundle().use(appRoot() + "messages/MainWindow");
@@ -74,6 +72,8 @@ App::App(const WEnvironment& environment) :
     _statusTextChanged->connect(_mainWindow, &MainWindow::setStatusText);
     // Set up custom JS
     declareJavaScriptFunction("validate", WString::tr("js-validate").toUTF8());
+    // Set up the extensions
+    ExtensionManager::instance().launchExtensions(this);
     // Fire an internal path changed event off as user may have navigated straight here
     internalPathChanged().emit(app()->internalPath());
 }
@@ -129,6 +129,11 @@ bool App::goBack(bool dontLogout) {
 }
 
 void App::goBackOrHome() { if (!goBack()) go(urls::home); }
+
+// IURLs Implementation
+base::URLSignal& App::urlSignal(const string& url) {
+    return _url2ActionMapper->urlSignal(url);
+}
 
 // INavigation Implementation end //
 

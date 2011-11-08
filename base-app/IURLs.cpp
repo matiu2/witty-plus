@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Page.hpp
+ *       Filename:  IURLs.cpp
  *
- *    Description:  The app like object that handles pages
+ *    Description:  Provides the link to the implentation of the url manager (url2action.cpp)
  *
  *        Version:  1.0
- *        Created:  08/11/11 10:33:38
+ *        Created:  07/11/11 22:55:52
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -16,18 +16,13 @@
  * =====================================================================================
  */
 
-#pragma once
-
-#include <Wt/WObject>
+#include "IURLs.hpp"
+#include "url2action.hpp"
 
 namespace wittyPlus {
-namespace page {
 
-class Page: public Wt::WObject {
-public:
-    Page(WObject* parent) : WObject(parent) {}
+IURLs* IURLs::instance() {
 
-};
+}
 
-} // namespace page
 } // namespace wittyPlus

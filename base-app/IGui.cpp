@@ -1,6 +1,5 @@
 /*
- * =====================================================================================
- *
+ * ===================================================================================== *
  *       Filename:  IGui.cpp
  *
  *    Description:  Points seekers of the IGui interface to App
@@ -21,6 +20,8 @@
 #include "MainWindow.hpp"
 
 namespace wittyPlus {
+
+// Static methods
 
 IGui* IGui::instance() {
     return app()->mainWindow();

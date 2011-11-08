@@ -18,6 +18,7 @@
 
 #pragma once
 
+#include <Wt/WObject>
 #include <Wt/WString>
 #include <Wt/WWidget>
 

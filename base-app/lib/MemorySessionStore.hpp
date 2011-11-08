@@ -31,7 +31,6 @@
 #include <map>
 #include <boost/thread/shared_mutex.hpp>
 #include <boost/thread/locks.hpp>
-#include <boost/thread/locks.hpp>
 
 using std::string;
 using std::time_t;
@@ -80,7 +79,6 @@ public:
 private:
     static MemorySessionStore* globalInstance;
     shared_mutex _lock; // Many can read session info .. but only one can write it
-    // TODO: Make this atomic<unsigned int>
     #if (__cplusplus > 199711L)
     atomic<unsigned long> _timeout; /// How long a single session lasts - c++0x style
     #else
@@ -95,7 +93,7 @@ private:
     *
     * @return a pointer to the session if found, or 0
     */
-    Session* findSession(ReadOnlyLock& /* proove you have a lock */, const string& cookie) {
+    Session* findSession(ReadOnlyLock& /* prove you have a lock */, const string& cookie) {
         PSession pSession = sessions.find(cookie);
         if (pSession != sessions.end()) {
             return &((*pSession).second);

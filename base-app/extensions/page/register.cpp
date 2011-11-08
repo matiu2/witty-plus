@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Page.hpp
+ *       Filename:  register.cpp
  *
- *    Description:  The app like object that handles pages
+ *    Description:  Performs the registration of the page extension
  *
  *        Version:  1.0
- *        Created:  08/11/11 10:33:38
+ *        Created:  08/11/11 08:28:44
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -16,18 +16,21 @@
  * =====================================================================================
  */
 
-#pragma once
-
-#include <Wt/WObject>
+#include "../../ExtensionManager.hpp"
+#include "Extension.hpp"
+#include <memory>
 
 namespace wittyPlus {
 namespace page {
 
-class Page: public Wt::WObject {
+class Register {
 public:
-    Page(WObject* parent) : WObject(parent) {}
-
+    Register() {
+        ExtensionManager::instance().registerExtension(std::unique_ptr<wittyPlus::Extension>(new page::Extension()));
+    }
 };
+
+Register reg;
 
 } // namespace page
 } // namespace wittyPlus

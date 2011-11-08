@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Page.hpp
+ *       Filename:  Extension.cpp
  *
- *    Description:  The app like object that handles pages
+ *    Description:  The page extension's implementation
  *
  *        Version:  1.0
- *        Created:  08/11/11 10:33:38
+ *        Created:  08/11/11 08:24:38
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -16,18 +16,15 @@
  * =====================================================================================
  */
 
-#pragma once
-
+#include "Extension.hpp"
+#include "Page.hpp"
 #include <Wt/WObject>
 
 namespace wittyPlus {
 namespace page {
 
-class Page: public Wt::WObject {
-public:
-    Page(WObject* parent) : WObject(parent) {}
+const char* Extension::name() const { return "Page"; }
+Wt::WObject* Extension::launch(Wt::WObject* parent) const { return new Page(parent); }
 
-};
-
-} // namespace page
 } // namespace wittyPlus
+} // namespace page

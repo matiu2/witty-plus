@@ -2,17 +2,18 @@
 
 #include <Wt/WObject>
 #include "App.hpp"
+#include <memory>
 
 namespace wittyPlus {
 
-ExtensionManager::ExtensionManager(Wt::WObject* parent) : Wt::WObject(parent) {}
-
-// Public methods
-
 // Static funcs
 
-ExtensionManager* ExtensionManager::instance() {
-    return wittyPlus::app()->extensionManager();
+std::unique_ptr<ExtensionManager> globalInstance;
+
+ExtensionManager& ExtensionManager::instance() {
+    if (!globalInstance)
+        globalInstance.reset(new ExtensionManager());
+    return *globalInstance;
 }
 
 } // namespace wittyPlus

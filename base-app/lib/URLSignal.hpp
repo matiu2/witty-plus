@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Page.hpp
+ *       Filename:  URLSignal.hpp
  *
- *    Description:  The app like object that handles pages
+ *    Description:  Just used so we can define URLSignal in one place without creating a lot of import dependencies everywhere
  *
  *        Version:  1.0
- *        Created:  08/11/11 10:33:38
+ *        Created:  07/11/11 22:40:14
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -18,16 +18,10 @@
 
 #pragma once
 
-#include <Wt/WObject>
+#include <Wt/WSignal>
 
 namespace wittyPlus {
-namespace page {
-
-class Page: public Wt::WObject {
-public:
-    Page(WObject* parent) : WObject(parent) {}
-
-};
-
-} // namespace page
+namespace base {
+    typedef Wt::Signal<> URLSignal;
+} // namespace base
 } // namespace wittyPlus
