@@ -16,7 +16,7 @@ endif()
 # Copy it to the temp dir
 configure_file(config.rb.in "${COMPILE_DIR}/config.rb")
 
-add_custom_target(css 
+add_custom_target(css ALL
     COMMAND compass compile .
     WORKING_DIRECTORY ${COMPILE_DIR}
     DEPENDS "${COMPILE_DIR}/config.rb"
