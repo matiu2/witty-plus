@@ -57,7 +57,7 @@ set(Boost_USE_STATIC_RUNTIME OFF)
 find_package(Boost 1.42.0 REQUIRED COMPONENTS system program_options signals date_time filesystem regex thread unit_test_framework)
 include_directories(BEFORE SYSTEM ${Boost_INCLUDE_DIR})
 
-set(mainFiles url2action.cpp IGui.cpp IUsers.cpp INavigation.cpp urls.cpp UserEdit.cpp lib/MemorySessionStore.cpp  lib/BaseSessionHandle.cpp App.cpp db.cpp MainWindow.cpp LoginWindow.cpp UserList.cpp ExtensionManager.cpp)
+set(mainFiles url2action.cpp IGui.cpp IUsers.cpp INavigation.cpp urls.cpp UserEdit.cpp lib/MemorySessionStore.cpp  lib/BaseSessionHandle.cpp App.cpp db.cpp MainWindow.cpp LoginWindow.cpp UserList.cpp)
 
 add_subdirectory(lib)
 add_subdirectory(tests)
@@ -69,15 +69,16 @@ CONFIGURE_FILE(test.sh test.sh)
 # Build the library
 ADD_LIBRARY(mainLib SHARED ${mainFiles})
 
-# Build the executable
-ADD_EXECUTABLE(${PROJECT_NAME} main.cpp)
-
 TARGET_LINK_LIBRARIES(mainLib
     ${Boost_THREAD_LIBRARY} 
     ${Boost_SYSTEM_LIBRARY} ${Boost_PROGRAM_OPTIONS_LIBRARY} ${Boost_SIGNALS_LIBRARY}
     ${Boost_DATE_TIME_LIBRARY} ${Boost_FILESYSTEM_LIBRARY} ${Boost_REGEX_LIBRARY}
     ${OPENSSL_LIBRARIES} ${wt} ${wtdbo} ${wtdbopostgres} ${wthttp} 
+    extensions
 )
+
+# Build the executable
+ADD_EXECUTABLE(${PROJECT_NAME} main.cpp)
 
 TARGET_LINK_LIBRARIES(${PROJECT_NAME} mainLib)
 add_dependencies(${PROJECT_NAME} mainLib)

@@ -17,8 +17,6 @@
  */
 
 #include "../Extension.hpp"
-#include "../../db.hpp"
-#include "../../IURLManager.hpp"
 
 namespace Wt {
     class WObject;

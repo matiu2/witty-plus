@@ -21,7 +21,7 @@
 #include "model/User.hpp"
 #include "db.hpp"
 #include "url2action.hpp"
-#include "ExtensionManager.hpp"
+#include "extensions/ExtensionManager.hpp"
 
 #include <stdexcept>
 #include <Wt/WString>

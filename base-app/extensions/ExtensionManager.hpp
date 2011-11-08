@@ -6,12 +6,11 @@
 #include <memory>
 #include <boost/thread/shared_mutex.hpp>
 #include <boost/thread/locks.hpp>
-#include "extensions/Extension.hpp"
+#include "Extension.hpp"
 
 namespace Wt {
     class WObject;
 }
-
 
 namespace wittyPlus {
 
@@ -29,7 +28,7 @@ public:
 private:
     ExtensionMap _extensions;
     mutable boost::shared_mutex _lock; // Many can read _extensions (all the Apps) .. but everyone has to wait for a writer
-    ExtensionManager() {} // Only App can create instances of this class
+    ExtensionManager(); // Not creatable .. use instance()
 public:
     /// Returns the extension manager associated with the WApplication of the current thread
     static ExtensionManager& instance(); // Only one global instance for all apps and all threads
@@ -38,7 +37,7 @@ public:
         boost::lock_guard<boost::shared_mutex> lock(_lock);
         const std::string& name = extension->name();
         ExtensionMap::iterator i = _extensions.find(name);
-        assert( i != _extensions.end() ); // We shouldn't have one already here .. registering twice is not allowed
+        assert( i == _extensions.end() ); // We shouldn't have one already here .. registering twice is not allowed
         _extensions.insert(ExtensionPair(name, std::move(extension)));
     }
     /** Find an extension by name.

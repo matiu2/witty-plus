@@ -16,7 +16,7 @@
  * =====================================================================================
  */
 
-#include "../../ExtensionManager.hpp"
+#include "ExtensionManager.hpp"
 #include "Extension.hpp"
 #include <memory>
 
