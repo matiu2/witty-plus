@@ -16,7 +16,7 @@
  * =====================================================================================
  */
 
-#include "App.hpp"
+#include <wittyPlus/App.hpp>
 #include <iostream>
 #include <Wt/WServer>
 

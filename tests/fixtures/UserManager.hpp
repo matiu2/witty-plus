@@ -23,7 +23,7 @@
 #include <Wt/WDialog>
 #include <Wt/WMessageBox>
 #include "Login.hpp"
-#include <wittyPlus/tests/helpers.hpp>
+#include "../helpers.hpp"
 #include <wittyPlus/UserManager.hpp>
 #include <wittyPlus/UserEdit.hpp>
 #include <wittyPlus/UserList.hpp>

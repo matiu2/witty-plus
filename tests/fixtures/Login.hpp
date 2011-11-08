@@ -20,7 +20,7 @@
 #define TESTS_FIXTURES_LOGIN_HPP
 
 #include "App.hpp"
-#include <wittyPlus/tests/helpers.hpp>
+#include "../helpers.hpp"
 #include <wittyPlus/urls.hpp>
 #include <wittyPlus/LoginWindow.hpp>
 #include <wittyPlus/MainWindow.hpp>

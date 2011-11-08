@@ -19,9 +19,9 @@
 #include <cassert> // This is needed because the file imported in the line below has an 'assert' in it
 #include <Wt/Dbo/Dbo>
 #include <Wt/Dbo/backend/Postgres>
-#include "lib/sha.hpp"
-#include "model/User.hpp"
-#include "db.hpp"
+#include <wittyPlus/lib/sha.hpp>
+#include <wittyPlus/model/User.hpp>
+#include <wittyPlus/db.hpp>
 #include <iostream>
 
 namespace dbo = Wt::Dbo;
