@@ -14,7 +14,6 @@ ELSE()
   ADD_DEFINITIONS(-DBOOST_DISABLE_ASSERTS)
 ENDIF()
 SET(LOG_FILE_NAME "${PROJECT_NAME}.log")
-SET(EXE_NAME ${PROJECT_NAME})
 option(WTDebug "Use the witty debug libraries ? (wtd.so etc.)" off)
 # Options that we're gonna add
 option(DBO "Use witty DBO" on)

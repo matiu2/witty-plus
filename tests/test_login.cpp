@@ -23,7 +23,7 @@
 #include <boost/test/test_tools.hpp>
 #include <wittyPlus/MainWindow.hpp>
 #include <wittyPlus/LoginWindow.hpp>
-#include <wittyPlus/lib/ButtonBar.hpp>
+#include <wittyPlus/base/ButtonBar.hpp>
 #include <wittyPlus/AdminIndex.hpp>
 #include "fixtures/Login.hpp"
 

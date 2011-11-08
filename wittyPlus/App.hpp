@@ -24,10 +24,10 @@
 #include <string>
 #include <Wt/WApplication>
 #include <Wt/Dbo/backend/Postgres>
-#include "lib/SessionHandle.hpp"
-#include "lib/MemorySessionStore.hpp"
+#include "base/SessionHandle.hpp"
+#include "base/MemorySessionStore.hpp"
 #include "model/User.hpp"
-#include "lib/BaseApp.hpp"
+#include "base/BaseApp.hpp"
 #include "urls.hpp"
 #include "IUsers.hpp"
 #include "IURLs.hpp"

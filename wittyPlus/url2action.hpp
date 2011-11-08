@@ -25,7 +25,7 @@
 #include "INavigation.hpp"
 #include "UserManager.hpp"
 #include "LoginWindow.hpp"
-#include "lib/URLs.hpp"
+#include "base/URLs.hpp"
 #include <Wt/WApplication>
 #include <Wt/WString>
 

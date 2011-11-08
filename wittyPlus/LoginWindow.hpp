@@ -19,9 +19,9 @@
 #ifndef LOGIN_WINDOW_HPP
 #define LOGIN_WINDOW_HPP
 
-#include "lib/MoreAwesomeTemplate.hpp"
-#include "lib/ButtonBar.hpp"
-#include "lib/SessionHandle.hpp"
+#include "base/MoreAwesomeTemplate.hpp"
+#include "base/ButtonBar.hpp"
+#include "base/SessionHandle.hpp"
 #include <Wt/WLineEdit>
 #include <Wt/WLogger>
 #include <string>

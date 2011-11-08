@@ -19,7 +19,7 @@
 #ifndef MAINWINDOW_HPP
 #define MAINWINDOW_HPP
 
-#include "lib/MoreAwesomeTemplate.hpp"
+#include "base/MoreAwesomeTemplate.hpp"
 #include "model/User.hpp"
 #include "IGui.hpp"
 #include <Wt/WText>

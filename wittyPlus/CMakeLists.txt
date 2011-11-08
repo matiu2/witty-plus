@@ -2,9 +2,9 @@ CMAKE_MINIMUM_REQUIRED( VERSION 2.8 )
 
 PROJECT(wittyPlus)
 
-set(mainFiles url2action.cpp IGui.cpp IUsers.cpp INavigation.cpp urls.cpp UserEdit.cpp lib/MemorySessionStore.cpp  lib/BaseSessionHandle.cpp App.cpp db.cpp MainWindow.cpp LoginWindow.cpp UserList.cpp)
+set(mainFiles url2action.cpp IGui.cpp IUsers.cpp INavigation.cpp urls.cpp UserEdit.cpp base/MemorySessionStore.cpp  base/BaseSessionHandle.cpp App.cpp db.cpp MainWindow.cpp LoginWindow.cpp UserList.cpp)
 
-add_subdirectory(lib)
+add_subdirectory(base)
 
 # Build the library
 ADD_LIBRARY(${PROJECT_NAME} SHARED ${mainFiles})

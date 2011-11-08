@@ -17,7 +17,7 @@
  */
 
 #include "MainWindow.hpp"
-#include "lib/InternalLink.hpp"
+#include "base/InternalLink.hpp"
 #include "AdminIndex.hpp"
 #include "IUsers.hpp"
 #include "IGui.hpp"

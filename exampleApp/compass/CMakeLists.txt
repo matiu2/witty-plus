@@ -1,23 +1,32 @@
 project(compass)
 
-# Copy to a working compass dir
-FILE(COPY src stylesheets DESTINATION .)
+# Put them where the app can read them
+get_filename_component(COMPILE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" ABSOLUTE)
+# Hacky thing to turn our absolute path into a relative path .. need to pretend we have a file there already
+file(RELATIVE_PATH PRINT_CSS_PATH "${COMPILE_DIR}" "${CSS_OUTPUT_DIR}/print.css")
+get_filename_component(CSS_OUTPUT_DIR "${PRINT_CSS_PATH}" PATH)
 
-# Set the output type
+# Set the output format
 if (DEBUG)
-    set(COMPASS_OUTPUT_STYLE ":extended")
+    set(COMPASS_OUTPUT_STYLE ":extended") # Long hand for debugging
 else()
-    set(COMPASS_OUTPUT_STYLE ":compressed")
+    set(COMPASS_OUTPUT_STYLE ":compressed") # Compressesd for release
 endif()
 
-set(COMPASS_OUTPUT_DIR "../static-content/resources/themes/default")
-
 # Copy it to the temp dir
-configure_file(config.rb.in config.rb)
+configure_file(config.rb.in "${COMPILE_DIR}/config.rb")
 
 add_custom_target(css 
     COMMAND compass compile .
-    WORKING_DIRECTORY .
-    DEPENDS config.rb
+    WORKING_DIRECTORY ${COMPILE_DIR}
+    DEPENDS "${COMPILE_DIR}/config.rb"
+    COMMENT "Running Compass to generate style sheets"
+)
+
+
+add_custom_target(clean 
+    COMMAND compass clean
+    WORKING_DIRECTORY ${COMPILE_DIR}
+    DEPENDS "${COMPILE_DIR}/config.rb"
     COMMENT "Running Compass to generate style sheets"
 )

@@ -18,7 +18,7 @@
 
 #include "db.hpp"
 #include <Wt/WApplication>
-#include "lib/BaseApp.hpp"
+#include "base/BaseApp.hpp"
 #include "model/User.hpp"
 
 namespace wittyPlus {

@@ -19,9 +19,9 @@
 #ifndef USER_EDIT_HPP
 #define USER_EDIT_HPP
 
-#include "lib/MoreAwesomeTemplate.hpp"
+#include "base/MoreAwesomeTemplate.hpp"
 #include "model/User.hpp"
-#include "lib/ButtonBar.hpp"
+#include "base/ButtonBar.hpp"
 #include <Wt/WLineEdit>
 #include <Wt/WSignal>
 #include <Wt/WText>

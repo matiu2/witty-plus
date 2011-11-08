@@ -20,8 +20,8 @@
 #define ADMIN_INDEX_HPP
 
 #include "urls.hpp"
-#include "lib/InternalLink.hpp"
-#include "lib/SimpleMenu.hpp"
+#include "base/InternalLink.hpp"
+#include "base/SimpleMenu.hpp"
 
 
 namespace wittyPlus {

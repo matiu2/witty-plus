@@ -21,8 +21,8 @@
 #include <Wt/WValidator>
 #include <Wt/WMessageBox>
 #include <Wt/WAnimation>
-#include "lib/MatchValidator.hpp"
-#include "lib/DBNoDupValidator.hpp"
+#include "base/MatchValidator.hpp"
+#include "base/DBNoDupValidator.hpp"
 #include <boost/assert.hpp>
 #include "IGui.hpp"
 #include "db.hpp"

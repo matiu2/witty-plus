@@ -18,7 +18,7 @@
 
 #pragma once
 
-#include "lib/URLSignal.hpp"
+#include "base/URLSignal.hpp"
 
 namespace wittyPlus {
 
