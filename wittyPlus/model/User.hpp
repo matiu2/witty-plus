@@ -22,7 +22,7 @@
 #include <Wt/Dbo/Dbo>
 #include <Wt/WString>
 #include <string>
-#include "../lib/sha.hpp"
+#include <wittyPlus/lib/sha.hpp>
 
 namespace dbo = Wt::Dbo;
 using std::string;

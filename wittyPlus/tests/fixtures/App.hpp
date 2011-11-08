@@ -19,7 +19,7 @@
 #ifndef TESTS_FIXTURES_APP_HPP
 #define TESTS_FIXTURES_APP_HPP
 
-#include "../../App.hpp"
+#include <wittyPlus/App.hpp>
 #include <Wt/WEnvironment>
 #include <Wt/Test/WTestEnvironment>
 

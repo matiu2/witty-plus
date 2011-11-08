@@ -16,7 +16,7 @@
  * =====================================================================================
  */
 
-#include "../Extension.hpp"
+#include <wittyPlus/extensions/Extension.hpp>
 
 namespace Wt {
     class WObject;

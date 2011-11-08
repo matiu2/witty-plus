@@ -1,7 +1,7 @@
 #include "ExtensionManager.hpp"
 
 #include <Wt/WObject>
-#include "../App.hpp"
+#include <wittyPlus/App.hpp>
 #include <memory>
 
 // Pull in all the dependent libs

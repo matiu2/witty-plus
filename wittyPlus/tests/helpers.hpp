@@ -23,9 +23,9 @@
 #include <Wt/WApplication>
 #include <Wt/WMenu>
 #include <Wt/WMenuItem>
-#include "../lib/InternalLink.hpp"
-#include "../lib/ButtonBar.hpp"
-#include "../lib/SimpleMenu.hpp"
+#include <wittyPlus/lib/InternalLink.hpp>
+#include <wittyPlus/lib/ButtonBar.hpp>
+#include <wittyPlus/lib/SimpleMenu.hpp>
 #include <Wt/WLink>
 #include <Wt/WString>
 #include <string>

@@ -23,10 +23,10 @@
 #include <Wt/WDialog>
 #include <Wt/WMessageBox>
 #include "Login.hpp"
-#include "../helpers.hpp"
-#include "../../UserManager.hpp"
-#include "../../UserEdit.hpp"
-#include "../../UserList.hpp"
+#include <wittyPlus/tests/helpers.hpp>
+#include <wittyPlus/UserManager.hpp>
+#include <wittyPlus/UserEdit.hpp>
+#include <wittyPlus/UserList.hpp>
 
 using Wt::WDialog;
 using Wt::WMessageBox;

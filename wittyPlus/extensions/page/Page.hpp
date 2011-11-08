@@ -26,7 +26,6 @@ namespace page {
 class Page: public Wt::WObject {
 public:
     Page(WObject* parent) : WObject(parent) {}
-
 };
 
 } // namespace page

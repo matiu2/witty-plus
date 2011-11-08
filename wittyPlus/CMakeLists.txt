@@ -1,8 +1,6 @@
 CMAKE_MINIMUM_REQUIRED( VERSION 2.8 )
 
-PROJECT(my_app)
-
-ADD_DEFINITIONS(-std=c++0x -Wall -Wextra)
+PROJECT(wittyPlus)
 
 # Settings for configuration and script files
 IF( "${CMAKE_BUILD_TYPE}" STREQUAL Release )

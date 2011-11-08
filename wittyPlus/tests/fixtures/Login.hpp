@@ -20,15 +20,15 @@
 #define TESTS_FIXTURES_LOGIN_HPP
 
 #include "App.hpp"
-#include "../helpers.hpp"
-#include "../../urls.hpp"
-#include "../../LoginWindow.hpp"
-#include "../../MainWindow.hpp"
-#include "../../AdminIndex.hpp"
+#include <wittyPlus/tests/helpers.hpp>
+#include <wittyPlus/urls.hpp>
+#include <wittyPlus/LoginWindow.hpp>
+#include <wittyPlus/MainWindow.hpp>
+#include <wittyPlus/AdminIndex.hpp>
+#include <wittyPlus/model/User.hpp>
 #include <Wt/Dbo/Session>
 #include <Wt/Dbo/Transaction>
 #include <Wt/Dbo/ptr>
-#include "../../model/User.hpp"
 #include <boost/foreach.hpp>
 
 namespace dbo = Wt::Dbo;
