@@ -18,11 +18,10 @@
 
 #include "IURLs.hpp"
 #include "url2action.hpp"
+#include "App.hpp"
 
 namespace wittyPlus {
 
-IURLs* IURLs::instance() {
-
-}
+IURLs* IURLs::instance() { return dynamic_cast<IURLs*>(app()); }
 
 } // namespace wittyPlus

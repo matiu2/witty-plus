@@ -16,18 +16,21 @@
  * =====================================================================================
  */
 
-#include <wittyPlus/App.hpp>
 #include <iostream>
 #include <Wt/WServer>
+#include <Wt/WApplication>
+#include "App.hpp"
 
 using Wt::WServer;
+
+WApplication *createApplication(const WEnvironment& env) { return new exampleApp::App(env); }
 
 int main ( int argc, char *argv[] ) {
     try {
         WServer server(argv[0]);
         server.setServerConfiguration(argc, argv, WTHTTP_CONFIGURATION);
 
-        server.addEntryPoint(Wt::Application, wittyPlus::createApplication, "", "/css/favicon.ico");
+        server.addEntryPoint(Wt::Application, createApplication, "", "/css/favicon.ico");
         if (server.start()) {
             WServer::waitForShutdown();
             server.stop();

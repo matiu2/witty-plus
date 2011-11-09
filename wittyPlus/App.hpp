@@ -107,7 +107,12 @@ public:
     virtual void goBackOrHome(); /// Go Back, if we don't have history .. go home
 
     // IURLs implementation
-    virtual base::URLSignal& urlSignal(const string& url); /// Returns/creates the signal that will be called when a certain URL is navigated to
+    /** Returns an existing signal handler, or create's a new one on the fly and returns it,
+      * with 'override' it'll replace an old one instead of returning it
+      * @param url the user navigates to to fire the signal
+      * @param override if true, deletes any old signal handlers we find
+     **/
+    virtual base::URLSignal& urlSignal(const string& url, bool override = false); /// Returns/creates the signal that will be called when a certain URL is navigated to
 
     /// Returns true if client is running on an iphone TODO: Add more possibilities here
     bool isIPhone() { return environment().userAgent().find("iPhone") != string::npos; }

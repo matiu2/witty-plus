@@ -51,13 +51,18 @@ public:
     URL2Action(WApplication* app) : WObject(app) {
         app->internalPathChanged().connect(&_urls, &URLs::run);
         // Hook up all the urls
-        _urls[urls::home].connect(this, &URL2Action::home);
-        _urls[urls::login].connect(this, &URL2Action::login);
-        _urls[urls::logout].connect(this, &URL2Action::logout);
-        _urls[urls::admin_users].connect(this, &URL2Action::admin_users);
+        _urls.urlSignal(urls::home).connect(this, &URL2Action::home);
+        _urls.urlSignal(urls::login).connect(this, &URL2Action::login);
+        _urls.urlSignal(urls::logout).connect(this, &URL2Action::logout);
+        _urls.urlSignal(urls::admin_users).connect(this, &URL2Action::admin_users);
     }
-    /// External reference for finding/registering a signal handler to a url
-    base::URLSignal& urlSignal(const string& url); /// Registers a certain handler to a certain url base
+    // External reference for finding/registering a signal handler to a url
+    /** Returns an existing signal handler, or create's a new one on the fly and returns it,
+      * with 'override' it'll replace an old one instead of returning it
+      * @param url the user navigates to to fire the signal
+      * @param override if true, deletes any old signal handlers we find
+     **/
+    base::URLSignal& urlSignal(const string& url, bool override=false) { return _urls.urlSignal(url, override); }
     // URL Handlers
     void home() { IGui::instance()->setBody(Wt::WString::tr("sample-content")); }
     /// Actually logs you out

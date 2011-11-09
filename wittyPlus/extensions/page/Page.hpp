@@ -19,13 +19,15 @@
 #pragma once
 
 #include <Wt/WObject>
+#include <string>
 
 namespace wittyPlus {
 namespace page {
 
 class Page: public Wt::WObject {
 public:
-    Page(WObject* parent) : WObject(parent) {}
+    Page(WObject* parent);
+    void showPage();
 };
 
 } // namespace page

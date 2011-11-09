@@ -24,7 +24,11 @@ namespace wittyPlus {
 
 class IURLs {
 public:
-    virtual base::URLSignal& urlSignal(const string& url) = 0;
+    /** Returns an existing signal handler .. or create's a new one on the fly and returns it
+      * @param url the user navigates to to fire the signal
+      * @param override if true, deletes any old signal handlers we find
+     **/
+    virtual base::URLSignal& urlSignal(const std::string& url, bool override=false) = 0;
 
     static IURLs* instance();
 };

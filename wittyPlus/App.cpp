@@ -21,7 +21,6 @@
 #include "model/User.hpp"
 #include "db.hpp"
 #include "url2action.hpp"
-#include "extensions/ExtensionManager.hpp"
 
 #include <stdexcept>
 #include <Wt/WString>
@@ -72,10 +71,6 @@ App::App(const WEnvironment& environment) :
     _statusTextChanged->connect(_mainWindow, &MainWindow::setStatusText);
     // Set up custom JS
     declareJavaScriptFunction("validate", WString::tr("js-validate").toUTF8());
-    // Set up the extensions
-    ExtensionManager::instance().launchExtensions(this);
-    // Fire an internal path changed event off as user may have navigated straight here
-    internalPathChanged().emit(app()->internalPath());
 }
 
 /// Called when we want to administrate our list of users
@@ -131,9 +126,7 @@ bool App::goBack(bool dontLogout) {
 void App::goBackOrHome() { if (!goBack()) go(urls::home); }
 
 // IURLs Implementation
-base::URLSignal& App::urlSignal(const string& url) {
-    return _url2ActionMapper->urlSignal(url);
-}
+base::URLSignal& App::urlSignal(const string& url, bool override) { return _url2ActionMapper->urlSignal(url, override); }
 
 // INavigation Implementation end //
 

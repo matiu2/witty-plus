@@ -1,9 +1,9 @@
-PROJECT(extensions)
+PROJECT(wittyPlusExtensions)
 
 set(dependencies 
     ${Boost_THREAD_LIBRARY} 
     ${Boost_SYSTEM_LIBRARY} ${Boost_SIGNALS_LIBRARY}
-    ${wt} ${wtdbo} ${wtdbopostgres})
+    ${wt} ${wtdbo} ${wtdbopostgres} wittyPlus)
 
 # Page plugin
 option(extPage "Build and use the Page extension? Provides a databased hierachy of standard pages with CRUD" on)

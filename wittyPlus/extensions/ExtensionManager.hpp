@@ -19,7 +19,9 @@ class App;
 // TODO: Make this map to a threadsafe store .. it's read a lot write a little .. so perhaps a map to factories shared
 // between threads
 
-/** This class registers extensions .. it is a thread safe Singleton
+/** This class registers extensions .. it is a thread safe Singleton.
+  * It was really made so extensions can be modules .. loaded on the fly .. but now we're not going down that path
+  * So it was a waste of time .. I'll delete it soon :)
   **/
 class ExtensionManager {
 public:
@@ -49,11 +51,22 @@ public:
         return i == _extensions.end() ? 0 : i->second.get();
     }
     /** Launches all the extensions for the current app/thread
+      * @param the owner object for the extension implementations
       **/
     void launchExtensions(Wt::WObject* parent) const {
         boost::shared_lock<boost::shared_mutex> readLock(_lock);
         for (ExtensionMap::const_iterator i=_extensions.begin(); i!=_extensions.end(); ++i) {
             i->second->launch(parent);
+        }
+    }
+    /** Launches all the extensions for the current app/thread
+      * @param the owner object for the extension implementations
+      * @param extensions a reference to a dictionary that will be filled with the implementations indexed by name
+      **/
+    void launchExtensions(Wt::WObject* parent, std::map<std::string, Wt::WObject*>& extensions) const {
+        boost::shared_lock<boost::shared_mutex> readLock(_lock);
+        for (ExtensionMap::const_iterator i=_extensions.begin(); i!=_extensions.end(); ++i) {
+            extensions.insert(make_pair(i->first,  i->second->launch(parent)));
         }
     }
 };

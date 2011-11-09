@@ -23,10 +23,4 @@ add_custom_target(css ALL
     COMMENT "Running Compass to generate style sheets"
 )
 
-
-add_custom_target(clean 
-    COMMAND compass clean
-    WORKING_DIRECTORY ${COMPILE_DIR}
-    DEPENDS "${COMPILE_DIR}/config.rb"
-    COMMENT "Running Compass to generate style sheets"
-)
+set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES .sass-cache)
