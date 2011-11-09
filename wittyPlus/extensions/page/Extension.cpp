@@ -3,10 +3,10 @@
  *
  *       Filename:  Extension.cpp
  *
- *    Description:  The page extension's implementation
+ *    Description:  Implementatoin of the page plugin
  *
  *        Version:  1.0
- *        Created:  08/11/11 08:24:38
+ *        Created:  08/11/11 17:12:01
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -17,14 +17,24 @@
  */
 
 #include "Extension.hpp"
-#include "Page.hpp"
-#include <Wt/WObject>
+#include <wittyPlus/IGui.hpp>
+#include <wittyPlus/IURLs.hpp>
+#include <Wt/WApplication>
 
 namespace wittyPlus {
 namespace page {
 
-const char* Extension::name() const { return "Page"; }
-Wt::WObject* Extension::launch(Wt::WObject* parent) const { return new Page(parent); }
+/// Called every time an app is created
+Extension::Extension(WObject* parent) : WObject(parent) {
+    IURLs::instance()->urlSignal("/page").connect(this, &Extension::show_a_page);
+}
+
+void Extension::show_a_page() {
+    IGui* gui = IGui::instance();
+    Wt::WApplication* app = Wt::WApplication::instance();
+    gui->setBody("I AM A PAGE: " + app->internalPath());
+}
+
 
 } // namespace wittyPlus
 } // namespace page

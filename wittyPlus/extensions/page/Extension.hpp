@@ -3,10 +3,10 @@
  *
  *       Filename:  Extension.hpp
  *
- *    Description:  A basic page extension .. it renders pages and allows you to edit them
+ *    Description:  The app like object that handles pages
  *
  *        Version:  1.0
- *        Created:  07/11/11 22:51:37
+ *        Created:  08/11/11 10:33:38
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -16,20 +16,19 @@
  * =====================================================================================
  */
 
-#include <wittyPlus/extensions/Extension.hpp>
+#pragma once
 
-namespace Wt {
-    class WObject;
-}
+#include <Wt/WObject>
+#include <string>
 
 namespace wittyPlus {
 namespace page {
 
-class Extension : public wittyPlus::Extension {
+class Extension: public Wt::WObject {
 public:
-    virtual const char* name() const; /// The name of the extension
-    virtual Wt::WObject* launch(Wt::WObject* parent) const; // Launch the extension for a single app / thread
+    Extension(WObject* parent);
+    void show_a_page();
 };
 
-} // namespace wittyPlus
 } // namespace page
+} // namespace wittyPlus

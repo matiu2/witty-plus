@@ -18,5 +18,4 @@ FILE(COPY messages static-content DESTINATION .)
 
 # Build the executable
 ADD_EXECUTABLE(${PROJECT_NAME} main.cpp)
-TARGET_LINK_LIBRARIES(${PROJECT_NAME} wittyPlus wittyPlusExtensions)
-add_dependencies(${PROJECT_NAME} wittyPlus)
+TARGET_LINK_LIBRARIES(${PROJECT_NAME} wittyPlus wittyPlusPageExtension)

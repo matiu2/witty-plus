@@ -1,4 +1,4 @@
-PROJECT(page)
+PROJECT(wittyPlusPageExtension)
 
-ADD_LIBRARY(page SHARED Page.cpp Extension.cpp)
-TARGET_LINK_LIBRARIES(page wittyPlus)
+ADD_LIBRARY(wittyPlusPageExtension SHARED Extension.cpp Model.cpp)
+TARGET_LINK_LIBRARIES(wittyPlusPageExtension wittyPlus)
