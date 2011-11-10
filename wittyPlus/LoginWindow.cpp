@@ -94,7 +94,7 @@ void LoginWindow::handleOKHit() {
 
 void LoginWindow::handleCancelHit() {
     IGui::instance()->setStatusText(tr("Login Cancelled"));
-    INavigation::instance()->goBack();
+    INavigation::instance()->goBackOrHome();
 }
 
 } // namespace wittyPlus

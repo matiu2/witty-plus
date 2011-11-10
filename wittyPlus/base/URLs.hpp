@@ -20,6 +20,7 @@
 #include <Wt/WSignal>
 #include <Wt/WApplication>
 #include "URLSignal.hpp"
+#include <string>
 
 using Wt::WObject;
 using Wt::Signal;
@@ -52,7 +53,7 @@ public:
       * @param url the user navigates to to fire the signal
       * @param override if true, deletes any old signal handlers we find
      **/
-    URLSignal& urlSignal(const string& url, bool override=false) {
+    URLSignal& urlSignal(const std::string& url, bool override=false) {
         URLSignal*& result = urlMap[url]; // Needs to be a reference to a pointer because we set it below
         if (override && (result != 0)) {
             delete result;
@@ -63,10 +64,10 @@ public:
         }
         return *result;
     }
-    void run(const string& url) {
+    void run(const std::string& url) {
         // Find the longest registered url that matches the start of the passed in url
         // For example: url="/page/4" and we have: "/" and "/pa" and "/page" .. "/page"'s signal would be fired
-        string searchingFor = url.length() == 0 ? "/" : url;
+        std::string searchingFor = url.length() == 0 ? "/" : url;
         while (searchingFor.length() > 0) {
             URLMap::iterator i = urlMap.find(searchingFor);
             if (i != urlMap.end()) {
