@@ -47,6 +47,3 @@ boost_test(
     urlMatcher
     find_handlers
 )
-
-#CONFIGURE_FILE(memcheck-test.sh memcheck-test.sh)
-#CONFIGURE_FILE(test.sh test.sh)
