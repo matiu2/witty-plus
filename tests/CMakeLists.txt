@@ -1,23 +1,52 @@
 project(tests)
 
 ADD_DEFINITIONS( -fno-access-control ) # So tests can access private members of the classes they're testing
+ADD_DEFINITIONS( -DBOOST_TEST_DYN_LINK -DBOOST_TEST_MAIN ) # So tests load the test lib dynamically
 
-set(TEST_EXE_NAME test_runner)
+# A Function for integrating BOOST.TEST and CTEST a little bit
+# if MAIN_NAME is number:
+#   source file will be: test_number.cpp
+#   executable file will be: test_number
+# Any other args are the tests to run on it
+function(boost_test MAIN_NAME)
+    set(EXE_NAME test_${MAIN_NAME})
+    ADD_EXECUTABLE(${EXE_NAME} test_${MAIN_NAME}.cpp)
+    TARGET_LINK_LIBRARIES(${EXE_NAME} ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY} ${wt} ${wtdbo} ${wthttp} wittyPlus)
+    FOREACH(TEST IN ITEMS ${ARGN})
+        ADD_TEST(
+            ${TEST}
+            ${EXE_NAME} -i -s --detect_fp_exceptions=y --log-level=all --run_test=${MAIN_NAME}_suite/${TEST})
+        if (${RunMemoryChecks})
+            ADD_TEST(
+                ${TEST}_valgrind
+                valgrind --leak-check=yes --log-file=valgrind_${TEST}.out.txt ./${EXE_NAME} -i -s
+                         --detect_fp_exceptions=y --log-level=all DEBUG --run_test=${MAIN_NAME}_suite/${TEST})
+        endif()
+    endforeach()
+endfunction()
 
 CONFIGURE_FILE(wt-config.xml wt-config.xml)
-add_executable(test_runner main.cpp)
 
-add_library(loginTest SHARED test_login.cpp)
-TARGET_LINK_LIBRARIES(loginTest ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY} ${wt} ${wthttp} wittyPlus)
+boost_test(
+    login
+    login_escape
+    login_enter
+    login_ok
+    login_cancel
+    login_fail
+    login_logout
+)
 
-add_library(userManagerTest SHARED test_usermanager.cpp)
-TARGET_LINK_LIBRARIES(userManagerTest ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY} ${wt} ${wtdbo} ${wthttp} wittyPlus)
+boost_test(
+    usermanager
+    new_user
+    new_forget_password
+)
 
-add_library(urlTest SHARED test_urlMatcher.cpp)
-TARGET_LINK_LIBRARIES(urlTest ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY} ${wt} ${wtdbo} ${wthttp} wittyPlus)
+boost_test(
+    urlMatcher
+    find_handlers
+)
 
-TARGET_LINK_LIBRARIES(test_runner loginTest userManagerTest urlTest)
-
-CONFIGURE_FILE(memcheck-test.sh memcheck-test.sh)
-CONFIGURE_FILE(test.sh test.sh)
-
+#CONFIGURE_FILE(memcheck-test.sh memcheck-test.sh)
+#CONFIGURE_FILE(test.sh test.sh)

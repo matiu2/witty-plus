@@ -16,8 +16,6 @@
  * =====================================================================================
  */
 
-#define BOOST_TEST_MODULE user_manager_module
-
 #include "helpers.hpp"
 #include "fixtures/UserManager.hpp"
 #include <Wt/WSelectionBox>
@@ -29,7 +27,7 @@ namespace unittests {
 
 namespace h = helpers;
 
-BOOST_FIXTURE_TEST_SUITE( user_manager_suite, fixtures::UserManagerFixture );
+BOOST_FIXTURE_TEST_SUITE( usermanager_suite, fixtures::UserManagerFixture );
 
 BOOST_AUTO_TEST_CASE( new_user ) {
     // Get this list of users
@@ -88,4 +86,4 @@ BOOST_AUTO_TEST_CASE( new_forget_password ) {
 } // namespace unittests
 } // namespace my_app
 
-BOOST_AUTO_TEST_SUITE_END(); // login_suite
+BOOST_AUTO_TEST_SUITE_END(); // usermanager_suite

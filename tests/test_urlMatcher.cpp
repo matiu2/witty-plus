@@ -1,8 +1,5 @@
 /** Tests the wittyPlus::base::URLs object **/
 
-#define BOOST_TEST_DYN_LINK
-#define BOOST_TEST_MODULE login_module
-
 #include <string>
 #include <boost/test/unit_test.hpp>
 #include <boost/test/test_tools.hpp>

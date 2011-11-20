@@ -20,7 +20,16 @@ option(DBO "Use witty DBO" on)
 #set(DB_CONNECTION_STRING host=localhost user=my_app dbname=my_app password=my_app cache string "http://www.postgresql.org/docs/8.1/static/libpq.html")
 set( DB_CONNECTION_STRING "host=localhost user=my_app dbname=my_app password=my_app" CACHE string "DB Connection string")
 message("DB Connection string is: ${DB_CONNECTION_STRING}")
-option(UserSessions "Use long term user logon sessions, (requires dbo)" on)
+
+# More options
+set(UserSessions on CACHE BOOL "Use long term user logon sessions, (requires dbo)")
+
+set(RunTests on CACHE BOOL "Run the testing code")
+set(RunMemoryChecks on CACHE BOOL "Run the testing code with valgrind memory leak detection")
+
+if (${RunTests}) 
+    enable_testing()
+endif()
 
 # Sort out our libraries
 #if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
