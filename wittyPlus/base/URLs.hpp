@@ -56,10 +56,12 @@ public:
     URLSignal& urlSignal(const std::string& url, bool override=false) {
         URLSignal*& result = urlMap[url]; // Needs to be a reference to a pointer because we set it below
         if (override && (result != 0)) {
+            // If we're overriding and we didn't just get a new default (0) pointer
             delete result;
             result = 0;
         }
         if (result == 0) {
+            // We just got a new default empty pointer .. make a new URLSignal
             result = new URLSignal(this);
         }
         return *result;
@@ -68,6 +70,11 @@ public:
         // Find the longest registered url that matches the start of the passed in url
         // For example: url="/page/4" and we have: "/" and "/pa" and "/page" .. "/page"'s signal would be fired
         std::string searchingFor = url.length() == 0 ? "/" : url;
+        // Remove trailing ?x=y&z=2 bit
+        size_t qmark = searchingFor.rfind('?');
+        if (qmark != searchingFor.npos)
+            searchingFor.erase(qmark);
+        // Now go through finding each '/' separated part in the map until we have one that matches
         while (searchingFor.length() > 0) {
             URLMap::iterator i = urlMap.find(searchingFor);
             if (i != urlMap.end()) {
@@ -75,7 +82,11 @@ public:
                 break;
             } else {
                 size_t lastSlash = searchingFor.rfind('/');
-                if (lastSlash != searchingFor.npos)
+                if ((lastSlash == 0) && (searchingFor.length() != 1))
+                    // If we have like "/something" now, search for "/" next time
+                    searchingFor = "/";
+                else if (lastSlash != searchingFor.npos)
+                    // If we have '/'s .. right delete including the last '/'
                     searchingFor.erase(lastSlash);
             }
         }
