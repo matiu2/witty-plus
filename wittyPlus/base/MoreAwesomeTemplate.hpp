@@ -19,6 +19,8 @@
 #ifndef MORE_AWESOME_TEMPLATE_HPP
 #define MORE_AWESOME_TEMPLATE_HPP
 
+#include <locale>
+#include <vector>
 #include <Wt/WTemplate>
 #include <Wt/WLabel>
 #include <Wt/WText>
@@ -28,9 +30,7 @@
 #include <Wt/WJavaScriptSlot>
 #include <Wt/WApplication>
 #include <boost/algorithm/string.hpp>
-#include <locale>
-#include <vector>
-#include "ServerSideValidator.hpp"
+#include <wittyPlus/base/ServerSideValidator.hpp>
 
 namespace Wt {
     class WContainerWidget;
@@ -174,8 +174,8 @@ protected:
         bool haveFocussed = false;
         for(vector<FieldRow>::const_iterator row=fieldRows.begin(); row != fieldRows.end(); ++row) {
             // Push the server's interpretation of the validation down to the client side widget
-            base::ServerSideValidationResult validness = ServerSideValidator::validateWidgetAndTellBrowser(row->widget);
-            if (validness.result != WValidator::Valid) {
+            Wt::WValidator::Result validness = ServerSideValidator::validateWidgetAndTellBrowser(row->widget);
+            if (validness.state() != WValidator::Valid) {
                 result = false;
                 if (!haveFocussed) {
                     row->widget->setFocus();

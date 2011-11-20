@@ -2,11 +2,11 @@
 #ifndef DB_NO_DUP_VALIDATOR_HPP
 #define DB_NO_DUP_VALIDATOR_HPP
 
+#include <string>
 #include <Wt/WValidator>
 #include <Wt/Dbo/Query>
 #include <Wt/Dbo/ptr>
-#include <string>
-#include "ServerSideValidator.hpp"
+#include <wittyPlus/base/ServerSideValidator.hpp>
 
 using Wt::WValidator;
 using std::string;
@@ -56,24 +56,19 @@ public:
         : ServerSideValidator("", foundDupMessage, emptyMessage, isMandatory, parent),
           _db(db), _fieldName(fieldName),
           _query(DBNoDupValidator::makeQuery(db, fieldName, idToIgnore)) {}
-    State validate(WString& input) const {
+    Result validate(WString& input) const {
         // Let our ancestor handle the 'mandatory input' side of things
-        State result = WValidator::validate(input);
-        if (result != Valid) {
+        Result result = WValidator::validate(input);
+        if (result.state() != Valid) {
             return result;
         }
         // If our ancestor validator implementation says we're good..
         // ..return Valid as long as there are zero other rows with that name in the DB
         dbo::Transaction t(_db);
         dbo::Query<int> newQuery = _query;
-        result = newQuery.bind(input.toUTF8()).resultValue() == 0 ? Valid : Invalid;
+        State state = newQuery.bind(input.toUTF8()).resultValue() == 0 ? Valid : Invalid;
         t.commit();
-        return result;
-    }
-    ServerSideValidationResult validateWithMessage(WString& value) const {
-        ServerSideValidationResult result = ServerSideValidator::validateWithMessage(value);
-        result.message.arg(value); // In case they want to put the username as an argument in the string
-        return result;
+        return Result(state, state == Valid ? getValidMsg() : getInvalidMsg().arg(input));
     }
     void setIdToIgnore(typename Traits::IdType idToIgnore) { _query = DBNoDupValidator::makeQuery(_db, _fieldName, idToIgnore); }
     void clearIdToIgnore() { _query = DBNoDupValidator::makeQuery(_db, _fieldName); }

@@ -29,18 +29,12 @@ using Wt::WFormWidget;
 namespace wittyPlus {
 namespace base {
 
-/// Holds a validation result, plus a message for the user
-struct ServerSideValidationResult {
-    ServerSideValidationResult(const WString& message, WValidator::State result) : message(message), result(result) {}
-    WString message;
-    WValidator::State result;
-};
-
 /** The standard Wt::WValidator seems to make the assumption that nearly all validation that requires showing a message
   * will be done on the client side.
-  * This class extends Wt::WValidator to provide a 'validateWithMessage' function on the server side.
+  * This class extends Wt::WValidator to allow validation initiated on the server side, then pushed down to the client
   * It is intended to be used with validation that needs to be done server side, but where a message must be shown
   * to the client also. We don't show the message though, we just provide it in a signal when validate is called
+  * The main usage would be when validating input against server side DB lookups.
   **/
 class ServerSideValidator : public WValidator {
 public:
@@ -60,21 +54,6 @@ public:
     ServerSideValidator(bool isMandatory, WObject* parent=0)
         : WValidator(isMandatory, parent), _validMsg(""), _invalidMsg("")
     {}
-    /// Call this instead of validate when you want to get the message on the server side
-    virtual ServerSideValidationResult validateWithMessage(WString& value) const {
-        State validness = validate(value);
-        return ServerSideValidationResult(state2msg(validness), validness);
-    }
-    /// Turns the output of Wt::WValidator::validate into a message for the end user
-    WString state2msg(State validationResult) const {
-        switch (validationResult) {
-            case Valid: return _validMsg;
-            case Invalid: return _invalidMsg;
-            case InvalidEmpty: return invalidBlankText();
-            default:
-                throw std::logic_error("Did they add a new value to Wt::WValidator::State or something ?");
-        }
-    }
     // Accessors
     const WString& getValidMsg() { return _validMsg; }
     void setValidMsg(const WString& newMsg) { _validMsg = newMsg; }
@@ -101,36 +80,36 @@ public:
         throw std::logic_error("I don't know how to get the value of whatever widget you passed me");
     }
     /// Call this to push a server side validation result to the client side (complete with message)
-    static void tellClient(WFormWidget* widget, const WString& value, ServerSideValidationResult validationResult) {
+    static void tellClient(WFormWidget* widget, const WString& value, Result validationResult) {
         widget->setJavaScriptMember("serverValidationResult",
          "{ value:" + value.jsStringLiteral() + ","
-          "valid:" + (validationResult.result == WValidator::Valid ? "true," : "false,") +
-         "message:" + validationResult.message.jsStringLiteral() + "}");
+          "valid:" + (validationResult.state() == WValidator::Valid ? "true," : "false,") +
+         "message:" + validationResult.message().jsStringLiteral() + "}");
         Wt::WApplication* app = Wt::WApplication::instance();
         app->doJavaScript( app->javaScriptClass() + ".WT.validate(" + widget->jsRef() + ");" );
     }
     /// Convenience function. Call this instead of widget.validate();
-    static ServerSideValidationResult validateWidget(WFormWidget* widget) {
+    static Result validateWidget(WFormWidget* widget) {
         ServerSideValidator* validator = dynamic_cast<ServerSideValidator*>(widget->validator());
         if (validator != 0) {
             WString value = getValue(widget);
-            return validator->validateWithMessage(value);
+            return validator->validate(value);
         } else {
-            return ServerSideValidationResult("", widget->validate());
+            return widget->validate();
         }
     }
     /// Validates the widget and passes the message on to the browser
-    static ServerSideValidationResult validateWidgetAndTellBrowser(WFormWidget* widget) {
+    static Result validateWidgetAndTellBrowser(WFormWidget* widget) {
         ServerSideValidator* validator = dynamic_cast<ServerSideValidator*>(widget->validator());
         if (validator != 0) {
             WString value = getValue(widget);
-            ServerSideValidationResult result = validator->validateWithMessage(value);
+            Result result = validator->validate(value);
             tellClient(widget, value, result);
             return result;
         } else {
             Wt::WApplication* app = Wt::WApplication::instance();
             app->doJavaScript( app->javaScriptClass() + ".WT.validate(" + widget->jsRef() + ");" );
-            return ServerSideValidationResult("", widget->validate());
+            return widget->validate();
         }
     }
 

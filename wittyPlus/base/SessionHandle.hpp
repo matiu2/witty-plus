@@ -119,8 +119,7 @@ public:
         dbo::ptr<User> user = _doTryLogin(username, password);
         if (user) {
             cookieCache = WRandom::generateId();
-            WApplication* app = WApplication::instance();
-            app->setCookie(_cookieName, cookieCache, 60*60*24*365, "", "/", true); // TODO: set secure based on settings
+            _userSessionStore.login(user.id(), cookieCache);  // Record that they're logged in for other SessionHandles to find
             _userSessionStore.login(user.id(), cookieCache);  // Record that they're logged in for other SessionHandles to find
             return true;
         }

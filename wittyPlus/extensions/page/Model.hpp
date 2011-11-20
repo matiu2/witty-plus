@@ -3,7 +3,7 @@
 #pragma once
 
 #include <string>
-#include <Wt/Dbo/Dbo>
+#include <Wt/Dbo/Field>
 
 namespace wittyPlus {
 namespace page {
@@ -14,7 +14,7 @@ private:
     std::string _title;
     std::string _html;
 public:
-    Model();
+    Model() {}
     // Getters and Setters
     std::string getName() const { return _name; }
     void setName(const std::string& newName) { _name = newName; }

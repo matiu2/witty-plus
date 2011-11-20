@@ -26,7 +26,7 @@ namespace page {
 
 class Extension: public Wt::WObject {
 public:
-    Extension(WObject* parent);
+    Extension(WObject* parent=0);
     void show_a_page();
 };
 

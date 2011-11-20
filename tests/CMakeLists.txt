@@ -11,7 +11,7 @@ ADD_DEFINITIONS( -DBOOST_TEST_DYN_LINK -DBOOST_TEST_MAIN ) # So tests load the t
 function(boost_test MAIN_NAME)
     set(EXE_NAME test_${MAIN_NAME})
     ADD_EXECUTABLE(${EXE_NAME} test_${MAIN_NAME}.cpp)
-    TARGET_LINK_LIBRARIES(${EXE_NAME} ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY} ${wt} ${wtdbo} ${wthttp} wittyPlus)
+    TARGET_LINK_LIBRARIES(${EXE_NAME} ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY} ${wt} ${wtdbo} ${wthttp} ${wttest} wittyPlus)
     FOREACH(TEST IN ITEMS ${ARGN})
         ADD_TEST(
             ${TEST}
