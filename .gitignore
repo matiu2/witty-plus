@@ -1,0 +1,7 @@
+qtcreator-build/
+wittyPlus/qt-creator/
+build/
+exampleApp/compass/.sass-cache/
+exampleApp/compass/config.rb
+wittyPlus/tags
+CMakeLists.txt.user
