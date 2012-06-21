@@ -20,14 +20,23 @@
 
 #include <Wt/WObject>
 #include <string>
+#include "Model.hpp"
 
 namespace wittyPlus {
 namespace page {
 
 class Extension: public Wt::WObject {
 public:
+    typedef void (Extension::*ActionMethod)(const Model&);
+    typedef std::map<std::string, ActionMethod> ActionMap;
+    typedef std::pair<std::string, ActionMethod> ActionPair;
+private:
+    ActionMap actionMap;
+public:
     Extension(WObject* parent=0);
-    void show_a_page();
+    void handleURLChange();
+    void view(const Model& page);
+    void edit(const Model& page);
 };
 
 } // namespace page

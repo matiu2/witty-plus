@@ -20,6 +20,7 @@
 #include "Model.hpp"
 #include <string>
 #include <wittyPlus/IGui.hpp>
+#include <wittyPlus/IUsers.hpp>
 #include <wittyPlus/IURLs.hpp>
 #include <wittyPlus/db.hpp>
 #include <Wt/WApplication>
@@ -34,24 +35,57 @@ namespace page {
 Extension::Extension(WObject* parent) : WObject(parent) {
     IURLs* urlManager = IURLs::instance();
     if (urlManager != 0)
-        urlManager->urlSignal("/page").connect(this, &Extension::show_a_page);
+        urlManager->urlSignal("/page").connect(this, &Extension::handleURLChange);
     dbSession().mapClass<Model>("page");
+    actionMap.insert(ActionPair("view", &Extension::view));
+    actionMap.insert(ActionPair("edit", &Extension::edit));
 }
 
-void Extension::show_a_page() {
+void Extension::handleURLChange() {
+    // Find the page
     IGui* gui = IGui::instance();
     Wt::WApplication* app = Wt::WApplication::instance();
-    std::string pageId = app->internalPathNextPart("/page/");
-    std::string action = app->internalPathNextPart("/page/" + pageId + "/");
-    if (action == "")
-        action = "view";
-    dbo::ptr<Model> page2show = dbSession().find<Model>("id=pageId");
-    if (page2show)
-        gui->setBody("I AM A PAGE: " + pageId);
-    else
-        gui->setBody("PAGE NOT FOUND: " + pageId);
+    std::string pageName = "/";
+    std::string action = "view";
+    if (app->internalPathMatches("/page/")) {
+        pageName = app->internalPathNextPart("/page/");
+        std::string pagePath = "/page/" + pageName + "/";
+        if (app->internalPathMatches(pagePath))
+            action = app->internalPathNextPart(pagePath);
+    }
+    dbo::Session& s = dbSession();
+    dbo::Transaction t(s);
+    dbo::ptr<Model> page = s.find<Model>().where("name=?").bind(pageName);
+    // Use it
+    if (page) {
+        ActionMap::const_iterator found = actionMap.find(action);
+        if (found != actionMap.end()) {
+            ((this)->*(found->second))(*page); // Call the action .. view/edit etc..
+        } else {
+            Wt::WApplication::instance()->log("ERROR") <<
+              "No valid action for page " << page->getName() << " - " <<
+              "Action name " << action;
+            // Default to view maybe ?
+            gui->setBody("ERROR: No such action " + action );
+        }
+    } else {
+        gui->setBody("PAGE NOT FOUND: " + pageName);
+    }
+    t.commit();
 }
 
+void Extension::view(const Model &page) {
+    IGui* gui = IGui::instance();
+    gui->setTitle(page.getTitle());
+    gui->setBody(page.getHtml());
+    IUsers* users = IUsers::instance();
+    if (users->isLoggedIn()) {
+        gui->addAdminMenuItem(Wt::WString::tr("Edit"), "/" + page.getName() + "/edit");
+    }
+}
+
+void Extension::edit(const Model &page) {
+}
 
 
 } // namespace wittyPlus

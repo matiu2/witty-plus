@@ -82,7 +82,9 @@ public:
     // IGui implementation
     void setBody(const WString& text="");
     void setBody(Wt::WWidget* widget);
+    void setTitle(const WString& newTitle);
     void setStatusText(const WString& newMessage);
+    void addAdminMenuItem(const WString& name, const std::string& path);
 };
 
 } // namespace wittyPlus

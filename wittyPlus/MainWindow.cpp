@@ -108,6 +108,10 @@ void MainWindow::onInternalPathChanged(const string &url) {
 
 // IGui implementation
 
+void wittyPlus::MainWindow::setTitle(const Wt::WString& newTitle) {
+    Wt::WApplication::instance()->setTitle(newTitle);
+}
+
 void MainWindow::setBody(const WString& text) { bindString("content", text); }
 void MainWindow::setBody(Wt::WWidget* widget) { bindWidget("content", widget); }
 
@@ -119,6 +123,11 @@ void MainWindow::setStatusText(const WString& newMessage) {
     hiddenStatus->setText(newMessage);
     _statusTextHolder->setCurrentIndex(1-current);
     _statusTextSet = time(NULL); // Remember when we set it
+}
+
+/// Allows you to add an item in the top admin menu
+void MainWindow::addAdminMenuItem(const WString &name, const std::string &path) {
+    _controlPanel->addLink(name, path);
 }
 
 } // namespace wittyPlus

@@ -21,6 +21,7 @@
 #include <Wt/WObject>
 #include <Wt/WString>
 #include <Wt/WWidget>
+#include <string>
 
 namespace wittyPlus {
 
@@ -29,6 +30,8 @@ public:
     virtual void setStatusText(const Wt::WString& newStatusText) = 0;
     virtual void setBody(const Wt::WString& newStatusText) = 0;
     virtual void setBody(Wt::WWidget* newWidget) = 0;
+    virtual void setTitle(const Wt::WString& newTitle) = 0;
+    virtual void addAdminMenuItem(const Wt::WString& name, const std::string& path) = 0;
 
     static IGui* instance();
 };

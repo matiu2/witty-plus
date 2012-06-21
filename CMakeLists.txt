@@ -9,9 +9,9 @@ include_directories(BEFORE ${CMAKE_CURRENT_SOURCE_DIR}) # So we can go '#include
 # Settings for configuration and script files
 IF( "${CMAKE_BUILD_TYPE}" STREQUAL Release )
   SET(DEBUG false)
+  ADD_DEFINITIONS(-DBOOST_DISABLE_ASSERTS)
 ELSE()
   SET(DEBUG true)
-  ADD_DEFINITIONS(-DBOOST_DISABLE_ASSERTS)
 ENDIF()
 SET(LOG_FILE_NAME "${PROJECT_NAME}.log")
 option(WTDebug "Use the witty debug libraries ? (wtd.so etc.)" off)

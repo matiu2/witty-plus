@@ -7,7 +7,7 @@ file(RELATIVE_PATH PRINT_CSS_PATH "${COMPILE_DIR}" "${CSS_OUTPUT_DIR}/print.css"
 get_filename_component(CSS_OUTPUT_DIR "${PRINT_CSS_PATH}" PATH)
 
 # Set the output format
-if (DEBUG)
+if (${DEBUG})
     set(COMPASS_OUTPUT_STYLE ":extended") # Long hand for debugging
 else()
     set(COMPASS_OUTPUT_STYLE ":compressed") # Compressesd for release

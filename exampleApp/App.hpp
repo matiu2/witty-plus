@@ -32,7 +32,7 @@ public:
         // Set up the extensions
         pageExtension = new PageExtension(this);
         // Make sure '/' shows the 'index.html' page
-        IURLs::instance()->urlSignal("/", true).connect(pageExtension, &PageExtension::show_a_page);
+        IURLs::instance()->urlSignal("/", true).connect(pageExtension, &PageExtension::handleURLChange);
         // Fire an internal path changed event off as user may have navigated straight here
         internalPathChanged().emit(internalPath());
     }
