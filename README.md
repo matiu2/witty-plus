@@ -1,3 +1,9 @@
+WittyPlus is currently being re-written as part of the footprint security website:
+==================================================================================
+
+https://github.com/matiu2/footprint/tree/master/lib/wittyPlus
+
+
 About
 =====
 
